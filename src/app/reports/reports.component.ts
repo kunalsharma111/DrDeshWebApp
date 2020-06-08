@@ -104,6 +104,7 @@ export class ReportsComponent implements OnInit {
     }
     this.showit2 = true;
     this.gammma2 = false;
+    this.nodata2 = false;
   }
   repo:{
     facility:string,
@@ -129,6 +130,7 @@ export class ReportsComponent implements OnInit {
   dd;
   postData;
   nodata = false;
+  nodata2 = false;
   submit(form) {
     this.nodata = false;
     this.showit = false;
@@ -138,7 +140,7 @@ export class ReportsComponent implements OnInit {
     console.log(form.value);
     this.service.findprerecords(form.value).subscribe(res =>{
       this.output = res;
-      console.log(this.output.length);
+      console.log(this.output);
       if(this.output.length == []){
         console.log("empty");
         this.nodata = true;
@@ -156,15 +158,14 @@ export class ReportsComponent implements OnInit {
   }
 
   submit_post(form) {
-    this.renderer.setStyle(this.ball.nativeElement, 'display', 'block');
-    this.nodata = false;
+    this.nodata2 = false;
     this.showit2 = false;
     this.service.getpostroundingreport(form.value).subscribe(res=>{
-      this.renderer.setStyle(this.ball.nativeElement, 'display', 'none');
       this.postData = res;
+      console.log(this.postData);
       if(this.postData.length == []){
         console.log("empty");
-        this.nodata = true;
+        this.nodata2 = true;
         this.showit2 = true;
         this.repo = {
           facility: '',
@@ -177,6 +178,9 @@ export class ReportsComponent implements OnInit {
       this.showit2 = false;
       }
     });
+    this.fn = this.repo.facility;
+    this.pn = this.repo.provider;
+    this.dd = this.repo.date;
     this.resetform();
   }
 
