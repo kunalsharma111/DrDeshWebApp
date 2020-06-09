@@ -657,11 +657,7 @@ router.post('/facilityreport', verifyToken, (req, res) => {
     })
 })
 
-router.post('/providerperformancereport', verifyToken, (req, res) => {
-    ProviderModel.find({ name: req.body.provider1 }).then(doc => {
-        console.log(doc);
-    })
-})
+
 
 router.post('/preround', verifyToken, (req, res) => {
 
@@ -935,6 +931,12 @@ router.post('/preroundfast', verifyToken, (req, res) => {
         }).catch(err => {
             console.log(err);
         })
+})
+router.post('/providerperformancereport', verifyToken, (req, res) => {
+    console.log(req.body.provider1 +" " + req.body.fromdate + req.body.todate);
+    ProviderModel.find({ name: req.body.provider1 }).then(doc => {
+        console.log(doc);
+    })
 })
 router.post('/postreport', verifyToken, (req, res) => {
     console.log(req.body);

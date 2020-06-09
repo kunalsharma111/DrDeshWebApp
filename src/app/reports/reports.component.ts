@@ -25,16 +25,7 @@ export class ReportsComponent implements OnInit {
     provider: string;
     date: Date;
   }
-  resetform(form?: NgForm) {
-    if (form != null) {
-      form.resetForm();
-    }
-    this.repo = {
-      facility: '',
-      provider: '',
-      date: null
-    }
-  }
+
   fname: string;
   metaData = false;
   patients: any;
@@ -43,9 +34,13 @@ export class ReportsComponent implements OnInit {
   output:any;
   providerreportoutput:any;
   facilityreportoutput:any;
+
+
   logout() {
     this.service.logout();
   }
+
+
   ngOnInit() {
     this.service.cc6$
     .subscribe(
@@ -84,43 +79,14 @@ export class ReportsComponent implements OnInit {
       this.facilities = res;
     })
   }
-  re1(){
-    console.log("inside");
-    this.showit = true;
-    this.gammma = false;
 
-    this.repo = {
-      facility: '',
-      provider: '',
-      date: null
-    }
-    this.nodata = false;
-  }
-  re2(){
-    this.repo = {
-      facility: '',
-      provider: '',
-      date: null
-    }
-    this.showit2 = true;
-    this.gammma2 = false;
-    this.nodata2 = false;
-  }
   repo:{
     facility:string,
     provider:string,
     date:string
   }
-  repo1:{
-    provider1:string,
-    fromdate:string,
-    todate:string
-  }
-  repo2:{
-    facility1:string,
-    fromdate1:string,
-    todate1:string
-  }
+  repo1: any = {  }
+  repo2 :any ={ }
   showit = true;
   gammma = false;
   showit2 = true;
@@ -131,6 +97,9 @@ export class ReportsComponent implements OnInit {
   postData;
   nodata = false;
   nodata2 = false;
+
+
+  // prerounding report
   submit(form) {
     this.nodata = false;
     this.showit = false;
@@ -157,6 +126,7 @@ export class ReportsComponent implements OnInit {
     this.resetform();
   }
 
+  // post rounding report
   submit_post(form) {
     this.nodata2 = false;
     this.showit2 = false;
@@ -184,12 +154,15 @@ export class ReportsComponent implements OnInit {
     this.resetform();
   }
 
+  // provider report
   submitproviderreport(form){
     console.log(form.value);
     this.service.findproviderreport(form.value).subscribe(res =>{
       this.providerreportoutput = res;
     })
   }
+
+  // facility report
   submitfacilityreport(form){
     console.log(form.value);
     this.service.findfacilityreport(form.value).subscribe(res =>{
@@ -197,23 +170,31 @@ export class ReportsComponent implements OnInit {
     })
   }
 
-  submit2(obj) {
-    localStorage.setItem("facility",obj.facility);
-    localStorage.setItem("provider",obj.provider);
-    localStorage.setItem("date",obj.date);
-    console.log(obj);
-    this.service.findprerecords(obj).subscribe(res =>{
-      this.output = res;
-      this.gammma =true;
-      this.showit = false;
-    })
 
-    this.fn = obj.facility;
-    this.pn = obj.provider;
-    this.dd = obj.date;
-    this.resetform();
+  // clear all result without reloading page 
+  re1(){
+    console.log("inside");
+    this.showit = true;
+    this.gammma = false;
+
+    this.repo = {
+      facility: '',
+      provider: '',
+      date: null
+    }
+    this.nodata = false;
   }
-  
+  re2(){
+    this.repo = {
+      facility: '',
+      provider: '',
+      date: null
+    }
+    this.showit2 = true;
+    this.gammma2 = false;
+    this.nodata2 = false;
+  }
+  // navbar navigation
   ap() {
     this.service.topatient('yes');
   }
@@ -229,6 +210,8 @@ export class ReportsComponent implements OnInit {
   ae() {
     this.service.toexpensive('yes');
   }
+
+  // download as PDF start
   public downloadAsPDF() {
     // if (this.isBrowser) {
     const jsPDF = require('jspdf')
@@ -256,6 +239,24 @@ export class ReportsComponent implements OnInit {
     doc.save('tableToPdf.pdf');
   }
   // }
+
+// open same result after updating from patient componenet
+  submit2(obj) {
+    localStorage.setItem("facility",obj.facility);
+    localStorage.setItem("provider",obj.provider);
+    localStorage.setItem("date",obj.date);
+    console.log(obj);
+    this.service.findprerecords(obj).subscribe(res =>{
+      this.output = res;
+      this.gammma =true;
+      this.showit = false;
+    })
+
+    this.fn = obj.facility;
+    this.pn = obj.provider;
+    this.dd = obj.date;
+    this.resetform();
+  }
   open() {
     setTimeout(() => {
       console.log("please call me");
@@ -273,5 +274,17 @@ export class ReportsComponent implements OnInit {
     // console.log(obj.facility);
     this.submit2(obj);
     }, 100)
+  }
+
+
+  resetform(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
+    this.repo = {
+      facility: '',
+      provider: '',
+      date: null
+    }
   }
 }
