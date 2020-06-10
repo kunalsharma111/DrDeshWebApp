@@ -933,14 +933,22 @@ router.post('/preroundfast', verifyToken, (req, res) => {
         })
 })
 router.post('/providerperformancereport', verifyToken, (req, res) => {
-    console.log(req.body.provider1 +" " + req.body.fromdate + req.body.todate);
-    ProviderModel.find({ name: req.body.provider1 }).then(doc => {
+    
+    MasterPatientModel.find({ provider : req.body.provider1}).then(doc => {
         console.log(doc);
+        // let ans = []
+        // if(doc.length){
+        //     doc.forEach(id =>{
+        //         ans.push(id);
+        //     })
+        // }
+        console.log(doc[0].visits.length);
+        console.log(doc[0].visits[0].provider);
     })
 })
 router.post('/postreport', verifyToken, (req, res) => {
-    console.log(req.body);
     PostModel.find({ providerName: req.body.provider, facility: req.body.facility, visitDate: { "$lte": new Date(req.body.date) } }).then(rese => {
+        console.log(rese);
         let returnarray = []
         if (rese.length) {
             rese.forEach(id => {

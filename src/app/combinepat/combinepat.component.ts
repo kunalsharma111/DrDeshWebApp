@@ -330,6 +330,9 @@ export class CombinepatComponent implements OnInit {
     let summary = '';
 
     if (form.valid) {
+      if(this.combined.visit == null || this.combined.visit == undefined ){
+        this.combined.visit =  new Date();
+      }
       var x = this.el.nativeElement.querySelectorAll('.chkbx');
       var status = this.el.nativeElement.querySelectorAll('.medstatus');
       var date = this.el.nativeElement.querySelectorAll('.meddate')

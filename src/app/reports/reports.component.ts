@@ -98,9 +98,11 @@ export class ReportsComponent implements OnInit {
   nodata = false;
   nodata2 = false;
 
-
+ 
   // prerounding report
+  notvalidate:boolean;
   submit(form) {
+    if (form.valid) {
     this.nodata = false;
     this.showit = false;
     localStorage.setItem("facility",form.value.facility);
@@ -125,9 +127,15 @@ export class ReportsComponent implements OnInit {
     this.dd = this.repo.date;
     this.resetform();
   }
+  else{
+    this.notvalidate = true;
+  }
+}
 
   // post rounding report
+  notvalidate1:boolean;
   submit_post(form) {
+    if(form.valid){
     this.nodata2 = false;
     this.showit2 = false;
     this.service.getpostroundingreport(form.value).subscribe(res=>{
@@ -153,6 +161,10 @@ export class ReportsComponent implements OnInit {
     this.dd = this.repo.date;
     this.resetform();
   }
+  else{
+    this.notvalidate1 = true;
+  }
+}
 
   // provider report
   submitproviderreport(form){
@@ -173,7 +185,6 @@ export class ReportsComponent implements OnInit {
 
   // clear all result without reloading page 
   re1(){
-    console.log("inside");
     this.showit = true;
     this.gammma = false;
 
@@ -185,14 +196,15 @@ export class ReportsComponent implements OnInit {
     this.nodata = false;
   }
   re2(){
+    this.showit2 = true;
+    this.gammma2 = false;
+    this.nodata2 = false;
     this.repo = {
       facility: '',
       provider: '',
       date: null
     }
-    this.showit2 = true;
-    this.gammma2 = false;
-    this.nodata2 = false;
+    
   }
   // navbar navigation
   ap() {
