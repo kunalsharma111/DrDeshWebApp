@@ -12,19 +12,19 @@
                 <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
             </li>
             <li>
-                <a (click)="ap()"><i class="fa fa-plus-circle"></i>Add Patient</a>
+                <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
             </li>
             <li>
-                <a (click)="af()"><i class="fa fa-users"></i>Add Facility</a>
+                <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
             </li>
             <li>
-                <a (click)="app()"><i class="fa fa-calendar-times-o"></i>Add Provider</a>
+                <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
             </li>
             <li>
-                <a (click)="ai()"><i class="fa fa-university"></i>Add Insurance</a>
+                <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
             </li>
             <li>
-                <a (click)="ae()"><i class="fa fa-medkit"></i>Expensive Medicines</a>
+                <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
             </li>
             <li>
                 <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
@@ -154,14 +154,14 @@
                 <!-- <div> <button (click)="downloadAsPDF()"
                         style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
                         To PDF</button></div> -->
-                <form #form="ngForm" (submit)="form.form.valid && submit(form)" *ngIf="showit">
+                <form #form="ngForm" (submit)="submit(form)" *ngIf="showit">
                     <div class="row">
                         <div class="col-md-3">
                             <label for="facility">Facility</label>
                             <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility" required>
                                 <option *ngFor="let i of facilities" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="facility.invalid && form.submitted"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate && facility.invalid"    class="alert alert-danger mt-1">
                                 <div *ngIf="facility.errors.required">Field is required.</div>
                             </div>
                         </div>
@@ -170,25 +170,26 @@
                             <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider" required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="provider.invalid && form.submitted"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate && provider.invalid"    class="alert alert-danger mt-1">
                                 <div *ngIf="provider.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="Date">Date</label>
                             <input type="date" name="date" id="date" #date="ngModel" [(ngModel)]="repo.date" required>
-                            <div *ngIf="date.invalid && form.submitted"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate && date.invalid"    class="alert alert-danger mt-1">
                                 <div *ngIf="date.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-info mt-4"
-                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;" [disabled]="form.invalid">Find</button>
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;" >Find</button>
                         </div>
                     </div>
                 </form>
-                <div class="col-md-12 mb-4" *ngIf="nodata">
+                <div class="col-md-12 mb-4 mt-3" style="text-align: center; color:#87c442;" *ngIf="nodata">
                     <h1>No data Found</h1>
+                    <p>check with different input</p>
                 </div>
                 <div class="col-md-12 mb-4" *ngIf="gammma">
                     
@@ -199,9 +200,9 @@
                                 <th>Patient's Room</th>
                                 <th>Patient's Name</th>
                                 <th>Patient's Insurance</th>
-                                <th>Services Eligible</th>
-                                <th>Visit Type</th>
-                                <th>Pending Scales</th>
+                                <th>Patient's Info</th>
+                                <!-- <th>Visit Type</th>
+                                <th>Pending Scales</th> -->
                                 <th>Comments</th>
                             </tr>
                         </thead>
@@ -212,9 +213,12 @@
                                     style="color: #87c442;" (click)="service.useriden(i.id)"
                                    tooltip="Update Patient record" data-dismiss="modal" placement="right"></i></p></td>
                                 <td>{{i.insurance}}</td>
-                                <td>{{i.services_eligible}}</td>
-                                <td>{{i.visit_type}}</td>
-                                <td>{{i.pending_scales}}</td>
+                                <td>Service Eligible : {{i.services_eligible}}<hr>
+                                    Visit Type : {{i.visit_type}}<hr>
+                                    Pending Scales : {{i.pending_scales}}
+                                </td>
+                                <!-- <td>{{i.visit_type}}</td>
+                                <td>{{i.pending_scales}}</td> -->
                                 <td><input type="text" name="comment" id="comment" size="5"
                                         style="background-color: transparent; border: none;border-bottom: 1px solid #87c442;margin-top: 20px;">
                                 </td>
@@ -254,14 +258,14 @@
                 <!-- <div> <button (click)="downloadAsPDF()"
                         style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
                         To PDF</button></div> -->
-                <form #form="ngForm" (submit)="form.form.valid && submit_post(form)" *ngIf="showit2">
+                <form #form="ngForm" (submit)="submit_post(form)" *ngIf="showit2">
                     <div class="row">
                         <div class="col-md-3">
                             <label for="facility">Facility</label>
                             <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility" required>
                                 <option *ngFor="let i of facilities" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="facility.invalid && form.submitted"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate1 && facility.invalid"    class="alert alert-danger mt-1">
                                 <div *ngIf="facility.errors.required">Field is required.</div>
                             </div>
                         </div>
@@ -270,25 +274,26 @@
                             <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider" required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="provider.invalid && form.submitted"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate1 && provider.invalid"    class="alert alert-danger mt-1">
                                 <div *ngIf="provider.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="Date">Date</label>
                             <input type="date" name="date" id="date" #date="ngModel" [(ngModel)]="repo.date" required>
-                            <div *ngIf="date.invalid && form.submitted"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate1 && date.invalid"    class="alert alert-danger mt-1">
                                 <div *ngIf="date.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-info mt-4"
-                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;" [disabled]="form.invalid">Find</button>
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;">Find</button>
                         </div>
                     </div>
                 </form>
-                <div class="col-md-12 mb-4" *ngIf="nodata2">
+                <div class="col-md-12 mb-4 mt-3" style="text-align: center; color:#87c442;" *ngIf="nodata2">
                     <h1>No data Found</h1>
+                    <p>check with different input</p>
                 </div>
                 <div class="col-md-12 mb-4" *ngIf="gammma2">
                     
@@ -304,9 +309,11 @@
                         <tbody>
                             <tr *ngFor="let i of postData">
                                 <td>{{i.room}}</td>
-                                <td>{{i.name}}<p [routerLink]="['/cpat']"><i class="fa fa-pencil" aria-hidden="true"
+                                <td>{{i.name}}<p [routerLink]="['/cpat']">
+                                    <!-- <i class="fa fa-pencil" aria-hidden="true"
                                     style="color: #87c442;" (click)="service.useriden(i.id)"
-                                   tooltip="Update Patient record" data-dismiss="modal" placement="right"></i></p></td>
+                                   tooltip="Update Patient record" data-dismiss="modal" placement="right"></i> -->
+                                </p></td>
                                 <td>{{i.summary}}</td>
                             </tr>
                         </tbody>
