@@ -29,11 +29,11 @@ export class ReportsComponent implements OnInit {
   fname: string;
   metaData = false;
   patients: any;
-  providers:Provider;
-  facilities:Facility;
-  output:any;
-  providerreportoutput:any;
-  facilityreportoutput:any;
+  providers: Provider;
+  facilities: Facility;
+  output: any;
+  providerreportoutput: any;
+  facilityreportoutput: any;
 
 
   logout() {
@@ -43,13 +43,13 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit() {
     this.service.cc6$
-    .subscribe(
-      message => {
-        if (message === 'yes') {
-          this.open();
+      .subscribe(
+        message => {
+          if (message === 'yes') {
+            this.open();
+          }
         }
-      }
-    )
+      )
     this.resetform();
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
@@ -80,17 +80,17 @@ export class ReportsComponent implements OnInit {
     })
   }
 
-  repo:{
-    facility:string,
-    provider:string,
-    date:string
+  repo: {
+    facility: string,
+    provider: string,
+    date: string
   }
-  repo1: any = {  }
-  repo2 :any ={ }
+  repo1: any = {}
+  repo2: any = {}
   showit = true;
   gammma = false;
   showit2 = true;
-  gammma2= false;
+  gammma2 = false;
   fn;
   pn;
   dd;
@@ -98,93 +98,93 @@ export class ReportsComponent implements OnInit {
   nodata = false;
   nodata2 = false;
 
- 
+
   // prerounding report
-  notvalidate:boolean;
+  notvalidate: boolean;
   submit(form) {
     if (form.valid) {
-    this.nodata = false;
-    this.showit = false;
-    localStorage.setItem("facility",form.value.facility);
-    localStorage.setItem("provider",form.value.provider);
-    localStorage.setItem("date",form.value.date);
-    console.log(form.value);
-    this.service.findprerecords(form.value).subscribe(res =>{
-      this.output = res;
-      console.log(this.output);
-      if(this.output.length == []){
-        console.log("empty");
-        this.nodata = true;
-        this.showit = true;
-      }
-      else{
-      this.gammma =true;
+      this.nodata = false;
       this.showit = false;
-      }
-    })
-    this.fn = this.repo.facility;
-    this.pn = this.repo.provider;
-    this.dd = this.repo.date;
-    this.resetform();
+      localStorage.setItem("facility", form.value.facility);
+      localStorage.setItem("provider", form.value.provider);
+      localStorage.setItem("date", form.value.date);
+      console.log(form.value);
+      this.service.findprerecords(form.value).subscribe(res => {
+        this.output = res;
+        console.log(this.output);
+        if (this.output.length == []) {
+          console.log("empty");
+          this.nodata = true;
+          this.showit = true;
+        }
+        else {
+          this.gammma = true;
+          this.showit = false;
+        }
+      })
+      this.fn = this.repo.facility;
+      this.pn = this.repo.provider;
+      this.dd = this.repo.date;
+      this.resetform();
+    }
+    else {
+      this.notvalidate = true;
+    }
   }
-  else{
-    this.notvalidate = true;
-  }
-}
 
   // post rounding report
-  notvalidate1:boolean;
+  notvalidate1: boolean;
   submit_post(form) {
-    if(form.valid){
-    this.nodata2 = false;
-    this.showit2 = false;
-    this.service.getpostroundingreport(form.value).subscribe(res=>{
-      this.postData = res;
-      console.log(this.postData);
-      if(this.postData.length == []){
-        console.log("empty");
-        this.nodata2 = true;
-        this.showit2 = true;
-        this.repo = {
-          facility: '',
-          provider: '',
-          date: null
-        }
-      }
-      else{
-      this.gammma2 =true;
+    if (form.valid) {
+      this.nodata2 = false;
       this.showit2 = false;
-      }
-    });
-    this.fn = this.repo.facility;
-    this.pn = this.repo.provider;
-    this.dd = this.repo.date;
-    this.resetform();
+      this.service.getpostroundingreport(form.value).subscribe(res => {
+        this.postData = res;
+        console.log(this.postData);
+        if (this.postData.length == []) {
+          console.log("empty");
+          this.nodata2 = true;
+          this.showit2 = true;
+          this.repo = {
+            facility: '',
+            provider: '',
+            date: null
+          }
+        }
+        else {
+          this.gammma2 = true;
+          this.showit2 = false;
+        }
+      });
+      this.fn = this.repo.facility;
+      this.pn = this.repo.provider;
+      this.dd = this.repo.date;
+      this.resetform();
+    }
+    else {
+      this.notvalidate1 = true;
+    }
   }
-  else{
-    this.notvalidate1 = true;
-  }
-}
 
   // provider report
-  submitproviderreport(form){
+  submitproviderreport(form) {
     console.log(form.value);
-    this.service.findproviderreport(form.value).subscribe(res =>{
+    this.service.findproviderreport(form.value).subscribe(res => {
       this.providerreportoutput = res;
     })
   }
 
   // facility report
-  submitfacilityreport(form){
+  submitfacilityreport(form) {
     console.log(form.value);
-    this.service.findfacilityreport(form.value).subscribe(res =>{
+    this.service.findfacilityreport(form.value).subscribe(res => {
       this.facilityreportoutput = res;
     })
   }
 
 
   // clear all result without reloading page 
-  re1(){
+  re1() {
     this.showit = true;
     this.gammma = false;
 
@@ -195,7 +195,7 @@ export class ReportsComponent implements OnInit {
     }
     this.nodata = false;
   }
-  re2(){
+  re2() {
     this.showit2 = true;
     this.gammma2 = false;
     this.nodata2 = false;
@@ -204,7 +204,7 @@ export class ReportsComponent implements OnInit {
       provider: '',
       date: null
     }
-    
+
   }
   // navbar navigation
   ap() {
@@ -252,15 +252,15 @@ export class ReportsComponent implements OnInit {
   }
   // }
 
-// open same result after updating from patient componenet
+  // open same result after updating from patient componenet
   submit2(obj) {
-    localStorage.setItem("facility",obj.facility);
-    localStorage.setItem("provider",obj.provider);
-    localStorage.setItem("date",obj.date);
+    localStorage.setItem("facility", obj.facility);
+    localStorage.setItem("provider", obj.provider);
+    localStorage.setItem("date", obj.date);
     console.log(obj);
-    this.service.findprerecords(obj).subscribe(res =>{
+    this.service.findprerecords(obj).subscribe(res => {
       this.output = res;
-      this.gammma =true;
+      this.gammma = true;
       this.showit = false;
     })
 
@@ -274,17 +274,17 @@ export class ReportsComponent implements OnInit {
       console.log("please call me");
       $("#myModalap").modal("show");
 
-    let f = localStorage.getItem("facility");
-    let p = localStorage.getItem("provider");
-    let d = localStorage.getItem("date");
-    console.log(f+p+d);
-   var obj = {
-      facility:f,
-      provider:p,
-      date:d
-    }
-    // console.log(obj.facility);
-    this.submit2(obj);
+      let f = localStorage.getItem("facility");
+      let p = localStorage.getItem("provider");
+      let d = localStorage.getItem("date");
+      console.log(f + p + d);
+      var obj = {
+        facility: f,
+        provider: p,
+        date: d
+      }
+      // console.log(obj.facility);
+      this.submit2(obj);
     }, 100)
   }
 
@@ -298,5 +298,29 @@ export class ReportsComponent implements OnInit {
       provider: '',
       date: null
     }
+  }
+  submitprovidermedreport(form) {
+    this.service.getMedRelatedData(form.value).subscribe(res=>{
+      console.log(res);
+    })
+  }
+  pages() {
+    const jsPDF = require('jspdf')
+    const doc = new jsPDF();
+    console.log(doc);
+
+    const specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+
+    doc.text("This is the default font.", 20, 20);
+    doc.addPage();
+    doc.text("This is the default font.", 20, 20);
+    doc.setFont("courier");
+    doc.setFontStyle("normal");
+    doc.text("This is courier normal.", 20, 30);
+    doc.save('dummy.pdf')
   }
 }

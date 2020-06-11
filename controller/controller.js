@@ -933,8 +933,8 @@ router.post('/preroundfast', verifyToken, (req, res) => {
         })
 })
 router.post('/providerperformancereport', verifyToken, (req, res) => {
-    
-    MasterPatientModel.find({ provider : req.body.provider1}).then(doc => {
+
+    MasterPatientModel.find({ provider: req.body.provider1 }).then(doc => {
         console.log(doc);
         // let ans = []
         // if(doc.length){
@@ -974,6 +974,11 @@ router.post('/postreport', verifyToken, (req, res) => {
         setTimeout(() => {
             res.json(patobj)
         }, 1000)
+    })
+})
+router.post('/medreport', verifyToken, (req, res) => {
+    MasterPatientModel.find({"visits.visit":{$eq:new Date(req.body.date)}}).then(res=>{
+        console.log(res);
     })
 })
 module.exports = router;

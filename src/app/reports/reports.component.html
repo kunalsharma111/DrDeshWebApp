@@ -94,6 +94,19 @@
                   </figure>
             </div>
             <div class="col-md-1"></div>
+           
+        </div>
+        <div class="row goa">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <figure>
+                    <div>
+                      <span data-toggle="modal" data-target="#myModalprovider2">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>Provider Performance</span>
+                    </div>
+                  </figure>
+            </div>
+            <div class="col-md-1"></div>
         </div>
         <!-- <div class="row reports goa">
             <div class="col-md-1"></div>
@@ -376,7 +389,49 @@
     </div>
 </div>
 <!-- provider performance report ends -->
-
+<div class="modal lol fade" id="myModalprovider2" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content mc1">
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal" ><i class="fa fa-times"
+                    aria-hidden="true"></i></p>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="/assets/img/login/logo.png" height="100px" >
+                    </div>
+                    <div class="col-md-4 mt-4"><h4 style="color: #87c442;">Balanced Wellbeing LLC</h4></div>
+                </div>
+                <h3 class="medh3 mb-4"><u>Provider Performance Report</u></h3>
+                <form #form1="ngForm" (submit)="submitprovidermedreport(form1)">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="provider">Providerr</label>
+                            <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1">
+                                <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fromdate">From</label>
+                            <input type="date" name="fromdate" id="fromdate" #fromdate="ngModel" [(ngModel)]="repo1.fromdate">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="todate">TO</label>
+                            <input type="date" name="todate" id="todate" #todate="ngModel" [(ngModel)]="repo1.todate">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-info mt-4"
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;">Find</button>
+                        </div>
+                    </div>
+                </form>
+                <button style="border: none; background: dodgerblue;font-size: 1.2rem;padding: 6px 20px;" (click)="pages()">click me</button>
+                <div class="ball" #ball>
+                    <p> LOADING </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- facility monthly report start-->
 <!-- <div class="modal lol fade" id="myModalfacility" role="dialog">
     <div class="modal-dialog">
