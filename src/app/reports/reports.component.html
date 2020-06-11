@@ -88,7 +88,7 @@
             <div class="col-md-3">
                 <figure>
                     <div>
-                      <span data-toggle="modal" data-target="#myModalprovider">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span data-toggle="modal" data-target="#myModalprovider" (click)="re3()">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                       <span>Provider Performance</span>
                     </div>
                   </figure>
@@ -191,7 +191,7 @@
                     <h1>No data Found</h1>
                     <p>check with different input</p>
                 </div>
-                <div class="col-md-12 mb-4" *ngIf="gammma">
+                <div class="col-md-12 mb-4" *ngIf="gammma" >
                     
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
@@ -345,21 +345,30 @@
                     <div class="col-md-4 mt-4"><h4 style="color: #87c442;">Balanced Wellbeing LLC</h4></div>
                 </div>
                 <h3 class="medh3 mb-4"><u>Provider Performance Report</u></h3>
-                <form #form1="ngForm" (submit)="submitproviderreport(form1)">
+                <form #form1="ngForm" (submit)="submitproviderreport(form1)" *ngIf="showit3">
                     <div class="row">
                         <div class="col-md-3">
                             <label for="provider">Providerr</label>
-                            <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1">
+                            <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1" required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
+                            <div *ngIf="notvalidate2 && provider1.invalid"    class="alert alert-danger mt-1">
+                                <div *ngIf="provider1.errors.required">Field is required.</div>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <label for="fromdate">From</label>
-                            <input type="date" name="fromdate" id="fromdate" #fromdate="ngModel" [(ngModel)]="repo1.fromdate">
+                            <input type="date" name="fromdate" id="fromdate" #fromdate="ngModel" [(ngModel)]="repo1.fromdate" required>
+                            <div *ngIf="notvalidate2 && fromdate.invalid"    class="alert alert-danger mt-1">
+                                <div *ngIf="fromdate.errors.required">Field is required.</div>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <label for="todate">TO</label>
-                            <input type="date" name="todate" id="todate" #todate="ngModel" [(ngModel)]="repo1.todate">
+                            <input type="date" name="todate" id="todate" #todate="ngModel" [(ngModel)]="repo1.todate" required>
+                            <div *ngIf="notvalidate2 && todate.invalid"    class="alert alert-danger mt-1">
+                                <div *ngIf="todate.errors.required">Field is required.</div>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-info mt-4"
@@ -367,7 +376,43 @@
                         </div>
                     </div>
                 </form>
-              
+                <div class="col-md-12 mb-4 mt-3" style="text-align: center; color:#87c442;" *ngIf="nodata3">
+                    <h1>No data Found</h1>
+                    <p>check with different input</p>
+                </div>
+                <div class="col-md-12 mb-4" *ngIf="gammma3" #epltable>
+                    
+                    <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
+                    <table class="table table-stripped table-hover table-condensed mt-4" #table>
+                        <thead >
+                            <tr>
+                                <th>No. of patient's Seen</th>
+                                <th>Points seen</th>
+                                <th>Medicines Added</th>
+                                <th>Medicines lowered</th>
+                                <th>Medicines increased</th>
+                                <th>Medicines Added with stop date</th>
+                                <th>Medicines continued but added stop date</th>
+                                <th>Medicines stopped</th>
+                                <th>Scales Performed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of providerreportoutput ">
+                                <td>{{i.no_of_patients_seen}}</td>
+                                <td>{{i.points_seen}}</td>
+                                <td>{{i.meds_added}}</td>
+                                <td>{{i.meds_lowered}}</td>
+                                <td>{{i.meds_increased}}</td>
+                                <td>{{i.meds_added_with_stop_date}}</td>
+                                <td>{{i.meds_continued_but_added_stop_date}}</td>
+                                <td>{{i.meds_stopped}}</td>
+                                <td>{{i.scales_performed}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div> <button (click)="exportToExcel()" class="btn btn-success">Export To Excel</button> </div>
+                </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
                 </div>

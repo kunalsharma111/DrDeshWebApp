@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 declare var $: any
 import 'jspdf-autotable'
 // import { isPlatformBrowser } from '@angular/common';
+import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-reports',
@@ -32,7 +33,7 @@ export class ReportsComponent implements OnInit {
   providers:Provider;
   facilities:Facility;
   output:any;
-  providerreportoutput:any;
+  providerreportoutput:any=[];
   facilityreportoutput:any;
 
 
@@ -90,13 +91,16 @@ export class ReportsComponent implements OnInit {
   showit = true;
   gammma = false;
   showit2 = true;
+  showit3 = true;
   gammma2= false;
+  gammma3 = false;
   fn;
   pn;
   dd;
   postData;
   nodata = false;
   nodata2 = false;
+  nodata3 = false;
 
  
   // prerounding report
@@ -167,12 +171,36 @@ export class ReportsComponent implements OnInit {
 }
 
   // provider report
+  notvalidate2 : Boolean;
   submitproviderreport(form){
     console.log(form.value);
+    if(form.valid){
+    this.nodata3 = false;
+    this.showit3 = false;
     this.service.findproviderreport(form.value).subscribe(res =>{
-      this.providerreportoutput = res;
+      console.log(this.providerreportoutput.meds_added);
+      this.providerreportoutput = Array.of(res);
+      console.log(this.providerreportoutput[0].meds_added);
+      if(this.providerreportoutput[0] == "no"){
+        this.nodata3 = true;
+        this.showit3 = true;
+        this.gammma3 = false;
+        this.repo1 = {
+          provider1: '',
+          fromdate:'',
+          todate:''
+        };
+      }
+      else{
+      this.gammma3 = true;
+      this.showit3 = false;
+      }
     })
   }
+  else{
+    this.notvalidate2 = true;
+  }
+}
 
   // facility report
   submitfacilityreport(form){
@@ -206,6 +234,15 @@ export class ReportsComponent implements OnInit {
     }
     
   }
+  re3(){
+    this.showit3 = true;
+    this.gammma3 = false;
+    this.nodata3 = false;
+    this.repo1 = {
+      
+    }
+    this.providerreportoutput=[];
+  }
   // navbar navigation
   ap() {
     this.service.topatient('yes');
@@ -222,6 +259,15 @@ export class ReportsComponent implements OnInit {
   ae() {
     this.service.toexpensive('yes');
   }
+  @ViewChild('epltable', { static: false }) epltable: ElementRef;
+// exxport to excel
+  exportToExcel() {
+    const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'provider_performance_report.xlsx');
+   }
+
 
   // download as PDF start
   public downloadAsPDF() {
