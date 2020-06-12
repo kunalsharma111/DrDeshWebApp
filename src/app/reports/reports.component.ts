@@ -299,9 +299,20 @@ export class ReportsComponent implements OnInit {
     this.service.toexpensive('yes');
   }
   @ViewChild('epltable', { static: false }) epltable: ElementRef;
+  @ViewChild('epltablee', { static: false }) epltablee: ElementRef;
 // exxport to excel
   exportToExcel(reportName) {
     const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, reportName);
+    console.log("xlsx", xlsx)
+    console.log("ws", ws)
+    console.log("wb", wb)
+   }
+   // exxport to excel
+  exportToExcel2(reportName) {
+    const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltablee.nativeElement);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
     xlsx.writeFile(wb, reportName);

@@ -99,17 +99,6 @@
                   </figure>
             </div>
         </div>
-        <div class="row reports goa">
-            <div class="col-md-1"></div>
-            <div class="col-md-3">
-                <figure>
-                    <div>
-                      <span data-toggle="modal" data-target="#myModalfacility">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span>Facility Report</span>
-                    </div>
-                  </figure>
-            </div>
-        </div>
     </section>
     <!-- <img src="/assets/img/login/logo.png" height="200px" style="position: fixed; right: 0; bottom: 0; padding: 50px;"> -->
 </div>
@@ -478,7 +467,7 @@
                     <h1>No data Found</h1>
                     <p>check with different input</p>
                 </div>
-                <div class="col-md-12 mb-4" *ngIf="gammma4" #epltable>
+                <div class="col-md-12 mb-4" *ngIf="gammma4" #epltablee>
                     
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
@@ -513,7 +502,7 @@
                             <!-- </div> -->
                         </tbody>
                     </table>
-                    <div> <button (click)="exportToExcel()" class="btn btn-success">Export To Excel</button> </div>
+                    <div> <button (click)="exportToExcel2('facility_performance_report.xlsx')" class="btn btn-success">Export To Excel</button> </div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>

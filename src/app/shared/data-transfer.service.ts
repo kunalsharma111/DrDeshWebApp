@@ -228,8 +228,8 @@ export class DataTransferService {
   private c4 = new Subject<String>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<String>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<String>(); cc6$ = this.c6.asObservable();
-  metcha = 'https://deshwebapp.herokuapp.com/api';
-  // metcha = 'http://localhost:4000/api'
+  // metcha = 'https://drrdesh.herokuapp.com/api';
+  metcha = 'http://localhost:4000/api'
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
   url2 = `${this.metcha}/red`;
@@ -401,7 +401,6 @@ export class DataTransferService {
     return this.http.post<any>(this.url23,data);
   }
   findfacilityreport(data){
-    console.log(data);
     return this.http.post<any>(this.url24,data);
   }
   private history = [];
