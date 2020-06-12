@@ -401,6 +401,7 @@ export class DataTransferService {
     return this.http.post<any>(this.url23,data);
   }
   findfacilityreport(data){
+    console.log(data);
     return this.http.post<any>(this.url24,data);
   }
   private history = [];

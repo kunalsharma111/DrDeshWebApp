@@ -651,9 +651,32 @@ router.get('/get', verifyToken, (req, res) => {
 })
 
 router.post('/facilityreport', verifyToken, (req, res) => {
-    console.log(req.body.fromdate1 + req.body.todate1);
-    MasterPatientModel.find({ facility: req.body.facility1, "visit": { "$gte": req.body.fromdate1, "$lte": req.body.todate1 } }).then(doc => {
+    console.log("hiiiiiiiii");
+    var facilityReport = {
+        no_of_patients_seen : 0,
+        points_seen : 0,
+        meds_added : 0,
+        meds_lowered : 0,
+        meds_increased : 0,
+        meds_added_with_stop_date : 0,
+        meds_continued_but_added_stop_date : 0,
+        meds_stopped : 0,
+        scales_performed : 0,
+        number_of_each_subscale_performed : 0,
+        average_score_of_each_scale : 0,
+    }
+
+    MasterPatientModel.find({ 'visits.facility': req.body.facility1, 'visits.visit': { "$gte": req.body.fromdate1, "$lte": req.body.todate1 } }).then(doc => {
         console.log(doc);
+        if(doc.length  != 0 ){
+            facilityReport = genreport(doc,facilityReport);
+            setTimeout(() => {
+                     res.json(facilityReport);
+                 }, 1000)
+     }
+     else{
+         res.json("no");
+     }
     })
 })
 
@@ -950,7 +973,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
         number_of_each_subscale_performed : 0,
         average_score_of_each_scale : 0,
     }]
-    
+
     MasterPatientModel.find({ 'visits.provider' : req.body.provider1,'visits.visit': {"$gte": new Date(req.body.fromdate),"$lte": new Date(req.body.todate)}})
     .then(doc => {
         if(doc.length  != 0 ){
@@ -1032,7 +1055,7 @@ function genreport(doc,proreport){
                 if(doc[total].visits[totalvisits].scaleinfo.length >=2 && doc[total].visits[totalvisits].scaleinfo != undefined){
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                     flag = true;
-                    // adding 2.5 score if scales have Dementia testing scale 
+                    // adding 2.5 score if scales have Dementia testing scale
                     while(scale_size >= 0 && flag == true){
                         if(doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA"){
                             proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
@@ -1086,7 +1109,7 @@ function genreport(doc,proreport){
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                // Added Medicine 
+                // Added Medicine
                 if(firstvisit == true && doc[total].visits[totalvisits].added != undefined){
                     if(doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined ){
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
@@ -1182,7 +1205,7 @@ function genreport(doc,proreport){
             totalvisits--;
         }
         total--;
-    }   
+    }
         console.log(proreport);
         return proreport;
 }
