@@ -203,7 +203,7 @@
                                 <th>Patient's Info</th>
                                 <!-- <th>Visit Type</th>
                                 <th>Pending Scales</th> -->
-                                <th>Comments</th>
+                                <!-- <th>Comments</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -219,9 +219,9 @@
                                 </td>
                                 <!-- <td>{{i.visit_type}}</td>
                                 <td>{{i.pending_scales}}</td> -->
-                                <td><input type="text" name="comment" id="comment" size="5"
+                                <!-- <td><input type="text" name="comment" id="comment" size="5"
                                         style="background-color: transparent; border: none;border-bottom: 1px solid #87c442;margin-top: 20px;">
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -386,6 +386,7 @@
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
                         <thead >
                             <tr>
+                                <th>Facility</th>
                                 <th>No. of patient's Seen</th>
                                 <th>Points seen</th>
                                 <th>Medicines Added</th>
@@ -397,18 +398,21 @@
                                 <th>Scales Performed</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr *ngFor="let i of providerreportoutput ">
-                                <td>{{i.no_of_patients_seen}}</td>
-                                <td>{{i.points_seen}}</td>
-                                <td>{{i.meds_added}}</td>
-                                <td>{{i.meds_lowered}}</td>
-                                <td>{{i.meds_increased}}</td>
-                                <td>{{i.meds_added_with_stop_date}}</td>
-                                <td>{{i.meds_continued_but_added_stop_date}}</td>
-                                <td>{{i.meds_stopped}}</td>
-                                <td>{{i.scales_performed}}</td>
+                        <tbody *ngFor="let i of providerreportoutput">
+                            <!-- <div > -->
+                                <tr *ngFor="let j of i"> 
+                                <td>{{j.facility_name}}</td>
+                                <td>{{j.no_of_patients_seen}}</td>
+                                <td>{{j.points_seen}}</td>
+                                <td>{{j.meds_added}}</td>
+                                <td>{{j.meds_lowered}}</td>
+                                <td>{{j.meds_increased}}</td>
+                                <td>{{j.meds_added_with_stop_date}}</td>
+                                <td>{{j.meds_continued_but_added_stop_date}}</td>
+                                <td>{{j.meds_stopped}}</td>
+                                <td>{{j.scales_performed}}</td>
                             </tr>
+                            <!-- </div> -->
                         </tbody>
                     </table>
                     <div> <button (click)="exportToExcel()" class="btn btn-success">Export To Excel</button> </div>

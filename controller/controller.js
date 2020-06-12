@@ -936,7 +936,8 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
     console.log(req.body.provider1);
     from = new Date(req.body.fromdate);
     to = new Date(req.body.todate);
-    var proreport={
+    var proreport=[{
+        facility_name:'',
         no_of_patients_seen : 0,
         points_seen : 0,
         meds_added : 0,
@@ -948,7 +949,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
         scales_performed : 0,
         number_of_each_subscale_performed : 0,
         average_score_of_each_scale : 0,
-    }
+    }]
     
     MasterPatientModel.find({ 'visits.provider' : req.body.provider1,'visits.visit': {"$gte": new Date(req.body.fromdate),"$lte": new Date(req.body.todate)}})
     .then(doc => {
@@ -963,37 +964,78 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
     }
     })
 })
+
 function genreport(doc,proreport){
     var total = doc.length-1;
-    console.log(doc.length);
-    console.log(doc[0].visits.length);
-    proreport.no_of_patients_seen = doc.length;
+    // console.log(proreport.length);
     firstvisit = false;
     if(doc[0].visits.length == 1){
         firstvisit = true;
     }
+    var flag = 0;
     while(total >= 0){
         var totalvisits = doc[total].visits.length-1;
         while(totalvisits >= 0){
             if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
+                var finalsize = proreport.length-1;
+                var workon = 0;
+                for( i=0; i<=finalsize; i++){
+                    if(proreport[i].facility_name != doc[total].visits[totalvisits].facility && i == finalsize && flag!=0){
+                        proreport.push({
+                            facility_name:'',
+                            no_of_patients_seen : 0,
+                            points_seen : 0,
+                            meds_added : 0,
+                            meds_lowered : 0,
+                            meds_increased : 0,
+                            meds_added_with_stop_date : 0,
+                            meds_continued_but_added_stop_date : 0,
+                            meds_stopped : 0,
+                            scales_performed : 0,
+                            number_of_each_subscale_performed : 0,
+                            average_score_of_each_scale : 0,
+                        });
+                        console.log("new object bnata "+proreport.length + " after new object");
+                        workon = proreport.length-1;
+                        console.log(workon);
+                        break;
+                    }
+                    else if(proreport[i].facility_name == doc[total].visits[totalvisits].facility){
+                        workon = i;
+                        console.log("found exisiting object for this facility at positon " + workon);
+                        break;
+                    }
+                    else if(finalsize == 0 && flag == 0){
+                        workon = i;
+                        console.log("first time visit");
+                        flag = 1;
+                        break;
+                    }
+                }
+                // patients seen
+                proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
+                // setting facility
+                if(doc[total].visits[totalvisits].facility != undefined && doc[total].visits[totalvisits].facility != null && doc[total].visits[totalvisits].facility != ""){
+                    proreport[workon].facility_name = doc[total].visits[totalvisits].facility;
+                }
                 // checking for new patient
-                if(doc[total].visits[totalvisits].np == "yes"){
-                    proreport.points_seen = proreport.points_seen + 2;
+                if(doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined){
+                    proreport[workon].points_seen = proreport[workon].points_seen + 2;
                 }
                 // checking for medication management follow up
-                if(doc[total].visits[totalvisits].typevisit ==  "Med-management follow up"){
-                    proreport.points_seen = proreport.points_seen + 1;
+                if(doc[total].visits[totalvisits].typevisit ==  "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined){
+                    proreport[workon].points_seen = proreport[workon].points_seen + 1;
                 }
                 // checking for atleast two
                 // console.log(doc[total].visits[totalvisits].scaleinfo.length + "visit no" + totalvisits);
                 var scale_size = doc[total].visits[totalvisits].scaleinfo.length-1;
-                if(doc[total].visits[totalvisits].scaleinfo.length >=2){
-                    proreport.points_seen = proreport.points_seen + 1.5;
+                if(doc[total].visits[totalvisits].scaleinfo.length >=2 && doc[total].visits[totalvisits].scaleinfo != undefined){
+                    proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                     flag = true;
                     // adding 2.5 score if scales have Dementia testing scale 
                     while(scale_size >= 0 && flag == true){
                         if(doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA"){
-                            proreport.points_seen = proreport.points_seen + 2.5;
+                            proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                             flag = false;
                         }
                         scale_size--;
@@ -1001,146 +1043,147 @@ function genreport(doc,proreport){
                 }
                 // Psychotherapy points
                 if(doc[total].visits[totalvisits].thtime == "Upto 30 min"){
-                    proreport.points_seen = proreport.points_seen + 1;
+                    proreport[workon].points_seen = proreport[workon].points_seen + 1;
                 }
                 if(doc[total].visits[totalvisits].thtime == "Upto 45 min"){
-                    proreport.points_seen = proreport.points_seen + 1.5;
+                    proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                 }
                 if(doc[total].visits[totalvisits].thtime == "Upto 1 Hr"){
-                    proreport.points_seen = proreport.points_seen + 2;
+                    proreport[workon].points_seen = proreport[workon].points_seen + 2;
                 }
                 if(doc[total].visits[totalvisits].thtime == "More then 1 Hr"){
-                    proreport.points_seen = proreport.points_seen + 2.5;
+                    proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                 }
                 // medicine continued but addded stop date
-                if(firstvisit == true ){
-                    if(doc[total].visits[totalvisits].medstopdate != null || doc[total].visits[totalvisits].medstopdate != undefined ){
-                        proreport.meds_continued_but_added_stop_date = proreport.meds_continued_but_added_stop_date + 1;
+                if(firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined){
+                    if(doc[total].visits[totalvisits].medstopdate != null  ){
+                        proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
-                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits-1].medstopdate){
-                        proreport.meds_continued_but_added_stop_date = proreport.meds_continued_but_added_stop_date + 1;
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined){
+                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits-1].medstopdate && doc[total].visits[totalvisits].medstopdate != ""){
+                        proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else{
-                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits+1].medstopdate){
-                        proreport.meds_continued_but_added_stop_date = proreport.meds_continued_but_added_stop_date + 1;
+                else if(doc[total].visits[totalvisits].medstopdate != undefined){
+                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits+1].medstopdate && doc[total].visits[totalvisits].medstopdate != ""){
+                        proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
                 // stop date of added medicine
-                if(firstvisit == true ){
-                    if(doc[total].visits[totalvisits].addeddate != null || doc[total].visits[totalvisits].addeddate != undefined ){
-                        proreport.meds_added_with_stop_date = proreport.meds_added_with_stop_date + 1;
+                if(firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined){
+                    if(doc[total].visits[totalvisits].addeddate != null  ){
+                        proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
-                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits-1].addeddate){
-                        proreport.meds_added_with_stop_date = proreport.meds_added_with_stop_date + 1;
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined){
+                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits-1].addeddate && doc[total].visits[totalvisits].addeddate != ""){
+                        proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else{
-                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits+1].addeddate){
-                        proreport.meds_added_with_stop_date = proreport.meds_added_with_stop_date + 1;
+                else if(doc[total].visits[totalvisits].addeddate != undefined){
+                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits+1].addeddate && doc[total].visits[totalvisits].addeddate != ""){
+                        proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
                 // Added Medicine 
-                if(firstvisit == true ){
+                if(firstvisit == true && doc[total].visits[totalvisits].added != undefined){
                     if(doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined ){
-                        proreport.meds_added = proreport.meds_added + 1;
+                        proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
-                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits-1].added){
-                        proreport.meds_added = proreport.meds_added + 1;
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined){
+                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits-1].added && doc[total].visits[totalvisits].added != ""){
+                        proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else{
-                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits+1].added){
-                        proreport.meds_added = proreport.meds_added + 1;
+                else if(doc[total].visits[totalvisits].added != undefined){
+                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits+1].added && doc[total].visits[totalvisits].added != ""){
+                        proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
                 // Increased Medicine
-                if(firstvisit == true ){
+                if(firstvisit == true && doc[total].visits[totalvisits].increase != undefined){
                     if(doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined ){
-                        proreport.meds_increased = proreport.meds_increased + 1;
+                        proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
-                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits-1].increase){
-                        proreport.meds_increased = proreport.meds_increased + 1;
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined){
+                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits-1].increase && doc[total].visits[totalvisits].increase != ""){
+                        proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
-                else{
-                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits+1].increase){
-                        proreport.meds_increased = proreport.meds_increased + 1;
+                else if(doc[total].visits[totalvisits].increase != undefined){
+                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits+1].increase && doc[total].visits[totalvisits].increase != ""){
+                        proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
                 // Stopped Medicine
-                if(firstvisit == true ){
+                if(firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined){
                     if(doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined ){
-                        proreport.meds_stopped = proreport.meds_stopped + 1;
+                        proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
-                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits-1].stopped2){
-                        proreport.meds_stopped = proreport.meds_stopped + 1;
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined){
+                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits-1].stopped2 && doc[total].visits[totalvisits].stopped2 != ""){
+                        proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else{
-                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits+1].stopped2){
-                        proreport.meds_stopped = proreport.meds_stopped + 1;
+                else if(doc[total].visits[totalvisits].stopped2 != undefined){
+                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits+1].stopped2 && doc[total].visits[totalvisits].stopped2 != ""){
+                        proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
                 // meds lowered or decreased
-                if(firstvisit == true ){
+                if(firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined){
                     if(doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined ){
-                        proreport.meds_lowered = proreport.meds_lowered + 1;
+                        proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
-                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits-1].decrease2){
-                        proreport.meds_lowered = proreport.meds_lowered + 1;
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined){
+                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits-1].decrease2 && doc[total].visits[totalvisits].decrease2 != ""){
+                        proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else{
-                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits+1].decrease2){
-                        proreport.meds_lowered = proreport.meds_lowered + 1;
+                else if(doc[total].visits[totalvisits].decrease2 != undefined){
+                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits+1].decrease2 && doc[total].visits[totalvisits].decrease2 != ""){
+                        proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
                 // scales performed
-                if(firstvisit == true ){
+                if(firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0){
                     if(doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined ){
-                        proreport.scales_performed = proreport.scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
+                        proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
                     }
                 }
-                else if(totalvisits - 1 >= 0){
+                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0){
                     if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits-1].scaleinfo.length){
                         if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
                         }
                         else{
-                            add = doc[total].visits[totalvisits-1].scaleinfo.length - doc[total].visits[totalvisits].scaleinfo.length;
+                            add = 0;
                         }
-                        proreport.scales_performed = proreport.scales_performed + add;
+                        proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
-                else{
+                else if(doc[total].visits[totalvisits].scaleinfo.length != 0){
                     if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits+1].scaleinfo.length){
                         if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
                         }
                         else{
-                            add = doc[total].visits[totalvisits-1].scaleinfo.length - doc[total].visits[totalvisits].scaleinfo.length;
+                            add = 0;
                         }
-                        proreport.scales_performed = proreport.scales_performed + add;
+                        proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
             }
             totalvisits--;
         }
         total--;
-    }
+    }   
+        console.log(proreport);
         return proreport;
 }
 router.post('/postreport', verifyToken, (req, res) => {
