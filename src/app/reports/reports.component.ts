@@ -92,8 +92,10 @@ export class ReportsComponent implements OnInit {
   gammma = false;
   showit2 = true;
   showit3 = true;
+  showit4 = true;
   gammma2= false;
   gammma3 = false;
+  gammma4 = false;
   fn;
   pn;
   dd;
@@ -101,6 +103,7 @@ export class ReportsComponent implements OnInit {
   nodata = false;
   nodata2 = false;
   nodata3 = false;
+  nodata4 = false;
 
  
   // prerounding report
@@ -204,11 +207,36 @@ export class ReportsComponent implements OnInit {
 }
 
   // facility report
+  notvalidate3 : Boolean;
   submitfacilityreport(form){
     console.log(form.value);
+    if(form.valid){
+    this.nodata4 = false;
+    this.showit4 = false;
     this.service.findfacilityreport(form.value).subscribe(res =>{
-      this.facilityreportoutput = res;
+      console.log(this.facilityreportoutput.length);
+      this.facilityreportoutput = Array.of(res);
+      console.log(this.facilityreportoutput);
+      console.log(this.facilityreportoutput[0][0]);
+      if(this.facilityreportoutput[0] == "no"){
+        this.nodata4 = true;
+        this.showit4 = true;
+        this.gammma4 = false;
+        this.repo2 = {
+          facility1: '',
+          fromdate1:'',
+          todate1:''
+        };
+      }
+      else{
+      this.gammma4 = true;
+      this.showit4 = false;
+      }
     })
+  }
+  else{
+    this.notvalidate3 = true;
+  }
   }
 
 
@@ -243,6 +271,16 @@ export class ReportsComponent implements OnInit {
       
     }
     this.providerreportoutput=[];
+  }
+  re4(){
+    this.showit4 = true;
+    this.gammma4 = false;
+    this.nodata4 = false;
+    this.repo2 = {
+      
+    }
+    this.facilityreportoutput=[];
+    
   }
   // navbar navigation
   ap() {
