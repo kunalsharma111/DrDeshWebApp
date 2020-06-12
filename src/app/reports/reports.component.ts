@@ -33,8 +33,8 @@ export class ReportsComponent implements OnInit {
   providers:Provider;
   facilities:Facility;
   output:any;
-  providerreportoutput:any=[];
-  facilityreportoutput:any;
+  providerreportoutput: any = [];
+  facilityreportoutput: any = [];
 
 
   logout() {
@@ -105,7 +105,7 @@ export class ReportsComponent implements OnInit {
   nodata3 = false;
   nodata4 = false;
 
- 
+
   // prerounding report
   notvalidate:boolean;
   submit(form) {
@@ -240,7 +240,7 @@ export class ReportsComponent implements OnInit {
   }
 
 
-  // clear all result without reloading page 
+  // clear all result without reloading page
   re1(){
     this.showit = true;
     this.gammma = false;
@@ -261,14 +261,14 @@ export class ReportsComponent implements OnInit {
       provider: '',
       date: null
     }
-    
+
   }
   re3(){
     this.showit3 = true;
     this.gammma3 = false;
     this.nodata3 = false;
     this.repo1 = {
-      
+
     }
     this.providerreportoutput=[];
   }
@@ -300,11 +300,14 @@ export class ReportsComponent implements OnInit {
   }
   @ViewChild('epltable', { static: false }) epltable: ElementRef;
 // exxport to excel
-  exportToExcel() {
+  exportToExcel(reportName) {
     const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltable.nativeElement);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
-    xlsx.writeFile(wb, 'provider_performance_report.xlsx');
+    xlsx.writeFile(wb, reportName);
+    console.log("xlsx", xlsx)
+    console.log("ws", ws)
+    console.log("wb", wb)
    }
 
 
