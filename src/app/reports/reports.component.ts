@@ -3,7 +3,11 @@ import { NgForm } from '@angular/forms';
 import { DataTransferService, PatientRound2, Facility } from '../shared/data-transfer.service';
 import { HttpErrorResponse } from '@angular/common/http';
 declare var $: any
-import 'jspdf-autotable'
+import 'jspdf-autotable';
+import html2canvas from 'html2canvas';
+(window as any).html2canvas = html2canvas;
+
+
 // import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -19,6 +23,9 @@ export class ReportsComponent implements OnInit {
   }
   @ViewChild('ball', { static: true }) ball;
   @ViewChild('table', { static: false }) table: ElementRef;
+  @ViewChild('design', { static: false }) design: ElementRef;
+  @ViewChild('canvas', { static: false }) canvas: ElementRef;
+  @ViewChild('like', { static: false }) like: ElementRef;
   round2patients: any;
   report: {
     insurance: string;
@@ -299,28 +306,60 @@ export class ReportsComponent implements OnInit {
       date: null
     }
   }
+  patlist = []
   submitprovidermedreport(form) {
-    this.service.getMedRelatedData(form.value).subscribe(res=>{
+    this.service.getMedRelatedData(form.value).subscribe(res => {
       console.log(res);
+      this.patlist = res;
     })
   }
   pages() {
     const jsPDF = require('jspdf')
     const doc = new jsPDF();
     console.log(doc);
-
-    const specialElementHandlers = {
-      '#editor': function (element, renderer) {
-        return true;
-      }
-    };
+    // doc.addHTML(this.canvas.nativeElement);
 
     doc.text("This is the default font.", 20, 20);
-    doc.addPage();
+    // doc.addPage();
     doc.text("This is the default font.", 20, 20);
     doc.setFont("courier");
     doc.setFontStyle("normal");
     doc.text("This is courier normal.", 20, 30);
-    doc.save('dummy.pdf')
+    console.log("ia am ")
+    const filename = 'ThisIsYourPDFFilename.pdf';
+
+    let pdf = new jsPDF('p', 'mm', 'a4');
+    let length = this.design.nativeElement.querySelectorAll('.boxxx').length - 1;
+    this.design.nativeElement.querySelectorAll('.boxxx').forEach((item, index) => {
+      html2canvas(item,
+        { scale: 1 }
+      ).then(canvas => {
+        var img = new Image();
+        img.src = 'assets/img/shared/cc.png';
+        pdf.addImage(img, 'PNG', 84, 20, 45, 30);
+        pdf.setFontSize(15);
+        let text = "Psychiatry Care"
+        pdf.text(text,87,60);
+        let text2 = "10840 N US Highway 301"
+        pdf.text(text2,77, 70);
+        let text3 = "Oxford FL 34484 "
+        pdf.text(text3,86,80);
+        let text4 = "Office : (352) 445-1200"
+        pdf.text(text4,79, 90);
+        let text5 = "Fax: (888) 248-4348"
+        pdf.text(text5,82, 100);
+        pdf.setFontSize(25);
+        let text6 = "Provider Order Sheet (T.O. Sheet)"
+        pdf.text(text6,39, 120);
+        
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 7.5, 140, 192, 80);
+        if (index == length) {
+          pdf.save(filename)
+        }
+        pdf.addPage();
+      });
+    })
+    console.log(this.design.nativeElement)
+    // doc.save('dummy.pdf')
   }
 }

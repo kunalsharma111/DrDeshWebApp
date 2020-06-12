@@ -977,8 +977,11 @@ router.post('/postreport', verifyToken, (req, res) => {
     })
 })
 router.post('/medreport', verifyToken, (req, res) => {
-    MasterPatientModel.find({"visits.visit":{$eq:new Date(req.body.date)}}).then(res=>{
-        console.log(res);
+    console.log(req.body)
+    MasterPatientModel.find({"visits.provider":req.body.provider,"visits.facility":req.body.facility,"visits.nostable":"no","visits.visit":{$eq:new Date(req.body.date)}}).then(log=>{
+        res.json(log);
+    }).catch(err=>{
+        res.json(err)
     })
 })
 module.exports = router;

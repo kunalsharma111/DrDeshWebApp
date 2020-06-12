@@ -222,7 +222,7 @@ a:focus {
         font-size: 18px;
         width: 60px;
         margin-left: -40px;
-      }
+    }
     #wrapper {
         padding-left: 60px;
     }
@@ -378,7 +378,7 @@ a:focus {
         text-indent: 10px;
         line-height: 48px;
         margin-top: -5px;
-      }
+    }
     .style_prevu_kit {
         height: 250px;
     }
@@ -630,7 +630,7 @@ input[type="Submit"] {
     width: 40%;
     display: none;
     letter-spacing: 0.2rem;
-    p{
+    p {
         margin-left: 23%;
         font-size: 1.2rem;
     }
@@ -639,11 +639,11 @@ input[type="Submit"] {
     // border: 1px solid black;
     width: 80vw;
 }
-tbody tr td{
+tbody tr td {
     width: 50px;
     // background-color: red;
 }
-label{
+label {
     color: $green;
     font-weight: 700;
     margin-bottom: -15px;
@@ -651,40 +651,40 @@ label{
 }
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: $green; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: $green; 
-  }
-  figure {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $green;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $green;
+}
+figure {
     width: 100%;
     height: 60px;
     cursor: pointer;
     perspective: 500px;
     -webkit-perspective: 500px;
-  }
-  figure div {
+}
+figure div {
     height: 100%;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     transition: 0.25s;
     -webkit-transition: 0.25s;
-  }
-  figure:hover div {
+}
+figure:hover div {
     transform: rotateX(-90deg);
-  }
-  span {
+}
+span {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -695,19 +695,103 @@ label{
     font-size: 17pt;
     text-align: center;
     text-transform: uppercase;
-  }
-  span:nth-child(2) {
+}
+span:nth-child(2) {
     color: #87c442;
     transform: translate3d(0, 0, 30px);
     -webkit-transform: translate3d(0, 0, 30px);
-  }
-  span:nth-child(1) {
+}
+span:nth-child(1) {
     color: white;
     background: $green;
     transform: rotateX(90deg) translate3d(0, 0, 30px);
     -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px);
-  }
-  
-.ss{
+}
+
+.ss {
     font-weight: 600;
+}
+.boxxx {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid black;
+    margin-bottom: 10vh;
+    grid-template-areas:
+        "facility facility address address"
+        "name name provider room"
+        "date order indication indication"
+        "empty orderdetail indicationdetail indicationdetail"
+        "empty orderdetail indicationdetail indicationdetail"
+        "empty orderdetail indicationdetail indicationdetail"
+        "empty orderdetail indicationdetail indicationdetail"
+        "sig1 sig1 sig2 sig2";
+    grid-template-rows: 65px 65px 50px 50px 50px 50px 50px 65px;
+    .fr1 {
+        grid-area: facility;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr2 {
+        grid-area: address;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr3 {
+        grid-area: name;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr4 {
+        grid-area: provider;
+        border: 1px solid black;
+        padding: 0 10px;
+        line-height: 17px;
+    }
+    .fr5 {
+        grid-area: room;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr6 {
+        grid-area: date;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr7 {
+        grid-area: order;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr8 {
+        grid-area: indication;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr9 {
+        grid-area: orderdetail;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .fr10 {
+        grid-area: indicationdetail;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .fr11 {
+        grid-area: empty;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr12 {
+        grid-area: sig1;
+        border: 1px solid black;
+        padding: 0 10px;
+        line-height: 17px;
+    }
+    .fr13 {
+        grid-area: sig2;
+        border: 1px solid black;
+        padding: 0 10px;
+        line-height: 17px;
+    }
 }
