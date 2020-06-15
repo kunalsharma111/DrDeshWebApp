@@ -94,7 +94,7 @@
                 <figure>
                     <div>
                       <span data-toggle="modal" data-target="#myModalprovider" (click)="re3()">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span>Provider Performance</span>
+                      <span>Provider Report</span>
                     </div>
                   </figure>
             </div>
@@ -340,7 +340,7 @@
                 <form #form1="ngForm" (submit)="submitproviderreport(form1)" *ngIf="showit3">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="provider">Providerr</label>
+                            <label for="provider">Provider</label>
                             <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1" required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
@@ -381,30 +381,32 @@
                                 <th>Facility</th>
                                 <th>No. of patient's Seen</th>
                                 <th>Points seen</th>
-                                <th>Medicines Added</th>
                                 <th>Medicines lowered</th>
-                                <th>Medicines increased</th>
-                                <th>Medicines Added with stop date</th>
                                 <th>Medicines continued but added stop date</th>
                                 <th>Medicines stopped</th>
+                                <th>GDR</th>
+                                <th>Medicines Added</th>
+                                <th>Medicines increased</th>
+                                <th>Medicines Added with stop date</th>
                                 <th>Scales Performed</th>
+                                <th style=" display:none ">Scales Details</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let i of providerreportoutput">
-                            <!-- <div > -->
                                 <tr *ngFor="let j of i"> 
                                 <td>{{j.facility_name}}</td>
                                 <td>{{j.no_of_patients_seen}}</td>
                                 <td>{{j.points_seen}}</td>
-                                <td>{{j.meds_added}}</td>
                                 <td>{{j.meds_lowered}}</td>
-                                <td>{{j.meds_increased}}</td>
-                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.meds_continued_but_added_stop_date}}</td>
                                 <td>{{j.meds_stopped}}</td>
+                                <td>{{j.meds_lowered + j.meds_continued_but_added_stop_date + j.meds_stopped}}</td>
+                                <td>{{j.meds_added}}</td>
+                                <td>{{j.meds_increased}}</td>
+                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.scales_performed}}</td>
+                                <td style=" display:none ">{{j.scales_details | json }}</td>
                             </tr>
-                            <!-- </div> -->
                         </tbody>
                     </table>
                     <div> <button (click)="exportToExcel('provider_performance_report.xlsx')" class="btn btn-success">Export To Excel</button> </div>
@@ -473,16 +475,18 @@
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
                         <thead >
                             <tr>
-                                <th>Provider</th>
+                                <th>Facility</th>
                                 <th>No. of patient's Seen</th>
                                 <th>Points seen</th>
-                                <th>Medicines Added</th>
                                 <th>Medicines lowered</th>
-                                <th>Medicines increased</th>
-                                <th>Medicines Added with stop date</th>
                                 <th>Medicines continued but added stop date</th>
                                 <th>Medicines stopped</th>
+                                <th>GDR</th>
+                                <th>Medicines Added</th>
+                                <th>Medicines increased</th>
+                                <th>Medicines Added with stop date</th>
                                 <th>Scales Performed</th>
+                                <th style=" display:none ">Scales Details</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let i of facilityreportoutput">
@@ -491,13 +495,15 @@
                                 <td>{{j.provider_name}}</td>
                                 <td>{{j.no_of_patients_seen}}</td>
                                 <td>{{j.points_seen}}</td>
-                                <td>{{j.meds_added}}</td>
                                 <td>{{j.meds_lowered}}</td>
-                                <td>{{j.meds_increased}}</td>
-                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.meds_continued_but_added_stop_date}}</td>
                                 <td>{{j.meds_stopped}}</td>
+                                <td>{{j.meds_lowered + j.meds_continued_but_added_stop_date + j.meds_stopped}}</td>
+                                <td>{{j.meds_added}}</td>
+                                <td>{{j.meds_increased}}</td>
+                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.scales_performed}}</td>
+                                <td style=" display:none ">{{j.scales_details | json }}</td>
                             </tr>
                             <!-- </div> -->
                         </tbody>

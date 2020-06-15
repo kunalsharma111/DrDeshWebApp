@@ -941,6 +941,9 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
         meds_continued_but_added_stop_date : 0,
         meds_stopped : 0,
         scales_performed : 0,
+        scales_details:[{scale_name:'',
+        count:0,
+        average_score:0}],
         number_of_each_subscale_performed : 0,
         average_score_of_each_scale : 0,
     }]
@@ -986,6 +989,9 @@ function genreport(doc,proreport){
                             meds_continued_but_added_stop_date : 0,
                             meds_stopped : 0,
                             scales_performed : 0,
+                            scales_details:[{scale_name:'',
+                            count:0,
+                            average_score:0}],
                             number_of_each_subscale_performed : 0,
                             average_score_of_each_scale : 0,
                         });
@@ -1172,12 +1178,56 @@ function genreport(doc,proreport){
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
+                var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
+                console.log("scales")
+                var ff = 0;
+                for(k=0;k<scale_length;k++){
+                    console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
+                    console.log(proreport[workon].scales_details.length-1);
+                    for( p=0; p<=proreport[workon].scales_details.length-1; p++){
+                        if(proreport[workon].scales_details.length == 1 && ff==0){
+                            console.log("first scale to be added in record");
+                            proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
+                            proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1; 
+                            ff = 1;
+                            break;
+                        }
+                        else if(proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name){
+                            if(totalvisits >= 0){
+                                var isPresent = doc[total].visits[totalvisits-1].scaleinfo.some((el)=>{ 
+                                    if(el.scale_name === proreport[workon].scales_details[p].scale_name){
+                                        return true;
+                                    }else{
+                                        return false;
+                                    }
+                                });
+                                if(isPresent == false){
+                                    console.log("pata nh");
+                                    proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
+                                }
+                            }
+                            console.log("same record");
+                            break;
+                        }
+                        else if(proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length-1){
+                            console.log("new record for scale");
+                                 console.log(proreport[workon].scales_details.length-1);
+                                 proreport[workon].scales_details.push({
+                                        scale_name : doc[total].visits[totalvisits].scaleinfo[k].scale_name,
+                                        count : 1,
+                                        average_score : 0
+                                 })
+                             break;
+                        }
+                    }
+                }
             }
             totalvisits--;
         }
+        console.log(proreport[workon].scales_details);
         total--;
     }
-        console.log(proreport);
+        // console.log(proreport);
         return proreport;
 }
 
@@ -1195,6 +1245,9 @@ router.post('/facilityreport', verifyToken, (req, res) => {
         meds_continued_but_added_stop_date : 0,
         meds_stopped : 0,
         scales_performed : 0,
+        scales_details:[{scale_name:'',
+                            count:0,
+                            average_score:0}],
         number_of_each_subscale_performed : 0,
         average_score_of_each_scale : 0,
     }]
@@ -1238,6 +1291,9 @@ function genreport2(doc,proreport){
                             meds_continued_but_added_stop_date : 0,
                             meds_stopped : 0,
                             scales_performed : 0,
+                            scales_details:[{scale_name:'',
+                            count:0,
+                            average_score:0}],
                             number_of_each_subscale_performed : 0,
                             average_score_of_each_scale : 0,
                         });
@@ -1422,6 +1478,49 @@ function genreport2(doc,proreport){
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
+                    }
+                }
+                var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
+                console.log("scales")
+                var ff = 0;
+                for(k=0;k<scale_length;k++){
+                    console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
+                    console.log(proreport[workon].scales_details.length-1);
+                    for( p=0; p<=proreport[workon].scales_details.length-1; p++){
+                        if(proreport[workon].scales_details.length == 1 && ff==0){
+                            console.log("first scale to be added in record");
+                            proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
+                            proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1; 
+                            ff = 1;
+                            break;
+                        }
+                        else if(proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name){
+                            if(totalvisits >= 0){
+                                var isPresent = doc[total].visits[totalvisits-1].scaleinfo.some((el)=>{ 
+                                    if(el.scale_name === proreport[workon].scales_details[p].scale_name){
+                                        return true;
+                                    }else{
+                                        return false;
+                                    }
+                                });
+                                if(isPresent == false){
+                                    console.log("pata nh");
+                                    proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
+                                }
+                            }
+                            console.log("same record");
+                            break;
+                        }
+                        else if(proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length-1){
+                            console.log("new record for scale");
+                                 console.log(proreport[workon].scales_details.length-1);
+                                 proreport[workon].scales_details.push({
+                                        scale_name : doc[total].visits[totalvisits].scaleinfo[k].scale_name,
+                                        count : 1,
+                                        average_score : 0
+                                 })
+                             break;
+                        }
                     }
                 }
             }
