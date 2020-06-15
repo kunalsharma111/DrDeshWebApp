@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 declare var $: any
 import 'jspdf-autotable'
 // import { isPlatformBrowser } from '@angular/common';
+import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-reports',
@@ -32,8 +33,8 @@ export class ReportsComponent implements OnInit {
   providers:Provider;
   facilities:Facility;
   output:any;
-  providerreportoutput:any;
-  facilityreportoutput:any;
+  providerreportoutput: any = [];
+  facilityreportoutput: any = [];
 
 
   logout() {
@@ -90,15 +91,21 @@ export class ReportsComponent implements OnInit {
   showit = true;
   gammma = false;
   showit2 = true;
+  showit3 = true;
+  showit4 = true;
   gammma2= false;
+  gammma3 = false;
+  gammma4 = false;
   fn;
   pn;
   dd;
   postData;
   nodata = false;
   nodata2 = false;
+  nodata3 = false;
+  nodata4 = false;
 
- 
+
   // prerounding report
   notvalidate:boolean;
   submit(form) {
@@ -167,23 +174,73 @@ export class ReportsComponent implements OnInit {
 }
 
   // provider report
+  notvalidate2 : Boolean;
   submitproviderreport(form){
     console.log(form.value);
+    if(form.valid){
+    this.nodata3 = false;
+    this.showit3 = false;
     this.service.findproviderreport(form.value).subscribe(res =>{
-      this.providerreportoutput = res;
+      console.log(this.providerreportoutput);
+      this.providerreportoutput = Array.of(res);
+      console.log(this.providerreportoutput);
+      console.log(this.providerreportoutput[0][0]);
+      if(this.providerreportoutput[0] == "no"){
+        this.nodata3 = true;
+        this.showit3 = true;
+        this.gammma3 = false;
+        this.repo1 = {
+          provider1: '',
+          fromdate:'',
+          todate:''
+        };
+      }
+      else{
+      this.gammma3 = true;
+      this.showit3 = false;
+      }
     })
   }
+  else{
+    this.notvalidate2 = true;
+  }
+}
 
   // facility report
+  notvalidate3 : Boolean;
   submitfacilityreport(form){
     console.log(form.value);
+    if(form.valid){
+    this.nodata4 = false;
+    this.showit4 = false;
     this.service.findfacilityreport(form.value).subscribe(res =>{
-      this.facilityreportoutput = res;
+      console.log(this.facilityreportoutput.length);
+      this.facilityreportoutput = Array.of(res);
+      console.log(this.facilityreportoutput);
+      console.log(this.facilityreportoutput[0][0]);
+      if(this.facilityreportoutput[0] == "no"){
+        this.nodata4 = true;
+        this.showit4 = true;
+        this.gammma4 = false;
+        this.repo2 = {
+          facility1: '',
+          fromdate1:'',
+          todate1:''
+        };
+      }
+      else{
+      this.gammma4 = true;
+      this.showit4 = false;
+      }
     })
+  }
+  else{
+    this.notvalidate3 = true;
+  }
   }
 
 
-  // clear all result without reloading page 
+  // clear all result without reloading page
   re1(){
     this.showit = true;
     this.gammma = false;
@@ -204,6 +261,25 @@ export class ReportsComponent implements OnInit {
       provider: '',
       date: null
     }
+
+  }
+  re3(){
+    this.showit3 = true;
+    this.gammma3 = false;
+    this.nodata3 = false;
+    this.repo1 = {
+
+    }
+    this.providerreportoutput=[];
+  }
+  re4(){
+    this.showit4 = true;
+    this.gammma4 = false;
+    this.nodata4 = false;
+    this.repo2 = {
+      
+    }
+    this.facilityreportoutput=[];
     
   }
   // navbar navigation
@@ -222,6 +298,29 @@ export class ReportsComponent implements OnInit {
   ae() {
     this.service.toexpensive('yes');
   }
+  @ViewChild('epltable', { static: false }) epltable: ElementRef;
+  @ViewChild('epltablee', { static: false }) epltablee: ElementRef;
+// exxport to excel
+  exportToExcel(reportName) {
+    const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, reportName);
+    console.log("xlsx", xlsx)
+    console.log("ws", ws)
+    console.log("wb", wb)
+   }
+   // exxport to excel
+  exportToExcel2(reportName) {
+    const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltablee.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, reportName);
+    console.log("xlsx", xlsx)
+    console.log("ws", ws)
+    console.log("wb", wb)
+   }
+
 
   // download as PDF start
   public downloadAsPDF() {
