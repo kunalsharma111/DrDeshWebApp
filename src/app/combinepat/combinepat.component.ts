@@ -455,10 +455,10 @@ export class CombinepatComponent implements OnInit {
       }
       if (form.value.yesstable == 'no') {
         summary += `Pt is stable. GDR was perfomed . | `
-        if (form.value.increase != '') {
+        if (form.value.increase) {
           summary += `Increased ${form.value.increase} . | `
         }
-        if (form.value.decrease != '') {
+        if (form.value.decrease) {
           summary += `Decreased ${form.value.decrease} . | `
         }
         if (form.value.medstopdate) {
@@ -468,16 +468,16 @@ export class CombinepatComponent implements OnInit {
       if (form.value.seedoc == 'unstable') {
         summary += `Pt is unstable and has symptoms of ${JSON.stringify(med_syms)} | . Changes to medication ${(form.value.nostable == 'no') ? 'yes' : 'no'} . | `
         if (form.value.nostable == 'no') {
-          if (form.value.started != '') {
+          if (form.value.started) {
             summary += `Started ${form.value.started} . | `
           }
-          if (form.value.increase != '') {
+          if (form.value.increase) {
             summary += `Increased ${form.value.increase} . | `
           } form.value.ccmreason
-          if (form.value.decrease2 != '') {
+          if (form.value.decrease2) {
             summary += `Decreased ${form.value.decrease2} . | `
           }
-          if (form.value.stopped2 != '') {
+          if (form.value.stopped2) {
             summary += `Stopped ${form.value.stopped2} . | `
           }
           if (form.value.addeddate) {
