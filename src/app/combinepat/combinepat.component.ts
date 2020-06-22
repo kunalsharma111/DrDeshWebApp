@@ -1,8 +1,8 @@
-import { Component, OnInit, TemplateRef, ElementRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ElementRef, ViewChild } from '@angular/core';
 import { combined, DataTransferService } from '../shared/data-transfer.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { of, from } from 'rxjs';
+import { of, from, fromEvent } from 'rxjs';
 import { map, first, filter } from 'rxjs/operators'
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -50,6 +50,7 @@ export class CombinepatComponent implements OnInit {
   kd;
   default_scales = ['PHQ9', 'GDS', "BIMS", "MMSE", "BTQ", 'LEC-5', 'GAD', "BAI"];
   scale60days = ['PHQ9', 'GDS', 'BIMS', 'MMSE', 'GAD', 'BAI', 'BEHAVE-AD', 'RMBC', 'MOCA', 'NPQ', 'ISI', 'AIS', 'PNASS', 'BPRS'];
+
   ngOnInit() {
     this.previousRoute = this.service.getPreviousUrl();
     this.kdate = new Date();
@@ -568,4 +569,5 @@ export class CombinepatComponent implements OnInit {
       // },1000)
     }
   }
+
 }

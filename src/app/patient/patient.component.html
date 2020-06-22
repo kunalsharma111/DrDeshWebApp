@@ -63,14 +63,14 @@
     </div>
     <div class="row mt-4">
       <div class="col-md-2"></div>
-      <div class="col-md-8" *ngIf="metaData">
+      <div class="col-md-8" >
         <!-- Search Bar -->
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-5">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search by name" style="border:2px solid #87C442;"
-                [(ngModel)]="searchString">
+                [(ngModel)]="searchString" #search>
               <div class="input-group-append">
                 <button class="btn btn-custom" type="submit" style="background-color: #87C442; color:white;">Go</button>
               </div>
@@ -88,7 +88,7 @@
         
 
         <!-- Patient 1 -->
-        <div class="row" *ngFor="let i of patients|filterdate:searchString:searchDate;let m=index">
+        <div class="row" *ngFor="let i of patients;let m=index">
           <div class="col-md-1 counting">{{m+1}}</div>
           <div class="col-md-11">
             <div class="details">
