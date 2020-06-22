@@ -349,6 +349,9 @@ router.post('/goku', verifyToken, (req, res) => {
     if (req.body.medfollowup != "Per routine protocol") {
         days = req.body.followupdays;
     }
+    if(!req.body.visit) {
+        req.body.visit = new Date()
+    }
     let masterdata = {
         visit: req.body.visit,
         careconditiontimespent: req.body.careconditiontimespent,
@@ -1527,39 +1530,56 @@ function genreport2(doc,proreport){
             totalvisits--;
         }
         total--;
-    }   
-        console.log(proreport);
-        return proreport;
+    }
+    console.log(proreport);
+    return proreport;
 }
 
 router.post('/postreport', verifyToken, (req, res) => {
-    PostModel.find({ providerName: req.body.provider, facility: req.body.facility, visitDate: { "$lte": new Date(req.body.date) } }).then(rese => {
-        console.log(rese);
-        let returnarray = []
-        if (rese.length) {
-            rese.forEach(id => {
-                returnarray.push(id.patientId)
-            })
+    console.log(req.body)
+    let nextDate = new Date(req.body.date);
+    nextDate.setDate(nextDate.getDate()+1);
+    MasterPatientModel.find(
+        {
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
         }
-        return returnarray;
-    }).then(arr => {
-        let patobj = [];
-        arr.forEach(id => {
-            MasterPatientModel.find({ _id: id }, (err, val) => {
-                console.log(val[0]);
-                if (!err) {
-                    let l = val[0].visits.length - 1;
-                    let obj = {};
-                    obj.summary = val[0].visits[l].summary;
-                    obj.room = val[0].visits[l].room;
-                    obj.name = val[0].name;
-                    patobj.push(obj);
-                }
-            })
-        })
-        setTimeout(() => {
-            res.json(patobj)
-        }, 1000)
+    ).then(ma=>{
+        console.log(ma);
+    })
+    MasterPatientModel.find(
+        {
+            "visits.provider": req.body.provider,
+            "visits.facility": req.body.facility,
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
+        },{name:1,visits:{$slice:-1}}
+    ).then(log => {
+        res.json(log);
+    }).catch(err => {
+        res.json(err)
+    })
+})
+router.post('/medreport', verifyToken, (req, res) => {
+    console.log(req.body)
+    let nextDate = new Date(req.body.date);
+    nextDate.setDate(nextDate.getDate()+1);
+    MasterPatientModel.find(
+        {
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
+        }
+    ).then(ma=>{
+        console.log(ma);
+    })
+    MasterPatientModel.find(
+        {
+            "visits.provider": req.body.provider,
+            "visits.facility": req.body.facility,
+            "visits.nostable": "no",
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
+        }
+    ).then(log => {
+        res.json(log);
+    }).catch(err => {
+        res.json(err)
     })
 })
 module.exports = router;

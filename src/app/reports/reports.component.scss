@@ -711,3 +711,87 @@ label{
 .ss{
     font-weight: 600;
 }
+.boxxx {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid black;
+    margin-bottom: 10vh;
+    grid-template-areas:
+        "facility facility address address"
+        "name name provider room"
+        "date order indication indication"
+        "empty orderdetail indicationdetail indicationdetail"
+        "empty orderdetail indicationdetail indicationdetail"
+        "empty orderdetail indicationdetail indicationdetail"
+        "empty orderdetail indicationdetail indicationdetail"
+        "sig1 sig1 sig2 sig2";
+    grid-template-rows: 65px 65px 50px 50px 50px 50px 50px 65px;
+    .fr1 {
+        grid-area: facility;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr2 {
+        grid-area: address;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr3 {
+        grid-area: name;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr4 {
+        grid-area: provider;
+        border: 1px solid black;
+        padding: 0 10px;
+        line-height: 17px;
+    }
+    .fr5 {
+        grid-area: room;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr6 {
+        grid-area: date;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr7 {
+        grid-area: order;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr8 {
+        grid-area: indication;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr9 {
+        grid-area: orderdetail;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .fr10 {
+        grid-area: indicationdetail;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .fr11 {
+        grid-area: empty;
+        border: 1px solid black;
+        padding: 0 10px;
+    }
+    .fr12 {
+        grid-area: sig1;
+        border: 1px solid black;
+        padding: 0 10px;
+        line-height: 17px;
+    }
+    .fr13 {
+        grid-area: sig2;
+        border: 1px solid black;
+        padding: 0 10px;
+        line-height: 17px;
+    }
+}

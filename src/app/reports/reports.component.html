@@ -133,15 +133,23 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-1">
-                        <img src="/assets/img/login/logo.png" height="100px" >
+                        <img src="/assets/img/login/logo.png" height="100px">
                     </div>
-                    <div class="col-md-4 mt-4"><h4 style="color: #87c442;">Balanced Wellbeing LLC</h4></div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
                 </div>
                 <h3 class="medh3 mb-4"><u>Pre Rounding Report</u></h3>
                 <div class="row" *ngIf="gammma">
-                    <div class="col-md-3"><h5 class="ss">Facility : {{fn}}</h5></div>
-                    <div class="col-md-3"><h5 class="ss">Provider : {{pn}}</h5></div>
-                    <div class="col-md-3"><h5 class="ss">Date : {{dd}}</h5></div>
+                    <div class="col-md-3">
+                        <h5 class="ss">Facility : {{fn}}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="ss">Provider : {{pn}}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="ss">Date : {{dd}}</h5>
+                    </div>
                 </div>
                 <!-- <div> <button (click)="downloadAsPDF()"
                         style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
@@ -150,32 +158,34 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="facility">Facility</label>
-                            <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility" required>
+                            <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility"
+                                required>
                                 <option *ngFor="let i of facilities" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="notvalidate && facility.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate && facility.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="facility.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="Provider">Provider</label>
-                            <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider" required>
+                            <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider"
+                                required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="notvalidate && provider.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate && provider.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="provider.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="Date">Date</label>
                             <input type="date" name="date" id="date" #date="ngModel" [(ngModel)]="repo.date" required>
-                            <div *ngIf="notvalidate && date.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate && date.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="date.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-info mt-4"
-                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;" >Find</button>
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;">Find</button>
                         </div>
                     </div>
                 </form>
@@ -183,11 +193,11 @@
                     <h1>No data Found</h1>
                     <p>check with different input</p>
                 </div>
-                <div class="col-md-12 mb-4" *ngIf="gammma" >
+                <div class="col-md-12 mb-4" *ngIf="gammma">
 
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
-                        <thead >
+                        <thead>
                             <tr>
                                 <th>Patient's Room</th>
                                 <th>Patient's Name</th>
@@ -202,11 +212,15 @@
                             <tr *ngFor="let i of output">
                                 <td>{{i.room}}</td>
                                 <td>{{i.name}}<p [routerLink]="['/cpat']"><i class="fa fa-pencil" aria-hidden="true"
-                                    style="color: #87c442;" (click)="service.useriden(i.id)"
-                                   tooltip="Update Patient record" data-dismiss="modal" placement="right"></i></p></td>
+                                            style="color: #87c442;" (click)="service.useriden(i.id)"
+                                            tooltip="Update Patient record" data-dismiss="modal" placement="right"></i>
+                                    </p>
+                                </td>
                                 <td>{{i.insurance}}</td>
-                                <td>Service Eligible : {{i.services_eligible}}<hr>
-                                    Visit Type : {{i.visit_type}}<hr>
+                                <td>Service Eligible : {{i.services_eligible}}
+                                    <hr>
+                                    Visit Type : {{i.visit_type}}
+                                    <hr>
                                     Pending Scales : {{i.pending_scales}}
                                 </td>
                                 <!-- <td>{{i.visit_type}}</td>
@@ -218,8 +232,8 @@
                         </tbody>
                     </table>
                     <div> <button (click)="downloadAsPDF()"
-                        style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
-                        To PDF</button></div>
+                            style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
+                            To PDF</button></div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
@@ -232,20 +246,28 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content mc1">
-            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal" ><i class="fa fa-times"
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
                     aria-hidden="true"></i></p>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-1">
-                        <img src="/assets/img/login/logo.png" height="100px" >
+                        <img src="/assets/img/login/logo.png" height="100px">
                     </div>
-                    <div class="col-md-4 mt-4"><h4 style="color: #87c442;">Balanced Wellbeing LLC</h4></div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
                 </div>
                 <h3 class="medh3 mb-4"><u>Post Rounding Report</u></h3>
                 <div class="row" *ngIf="gammma2">
-                    <div class="col-md-3"><h5 class="ss">Facility : {{fn}}</h5></div>
-                    <div class="col-md-3"><h5 class="ss">Provider : {{pn}}</h5></div>
-                    <div class="col-md-3"><h5 class="ss">Date : {{dd}}</h5></div>
+                    <div class="col-md-3">
+                        <h5 class="ss">Facility : {{fn}}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="ss">Provider : {{pn}}</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="ss">Date : {{dd}}</h5>
+                    </div>
                 </div>
                 <!-- <div> <button (click)="downloadAsPDF()"
                         style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
@@ -254,26 +276,28 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="facility">Facility</label>
-                            <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility" required>
+                            <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility"
+                                required>
                                 <option *ngFor="let i of facilities" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="notvalidate1 && facility.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate1 && facility.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="facility.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="Provider">Provider</label>
-                            <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider" required>
+                            <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider"
+                                required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="notvalidate1 && provider.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate1 && provider.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="provider.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="Date">Date</label>
                             <input type="date" name="date" id="date" #date="ngModel" [(ngModel)]="repo.date" required>
-                            <div *ngIf="notvalidate1 && date.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate1 && date.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="date.errors.required">Field is required.</div>
                             </div>
                         </div>
@@ -291,7 +315,7 @@
 
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
-                        <thead >
+                        <thead>
                             <tr>
                                 <th>Patient's Room</th>
                                 <th>Patient's Name</th>
@@ -300,19 +324,20 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let i of postData">
-                                <td>{{i.room}}</td>
+                                <td>{{i.visits[0].room}}</td>
                                 <td>{{i.name}}<p [routerLink]="['/cpat']">
-                                    <!-- <i class="fa fa-pencil" aria-hidden="true"
+                                        <!-- <i class="fa fa-pencil" aria-hidden="true"
                                     style="color: #87c442;" (click)="service.useriden(i.id)"
                                    tooltip="Update Patient record" data-dismiss="modal" placement="right"></i> -->
-                                </p></td>
-                                <td>{{i.summary}}</td>
+                                    </p>
+                                </td>
+                                <td>{{i.visits[0].summary}}</td>
                             </tr>
                         </tbody>
                     </table>
                     <div> <button (click)="downloadAsPDF()"
-                        style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
-                        To PDF</button></div>
+                            style="font-size: 1.5rem;color:white;padding: 8px 16px;border-radius: 0;border: none;background: #87c442;margin:20px 0px;">Export
+                            To PDF</button></div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
@@ -327,38 +352,43 @@
 <div class="modal lol fade" id="myModalprovider" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content mc1">
-            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal" ><i class="fa fa-times"
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
                     aria-hidden="true"></i></p>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-1">
-                        <img src="/assets/img/login/logo.png" height="100px" >
+                        <img src="/assets/img/login/logo.png" height="100px">
                     </div>
-                    <div class="col-md-4 mt-4"><h4 style="color: #87c442;">Balanced Wellbeing LLC</h4></div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
                 </div>
                 <h3 class="medh3 mb-4"><u>Provider Performance Report</u></h3>
                 <form #form1="ngForm" (submit)="submitproviderreport(form1)" *ngIf="showit3">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="provider">Provider</label>
-                            <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1" required>
+                            <label for="provider">Providerr</label>
+                            <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1"
+                                required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="notvalidate2 && provider1.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate2 && provider1.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="provider1.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="fromdate">From</label>
-                            <input type="date" name="fromdate" id="fromdate" #fromdate="ngModel" [(ngModel)]="repo1.fromdate" required>
-                            <div *ngIf="notvalidate2 && fromdate.invalid"    class="alert alert-danger mt-1">
+                            <input type="date" name="fromdate" id="fromdate" #fromdate="ngModel"
+                                [(ngModel)]="repo1.fromdate" required>
+                            <div *ngIf="notvalidate2 && fromdate.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="fromdate.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="todate">TO</label>
-                            <input type="date" name="todate" id="todate" #todate="ngModel" [(ngModel)]="repo1.todate" required>
-                            <div *ngIf="notvalidate2 && todate.invalid"    class="alert alert-danger mt-1">
+                            <input type="date" name="todate" id="todate" #todate="ngModel" [(ngModel)]="repo1.todate"
+                                required>
+                            <div *ngIf="notvalidate2 && todate.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="todate.errors.required">Field is required.</div>
                             </div>
                         </div>
@@ -376,7 +406,7 @@
 
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
-                        <thead >
+                        <thead>
                             <tr>
                                 <th>Facility</th>
                                 <th>No. of patient's Seen</th>
@@ -409,7 +439,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div> <button (click)="exportToExcel('provider_performance_report.xlsx')" class="btn btn-success">Export To Excel</button> </div>
+                    <div> <button (click)="exportToExcel('provider_performance_report.xlsx', 'PROVIDER PERFORMANCE REPORT')"
+                        class="btn btn-success">Export To Excel</button> </div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
@@ -424,38 +455,43 @@
 <div class="modal lol fade" id="myModalfacility" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content mc1">
-            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal" ><i class="fa fa-times"
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
                     aria-hidden="true"></i></p>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-1">
-                        <img src="/assets/img/login/logo.png" height="100px" >
+                        <img src="/assets/img/login/logo.png" height="100px">
                     </div>
-                    <div class="col-md-4 mt-4"><h4 style="color: #87c442;">Balanced Wellbeing LLC</h4></div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
                 </div>
                 <h3 class="medh3 mb-4"><u>Facility Monthly Report</u></h3>
                 <form #form2="ngForm" (submit)="submitfacilityreport(form2)" *ngIf="showit4">
                     <div class="row">
                         <div class="col-md-3">
                             <label for="facility1">Facility</label>
-                            <select name="facility1" id="facility1" #facility1="ngModel" [(ngModel)]="repo2.facility1" required>
+                            <select name="facility1" id="facility1" #facility1="ngModel" [(ngModel)]="repo2.facility1"
+                                required>
                                 <option *ngFor="let i of facilities" [value]="i.name">{{i.name}}</option>
                             </select>
-                            <div *ngIf="notvalidate3 && facility1.invalid"    class="alert alert-danger mt-1">
+                            <div *ngIf="notvalidate3 && facility1.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="facility1.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="fromdate1">From</label>
-                            <input type="date" name="fromdate1" id="fromdate1" #fromdate1="ngModel" [(ngModel)]="repo2.fromdate1" required>
-                            <div *ngIf="notvalidate3 && fromdate1.invalid"    class="alert alert-danger mt-1">
+                            <input type="date" name="fromdate1" id="fromdate1" #fromdate1="ngModel"
+                                [(ngModel)]="repo2.fromdate1" required>
+                            <div *ngIf="notvalidate3 && fromdate1.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="fromdate1.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <label for="todate1">TO</label>
-                            <input type="date" name="todate1" id="todate1" #todate1="ngModel" [(ngModel)]="repo2.todate1" required> 
-                            <div *ngIf="notvalidate3 && todate1.invalid"    class="alert alert-danger mt-1">
+                            <input type="date" name="todate1" id="todate1" #todate1="ngModel"
+                                [(ngModel)]="repo2.todate1" required>
+                            <div *ngIf="notvalidate3 && todate1.invalid" class="alert alert-danger mt-1">
                                 <div *ngIf="todate1.errors.required">Field is required.</div>
                             </div>
                         </div>
@@ -508,7 +544,8 @@
                             <!-- </div> -->
                         </tbody>
                     </table>
-                    <div> <button (click)="exportToExcel2('facility_performance_report.xlsx')" class="btn btn-success">Export To Excel</button> </div>
+                    <div> <button (click)="exportToExcel('facility_performance_report.xlsx', 'FACILITY MONTHLY REPORT')"
+                            class="btn btn-success">Export To Excel</button> </div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
@@ -519,8 +556,99 @@
 </div>
 <!-- facility monthly reports end-->
 
+<div class="modal lol fade" id="myModalprovider2" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content mc1">
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+                    aria-hidden="true"></i></p>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="/assets/img/login/logo.png" height="100px">
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <h5 style="color: #87c442;">Balanced Wellbeing LLC</h5>
+                    </div>
+                </div>
+                <h3 class="medh3 mb-4"><u>Provider Order Sheet</u></h3>
+                <form #form1="ngForm" (submit)="submitprovidermedreport(form1)">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="facility">Facility</label>
+                            <select name="facility" id="facility" #facility="ngModel" [(ngModel)]="repo.facility"
+                                required>
+                                <option *ngFor="let i of facilities" [value]="i.name">{{i.name}}</option>
+                            </select>
+                            <div *ngIf="notvalidate1 && facility.invalid" class="alert alert-danger mt-1">
+                                <div *ngIf="facility.errors.required">Field is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="Provider">Provider</label>
+                            <select name="provider" id="provider" #provider="ngModel" [(ngModel)]="repo.provider"
+                                required>
+                                <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
+                            </select>
+                            <div *ngIf="notvalidate1 && provider.invalid" class="alert alert-danger mt-1">
+                                <div *ngIf="provider.errors.required">Field is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="Date">Date</label>
+                            <input type="date" name="date" id="date" #date="ngModel" [(ngModel)]="repo.date" required>
+                            <!-- <div *ngIf="notvalidate1 && date.invalid" class="alert alert-danger mt-1">
+                                <div *ngIf="date.errors.required">Field is required.</div>
+                            </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-info mt-4"
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;">Find</button>
+                        </div>
+                    </div>
+                </form>
+                <h1 #like style="color: #87c442;"></h1>
+                <!-- <canvas id="canvas" width="400" height="200" #canvas></canvas> --><button style="border: none; background: #ff726f;color:white;font-size: 1.19rem;padding: 6px 20px; border-radius: 10px;"
+                    (click)="pages()">downloadAsPDF</button>
+                <div class="out" #design>
+                    <div class="boxxx" *ngFor="let item of patlist">
+                        <div class="fr1"><small>Facility</small><br><h5>{{item.visits[item.visits.length-1].facility}}</h5></div>
+                        <div class="fr2"><small>Address</small><h5>to be fetched...</h5></div>
+                        <div class="fr3"><small>Full Name</small><h5>{{item.name}}</h5></div>
+                        <div class="fr4"><small>Attending Physician: Dr. Deshmukh Provider: </small><h5>{{item.visits[item.visits.length-1].provider}}</h5></div>
+                        <div class="fr5"><small>Room</small><h5>{{item.visits[item.visits.length-1].room}}</h5></div>
+                        <div class="fr6"><small>Date</small><h5>{{item.visits[item.visits.length-1].visit|date}}</h5></div>
+                        <div class="fr7"><small>Order</small></div>
+                        <div class="fr8"><small>Indication</small></div>
+                        <div class="fr9" style="padding-bottom: 10px;">
+                            <h5 *ngIf="item.visits[item.visits.length-1].started">Started</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].increase">Increased</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].decrease">Decreased</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].added">Added</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].stopped">stopped</h5>
+                        </div>
+                        <div class="fr10" style="padding-bottom: 10px;">
+                            <h5 *ngIf="item.visits[item.visits.length-1].started">{{item.visits[item.visits.length-1].started}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].increase">{{item.visits[item.visits.length-1].increase}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].decrease">{{item.visits[item.visits.length-1].decrease}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].added">{{item.visits[item.visits.length-1].added}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].stopped">{{item.visits[item.visits.length-1].stopped}}</h5>
+                        </div>
+                        <div class="fr11"></div>
+                        <div class="fr12"><small>Signature of Nurse <br>
+                            Receiving Order</small></div>
+                        <div class="fr13"><small>Signature of  <br>
+                            Physician/Provider: </small></div>
+                        <!-- <div class="fr18"></div> -->
+                    </div>
+                </div>
 
-
+                <div class="ball" #ball>
+                    <p> LOADING </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- post roundup -->
 <!-- -->
 <!-- postroundupend -->
