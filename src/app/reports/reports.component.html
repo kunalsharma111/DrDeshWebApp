@@ -54,8 +54,8 @@
     <section id="content-wrapper" style=" padding-left: 0rem;  ">
         <div class="row">
             <div class="col-lg-12">
-                <img src="/assets/img/shared/reportslogo.png" class="img-fluid ptl">
-                <h2 class="content-title">Reports</h2>
+              <img src="/assets/img/shared/reportslogo.png" class="img-fluid ptl">
+              <h2 class="content-title">Reports</h2>
             </div>
             <div class="box"></div>
         </div>
@@ -64,56 +64,39 @@
             <div class="col-md-3">
                 <figure>
                     <div>
-                        <span data-toggle="modal" (click)="re1()" data-target="#myModalap">Get Report <i
-                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                        <span>Pre Rounding</span>
+                      <span data-toggle="modal" (click)="re1()" data-target="#myModalap">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>Pre Rounding</span>
                     </div>
-                </figure>
+                  </figure>
             </div>
             <div class="col-md-3">
                 <figure>
                     <div>
-                        <span data-toggle="modal" (click)="re2()" data-target="#myModalap2">Get Report <i
-                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                        <span>Post Rounding</span>
+                      <span data-toggle="modal" (click)="re2()" data-target="#myModalap2">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>Post Rounding</span>
                     </div>
-                </figure>
+                  </figure>
             </div>
             <div class="col-md-3">
                 <figure>
                     <div>
-                        <span data-toggle="modal" data-target="#myModalfacility" (click)="re4()">Get Report <i
-                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                        <span>Facility Report</span>
+                      <span data-toggle="modal" data-target="#myModalfacility" (click)="re4()">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>Facility Report</span>
                     </div>
-                </figure>
+                  </figure>
             </div>
-
+            
             <div class="col-md-1"></div>
         </div>
         <div class="row mt-5">
-            
-        </div>
-        <div class="row goa">
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <figure>
                     <div>
-                        <span data-toggle="modal" data-target="#myModalprovider2">Get Report <i
-                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                        <span>Provider Order Sheet</span>
+                      <span data-toggle="modal" data-target="#myModalprovider" (click)="re3()">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>Provider Report</span>
                     </div>
-                </figure>
-            </div>
-            <!-- <div class="col-md-1"></div> -->
-            <div class="col-md-3">
-                <figure>
-                    <div>
-                        <span data-toggle="modal" data-target="#myModalprovider" (click)="re3()">Get Report <i
-                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                        <span>Provider Performance</span>
-                    </div>
-                </figure>
+                  </figure>
             </div>
         </div>
     </section>
@@ -145,7 +128,7 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content mc1">
-            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal" ><i class="fa fa-times"
                     aria-hidden="true"></i></p>
             <div class="modal-body">
                 <div class="row">
@@ -384,7 +367,7 @@
                 <form #form1="ngForm" (submit)="submitproviderreport(form1)" *ngIf="showit3">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="provider">Providerr</label>
+                            <label for="provider">Provider</label>
                             <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1"
                                 required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
@@ -428,34 +411,36 @@
                                 <th>Facility</th>
                                 <th>No. of patient's Seen</th>
                                 <th>Points seen</th>
-                                <th>Medicines Added</th>
                                 <th>Medicines lowered</th>
-                                <th>Medicines increased</th>
-                                <th>Medicines Added with stop date</th>
                                 <th>Medicines continued but added stop date</th>
                                 <th>Medicines stopped</th>
+                                <th>GDR</th>
+                                <th>Medicines Added</th>
+                                <th>Medicines increased</th>
+                                <th>Medicines Added with stop date</th>
                                 <th>Scales Performed</th>
+                                <th style=" display:none ">Scales Details</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let i of providerreportoutput">
-                            <!-- <div > -->
-                            <tr *ngFor="let j of i">
+                                <tr *ngFor="let j of i"> 
                                 <td>{{j.facility_name}}</td>
                                 <td>{{j.no_of_patients_seen}}</td>
                                 <td>{{j.points_seen}}</td>
-                                <td>{{j.meds_added}}</td>
                                 <td>{{j.meds_lowered}}</td>
-                                <td>{{j.meds_increased}}</td>
-                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.meds_continued_but_added_stop_date}}</td>
                                 <td>{{j.meds_stopped}}</td>
+                                <td>{{j.meds_lowered + j.meds_continued_but_added_stop_date + j.meds_stopped}}</td>
+                                <td>{{j.meds_added}}</td>
+                                <td>{{j.meds_increased}}</td>
+                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.scales_performed}}</td>
+                                <td style=" display:none ">{{j.scales_details | json }}</td>
                             </tr>
-                            <!-- </div> -->
                         </tbody>
                     </table>
-                    <div> <button (click)="exportToExcel('provider_performance_report.xlsx')"
-                            class="btn btn-success">Export To Excel</button> </div>
+                    <div> <button (click)="exportToExcel('provider_performance_report.xlsx', 'PROVIDER PERFORMANCE REPORT')"
+                        class="btn btn-success">Export To Excel</button> </div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
@@ -521,41 +506,45 @@
                     <p>check with different input</p>
                 </div>
                 <div class="col-md-12 mb-4" *ngIf="gammma4" #epltablee>
-
+                    
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
-                        <thead>
+                        <thead >
                             <tr>
-                                <th>Provider</th>
+                                <th>Facility</th>
                                 <th>No. of patient's Seen</th>
                                 <th>Points seen</th>
-                                <th>Medicines Added</th>
                                 <th>Medicines lowered</th>
-                                <th>Medicines increased</th>
-                                <th>Medicines Added with stop date</th>
                                 <th>Medicines continued but added stop date</th>
                                 <th>Medicines stopped</th>
+                                <th>GDR</th>
+                                <th>Medicines Added</th>
+                                <th>Medicines increased</th>
+                                <th>Medicines Added with stop date</th>
                                 <th>Scales Performed</th>
+                                <th style=" display:none ">Scales Details</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let i of facilityreportoutput">
                             <!-- <div > -->
-                            <tr *ngFor="let j of i">
+                                <tr *ngFor="let j of i"> 
                                 <td>{{j.provider_name}}</td>
                                 <td>{{j.no_of_patients_seen}}</td>
                                 <td>{{j.points_seen}}</td>
-                                <td>{{j.meds_added}}</td>
                                 <td>{{j.meds_lowered}}</td>
-                                <td>{{j.meds_increased}}</td>
-                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.meds_continued_but_added_stop_date}}</td>
                                 <td>{{j.meds_stopped}}</td>
+                                <td>{{j.meds_lowered + j.meds_continued_but_added_stop_date + j.meds_stopped}}</td>
+                                <td>{{j.meds_added}}</td>
+                                <td>{{j.meds_increased}}</td>
+                                <td>{{j.meds_added_with_stop_date}}</td>
                                 <td>{{j.scales_performed}}</td>
+                                <td style=" display:none ">{{j.scales_details | json }}</td>
                             </tr>
                             <!-- </div> -->
                         </tbody>
                     </table>
-                    <div> <button (click)="exportToExcel2('facility_performance_report.xlsx')"
+                    <div> <button (click)="exportToExcel('facility_performance_report.xlsx', 'FACILITY MONTHLY REPORT')"
                             class="btn btn-success">Export To Excel</button> </div>
                 </div>
                 <div class="ball" #ball>
@@ -652,7 +641,7 @@
                         <!-- <div class="fr18"></div> -->
                     </div>
                 </div>
-                
+
                 <div class="ball" #ball>
                     <p> LOADING </p>
                 </div>

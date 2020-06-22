@@ -6,6 +6,9 @@ declare var $: any
 import 'jspdf-autotable'
 // import { isPlatformBrowser } from '@angular/common';
 import * as xlsx from 'xlsx';
+import * as logoFile from '../img/logo.js';
+import * as Excel from "exceljs/dist/exceljs.min.js";
+import * as fs from 'file-saver';
 
 
 @Component({
@@ -39,7 +42,7 @@ export class ReportsComponent implements OnInit {
   output:any;
   providerreportoutput: any = [];
   facilityreportoutput: any = [];
-
+  proFacReportInput : any = [];
 
   logout() {
     this.service.logout();
@@ -180,6 +183,7 @@ export class ReportsComponent implements OnInit {
   // provider report
   notvalidate2 : Boolean;
   submitproviderreport(form){
+    this.proFacReportInput = form.value;
     console.log(form.value);
     if(form.valid){
     this.nodata3 = false;
@@ -213,6 +217,7 @@ export class ReportsComponent implements OnInit {
   // facility report
   notvalidate3 : Boolean;
   submitfacilityreport(form){
+    this.proFacReportInput = form.value;
     console.log(form.value);
     if(form.valid){
     this.nodata4 = false;
@@ -281,10 +286,10 @@ export class ReportsComponent implements OnInit {
     this.gammma4 = false;
     this.nodata4 = false;
     this.repo2 = {
-      
+
     }
     this.facilityreportoutput=[];
-    
+
   }
   // navbar navigation
   ap() {
@@ -305,15 +310,146 @@ export class ReportsComponent implements OnInit {
   @ViewChild('epltable', { static: false }) epltable: ElementRef;
   @ViewChild('epltablee', { static: false }) epltablee: ElementRef;
 // exxport to excel
-  exportToExcel(reportName) {
-    const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltable.nativeElement);
-    const wb: xlsx.WorkBook = xlsx.utils.book_new();
-    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
-    xlsx.writeFile(wb, reportName);
-    console.log("xlsx", xlsx)
-    console.log("ws", ws)
-    console.log("wb", wb)
-   }
+  exportToExcel(fileName, reportName) {
+    let reportData = [];
+    let inputFacilityProvider;
+    let inputFromDate;
+    let inputToDate;
+    let provideFacility;
+    let labelFacilityProvider;
+    if(fileName !== 'facility_performance_report.xlsx') {
+      reportData = this.providerreportoutput ;
+      inputFacilityProvider = this.proFacReportInput.provider1;
+      inputFromDate = this.proFacReportInput.fromdate;
+      inputToDate = this.proFacReportInput.todate;
+      labelFacilityProvider = 'Provider Name';
+    }else {
+      reportData = this.facilityreportoutput ;
+      inputFacilityProvider = this.proFacReportInput.facility1;
+      inputFromDate = this.proFacReportInput.fromdate1;
+      inputToDate = this.proFacReportInput.todate1;
+      labelFacilityProvider = 'Facility Name';
+    }
+
+    const workbooke = new Excel.Workbook();
+    const worksheet = workbooke.addWorksheet(reportName);
+    const reportHeadingColumnForProvider = ['', 'Facility', 'No. of patients Seen', 'Points seen', 'Medicines Added', 'Medicines lowered', 'Medicines increased', 'Medicines Added with stop date',
+      'Medicines continued but added stop date', 'Medicines stopped',
+      'Scales Performed'
+      ];
+    const reportHeadingColumnForFacility = ['', 'Provider', 'No. of patients Seen', 'Points seen', 'Medicines Added', 'Medicines lowered', 'Medicines increased', 'Medicines Added with stop date',
+      'Medicines continued but added stop date', 'Medicines stopped',
+      'Scales Performed'
+    ];
+    worksheet.addRow([]);
+
+    var reportLogo = workbooke.addImage({
+      base64: logoFile.logoBase64,
+      extension: 'png',
+    });
+
+    worksheet.addImage(reportLogo, {
+      tl: { col: 2.5, row: 0 },
+      br: { col: 3.5, row: 4.5 }
+    });
+
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    const address = worksheet.addRow(['', 'Psychiatry Care \n10840 N US Highway 301 \nOxford FL 34484 Oxford FL 34484 \nOffice:(352) 445-1200 \nFax: (888) 248-4348',]);
+
+    address.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.mergeCells(['B6:D10']);
+    const reportNameHeading = worksheet.addRow(['', reportName]);
+    worksheet.mergeCells(['B11:D11']);
+    reportNameHeading.font = {size: 16, underline: 'double', bold: true };
+
+    reportNameHeading.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+    console.log("this.proFacReportInput", this.proFacReportInput)
+    const facilityRow = worksheet.addRow(['', labelFacilityProvider, inputFacilityProvider]);
+    const fromDate = worksheet.addRow(['', 'From Date', inputFromDate]);
+    const toDate = worksheet.addRow(['', 'To Date', inputToDate]);
+
+    facilityRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    fromDate.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    toDate.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    worksheet.addRow([]);
+    let headerRow;
+    if(fileName !== 'facility_performance_report.xlsx') {
+      headerRow = worksheet.addRow(reportHeadingColumnForProvider);
+    }else {
+      headerRow = worksheet.addRow(reportHeadingColumnForFacility);
+    }
+
+    headerRow.eachCell((cell, number) => {
+      if (number == 1) return;
+
+      cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+      if(number == 2){
+        cell.border = { top: { style: 'thick' }, left: { style: 'thick' }, bottom: { style: 'thin' }}
+      }
+      if(fileName !== 'facility_performance_report.xlsx' && number == reportHeadingColumnForProvider.length){
+        cell.border = { top: { style: 'thick' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
+      }
+      if(fileName == 'facility_performance_report.xlsx' && number == reportHeadingColumnForFacility.length){
+        cell.border = { top: { style: 'thick' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
+      }
+      cell.alignment = { vertical: 'middle', horizontal: 'center'}
+    });
+
+    worksheet.addRow([]);
+    let i = 0;
+    let outputFacilityProvider;
+    reportData.forEach(d => {
+      if(fileName !== 'facility_performance_report.xlsx'){
+        outputFacilityProvider = d[i].facility_name;
+      }else{
+        outputFacilityProvider = d[i].provider_name;
+      }
+      worksheet.addRow(['', outputFacilityProvider, d[i].no_of_patients_seen, d[i].points_seen
+      , d[i].meds_added, d[i].meds_lowered, d[i].meds_increased, d[i].meds_added_with_stop_date ,d[i].meds_continued_but_added_stop_date
+    , d[i].meds_stopped, d[i].scales_performed]);
+      i++;
+    });
+    worksheet.getColumn(2).width = 25;
+    worksheet.getColumn(3).width = 25;
+    worksheet.getColumn(4).width = 25;
+    worksheet.getColumn(5).width = 25;
+    worksheet.getColumn(6).width = 25;
+    worksheet.getColumn(7).width = 25;
+    worksheet.getColumn(8).width = 25;
+    worksheet.getColumn(9).width = 25;
+    worksheet.getColumn(10).width = 25;
+    worksheet.getColumn(11).width = 25;
+
+    workbooke.xlsx.writeBuffer().then((dataa) => {
+      const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fs.saveAs(blob, fileName);
+    });
+
+  }
    // exxport to excel
   exportToExcel2(reportName) {
     const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltablee.nativeElement);
@@ -449,7 +585,7 @@ export class ReportsComponent implements OnInit {
         pdf.setFontSize(25);
         let text6 = "Provider Order Sheet (T.O. Sheet)"
         pdf.text(text6,39, 120);
-        
+
         pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 7.5, 140, 192, 80);
         if (index == length) {
           pdf.save(filename)
