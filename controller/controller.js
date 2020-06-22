@@ -1187,8 +1187,11 @@ function genreport(doc,proreport){
                 for(k=0;k<scale_length;k++){
                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
                     console.log(proreport[workon].scales_details.length-1);
+                    console.log("error kidr hai ? 1");
                     for( p=0; p<=proreport[workon].scales_details.length-1; p++){
+                        console.log("error kidr hai ? 2 " + k + " " + p);
                         if(proreport[workon].scales_details.length == 1 && ff==0){
+                            console.log("error kidr hai ? 3");
                             console.log("first scale to be added in record");
                             proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
                             proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1; 
@@ -1196,7 +1199,8 @@ function genreport(doc,proreport){
                             break;
                         }
                         else if(proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name){
-                            if(totalvisits >= 0){
+                            console.log("error kidr hai ? 4");
+                            if(totalvisits > 0){
                                 var isPresent = doc[total].visits[totalvisits-1].scaleinfo.some((el)=>{ 
                                     if(el.scale_name === proreport[workon].scales_details[p].scale_name){
                                         return true;
@@ -1205,6 +1209,7 @@ function genreport(doc,proreport){
                                     }
                                 });
                                 if(isPresent == false){
+                                    console.log("error kidr hai ? 5");
                                     console.log("pata nh");
                                     proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
                                 }
@@ -1214,6 +1219,7 @@ function genreport(doc,proreport){
                         }
                         else if(proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length-1){
                             console.log("new record for scale");
+                            console.log("error kidr hai ? 6");
                                  console.log(proreport[workon].scales_details.length-1);
                                  proreport[workon].scales_details.push({
                                         scale_name : doc[total].visits[totalvisits].scaleinfo[k].scale_name,

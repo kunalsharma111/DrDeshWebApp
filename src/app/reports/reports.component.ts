@@ -189,9 +189,15 @@ export class ReportsComponent implements OnInit {
     this.nodata3 = false;
     this.showit3 = false;
     this.service.findproviderreport(form.value).subscribe(res =>{
-      console.log(this.providerreportoutput);
       this.providerreportoutput = Array.of(res);
-      console.log(this.providerreportoutput);
+      console.log(this.providerreportoutput[0].length);
+      // var total:{
+      //   no_of_patients_seen :0
+      // }
+      for(let kp=0;kp<this.providerreportoutput[0].length;kp++){
+        console.log(this.providerreportoutput[0][kp]);
+        // total.no_of_patients_seen += 
+      }
       console.log(this.providerreportoutput[0][0]);
       if(this.providerreportoutput[0] == "no"){
         this.nodata3 = true;
