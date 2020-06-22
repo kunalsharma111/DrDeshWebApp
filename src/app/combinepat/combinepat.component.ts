@@ -393,121 +393,109 @@ export class CombinepatComponent implements OnInit {
       var med_syms = { meds_symptoms: syn_meds }
       var meds = { exmeds: medData }
       var scaleinfo = { scaleinfo: scaleData }
-      summary += `Date ${this.combined.visit}: Provider name: ${form.value.provider} \n`
+      summary += `Date: ${new Date(this.combined.visit).toString().slice(0,15)}  |  Provider name: ${form.value.provider} . | `
       if (form.value.generictest == 'no') {
         if (form.value.geneticreason != 'Other') {
-          summary += `Genetic testing was ordered to guide us find more appropriate medicine for this patient.
-          Reasons for discontinuations from Genetic testing: ${form.value.geneticreason} \n`
+          summary +=`Reasons for discontinuations from Genetic testing: ${form.value.geneticreason} . | `
         }
         else {
-          summary += `Genetic testing was ordered to guide us find more appropriate medicine for this patient.
-          Reasons for discontinuations from Genetic testing: ${form.value.othergeneticreason} \n`
+          summary += `Reasons for discontinuations from Genetic testing: ${form.value.othergeneticreason} . | `
         }
       }
       if (form.value.generictest == 'yes') {
-        summary += `Genetic testing was ordered to guide us find more appropriate medicine for this patient. \n`
+        summary += `Genetic testing was ordered to guide us find more appropriate medicine for this patient. | `
       }
       if (form.value.capacity == 'no') {
-        summary += `Medical decision-making capacity was performed per requested by the facility. Pt does not have capacity \n`
+        summary += `Medical decision-making capacity was performed per requested by the facility. Pt does not have capacity .| `
       }
       if (form.value.capacity == 'yes') {
-        summary += `Medical decision-making capacity was performed per requested by the facility. Pt has capacity to make medical decision \n`
+        summary += `Medical decision-making capacity was performed per requested by the facility. Pt has capacity to make medical decision . | `
       }
       if (form.value.medmanage == 'no') {
         if (form.value.medreason2 != 'Other')
-          summary += ` Pt was deemed not eligible for med management because. ${form.value.medreason2} \n`;
+          summary += ` Pt was deemed not eligible for med management because. ${form.value.medreason2} . | `;
         else {
-          summary += ` Pt was deemed not eligible for med management because. ${form.value.othermedreason2} \n`;
+          summary += ` Pt was deemed not eligible for med management because. ${form.value.othermedreason2} . | `;
         }
       }
       if (form.value.psythreapy == 'no') {
         if (form.value.psyreason != 'Other')
-          summary += ` Pt was deemed not eligible for Psychotherapy because. ${form.value.psyreason} \n`;
+          summary += ` Pt was deemed not eligible for Psychotherapy because. ${form.value.psyreason} . | `;
         else {
-          summary += ` Pt was deemed not eligible for Psychotherapy because. ${form.value.otherpsyreason} \n`;
+          summary += ` Pt was deemed not eligible for Psychotherapy because. ${form.value.otherpsyreason} . | `;
         }
       }
       if (form.value.psyscreen == 'no') {
         if (form.value.psyscreenreason != 'Other' && form.value.psyscreen != '')
-          summary += ` Pt was deemed not eligible for Psychotherapy Screening because. ${form.value.psyreason} \n`;
+          summary += ` Pt was deemed not eligible for Psychotherapy Screening because. ${form.value.psyreason} . | `;
         else {
-          summary += ` Pt was deemed not eligible for Psychotherapy Screening because. ${form.value.otherpsyscreenreason} \n`;
+          summary += ` Pt was deemed not eligible for Psychotherapy Screening because. ${form.value.otherpsyscreenreason} . | `;
         }
       }
       if (form.value.bhi == 'no') {
-        if (form.value.bhireason != 'Other' && form.value.bhireason != '' && form.value.bhireason != undefined)
-          summary += ` Reasons for discontinuations from BHI ${form.value.bhireason} \n`;
-        else {
-          if (form.value.bhireason != '' || form.value.bhireason != undefined)
-            summary += ` Reasons for discontinuations from BHI ${form.value.otherbhireason} \n`;
-        }
+        if (form.value.bhireason)
+          summary += ` Reasons for discontinuations from BHI ${(form.value.bhireason=='Other'?form.value.otherbhireason:form.value.bhireason)} . | `;
       }
       if (form.value.ccm == 'no') {
-        if (form.value.ccmreason != 'Other' && form.value.ccmreason != '' && form.value.ccmreason != undefined)
-          summary += ` Reasons for discontinuations from CCM ${form.value.ccmreason} \n`;
-        else {
-          if (form.value.ccmreason != '' || form.value.ccmreason != undefined)
-            summary += ` Reasons for discontinuations from CCM ${form.value.otherccmreason} \n`;
-        }
+        if (form.value.ccmreason)
+          summary += ` Reasons for discontinuations from CCM ${(form.value.ccmreason=='Other'?form.value.otherccmreason:form.value.ccmreason)} . | `;
       }
       if (form.value.bhi == 'yes') {
-        summary += `Pt was admitted to BHI program as ${form.value.bhiconcent} consent was obtained. \n,`
+        summary += `Pt was admitted to BHI program as ${form.value.bhiconcent} consent was obtained. | `
       }
       if (form.value.ccm == 'yes') {
-        summary += `Pt was admitted to BHI program as ${form.value.ccmconcent} consent was obtained. \n`
+        summary += `Pt was admitted to CCM program as ${form.value.ccmconcent} consent was obtained. | `
       }
-      if (form.value.noseedocreason != 'Other' && form.value.noseedocreason != '' && form.value.noseedocreason != undefined) {
-        summary += `Attempted to see the patient for med-management but could not see because ${form.value.noseedocreason} \n`
-      }
-      if (form.value.noseedocreason == 'Other') {
-        summary += `Attempted to see the patient for med-management but could not see because ${form.value.othernoseedocreason} \n`
+      if (form.value.noseedocreason == 'no') {
+        if (form.value.noseedocreason)
+        summary += `Attempted to see the patient for med-management but could not see because ${(form.value.noseedocreason=='Other'?form.value.othernoseedocreason:form.value.noseedocreason)} . | `
       }
       if (form.value.seedoc == 'stable') {
-        summary += `Pt is stable. Considered GDR but could not perform as pt would become unstable \n`
+        summary += `Pt is stable. Considered GDR but could not perform as pt would become unstable . | `
       }
       if (form.value.yesstable == 'no') {
-        summary += `Pt is stable. GDR was perfomed \n`
-        if (form.value.increase != '') {
-          summary += `Increased ${form.value.increase} \n`
+        summary += `Pt is stable. GDR was perfomed . | `
+        if (form.value.increase) {
+          summary += `Increased ${form.value.increase} . | `
         }
-        if (form.value.decrease != '') {
-          summary += `Decreased ${form.value.decrease} \n`
+        if (form.value.decrease) {
+          summary += `Decreased ${form.value.decrease} . | `
         }
         if (form.value.medstopdate) {
-          summary += `Added a stop date to medications ${form.value.medstopdate} \n`
+          summary += `Added a stop date to medications ${form.value.medstopdate} . | `
         }
       }
       if (form.value.seedoc == 'unstable') {
-        summary += `Pt is unstable and has symptoms of ${JSON.stringify(med_syms)}. Changes to medication ${(form.value.nostable == 'no') ? 'yes' : 'no'} \n`
+        summary += `Pt is unstable and has symptoms of ${JSON.stringify(med_syms)} | . Changes to medication ${(form.value.nostable == 'no') ? 'yes' : 'no'} . | `
         if (form.value.nostable == 'no') {
-          if (form.value.started != '') {
-            summary += `Started ${form.value.started} \n`
+          if (form.value.started) {
+            summary += `Started ${form.value.started} . | `
           }
-          if (form.value.increase != '') {
-            summary += `Increased ${form.value.increase} \n`
+          if (form.value.increase) {
+            summary += `Increased ${form.value.increase} . | `
           } form.value.ccmreason
-          if (form.value.decrease2 != '') {
-            summary += `Decreased ${form.value.decrease2} \n`
+          if (form.value.decrease2) {
+            summary += `Decreased ${form.value.decrease2} . | `
           }
-          if (form.value.stopped2 != '') {
-            summary += `Stopped ${form.value.stopped2} \n`
+          if (form.value.stopped2) {
+            summary += `Stopped ${form.value.stopped2} . | `
           }
           if (form.value.addeddate) {
-            summary += `Decreased ${form.value.addeddate} \n`
+            summary += `Decreased ${form.value.addeddate} . | `
           }
         }
       }
       if (form.value.psynoseedocreason != '' && form.value.psynoseedocreason) {
-        summary += `Attempted to see the patient for psychotherapy but could not see because ${form.value.psynoseedocreason} \n`
+        summary += `Attempted to see the patient for psychotherapy but could not see because ${form.value.psynoseedocreason} . | `
       }
       if (form.value.seepsy == 'unstable') {
-        summary += `Pt is unstable and has symptoms of ${JSON.stringify(psy_psyms)} \n`
+        summary += `Pt is unstable and has symptoms of ${JSON.stringify(psy_psyms)} . | `
       }
       if (p_s.length) {
         summary += JSON.stringify(p_s);
       }
       if (form.value.medfollowup == 'Urgent' || form.value.medfollowup == 'Very Urgent') {
-        summary += `Patient condition is ${form.value.medfollowup}`
+        summary += `Patient condition is ${form.value.medfollowup} | `
       }
       let formdata = form.value;
       // formdata.visit = this.combined.visit;
