@@ -257,6 +257,7 @@ export class DataTransferService {
   url24 = `${this.metcha}/facilityreport`;
   url25 = `${this.metcha}/postreport`;
   url26 = `${this.metcha}/medreport`;
+  url27 = `${this.metcha}/fetchByName`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
