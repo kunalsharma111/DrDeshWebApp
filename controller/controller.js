@@ -1259,6 +1259,7 @@ router.post('/facilityreport', verifyToken, (req, res) => {
         if(doc.length  != 0 ){
            proreport = genreport2(doc,proreport);
            setTimeout(() => {
+               console.log(proreport);
                     res.json(proreport);
                 }, 1000)
     }

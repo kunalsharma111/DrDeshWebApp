@@ -367,7 +367,7 @@
                 <form #form1="ngForm" (submit)="submitproviderreport(form1)" *ngIf="showit3">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="provider">Providerr</label>
+                            <label for="provider">Provider</label>
                             <select name="provider1" id="provider1" #provider1="ngModel" [(ngModel)]="repo1.provider1"
                                 required>
                                 <option *ngFor="let i of providers" [value]="i.name">{{i.name}}</option>
