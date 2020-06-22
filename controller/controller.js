@@ -1483,4 +1483,11 @@ router.post('/medreport', verifyToken, (req, res) => {
         res.json(err)
     })
 })
+router.get('/fetchByName',verifyToken,(req,res)=>{
+    let name = new RegExp(req.query.name);
+    MasterPatientModel.find({"name": new RegExp(name,'i')}).then(out=>{
+        // console.log(out);
+        res.json(out)
+    })
+})
 module.exports = router;

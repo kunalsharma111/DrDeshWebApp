@@ -3,9 +3,11 @@ import { NgForm } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 declare var $: any;
 import { Patient, DataTransferService, PatientRound2, combined } from '../shared/data-transfer.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { from, fromEvent, pipe } from 'rxjs';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 
 @Component({
@@ -18,9 +20,10 @@ export class PatientComponent implements OnInit {
   // commentbox="no";
   // @ViewChild('gate',{static:true}) sc:ElementRef;
   modalRef: BsModalRef;
-  constructor(private datePipe: DatePipe,public service: DataTransferService, public toastr: ToastrService, public el: ElementRef, public renderer: Renderer2, private modalService: BsModalService) { }
+  constructor(private datePipe: DatePipe, public service: DataTransferService, public toastr: ToastrService, public el: ElementRef, public renderer: Renderer2, private modalService: BsModalService) { }
 
-  metaData = false;
+  @ViewChild('search', { static: true }) search: ElementRef;
+  metaData = true;//false kr dena jo bhi dekha ise
   c_id;
   fname = '';
   searchString: string = '';
@@ -28,10 +31,22 @@ export class PatientComponent implements OnInit {
   kd;
   dob;
   role;
+
   ngOnInit() {
-    
-    var MMddyyyy = this.datePipe.transform(new Date(),"MM-dd-yyyy");
-    console.log(MMddyyyy); 
+    console.log(this.search)
+    fromEvent(this.search.nativeElement, 'input')
+      .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
+      .subscribe(val => {
+        // console.log(val)
+        const params = new HttpParams().set('name', val);
+        console.log(params)
+        this.service.http.get(this.service.url27,{params}).subscribe(fin=>{
+          // console.log(fin);
+          this.patients = fin;
+        })
+      })
+    var MMddyyyy = this.datePipe.transform(new Date(), "MM-dd-yyyy");
+    console.log(MMddyyyy);
     this.resetStuff();
     this.cd = new Date();
     this.kd = this.cd.toISOString().slice(0, 10);
@@ -45,9 +60,9 @@ export class PatientComponent implements OnInit {
           }
         }
       )
-    this.service.getPatientData().subscribe(res=>{
-      this.patients = res;
-    })
+    // this.service.getPatientData().subscribe(res => {
+    //   this.patients = res;
+    // })
     this.service.getData().subscribe(res => {
       let user = res;
       this.fname = user.fname;
@@ -67,7 +82,7 @@ export class PatientComponent implements OnInit {
       e.preventDefault();
       $wrapper.classList.toggle('toggled');
     });
-      
+
   }
   combined: combined;
   resetStuff(form?: NgForm) {
@@ -173,18 +188,18 @@ export class PatientComponent implements OnInit {
       conscrreason: '',
       conpsyname: '',
       currentmeds: '',
-      np:'no',
-      cch:'no',
-      cchconcent:'',
-      cchdate:null,
-      cchreason:'',
-      othercchreason:'',
-      medfollowup:'',
-      followupreason:'',
-      followupdays:null,
-      scaleeligiblereason:'',
-      otherscaleeligiblereason:'',
-      flag:0
+      np: 'no',
+      cch: 'no',
+      cchconcent: '',
+      cchdate: null,
+      cchreason: '',
+      othercchreason: '',
+      medfollowup: '',
+      followupreason: '',
+      followupdays: null,
+      scaleeligiblereason: '',
+      otherscaleeligiblereason: '',
+      flag: 0
     }
   }
 
@@ -192,7 +207,7 @@ export class PatientComponent implements OnInit {
     this.service.logout();
   }
   submit(form: NgForm) {
-    
+
     this.service.sendBaseData(form.value);
     this.resetStuff();
     this.toastr.success('', 'Patient Added Successfully');

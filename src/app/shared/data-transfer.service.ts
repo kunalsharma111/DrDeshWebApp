@@ -228,8 +228,9 @@ export class DataTransferService {
   private c4 = new Subject<String>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<String>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<String>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.18.232:4000/api';
-  // metcha = 'http://localhost:4000/api'
+  // metcha = 'http://3.128.18.232:4000/api';
+  metcha = 'http://localhost:4000/api';
+  
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
   url2 = `${this.metcha}/red`;
@@ -257,6 +258,7 @@ export class DataTransferService {
   url24 = `${this.metcha}/facilityreport`;
   url25 = `${this.metcha}/postreport`;
   url26 = `${this.metcha}/medreport`;
+  url27 = `${this.metcha}/fetchByName`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
