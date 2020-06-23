@@ -965,6 +965,82 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
     })
 })
 
+// function genreportt(doc,proreport){
+//     var total = doc.length-1;
+//     firstvisit = false;
+//     if(doc[0].visits.length == 1){
+//         firstvisit = true;
+//     }
+//     var flag = 0;
+//     while(total >= 0){
+//         var totalvisits = doc[total].visits.length-1;
+//         while(totalvisits >= 0){
+//             if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
+//                 var outputlength = proreport.length-1;
+//                 var workon = 0;
+//                 // For deciding on which position to workon 
+//                 for(i=0;i<outputlength; i++){
+//                     if(proreport[i].facility_name != doc[total].visits[totalvisits].facility 
+//                         && i == finalsize && flag!=0){
+//                         proreport.push({
+//                             facility_name:'',
+//                             no_of_patients_seen : 0,
+//                             points_seen : 0,
+//                             meds_added : 0,
+//                             meds_lowered : 0,
+//                             meds_increased : 0,
+//                             meds_added_with_stop_date : 0,
+//                             meds_continued_but_added_stop_date : 0,
+//                             meds_stopped : 0,
+//                             scales_performed : 0,
+//                             scales_details:[{scale_name:'',
+//                             count:0,
+//                             average_score:0}],
+//                             number_of_each_subscale_performed : 0,
+//                             average_score_of_each_scale : 0,
+//                         });
+//                         console.log("Creating New Facility Line "+proreport.length +
+//                          " Output Length after creating new Fac");
+//                         workon = proreport.length-1;
+//                         console.log("Now will workon this position of output " + workon);
+//                         break;
+//                     }
+//                     else if(proreport[i].facility_name == doc[total].visits[totalvisits].facility){
+//                         workon = i;
+//                         console.log("found exisiting facility will addon details on same positon " + workon);
+//                         break;
+//                     }
+//                     else if(finalsize == 0 && flag == 0){
+//                         workon = i;
+//                         console.log("visiting first time");
+//                         flag = 1;
+//                         break;
+//                     }
+//                 }
+
+
+//                 // patients seen
+//                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
+
+
+//                 // setting facility
+//                 if(doc[total].visits[totalvisits].facility != undefined && 
+//                 doc[total].visits[totalvisits].facility != null && doc[total].visits[totalvisits].facility != ""){
+//                     proreport[workon].facility_name = doc[total].visits[totalvisits].facility;
+//                 }
+
+//                 // checking for new patient
+//                 if(doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined){
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
+//                 }
+
+//             }
+//             totalvisits--;
+//         }
+//     total--;
+//     }
+// }
+
 function genreport(doc,proreport){
     var total = doc.length-1;
     // console.log(proreport.length);
@@ -1106,7 +1182,8 @@ function genreport(doc,proreport){
                     }
                 }
                 // Increased Medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].increase != undefined){
+                if(doc[total].visits[totalvisits].increase != undefined){
+                if(firstvisit == true){
                     if(doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined ){
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
@@ -1121,6 +1198,7 @@ function genreport(doc,proreport){
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
+            }
                 // Stopped Medicine
                 if(firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined){
                     if(doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined ){
@@ -1171,7 +1249,9 @@ function genreport(doc,proreport){
                     }
                 }
                 else if(doc[total].visits[totalvisits].scaleinfo.length != 0){
+                   
                     if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits+1].scaleinfo.length){
+                        
                         if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
                         }
@@ -1342,6 +1422,7 @@ function genreport2(doc,proreport){
                 // console.log(doc[total].visits[totalvisits].scaleinfo.length + "visit no" + totalvisits);
                 var scale_size = doc[total].visits[totalvisits].scaleinfo.length-1;
                 if(doc[total].visits[totalvisits].scaleinfo.length >=2 && doc[total].visits[totalvisits].scaleinfo != undefined){
+                   
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                     flag = true;
                     // adding 2.5 score if scales have Dementia testing scale 
@@ -1480,7 +1561,8 @@ function genreport2(doc,proreport){
                     }
                 }
                 else if(doc[total].visits[totalvisits].scaleinfo.length != 0){
-                    if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits+1].scaleinfo.length){
+                    if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits+1].scaleinfo.length 
+                        && totalvisits > 0){
                         if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
                         }
@@ -1490,14 +1572,18 @@ function genreport2(doc,proreport){
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
+                console.log("jai mata 2");
                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
-                console.log("scales")
+                console.log("scales");
                 var ff = 0;
                 for(k=0;k<scale_length;k++){
                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
                     console.log(proreport[workon].scales_details.length-1);
+                    console.log("error kidr hai ? 1");
                     for( p=0; p<=proreport[workon].scales_details.length-1; p++){
+                        console.log("error kidr hai ? 2 " + k + " " + p);
                         if(proreport[workon].scales_details.length == 1 && ff==0){
+                            console.log("error kidr hai ? 3");
                             console.log("first scale to be added in record");
                             proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
                             proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1; 
@@ -1505,7 +1591,8 @@ function genreport2(doc,proreport){
                             break;
                         }
                         else if(proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name){
-                            if(totalvisits >= 0){
+                            console.log("error kidr hai ? 4");
+                            if(totalvisits > 0){
                                 var isPresent = doc[total].visits[totalvisits-1].scaleinfo.some((el)=>{ 
                                     if(el.scale_name === proreport[workon].scales_details[p].scale_name){
                                         return true;
@@ -1514,6 +1601,7 @@ function genreport2(doc,proreport){
                                     }
                                 });
                                 if(isPresent == false){
+                                    console.log("error kidr hai ? 5");
                                     console.log("pata nh");
                                     proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
                                 }

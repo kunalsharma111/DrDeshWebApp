@@ -28,8 +28,7 @@ import { CapitalizePipe } from './capitalize.pipe';
 import { CombinepatComponent } from './combinepat/combinepat.component';
 import {DatePipe} from '@angular/common';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-
-
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +58,8 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     FormsModule,
     ToastrModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [DataTransferService, DatePipe,
     {

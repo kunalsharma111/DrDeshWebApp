@@ -9,7 +9,7 @@ import * as xlsx from 'xlsx';
 import * as logoFile from '../img/logo.js';
 import * as Excel from "exceljs/dist/exceljs.min.js";
 import * as fs from 'file-saver';
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-reports',
@@ -19,7 +19,7 @@ import * as fs from 'file-saver';
 export class ReportsComponent implements OnInit {
   role;
   isBrowser;
-  constructor(public service: DataTransferService, public renderer: Renderer2) {
+  constructor(private spinnerService: Ng4LoadingSpinnerService,public service: DataTransferService, public renderer: Renderer2) {
     // this.isBrowser = isPlatformBrowser(platformId);
   }
   @ViewChild('ball', { static: true }) ball;
@@ -119,19 +119,23 @@ export class ReportsComponent implements OnInit {
     if (form.valid) {
     this.nodata = false;
     this.showit = false;
+    this.spinnerService.show();
     localStorage.setItem("facility",form.value.facility);
     localStorage.setItem("provider",form.value.provider);
     localStorage.setItem("date",form.value.date);
     console.log(form.value);
+    
     this.service.findprerecords(form.value).subscribe(res =>{
       this.output = res;
       console.log(this.output);
       if(this.output.length == []){
+        this.spinnerService.hide();
         console.log("empty");
         this.nodata = true;
         this.showit = true;
       }
       else{
+        this.spinnerService.hide();
       this.gammma =true;
       this.showit = false;
       }
@@ -152,11 +156,13 @@ export class ReportsComponent implements OnInit {
     if(form.valid){
     this.nodata2 = false;
     this.showit2 = false;
+    this.spinnerService.show();
     this.service.getpostroundingreport(form.value).subscribe(res=>{
       this.postData = res;
       console.log(this.postData);
       if(this.postData.length == []){
         console.log("empty");
+        this.spinnerService.hide();
         this.nodata2 = true;
         this.showit2 = true;
         this.repo = {
@@ -166,6 +172,7 @@ export class ReportsComponent implements OnInit {
         }
       }
       else{
+        this.spinnerService.hide();
       this.gammma2 =true;
       this.showit2 = false;
       }
@@ -188,18 +195,13 @@ export class ReportsComponent implements OnInit {
     if(form.valid){
     this.nodata3 = false;
     this.showit3 = false;
+    this.spinnerService.show();
     this.service.findproviderreport(form.value).subscribe(res =>{
       this.providerreportoutput = Array.of(res);
-      console.log(this.providerreportoutput[0].length);
-      // var total:{
-      //   no_of_patients_seen :0
-      // }
-      for(let kp=0;kp<this.providerreportoutput[0].length;kp++){
-        console.log(this.providerreportoutput[0][kp]);
-        // total.no_of_patients_seen += 
-      }
-      console.log(this.providerreportoutput[0][0]);
+      // console.log(this.providerreportoutput[0].length);
+      // console.log(this.providerreportoutput[0][0]);
       if(this.providerreportoutput[0] == "no"){
+        this.spinnerService.hide();
         this.nodata3 = true;
         this.showit3 = true;
         this.gammma3 = false;
@@ -210,6 +212,7 @@ export class ReportsComponent implements OnInit {
         };
       }
       else{
+      this.spinnerService.hide();
       this.gammma3 = true;
       this.showit3 = false;
       }
@@ -228,12 +231,14 @@ export class ReportsComponent implements OnInit {
     if(form.valid){
     this.nodata4 = false;
     this.showit4 = false;
+    this.spinnerService.show();
     this.service.findfacilityreport(form.value).subscribe(res =>{
       console.log(this.facilityreportoutput.length);
       this.facilityreportoutput = Array.of(res);
       console.log(this.facilityreportoutput);
       console.log(this.facilityreportoutput[0][0]);
       if(this.facilityreportoutput[0] == "no"){
+        this.spinnerService.hide();
         this.nodata4 = true;
         this.showit4 = true;
         this.gammma4 = false;
@@ -244,6 +249,7 @@ export class ReportsComponent implements OnInit {
         };
       }
       else{
+        this.spinnerService.hide();
       this.gammma4 = true;
       this.showit4 = false;
       }
