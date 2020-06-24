@@ -980,6 +980,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //                 var workon = 0;
 //                 // For deciding on which position to workon 
 //                 for(i=0;i<outputlength; i++){
+//                     console.log("kuuuu");
 //                     if(proreport[i].facility_name != doc[total].visits[totalvisits].facility 
 //                         && i == finalsize && flag!=0){
 //                         proreport.push({
@@ -1033,12 +1034,12 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //                 if(doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined){
 //                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
 //                 }
-
 //             }
 //             totalvisits--;
 //         }
 //     total--;
 //     }
+//     return proreport;
 // }
 
 function genreport(doc,proreport){
@@ -1262,7 +1263,7 @@ function genreport(doc,proreport){
                     }
                 }
                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
-                console.log("scales")
+                console.log("scales scale length : " + scale_length);
                 var ff = 0;
                 for(k=0;k<scale_length;k++){
                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
