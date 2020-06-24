@@ -196,7 +196,7 @@ export class ReportsComponent implements OnInit {
       // }
       for(let kp=0;kp<this.providerreportoutput[0].length;kp++){
         console.log(this.providerreportoutput[0][kp]);
-        // total.no_of_patients_seen += 
+        // total.no_of_patients_seen +=
       }
       console.log(this.providerreportoutput[0][0]);
       if(this.providerreportoutput[0] == "no"){
@@ -339,14 +339,27 @@ export class ReportsComponent implements OnInit {
 
     const workbooke = new Excel.Workbook();
     const worksheet = workbooke.addWorksheet(reportName);
-    const reportHeadingColumnForProvider = ['', 'Facility', 'No. of patients Seen', 'Points seen', 'Medicines Added', 'Medicines lowered', 'Medicines increased', 'Medicines Added with stop date',
-      'Medicines continued but added stop date', 'Medicines stopped',
-      'Scales Performed'
-      ];
-    const reportHeadingColumnForFacility = ['', 'Provider', 'No. of patients Seen', 'Points seen', 'Medicines Added', 'Medicines lowered', 'Medicines increased', 'Medicines Added with stop date',
-      'Medicines continued but added stop date', 'Medicines stopped',
-      'Scales Performed'
-    ];
+    const reportHeadingColumnForProvider = ['', 'Facility', 'No. of patients Seen', 'Points seen', 'Medicines lowered', 'Medicines continued but added stop date', 'Medicines stopped',
+      'GDR', 'Medicines Added', 'Medicines increased', 'Medicines Added with stop date',
+      'Scales Performed', 'PHQ9', '', 'GDS', '', 'BDI', '', 'Depression', '',
+      'Cognitive impairment', '', 'BIMS', '',
+      'MMSE', '', 'Trauma', '', 'BTQ', '', 'LEC-5', '', 'Anxiety', '', 'GAD', '', 'BAI', '', 'PTSD', '',
+      'PCL', '', 'NSESS', '', 'Bipolar diagnostic', '', 'BSDS', '', 'MDQ', '', 'Dementia with behaviors', '',
+      'BEHAVE-AD', '', 'RMBC', '', 'Dementia testing', '', 'MOCA', '', 'NPQ', '', 'Insomnia', '', 'ISQ', '',
+      'ISI', '', 'Suicidal assessment', '', 'CSSRS', '', 'BSS', '', 'Schizophrenia', '', 'PNASS', '',
+      'BPRS', '', 'Substance use', '', 'AUDIT', '', 'DAST', '', 'FAGERSTORM', '', 'Misc', '', 'CNSLS', '', 'AIMS', ''];
+
+    const reportHeadingColumnForFacility = ['', 'Provider', 'No. of patients Seen', 'Medicines lowered', 'Medicines continued but added stop date', 'Medicines stopped',
+      'GDR', 'Medicines Added', 'Medicines increased', 'Medicines Added with stop date',
+      'Scales Performed', 'PHQ9', '', 'GDS', '', 'BDI', ''
+      , 'Depression', '',
+      'Cognitive impairment', '', 'BIMS', '',
+      'MMSE', '', 'Trauma', '', 'BTQ', '', 'LEC-5', '', 'Anxiety', '', 'GAD', '', 'BAI', '', 'PTSD', '',
+      'PCL', '', 'NSESS', '', 'Bipolar diagnostic', '', 'BSDS', '', 'MDQ', '', 'Dementia with behaviors', '',
+      'BEHAVE-AD', '', 'RMBC', '', 'Dementia testing', '', 'MOCA', '', 'NPQ', '', 'Insomnia', '', 'ISQ', '',
+      'ISI', '', 'Suicidal assessment', '', 'CSSRS', '', 'BSS', '', 'Schizophrenia', '', 'PNASS', '',
+      'BPRS', '', 'Substance use', '', 'AUDIT', '', 'DAST', '', 'FAGERSTORM', '', 'Misc', '', 'CNSLS', '', 'AIMS', ''];
+
     worksheet.addRow([]);
 
     var reportLogo = workbooke.addImage({
@@ -405,41 +418,230 @@ export class ReportsComponent implements OnInit {
     let headerRow;
     if(fileName !== 'facility_performance_report.xlsx') {
       headerRow = worksheet.addRow(reportHeadingColumnForProvider);
+      worksheet.mergeCells(['M16:N16']);
+      worksheet.mergeCells(['O16:P16']);
+      worksheet.mergeCells(['Q16:R16']);
+      worksheet.mergeCells(['S16:T16']);
+      worksheet.mergeCells(['U16:V16']);
+      worksheet.mergeCells(['W16:X16']);
+      worksheet.mergeCells(['Y16:Z16']);
+      worksheet.mergeCells(['AA16:AB16']);
+      worksheet.mergeCells(['AC16:AD16']);
+      worksheet.mergeCells(['AE16:AF16']);
+      worksheet.mergeCells(['AG16:AH16']);
+      worksheet.mergeCells(['AI16:AJ16']);
+      worksheet.mergeCells(['AK16:AL16']);
+      worksheet.mergeCells(['AM16:AN16']);
+      worksheet.mergeCells(['AO16:AP16']);
+      worksheet.mergeCells(['AQ16:AR16']);
+      worksheet.mergeCells(['AS16:AT16']);
+      worksheet.mergeCells(['AU16:AV16']);
+      worksheet.mergeCells(['AW16:AX16']);
+      worksheet.mergeCells(['AY16:AZ16']);
+      worksheet.mergeCells(['BA16:BB16']);
+      worksheet.mergeCells(['BC16:BD16']);
+      worksheet.mergeCells(['BE16:BF16']);
+      worksheet.mergeCells(['BG16:BH16']);
+      worksheet.mergeCells(['BI16:BJ16']);
+      worksheet.mergeCells(['BK16:BL16']);
+      worksheet.mergeCells(['BM16:BN16']);
+      worksheet.mergeCells(['BO16:BP16']);
+      worksheet.mergeCells(['BQ16:BR16']);
+      worksheet.mergeCells(['BS16:BT16']);
+      worksheet.mergeCells(['BU16:BV16']);
+      worksheet.mergeCells(['BW16:BX16']);
+      worksheet.mergeCells(['BY16:BZ16']);
+      worksheet.mergeCells(['CA16:CB16']);
+      worksheet.mergeCells(['CC16:CD16']);
+      worksheet.mergeCells(['CE16:CF16']);
+      worksheet.mergeCells(['CG16:CH16']);
+      worksheet.mergeCells(['CI16:CJ16']);
+      worksheet.mergeCells(['CK16:CL16']);
+      worksheet.mergeCells(['CM16:CN16']);
+      worksheet.mergeCells(['CO16:CP16']);
     }else {
       headerRow = worksheet.addRow(reportHeadingColumnForFacility);
+      worksheet.mergeCells(['L16:M16']);
+      worksheet.mergeCells(['N16:O16']);
+      worksheet.mergeCells(['P16:Q16']);
+      worksheet.mergeCells(['R16:S16']);
+      worksheet.mergeCells(['T16:U16']);
+      worksheet.mergeCells(['V16:W16']);
+      worksheet.mergeCells(['X16:Y16']);
+      worksheet.mergeCells(['Z16:AA16']);
+      worksheet.mergeCells(['AB16:AC16']);
+      worksheet.mergeCells(['AD16:AE16']);
+      worksheet.mergeCells(['AF16:AG16']);
+      worksheet.mergeCells(['AH16:AI16']);
+      worksheet.mergeCells(['AJ16:AK16']);
+      worksheet.mergeCells(['AL16:AM16']);
+      worksheet.mergeCells(['AN16:AO16']);
+      worksheet.mergeCells(['AP16:AQ16']);
+      worksheet.mergeCells(['AR16:AS16']);
+      worksheet.mergeCells(['AT16:AU16']);
+      worksheet.mergeCells(['AV16:AW16']);
+      worksheet.mergeCells(['AX16:AY16']);
+      worksheet.mergeCells(['AZ16:BA16']);
+      worksheet.mergeCells(['BB16:BC16']);
+
+      worksheet.mergeCells(['BD16:BE16']);
+      worksheet.mergeCells(['BF16:BG16']);
+      worksheet.mergeCells(['BH16:BI16']);
+      worksheet.mergeCells(['BJ16:BK16']);
+      worksheet.mergeCells(['BL16:BM16']);
+      worksheet.mergeCells(['BN16:BO16']);
+      worksheet.mergeCells(['BP16:BQ16']);
+      worksheet.mergeCells(['BR16:BS16']);
+      worksheet.mergeCells(['BT16:BU16']);
+      worksheet.mergeCells(['BV16:BW16']);
+      worksheet.mergeCells(['BX16:BY16']);
+      worksheet.mergeCells(['BZ16:CA16']);
+      worksheet.mergeCells(['CB16:CC16']);
+      worksheet.mergeCells(['CD16:CE16']);
+      worksheet.mergeCells(['CF16:CG16']);
+      worksheet.mergeCells(['CH16:CI16']);
+      worksheet.mergeCells(['CJ16:CK16']);
+      worksheet.mergeCells(['CL16:CM16']);
+      worksheet.mergeCells(['CN16:CO16']);
     }
 
     headerRow.eachCell((cell, number) => {
-      if (number == 1) return;
-
-      cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
-      if(number == 2){
-        cell.border = { top: { style: 'thick' }, left: { style: 'thick' }, bottom: { style: 'thin' }}
-      }
-      if(fileName !== 'facility_performance_report.xlsx' && number == reportHeadingColumnForProvider.length){
-        cell.border = { top: { style: 'thick' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
-      }
-      if(fileName == 'facility_performance_report.xlsx' && number == reportHeadingColumnForFacility.length){
-        cell.border = { top: { style: 'thick' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
-      }
-      cell.alignment = { vertical: 'middle', horizontal: 'center'}
+      this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 1);
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
     });
 
-    worksheet.addRow([]);
+
+    console.log("reportData", reportData);
     let i = 0;
-    let outputFacilityProvider;
-    reportData.forEach(d => {
-      if(fileName !== 'facility_performance_report.xlsx'){
-        outputFacilityProvider = d[i].facility_name;
-      }else{
-        outputFacilityProvider = d[i].provider_name;
+    let lastRowData = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    reportData[0].forEach(d => {
+      if(i == 0) {
+        let headerSecond: any;
+        if(fileName !== 'facility_performance_report.xlsx'){
+          headerSecond = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', '', 'Count', 'Average Score', 'Count', 'Average Score',
+          'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score']);
+        } else{
+          headerSecond = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', 'Count', 'Average Score', 'Count', 'Average Score', 'Count',
+          'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+          , 'Count', 'Average Score', 'Count', 'Average Score']);
+        }
+        headerSecond.eachCell((cell, number) => {
+          this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+          cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+        });
+        i++;
       }
-      worksheet.addRow(['', outputFacilityProvider, d[i].no_of_patients_seen, d[i].points_seen
-      , d[i].meds_added, d[i].meds_lowered, d[i].meds_increased, d[i].meds_added_with_stop_date ,d[i].meds_continued_but_added_stop_date
-    , d[i].meds_stopped, d[i].scales_performed]);
-      i++;
+      if(fileName !== 'facility_performance_report.xlsx'){
+        lastRowData[0] = lastRowData[0] + d.no_of_patients_seen;
+        lastRowData[1] = lastRowData[1] + d.points_seen;
+        lastRowData[2] = lastRowData[2] + d.meds_lowered;
+        lastRowData[3] = lastRowData[3] + d.meds_continued_but_added_stop_date;
+        lastRowData[4] = lastRowData[4] + d.meds_stopped;
+        lastRowData[5] = lastRowData[5] + d.meds_lowered + d.meds_continued_but_added_stop_date +  d.meds_stopped
+        lastRowData[6] = lastRowData[6] + d.meds_added;
+        lastRowData[7] = lastRowData[7] + d.meds_increased;
+        lastRowData[8] = lastRowData[8] + d.meds_added_with_stop_date;
+        lastRowData[9] = lastRowData[9] + d.scales_performed;
+        lastRowData[10] = lastRowData[10] + d.scales_details[0].count;
+        lastRowData[11] = lastRowData[11] + d.scales_details[0].average_score;
+        lastRowData[12] = lastRowData[12] + d.scales_details[1].count;
+        lastRowData[13] = lastRowData[13] + d.scales_details[1].average_score;
+        lastRowData[14] = lastRowData[14] + d.scales_details[2].count;
+        lastRowData[15] = lastRowData[15] + d.scales_details[2].average_score;
+        const data = worksheet.addRow(['', d.facility_name, d.no_of_patients_seen, d.points_seen,
+          d.meds_lowered, d.meds_continued_but_added_stop_date, d.meds_stopped, d.meds_lowered + d.meds_continued_but_added_stop_date +  d.meds_stopped ,
+          d.meds_added, d.meds_increased, d.meds_added_with_stop_date,
+          d.scales_performed, d.scales_details[0].count, d.scales_details[0].average_score, d.scales_details[1].count, d.scales_details[1].average_score, d.scales_details[2].count, d.scales_details[2].average_score]);
+
+        data.eachCell((cell, number) => {
+          this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+          if(number >= 3){
+            cell.alignment = { vertical: 'middle', horizontal: 'center'};
+          }
+        });
+
+      }else {
+        lastRowData[0] = lastRowData[0] + d.no_of_patients_seen;
+        lastRowData[1] = lastRowData[1] + d.points_seen;
+        lastRowData[2] = lastRowData[2] + d.meds_lowered;
+        lastRowData[3] = lastRowData[3] + d.meds_continued_but_added_stop_date;
+        lastRowData[4] = lastRowData[4] + d.meds_stopped;
+        lastRowData[5] = lastRowData[5] + d.meds_lowered + d.meds_continued_but_added_stop_date +  d.meds_stopped
+        lastRowData[6] = lastRowData[6] + d.meds_added;
+        lastRowData[7] = lastRowData[7] + d.meds_increased;
+        lastRowData[8] = lastRowData[8] + d.meds_added_with_stop_date;
+        lastRowData[9] = lastRowData[9] + d.scales_performed;
+        lastRowData[10] = lastRowData[10] + d.scales_details[0].count;
+        lastRowData[11] = lastRowData[11] + d.scales_details[0].average_score;
+        lastRowData[12] = lastRowData[12] + d.scales_details[1].count;
+        lastRowData[13] = lastRowData[13] + d.scales_details[1].average_score;
+        lastRowData[14] = lastRowData[14] + d.scales_details[2].count;
+        lastRowData[15] = lastRowData[15] + d.scales_details[2].average_score;
+
+        const data = worksheet.addRow(['', d.provider_name, d.no_of_patients_seen,
+          d.meds_lowered, d.meds_continued_but_added_stop_date, d.meds_stopped, d.meds_lowered + d.meds_continued_but_added_stop_date + d.meds_stopped,
+          d.meds_added, d.meds_increased, d.meds_added_with_stop_date,
+          d.scales_performed, d.scales_details[0].count, d.scales_details[0].average_score, d.scales_details[1].count, d.scales_details[1].average_score, d.scales_details[2].count, d.scales_details[2].average_score]);
+        data.eachCell((cell, number) => {
+          this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+          if(number >= 3){
+            cell.alignment = { vertical: 'middle', horizontal: 'center'};
+          }
+        });
+      }
     });
+
+    for(let addBlankRow = 0; addBlankRow < 2; addBlankRow++){
+      let blankRow;
+      if(fileName !== 'facility_performance_report.xlsx'){
+        blankRow = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', '', '', '', '', '',
+        '', '']);
+      } else{
+        blankRow = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', '', '', '', '', '',
+        '']);
+      }
+      blankRow.eachCell((cell, number) => {
+        this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+      });
+    }
+    let lastRow;
+    if(fileName !== 'facility_performance_report.xlsx'){
+      lastRow = worksheet.addRow(['', 'Total' , lastRowData[0] , lastRowData[1], lastRowData[2], lastRowData[3], lastRowData[4], lastRowData[5], lastRowData[6], lastRowData[7], lastRowData[8], lastRowData[9],
+      lastRowData[10], lastRowData[11], lastRowData[12], lastRowData[13],
+      lastRowData[14], lastRowData[15], , lastRowData[16]]);
+    }
+    if(fileName == 'facility_performance_report.xlsx'){
+      lastRow = worksheet.addRow(['', 'Total' , lastRowData[0], lastRowData[2],  lastRowData[3], lastRowData[4], lastRowData[5], lastRowData[6], lastRowData[7], lastRowData[8], lastRowData[9],
+      lastRowData[10], lastRowData[11], lastRowData[12], lastRowData[13],
+      lastRowData[14], lastRowData[15]]);
+
+    }
+    lastRow.eachCell((cell, number) => {
+      this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 3);
+      if(number >= 3){
+        cell.alignment = { vertical: 'middle', horizontal: 'center'};
+      }
+    });
+
     worksheet.getColumn(2).width = 25;
+    worksheet.getRow(16).height = 30;
+    worksheet.getRow(17).height = 40;
     worksheet.getColumn(3).width = 25;
     worksheet.getColumn(4).width = 25;
     worksheet.getColumn(5).width = 25;
@@ -449,6 +651,7 @@ export class ReportsComponent implements OnInit {
     worksheet.getColumn(9).width = 25;
     worksheet.getColumn(10).width = 25;
     worksheet.getColumn(11).width = 25;
+    worksheet.getColumn(12).width = 20;
 
     workbooke.xlsx.writeBuffer().then((dataa) => {
       const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -456,6 +659,58 @@ export class ReportsComponent implements OnInit {
     });
 
   }
+
+  designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, flag){
+    if (number == 1) return;
+
+    cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+
+    if(number == 2){
+      cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, bottom: { style: 'thin' }}
+    }
+
+    if(fileName !== 'facility_performance_report.xlsx' && number == reportHeadingColumnForProvider.length){
+      cell.border = { top: { style: 'thin' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
+    }
+    if(fileName == 'facility_performance_report.xlsx' && number == reportHeadingColumnForFacility.length){
+      cell.border = { top: { style: 'thin' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
+    }
+    if(flag == 1){
+      cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    }
+    if(flag == 1 && number == 2){
+      cell.border = { top: { style: 'thick' }, left: { style: 'thick' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    }
+    if(flag == 1 && (number == reportHeadingColumnForFacility.length || number == reportHeadingColumnForProvider.length)){
+      cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thick' } }
+    }
+    if(number >=4 && number <=7 && fileName == 'facility_performance_report.xlsx'){
+      cell.fill = {
+        type: 'pattern',
+        pattern: 'solid',
+        fgColor: { argb: 'FFFFFF00' },
+        bgColor: { argb: 'FF0000FF' }
+      }
+    }
+    if(number >=5 && number <=8 && fileName != 'facility_performance_report.xlsx'){
+      cell.fill = {
+        type: 'pattern',
+        pattern: 'solid',
+        fgColor: { argb: 'FFFFFF00' },
+        bgColor: { argb: 'FF0000FF' }
+      }
+    }
+    if(flag == 3){
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thick' }, right: { style: 'thin' } }
+    }
+    if(flag == 3 && fileName !== 'facility_performance_report.xlsx' && number == 2){
+      cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, right: { style: 'thin' }, bottom: { style: 'thick' }}
+    }
+    if(flag == 3 && fileName == 'facility_performance_report.xlsx' && number == 2){
+      cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, right: { style: 'thin' }, bottom: { style: 'thick' }}
+    }
+  }
+
    // exxport to excel
   exportToExcel2(reportName) {
     const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltablee.nativeElement);
