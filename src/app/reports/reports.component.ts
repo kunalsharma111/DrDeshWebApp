@@ -124,7 +124,7 @@ export class ReportsComponent implements OnInit {
     localStorage.setItem("provider",form.value.provider);
     localStorage.setItem("date",form.value.date);
     console.log(form.value);
-    
+
     this.service.findprerecords(form.value).subscribe(res =>{
       this.output = res;
       console.log(this.output);
@@ -188,10 +188,11 @@ export class ReportsComponent implements OnInit {
 }
 
   // provider report
-  scales = [ 'PHQ9', 'GDS', 'BDI',  'BIMS', 'MMSE',  'BTQ', 
-  'LEC-5',  'GAD', 'BAI', 'PCL', 'NSESS', 'BSDS', 'MDQ',
-   'BEHAVE-AD', 'RMBC', 'Dementia testing', 'MOCA', 'NPQ',  'ISQ', 'ISI',  'CSSRS', 'BSS',
-    'PNASS', 'BPRS',  'AUDIT', 'DAST', 'FAGERSTORM', 'CNSLS', 'AIMS'];
+  scales = [ 'PHQ9', 'GDS', 'BDI',  'BIMS', 'MMSE',  'BTQ',
+             'LEC-5',  'GAD', 'BAI', 'PCL', 'NSESS', 'BSDS', 'MDQ',
+             'BEHAVE-AD', 'RMBC', 'Dementia testing', 'MOCA', 'NPQ',  'ISQ',
+             'ISI',  'CSSRS', 'BSS',
+             'PNASS', 'BPRS',  'AUDIT', 'DAST', 'FAGERSTORM', 'CNSLS', 'AIMS'];
   notvalidate2 : Boolean;
   submitproviderreport(form){
     this.proFacReportInput = form.value;
@@ -204,7 +205,7 @@ export class ReportsComponent implements OnInit {
       this.providerreportoutput = Array.of(res);
       console.log(this.providerreportoutput[0].length);
       console.log(this.scales);
-      
+
         for(let ii=0; ii<this.providerreportoutput[0].length; ii++){
           console.log(this.providerreportoutput[0].length + "yes");
           for(let kp=0;kp<this.scales.length;kp++){
@@ -275,8 +276,8 @@ export class ReportsComponent implements OnInit {
       this.facilityreportoutput = Array.of(res);
       console.log(this.facilityreportoutput);
       console.log(this.facilityreportoutput[0][0]);
-     
-     
+
+
       for(let ii=0; ii<this.facilityreportoutput[0].length; ii++){
         console.log(this.facilityreportoutput[0].length + "yes");
         for(let kp=0;kp<this.scales.length;kp++){
@@ -392,146 +393,489 @@ export class ReportsComponent implements OnInit {
   @ViewChild('epltable', { static: false }) epltable: ElementRef;
   @ViewChild('epltablee', { static: false }) epltablee: ElementRef;
 // exxport to excel
-  exportToExcel(fileName, reportName) {
-    let reportData = [];
-    let inputFacilityProvider;
-    let inputFromDate;
-    let inputToDate;
-    let provideFacility;
-    let labelFacilityProvider;
-    if(fileName !== 'facility_performance_report.xlsx') {
-      reportData = this.providerreportoutput ;
-      inputFacilityProvider = this.proFacReportInput.provider1;
-      inputFromDate = this.proFacReportInput.fromdate;
-      inputToDate = this.proFacReportInput.todate;
-      labelFacilityProvider = 'Provider Name';
-    }else {
-      reportData = this.facilityreportoutput ;
-      inputFacilityProvider = this.proFacReportInput.facility1;
-      inputFromDate = this.proFacReportInput.fromdate1;
-      inputToDate = this.proFacReportInput.todate1;
-      labelFacilityProvider = 'Facility Name';
-    }
-
-    const workbooke = new Excel.Workbook();
-    const worksheet = workbooke.addWorksheet(reportName);
-    const reportHeadingColumnForProvider = ['', 'Facility', 'No. of patients Seen', 'Points seen', 'Medicines Added', 'Medicines lowered', 'Medicines increased', 'Medicines Added with stop date',
-      'Medicines continued but added stop date', 'Medicines stopped',
-      'Scales Performed'
-      ];
-    const reportHeadingColumnForFacility = ['', 'Provider', 'No. of patients Seen', 'Points seen', 'Medicines Added', 'Medicines lowered', 'Medicines increased', 'Medicines Added with stop date',
-      'Medicines continued but added stop date', 'Medicines stopped',
-      'Scales Performed'
-    ];
-    worksheet.addRow([]);
-
-    var reportLogo = workbooke.addImage({
-      base64: logoFile.logoBase64,
-      extension: 'png',
-    });
-
-    worksheet.addImage(reportLogo, {
-      tl: { col: 2.5, row: 0 },
-      br: { col: 3.5, row: 4.5 }
-    });
-
-    worksheet.addRow([]);
-    worksheet.addRow([]);
-    worksheet.addRow([]);
-    worksheet.addRow([]);
-    const address = worksheet.addRow(['', 'Psychiatry Care \n10840 N US Highway 301 \nOxford FL 34484 Oxford FL 34484 \nOffice:(352) 445-1200 \nFax: (888) 248-4348',]);
-
-    address.eachCell((cell, number) => {
-      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-    });
-
-    worksheet.addRow(['', '']);
-    worksheet.addRow(['', '']);
-    worksheet.addRow(['', '']);
-    worksheet.addRow(['', '']);
-    worksheet.mergeCells(['B6:D10']);
-    const reportNameHeading = worksheet.addRow(['', reportName]);
-    worksheet.mergeCells(['B11:D11']);
-    reportNameHeading.font = {size: 16, underline: 'double', bold: true };
-
-    reportNameHeading.eachCell((cell, number) => {
-      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
-    });
-    console.log("this.proFacReportInput", this.proFacReportInput)
-    const facilityRow = worksheet.addRow(['', labelFacilityProvider, inputFacilityProvider]);
-    const fromDate = worksheet.addRow(['', 'From Date', inputFromDate]);
-    const toDate = worksheet.addRow(['', 'To Date', inputToDate]);
-
-    facilityRow.eachCell((cell, number) => {
-      if (number == 1) return;
-      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
-    });
-
-    fromDate.eachCell((cell, number) => {
-      if (number == 1) return;
-      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
-    });
-
-    toDate.eachCell((cell, number) => {
-      if (number == 1) return;
-      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
-    });
-
-    worksheet.addRow([]);
-    let headerRow;
-    if(fileName !== 'facility_performance_report.xlsx') {
-      headerRow = worksheet.addRow(reportHeadingColumnForProvider);
-    }else {
-      headerRow = worksheet.addRow(reportHeadingColumnForFacility);
-    }
-
-    headerRow.eachCell((cell, number) => {
-      if (number == 1) return;
-
-      cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
-      if(number == 2){
-        cell.border = { top: { style: 'thick' }, left: { style: 'thick' }, bottom: { style: 'thin' }}
-      }
-      if(fileName !== 'facility_performance_report.xlsx' && number == reportHeadingColumnForProvider.length){
-        cell.border = { top: { style: 'thick' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
-      }
-      if(fileName == 'facility_performance_report.xlsx' && number == reportHeadingColumnForFacility.length){
-        cell.border = { top: { style: 'thick' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
-      }
-      cell.alignment = { vertical: 'middle', horizontal: 'center'}
-    });
-
-    worksheet.addRow([]);
-    let i = 0;
-    let outputFacilityProvider;
-    reportData.forEach(d => {
-      if(fileName !== 'facility_performance_report.xlsx'){
-        outputFacilityProvider = d[i].facility_name;
-      }else{
-        outputFacilityProvider = d[i].provider_name;
-      }
-      worksheet.addRow(['', outputFacilityProvider, d[i].no_of_patients_seen, d[i].points_seen
-      , d[i].meds_added, d[i].meds_lowered, d[i].meds_increased, d[i].meds_added_with_stop_date ,d[i].meds_continued_but_added_stop_date
-    , d[i].meds_stopped, d[i].scales_performed]);
-      i++;
-    });
-    worksheet.getColumn(2).width = 25;
-    worksheet.getColumn(3).width = 25;
-    worksheet.getColumn(4).width = 25;
-    worksheet.getColumn(5).width = 25;
-    worksheet.getColumn(6).width = 25;
-    worksheet.getColumn(7).width = 25;
-    worksheet.getColumn(8).width = 25;
-    worksheet.getColumn(9).width = 25;
-    worksheet.getColumn(10).width = 25;
-    worksheet.getColumn(11).width = 25;
-
-    workbooke.xlsx.writeBuffer().then((dataa) => {
-      const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      fs.saveAs(blob, fileName);
-    });
-
+exportToExcel(fileName, reportName) {
+  let reportData = [];
+  let inputFacilityProvider;
+  let inputFromDate;
+  let inputToDate;
+  let provideFacility;
+  let labelFacilityProvider;
+  if(fileName !== 'facility_performance_report.xlsx') {
+    reportData = this.providerreportoutput ;
+    inputFacilityProvider = this.proFacReportInput.provider1;
+    inputFromDate = this.proFacReportInput.fromdate;
+    inputToDate = this.proFacReportInput.todate;
+    labelFacilityProvider = 'Provider Name';
+  }else {
+    reportData = this.facilityreportoutput ;
+    inputFacilityProvider = this.proFacReportInput.facility1;
+    inputFromDate = this.proFacReportInput.fromdate1;
+    inputToDate = this.proFacReportInput.todate1;
+    labelFacilityProvider = 'Facility Name';
   }
+
+  const workbooke = new Excel.Workbook();
+  const worksheet = workbooke.addWorksheet(reportName);
+  const reportHeadingColumnForProvider = ['', 'Facility', 'No. of patients Seen', 'Points seen', 'Medicines lowered', 'Medicines continued but added stop date', 'Medicines stopped',
+    'GDR', 'Medicines Added', 'Medicines increased', 'Medicines Added with stop date',
+    'Scales Performed', 'PHQ9', '', 'GDS', '', 'BDI', '',  'BIMS', '', 'MMSE', '',  'BTQ', '',
+    'LEC-5', '',  'GAD', '', 'BAI', '', 'PCL', '', 'NSESS', '', 'BSDS', '', 'MDQ', '',
+    'BEHAVE-AD', '', 'RMBC', '', 'Dementia testing', '', 'MOCA', '', 'NPQ', '',  'ISQ', '',
+    'ISI', '',  'CSSRS', '', 'BSS', '',
+    'PNASS', '', 'BPRS', '',  'AUDIT', '', 'DAST', '', 'FAGERSTORM', '', 'CNSLS', '', 'AIMS', ''];
+
+  const reportHeadingColumnForFacility = ['', 'Provider', 'No. of patients Seen', 'Medicines lowered', 'Medicines continued but added stop date', 'Medicines stopped',
+    'GDR', 'Medicines Added', 'Medicines increased', 'Medicines Added with stop date',
+    'Scales Performed', 'PHQ9', '', 'GDS', '', 'BDI', '',  'BIMS', '', 'MMSE', '',  'BTQ', '',
+    'LEC-5', '',  'GAD', '', 'BAI', '', 'PCL', '', 'NSESS', '', 'BSDS', '', 'MDQ', '',
+    'BEHAVE-AD', '', 'RMBC', '', 'Dementia testing', '', 'MOCA', '', 'NPQ', '',  'ISQ', '',
+    'ISI', '',  'CSSRS', '', 'BSS', '',
+    'PNASS', '', 'BPRS', '',  'AUDIT', '', 'DAST', '', 'FAGERSTORM', '', 'CNSLS', '', 'AIMS', ''];
+  worksheet.addRow([]);
+
+  var reportLogo = workbooke.addImage({
+    base64: logoFile.logoBase64,
+    extension: 'png',
+  });
+
+  worksheet.addImage(reportLogo, {
+    tl: { col: 2.5, row: 0 },
+    br: { col: 3.5, row: 4.5 }
+  });
+
+  worksheet.addRow([]);
+  worksheet.addRow([]);
+  worksheet.addRow([]);
+  worksheet.addRow([]);
+  const address = worksheet.addRow(['', 'Psychiatry Care \n10840 N US Highway 301 \nOxford FL 34484 Oxford FL 34484 \nOffice:(352) 445-1200 \nFax: (888) 248-4348',]);
+
+  address.eachCell((cell, number) => {
+    cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+  });
+
+  worksheet.addRow(['', '']);
+  worksheet.addRow(['', '']);
+  worksheet.addRow(['', '']);
+  worksheet.addRow(['', '']);
+  worksheet.mergeCells(['B6:D10']);
+  const reportNameHeading = worksheet.addRow(['', reportName]);
+  worksheet.mergeCells(['B11:D11']);
+  reportNameHeading.font = {size: 16, underline: 'double', bold: true };
+
+  reportNameHeading.eachCell((cell, number) => {
+    cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+  });
+  console.log("this.proFacReportInput", this.proFacReportInput)
+  const facilityRow = worksheet.addRow(['', labelFacilityProvider, inputFacilityProvider]);
+  const fromDate = worksheet.addRow(['', 'From Date', inputFromDate]);
+  const toDate = worksheet.addRow(['', 'To Date', inputToDate]);
+
+  facilityRow.eachCell((cell, number) => {
+    if (number == 1) return;
+    cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+  });
+
+  fromDate.eachCell((cell, number) => {
+    if (number == 1) return;
+    cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+  });
+
+  toDate.eachCell((cell, number) => {
+    if (number == 1) return;
+    cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+  });
+
+  worksheet.addRow([]);
+  let headerRow;
+  if(fileName !== 'facility_performance_report.xlsx') {
+    headerRow = worksheet.addRow(reportHeadingColumnForProvider);
+    worksheet.mergeCells(['M16:N16']);
+    worksheet.mergeCells(['O16:P16']);
+    worksheet.mergeCells(['Q16:R16']);
+    worksheet.mergeCells(['S16:T16']);
+    worksheet.mergeCells(['U16:V16']);
+    worksheet.mergeCells(['W16:X16']);
+    worksheet.mergeCells(['Y16:Z16']);
+    worksheet.mergeCells(['AA16:AB16']);
+    worksheet.mergeCells(['AC16:AD16']);
+    worksheet.mergeCells(['AE16:AF16']);
+    worksheet.mergeCells(['AG16:AH16']);
+    worksheet.mergeCells(['AI16:AJ16']);
+    worksheet.mergeCells(['AK16:AL16']);
+    worksheet.mergeCells(['AM16:AN16']);
+    worksheet.mergeCells(['AO16:AP16']);
+    worksheet.mergeCells(['AQ16:AR16']);
+    worksheet.mergeCells(['AS16:AT16']);
+    worksheet.mergeCells(['AU16:AV16']);
+    worksheet.mergeCells(['AW16:AX16']);
+    worksheet.mergeCells(['AY16:AZ16']);
+    worksheet.mergeCells(['BA16:BB16']);
+    worksheet.mergeCells(['BC16:BD16']);
+    worksheet.mergeCells(['BE16:BF16']);
+    worksheet.mergeCells(['BG16:BH16']);
+    worksheet.mergeCells(['BI16:BJ16']);
+    worksheet.mergeCells(['BK16:BL16']);
+    worksheet.mergeCells(['BM16:BN16']);
+    worksheet.mergeCells(['BO16:BP16']);
+    worksheet.mergeCells(['BQ16:BR16']);
+  }else {
+    headerRow = worksheet.addRow(reportHeadingColumnForFacility);
+    worksheet.mergeCells(['L16:M16']);
+    worksheet.mergeCells(['N16:O16']);
+    worksheet.mergeCells(['P16:Q16']);
+    worksheet.mergeCells(['R16:S16']);
+    worksheet.mergeCells(['T16:U16']);
+    worksheet.mergeCells(['V16:W16']);
+    worksheet.mergeCells(['X16:Y16']);
+    worksheet.mergeCells(['Z16:AA16']);
+    worksheet.mergeCells(['AB16:AC16']);
+    worksheet.mergeCells(['AD16:AE16']);
+    worksheet.mergeCells(['AF16:AG16']);
+    worksheet.mergeCells(['AH16:AI16']);
+    worksheet.mergeCells(['AJ16:AK16']);
+    worksheet.mergeCells(['AL16:AM16']);
+    worksheet.mergeCells(['AN16:AO16']);
+    worksheet.mergeCells(['AP16:AQ16']);
+    worksheet.mergeCells(['AR16:AS16']);
+    worksheet.mergeCells(['AT16:AU16']);
+    worksheet.mergeCells(['AV16:AW16']);
+    worksheet.mergeCells(['AX16:AY16']);
+    worksheet.mergeCells(['AZ16:BA16']);
+    worksheet.mergeCells(['BB16:BC16']);
+    worksheet.mergeCells(['BD16:BE16']);
+    worksheet.mergeCells(['BF16:BG16']);
+    worksheet.mergeCells(['BH16:BI16']);
+    worksheet.mergeCells(['BJ16:BK16']);
+    worksheet.mergeCells(['BL16:BM16']);
+    worksheet.mergeCells(['BN16:BO16']);
+    worksheet.mergeCells(['BP16:BQ16']);
+  }
+
+  headerRow.eachCell((cell, number) => {
+    this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 1);
+    cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+  });
+
+
+  console.log("reportData", reportData);
+  let i = 0;
+  let lastRowData = [0,0,0,0,0,0,0,0,0,0,
+                     0,0,0,0,0,0,0,0,0,0,
+                     0,0,0,0,0,0,0,0,0,0,
+                     0,0,0,0,0,0,0,0,0,0,
+                     0,0,0,0,0,0,0,0,0,0,
+                     0,0,0,0,0,0,0,0,0,0,
+                     0,0,0,0,0,0,0,0];
+  reportData[0].forEach(d => {
+    if(i == 0) {
+      let headerSecond: any;
+      if(fileName !== 'facility_performance_report.xlsx'){
+        headerSecond = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', '', 'Count', 'Average Score', 'Count', 'Average Score',
+        'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score']);
+      } else{
+        headerSecond = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', 'Count', 'Average Score', 'Count', 'Average Score', 'Count',
+        'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score', 'Count', 'Average Score'
+        , 'Count', 'Average Score', 'Count', 'Average Score']);
+      }
+      headerSecond.eachCell((cell, number) => {
+        this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+        cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+      });
+      i++;
+    }
+    if(fileName !== 'facility_performance_report.xlsx'){
+      lastRowData[0] = lastRowData[0] + d.no_of_patients_seen;
+      lastRowData[1] = lastRowData[1] + d.points_seen;
+      lastRowData[2] = lastRowData[2] + d.meds_lowered;
+      lastRowData[3] = lastRowData[3] + d.meds_continued_but_added_stop_date;
+      lastRowData[4] = lastRowData[4] + d.meds_stopped;
+      lastRowData[5] = lastRowData[5] + d.meds_lowered + d.meds_continued_but_added_stop_date +  d.meds_stopped
+      lastRowData[6] = lastRowData[6] + d.meds_added;
+      lastRowData[7] = lastRowData[7] + d.meds_increased;
+      lastRowData[8] = lastRowData[8] + d.meds_added_with_stop_date;
+      lastRowData[9] = lastRowData[9] + d.scales_performed;
+      let lastRowDataIndex = 10;
+      let scalesDetailsIndex = [];
+      for(let sequenceScaleIndex = 0; sequenceScaleIndex < d.scales_details.length; sequenceScaleIndex++){
+        for(let sequenceObjectIndex = 0; sequenceObjectIndex < d.scales_details.length; sequenceObjectIndex++){
+          if(this.scales[sequenceScaleIndex] == d.scales_details[sequenceObjectIndex].scale_name){
+             lastRowData[lastRowDataIndex] = lastRowData[lastRowDataIndex] + d.scales_details[sequenceObjectIndex].count;
+             lastRowDataIndex++;
+             lastRowData[lastRowDataIndex] = lastRowData[lastRowDataIndex] + d.scales_details[sequenceObjectIndex].average_score;
+             lastRowDataIndex++;
+             scalesDetailsIndex.push(sequenceObjectIndex);
+          }
+        }
+      }
+      // lastRowData[10] = lastRowData[10] + d.scales_details[0].count;
+      // lastRowData[11] = lastRowData[11] + d.scales_details[0].average_score;
+      // lastRowData[12] = lastRowData[12] + d.scales_details[1].count;
+      // lastRowData[13] = lastRowData[13] + d.scales_details[1].average_score;
+      // lastRowData[14] = lastRowData[14] + d.scales_details[2].count;
+      // lastRowData[15] = lastRowData[15] + d.scales_details[2].average_score;
+      const data = worksheet.addRow(['', d.facility_name, d.no_of_patients_seen, d.points_seen,
+        d.meds_lowered, d.meds_continued_but_added_stop_date, d.meds_stopped, d.meds_lowered + d.meds_continued_but_added_stop_date +  d.meds_stopped ,
+        d.meds_added, d.meds_increased, d.meds_added_with_stop_date,
+        d.scales_performed,
+        d.scales_details[scalesDetailsIndex[0]].count, d.scales_details[scalesDetailsIndex[0]].average_score,
+        d.scales_details[scalesDetailsIndex[1]].count, d.scales_details[scalesDetailsIndex[1]].average_score,
+        d.scales_details[scalesDetailsIndex[2]].count, d.scales_details[scalesDetailsIndex[2]].average_score
+        ,d.scales_details[scalesDetailsIndex[3]].count, d.scales_details[scalesDetailsIndex[3]].average_score
+        ,d.scales_details[scalesDetailsIndex[4]].count, d.scales_details[scalesDetailsIndex[4]].average_score
+        ,d.scales_details[scalesDetailsIndex[5]].count, d.scales_details[scalesDetailsIndex[5]].average_score
+        ,d.scales_details[scalesDetailsIndex[6]].count, d.scales_details[scalesDetailsIndex[6]].average_score
+        ,d.scales_details[scalesDetailsIndex[7]].count, d.scales_details[scalesDetailsIndex[7]].average_score
+        ,d.scales_details[scalesDetailsIndex[8]].count, d.scales_details[scalesDetailsIndex[8]].average_score
+        ,d.scales_details[scalesDetailsIndex[9]].count, d.scales_details[scalesDetailsIndex[9]].average_score
+        ,d.scales_details[scalesDetailsIndex[10]].count, d.scales_details[scalesDetailsIndex[10]].average_score
+        ,d.scales_details[scalesDetailsIndex[11]].count, d.scales_details[scalesDetailsIndex[11]].average_score
+        ,d.scales_details[scalesDetailsIndex[12]].count, d.scales_details[scalesDetailsIndex[12]].average_score
+        ,d.scales_details[scalesDetailsIndex[13]].count, d.scales_details[scalesDetailsIndex[13]].average_score
+        ,d.scales_details[scalesDetailsIndex[14]].count, d.scales_details[scalesDetailsIndex[14]].average_score
+        ,d.scales_details[scalesDetailsIndex[15]].count, d.scales_details[scalesDetailsIndex[15]].average_score
+        ,d.scales_details[scalesDetailsIndex[16]].count, d.scales_details[scalesDetailsIndex[16]].average_score
+        ,d.scales_details[scalesDetailsIndex[17]].count, d.scales_details[scalesDetailsIndex[17]].average_score
+        ,d.scales_details[scalesDetailsIndex[18]].count, d.scales_details[scalesDetailsIndex[18]].average_score
+        ,d.scales_details[scalesDetailsIndex[19]].count, d.scales_details[scalesDetailsIndex[19]].average_score
+        ,d.scales_details[scalesDetailsIndex[20]].count, d.scales_details[scalesDetailsIndex[20]].average_score
+        ,d.scales_details[scalesDetailsIndex[21]].count, d.scales_details[scalesDetailsIndex[21]].average_score
+        ,d.scales_details[scalesDetailsIndex[22]].count, d.scales_details[scalesDetailsIndex[22]].average_score
+        ,d.scales_details[scalesDetailsIndex[23]].count, d.scales_details[scalesDetailsIndex[23]].average_score
+        ,d.scales_details[scalesDetailsIndex[24]].count, d.scales_details[scalesDetailsIndex[24]].average_score
+        ,d.scales_details[scalesDetailsIndex[25]].count, d.scales_details[scalesDetailsIndex[26]].average_score
+        ,d.scales_details[scalesDetailsIndex[26]].count, d.scales_details[scalesDetailsIndex[26]].average_score
+        ,d.scales_details[scalesDetailsIndex[27]].count, d.scales_details[scalesDetailsIndex[27]].average_score
+        ,d.scales_details[scalesDetailsIndex[28]].count, d.scales_details[scalesDetailsIndex[28]].average_score]);
+
+      data.eachCell((cell, number) => {
+        this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+        if(number >= 3){
+          cell.alignment = { vertical: 'middle', horizontal: 'center'};
+        }
+      });
+
+    }else {
+      lastRowData[0] = lastRowData[0] + d.no_of_patients_seen;
+      lastRowData[1] = lastRowData[1] + d.points_seen;
+      lastRowData[2] = lastRowData[2] + d.meds_lowered;
+      lastRowData[3] = lastRowData[3] + d.meds_continued_but_added_stop_date;
+      lastRowData[4] = lastRowData[4] + d.meds_stopped;
+      lastRowData[5] = lastRowData[5] + d.meds_lowered + d.meds_continued_but_added_stop_date +  d.meds_stopped
+      lastRowData[6] = lastRowData[6] + d.meds_added;
+      lastRowData[7] = lastRowData[7] + d.meds_increased;
+      lastRowData[8] = lastRowData[8] + d.meds_added_with_stop_date;
+      lastRowData[9] = lastRowData[9] + d.scales_performed;
+      let lastRowDataIndex = 10;
+      let scalesDetailsIndex = [];
+      for(let sequenceScaleIndex = 0; sequenceScaleIndex < d.scales_details.length; sequenceScaleIndex++){
+        for(let sequenceObjectIndex = 0; sequenceObjectIndex < d.scales_details.length; sequenceObjectIndex++){
+          if(this.scales[sequenceScaleIndex] == d.scales_details[sequenceObjectIndex].scale_name){
+             lastRowData[lastRowDataIndex] = lastRowData[lastRowDataIndex] + d.scales_details[sequenceObjectIndex].count;
+             lastRowDataIndex++;
+             lastRowData[lastRowDataIndex] = lastRowData[lastRowDataIndex] + d.scales_details[sequenceObjectIndex].average_score;
+             lastRowDataIndex++;
+             scalesDetailsIndex.push(sequenceObjectIndex);
+          }
+        }
+      }
+      // lastRowData[10] = lastRowData[10] + d.scales_details[0].count;
+      // lastRowData[11] = lastRowData[11] + d.scales_details[0].average_score;
+      // lastRowData[12] = lastRowData[12] + d.scales_details[1].count;
+      // lastRowData[13] = lastRowData[13] + d.scales_details[1].average_score;
+      // lastRowData[14] = lastRowData[14] + d.scales_details[2].count;
+      // lastRowData[15] = lastRowData[15] + d.scales_details[2].average_score;
+
+      const data = worksheet.addRow(['', d.provider_name, d.no_of_patients_seen,
+        d.meds_lowered, d.meds_continued_but_added_stop_date, d.meds_stopped, d.meds_lowered + d.meds_continued_but_added_stop_date + d.meds_stopped,
+        d.meds_added, d.meds_increased, d.meds_added_with_stop_date,
+        d.scales_performed,
+        d.scales_details[scalesDetailsIndex[0]].count, d.scales_details[scalesDetailsIndex[0]].average_score,
+        d.scales_details[scalesDetailsIndex[1]].count, d.scales_details[scalesDetailsIndex[1]].average_score,
+        d.scales_details[scalesDetailsIndex[2]].count, d.scales_details[scalesDetailsIndex[2]].average_score
+        ,d.scales_details[scalesDetailsIndex[3]].count, d.scales_details[scalesDetailsIndex[3]].average_score
+        ,d.scales_details[scalesDetailsIndex[4]].count, d.scales_details[scalesDetailsIndex[4]].average_score
+        ,d.scales_details[scalesDetailsIndex[5]].count, d.scales_details[scalesDetailsIndex[5]].average_score
+        ,d.scales_details[scalesDetailsIndex[6]].count, d.scales_details[scalesDetailsIndex[6]].average_score
+        ,d.scales_details[scalesDetailsIndex[7]].count, d.scales_details[scalesDetailsIndex[7]].average_score
+        ,d.scales_details[scalesDetailsIndex[8]].count, d.scales_details[scalesDetailsIndex[8]].average_score
+        ,d.scales_details[scalesDetailsIndex[9]].count, d.scales_details[scalesDetailsIndex[9]].average_score
+        ,d.scales_details[scalesDetailsIndex[10]].count, d.scales_details[scalesDetailsIndex[10]].average_score
+        ,d.scales_details[scalesDetailsIndex[11]].count, d.scales_details[scalesDetailsIndex[11]].average_score
+        ,d.scales_details[scalesDetailsIndex[12]].count, d.scales_details[scalesDetailsIndex[12]].average_score
+        ,d.scales_details[scalesDetailsIndex[13]].count, d.scales_details[scalesDetailsIndex[13]].average_score
+        ,d.scales_details[scalesDetailsIndex[14]].count, d.scales_details[scalesDetailsIndex[14]].average_score
+        ,d.scales_details[scalesDetailsIndex[15]].count, d.scales_details[scalesDetailsIndex[15]].average_score
+        ,d.scales_details[scalesDetailsIndex[16]].count, d.scales_details[scalesDetailsIndex[16]].average_score
+        ,d.scales_details[scalesDetailsIndex[17]].count, d.scales_details[scalesDetailsIndex[17]].average_score
+        ,d.scales_details[scalesDetailsIndex[18]].count, d.scales_details[scalesDetailsIndex[18]].average_score
+        ,d.scales_details[scalesDetailsIndex[19]].count, d.scales_details[scalesDetailsIndex[19]].average_score
+        ,d.scales_details[scalesDetailsIndex[20]].count, d.scales_details[scalesDetailsIndex[20]].average_score
+        ,d.scales_details[scalesDetailsIndex[21]].count, d.scales_details[scalesDetailsIndex[21]].average_score
+        ,d.scales_details[scalesDetailsIndex[22]].count, d.scales_details[scalesDetailsIndex[22]].average_score
+        ,d.scales_details[scalesDetailsIndex[23]].count, d.scales_details[scalesDetailsIndex[23]].average_score
+        ,d.scales_details[scalesDetailsIndex[24]].count, d.scales_details[scalesDetailsIndex[24]].average_score
+        ,d.scales_details[scalesDetailsIndex[25]].count, d.scales_details[scalesDetailsIndex[26]].average_score
+        ,d.scales_details[scalesDetailsIndex[26]].count, d.scales_details[scalesDetailsIndex[26]].average_score
+        ,d.scales_details[scalesDetailsIndex[27]].count, d.scales_details[scalesDetailsIndex[27]].average_score
+        ,d.scales_details[scalesDetailsIndex[28]].count, d.scales_details[scalesDetailsIndex[28]].average_score]);
+
+      data.eachCell((cell, number) => {
+        this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+        if(number >= 3){
+          cell.alignment = { vertical: 'middle', horizontal: 'center'};
+        }
+      });
+    }
+  });
+
+  for(let addBlankRow = 0; addBlankRow < 2; addBlankRow++){
+    let blankRow;
+    if(fileName !== 'facility_performance_report.xlsx'){
+      blankRow = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', '', '', '', '', '',
+      '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ]);
+    } else{
+      blankRow = worksheet.addRow(['', '' , '' , '', '', '', '', '', '', '', '', '', '', '', '', '',
+      '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ,'', '', '', '', '', '', '', '', '', ''
+      ]);
+    }
+    blankRow.eachCell((cell, number) => {
+      this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+    });
+  }
+  let lastRow;
+  if(fileName !== 'facility_performance_report.xlsx'){
+    lastRow = worksheet.addRow(['', 'Total' , lastRowData[0] , lastRowData[1], lastRowData[2], lastRowData[3], lastRowData[4], lastRowData[5], lastRowData[6], lastRowData[7], lastRowData[8], lastRowData[9],
+    lastRowData[10], lastRowData[11], lastRowData[12], lastRowData[13],
+    lastRowData[14], lastRowData[15]
+    , lastRowData[16], lastRowData[17], lastRowData[18], lastRowData[19], lastRowData[20],
+    lastRowData[21], lastRowData[22], lastRowData[23], lastRowData[24], lastRowData[25],
+    lastRowData[26], lastRowData[27], lastRowData[28], lastRowData[29], lastRowData[30],
+    lastRowData[31], lastRowData[32], lastRowData[33], lastRowData[34], lastRowData[35],
+    lastRowData[36], lastRowData[37], lastRowData[38], lastRowData[39], lastRowData[40],
+    lastRowData[41], lastRowData[42], lastRowData[43], lastRowData[44], lastRowData[45],
+    lastRowData[46], lastRowData[47], lastRowData[48], lastRowData[49], lastRowData[50],
+    lastRowData[51], lastRowData[52], lastRowData[53], lastRowData[54], lastRowData[55],
+    lastRowData[56], lastRowData[57], lastRowData[58], lastRowData[59], lastRowData[60],
+    lastRowData[61], lastRowData[62], lastRowData[63],lastRowData[64], lastRowData[65],
+    lastRowData[66], lastRowData[67]
+    ]);
+  }
+  if(fileName == 'facility_performance_report.xlsx'){
+    lastRow = worksheet.addRow(['', 'Total' , lastRowData[0], lastRowData[2],  lastRowData[3], lastRowData[4], lastRowData[5], lastRowData[6], lastRowData[7], lastRowData[8], lastRowData[9],
+    lastRowData[10] , lastRowData[11], lastRowData[12], lastRowData[13],
+    lastRowData[14], lastRowData[15],
+    lastRowData[16], lastRowData[17], lastRowData[18], lastRowData[19], lastRowData[20],
+    lastRowData[21], lastRowData[22], lastRowData[23], lastRowData[24], lastRowData[25],
+    lastRowData[26], lastRowData[27], lastRowData[28], lastRowData[29], lastRowData[30],
+    lastRowData[31], lastRowData[32], lastRowData[33], lastRowData[34], lastRowData[35],
+    lastRowData[36], lastRowData[37], lastRowData[38], lastRowData[39], lastRowData[40],
+    lastRowData[41], lastRowData[42], lastRowData[43], lastRowData[44], lastRowData[45],
+    lastRowData[46], lastRowData[47], lastRowData[48], lastRowData[49], lastRowData[50],
+    lastRowData[51], lastRowData[52], lastRowData[53],
+    lastRowData[54], lastRowData[55], lastRowData[56], lastRowData[57], lastRowData[58],
+    lastRowData[59], lastRowData[60], lastRowData[61], lastRowData[62], lastRowData[63],
+    lastRowData[64], lastRowData[65], lastRowData[66], lastRowData[67]
+    ]);
+  }
+  lastRow.eachCell((cell, number) => {
+    this.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 3);
+    if(number >= 3){
+      cell.alignment = { vertical: 'middle', horizontal: 'center'};
+    }
+  });
+
+  worksheet.getColumn(2).width = 25;
+  worksheet.getRow(16).height = 30;
+  worksheet.getRow(17).height = 40;
+  worksheet.getColumn(3).width = 25;
+  worksheet.getColumn(4).width = 25;
+  worksheet.getColumn(5).width = 25;
+  worksheet.getColumn(6).width = 25;
+  worksheet.getColumn(7).width = 25;
+  worksheet.getColumn(8).width = 25;
+  worksheet.getColumn(9).width = 25;
+  worksheet.getColumn(10).width = 25;
+  worksheet.getColumn(11).width = 25;
+  worksheet.getColumn(12).width = 20;
+
+  workbooke.xlsx.writeBuffer().then((dataa) => {
+    const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    fs.saveAs(blob, fileName);
+  });
+
+}
+
+designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, flag){
+  if (number == 1) return;
+
+  cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+
+  if(number == 2){
+    cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, bottom: { style: 'thin' }}
+  }
+
+  if(fileName !== 'facility_performance_report.xlsx' && number == reportHeadingColumnForProvider.length){
+    cell.border = { top: { style: 'thin' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
+  }
+  if(fileName == 'facility_performance_report.xlsx' && number == reportHeadingColumnForFacility.length){
+    cell.border = { top: { style: 'thin' }, right: { style: 'thick' }, bottom: { style: 'thin' }}
+  }
+  if(flag == 1){
+    cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+  }
+  if(flag == 1 && number == 2){
+    cell.border = { top: { style: 'thick' }, left: { style: 'thick' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+  }
+  if(flag == 1 && (number == reportHeadingColumnForFacility.length || number == reportHeadingColumnForProvider.length)){
+    cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thick' } }
+  }
+  if(number >=4 && number <=7 && fileName == 'facility_performance_report.xlsx'){
+    cell.fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: 'FFFFFF00' },
+      bgColor: { argb: 'FF0000FF' }
+    }
+  }
+  if(number >=5 && number <=8 && fileName != 'facility_performance_report.xlsx'){
+    cell.fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: 'FFFFFF00' },
+      bgColor: { argb: 'FF0000FF' }
+    }
+  }
+  if(flag == 3){
+    cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thick' }, right: { style: 'thin' } }
+  }
+  if(flag == 3 && fileName !== 'facility_performance_report.xlsx' && number == 2){
+    cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, right: { style: 'thin' }, bottom: { style: 'thick' }}
+  }
+  if(flag == 3 && fileName == 'facility_performance_report.xlsx' && number == 2){
+    cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, right: { style: 'thin' }, bottom: { style: 'thick' }}
+  }
+}
    // exxport to excel
   exportToExcel2(reportName) {
     const ws: xlsx.WorkSheet =   xlsx.utils.table_to_sheet(this.epltablee.nativeElement);
