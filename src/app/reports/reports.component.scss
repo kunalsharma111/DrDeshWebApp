@@ -719,17 +719,20 @@ label{
     grid-template-areas:
         "facility facility address address"
         "name name provider room"
-        "date order indication indication"
-        "empty orderdetail indicationdetail indicationdetail"
-        "empty orderdetail indicationdetail indicationdetail"
-        "empty orderdetail indicationdetail indicationdetail"
-        "empty orderdetail indicationdetail indicationdetail"
+        "date date indication indication"
+        "empty empty indicationdetail indicationdetail"
+        "empty empty indicationdetail indicationdetail"
+        "empty empty indicationdetail indicationdetail"
+        "empty empty indicationdetail indicationdetail"
         "sig1 sig1 sig2 sig2";
     grid-template-rows: 65px 65px 50px 50px 50px 50px 50px 65px;
     .fr1 {
         grid-area: facility;
         border: 1px solid black;
         padding: 0 10px;
+        h5{
+            font-size: 1rem;
+        }
     }
     .fr2 {
         grid-area: address;
@@ -767,15 +770,18 @@ label{
         border: 1px solid black;
         padding: 0 10px;
     }
-    .fr9 {
-        grid-area: orderdetail;
-        border: 1px solid black;
-        padding: 10px;
-    }
+    // .fr9 {
+    //     grid-area: orderdetail;
+    //     border: 1px solid black;
+    //     padding: 10px;
+    // }
     .fr10 {
         grid-area: indicationdetail;
         border: 1px solid black;
         padding: 10px;
+        span {
+            color: lightgreen;
+        }
     }
     .fr11 {
         grid-area: empty;

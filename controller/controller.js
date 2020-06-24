@@ -349,7 +349,7 @@ router.post('/goku', verifyToken, (req, res) => {
     if (req.body.medfollowup != "Per routine protocol") {
         days = req.body.followupdays;
     }
-    if(!req.body.visit) {
+    if (!req.body.visit) {
         req.body.visit = new Date()
     }
     let masterdata = {
@@ -933,36 +933,38 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
     console.log(req.body.provider1);
     from = new Date(req.body.fromdate);
     to = new Date(req.body.todate);
-    var proreport=[{
-        facility_name:'',
-        no_of_patients_seen : 0,
-        points_seen : 0,
-        meds_added : 0,
-        meds_lowered : 0,
-        meds_increased : 0,
-        meds_added_with_stop_date : 0,
-        meds_continued_but_added_stop_date : 0,
-        meds_stopped : 0,
-        scales_performed : 0,
-        scales_details:[{scale_name:'',
-        count:0,
-        average_score:0}],
-        number_of_each_subscale_performed : 0,
-        average_score_of_each_scale : 0,
+    var proreport = [{
+        facility_name: '',
+        no_of_patients_seen: 0,
+        points_seen: 0,
+        meds_added: 0,
+        meds_lowered: 0,
+        meds_increased: 0,
+        meds_added_with_stop_date: 0,
+        meds_continued_but_added_stop_date: 0,
+        meds_stopped: 0,
+        scales_performed: 0,
+        scales_details: [{
+            scale_name: '',
+            count: 0,
+            average_score: 0
+        }],
+        number_of_each_subscale_performed: 0,
+        average_score_of_each_scale: 0,
     }]
 
-    MasterPatientModel.find({ 'visits.provider' : req.body.provider1,'visits.visit': {"$gte": new Date(req.body.fromdate),"$lte": new Date(req.body.todate)}})
-    .then(doc => {
-        if(doc.length  != 0 ){
-           proreport = genreport(doc,proreport);
-           setTimeout(() => {
+    MasterPatientModel.find({ 'visits.provider': req.body.provider1, 'visits.visit': { "$gte": new Date(req.body.fromdate), "$lte": new Date(req.body.todate) } })
+        .then(doc => {
+            if (doc.length != 0) {
+                proreport = genreport(doc, proreport);
+                setTimeout(() => {
                     res.json(proreport);
                 }, 1000)
-    }
-    else{
-        res.json("no");
-    }
-    })
+            }
+            else {
+                res.json("no");
+            }
+        })
 })
 
 // function genreportt(doc,proreport){
@@ -1042,50 +1044,52 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //     return proreport;
 // }
 
-function genreport(doc,proreport){
-    var total = doc.length-1;
+function genreport(doc, proreport) {
+    var total = doc.length - 1;
     // console.log(proreport.length);
     firstvisit = false;
-    if(doc[0].visits.length == 1){
+    if (doc[0].visits.length == 1) {
         firstvisit = true;
     }
     var flag = 0;
-    while(total >= 0){
-        var totalvisits = doc[total].visits.length-1;
-        while(totalvisits >= 0){
-            if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
-                var finalsize = proreport.length-1;
+    while (total >= 0) {
+        var totalvisits = doc[total].visits.length - 1;
+        while (totalvisits >= 0) {
+            if (doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to) {
+                var finalsize = proreport.length - 1;
                 var workon = 0;
-                for( i=0; i<=finalsize; i++){
-                    if(proreport[i].facility_name != doc[total].visits[totalvisits].facility && i == finalsize && flag!=0){
+                for (i = 0; i <= finalsize; i++) {
+                    if (proreport[i].facility_name != doc[total].visits[totalvisits].facility && i == finalsize && flag != 0) {
                         proreport.push({
-                            facility_name:'',
-                            no_of_patients_seen : 0,
-                            points_seen : 0,
-                            meds_added : 0,
-                            meds_lowered : 0,
-                            meds_increased : 0,
-                            meds_added_with_stop_date : 0,
-                            meds_continued_but_added_stop_date : 0,
-                            meds_stopped : 0,
-                            scales_performed : 0,
-                            scales_details:[{scale_name:'',
-                            count:0,
-                            average_score:0}],
-                            number_of_each_subscale_performed : 0,
-                            average_score_of_each_scale : 0,
+                            facility_name: '',
+                            no_of_patients_seen: 0,
+                            points_seen: 0,
+                            meds_added: 0,
+                            meds_lowered: 0,
+                            meds_increased: 0,
+                            meds_added_with_stop_date: 0,
+                            meds_continued_but_added_stop_date: 0,
+                            meds_stopped: 0,
+                            scales_performed: 0,
+                            scales_details: [{
+                                scale_name: '',
+                                count: 0,
+                                average_score: 0
+                            }],
+                            number_of_each_subscale_performed: 0,
+                            average_score_of_each_scale: 0,
                         });
-                        console.log("new object bnata "+proreport.length + " after new object");
-                        workon = proreport.length-1;
+                        console.log("new object bnata " + proreport.length + " after new object");
+                        workon = proreport.length - 1;
                         console.log(workon);
                         break;
                     }
-                    else if(proreport[i].facility_name == doc[total].visits[totalvisits].facility){
+                    else if (proreport[i].facility_name == doc[total].visits[totalvisits].facility) {
                         workon = i;
                         console.log("found exisiting object for this facility at positon " + workon);
                         break;
                     }
-                    else if(finalsize == 0 && flag == 0){
+                    else if (finalsize == 0 && flag == 0) {
                         workon = i;
                         console.log("first time visit");
                         flag = 1;
@@ -1095,26 +1099,26 @@ function genreport(doc,proreport){
                 // patients seen
                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
                 // setting facility
-                if(doc[total].visits[totalvisits].facility != undefined && doc[total].visits[totalvisits].facility != null && doc[total].visits[totalvisits].facility != ""){
+                if (doc[total].visits[totalvisits].facility != undefined && doc[total].visits[totalvisits].facility != null && doc[total].visits[totalvisits].facility != "") {
                     proreport[workon].facility_name = doc[total].visits[totalvisits].facility;
                 }
                 // checking for new patient
-                if(doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined){
+                if (doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined) {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
                 }
                 // checking for medication management follow up
-                if(doc[total].visits[totalvisits].typevisit ==  "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined){
+                if (doc[total].visits[totalvisits].typevisit == "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined) {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
                 }
                 // checking for atleast two
                 // console.log(doc[total].visits[totalvisits].scaleinfo.length + "visit no" + totalvisits);
-                var scale_size = doc[total].visits[totalvisits].scaleinfo.length-1;
-                if(doc[total].visits[totalvisits].scaleinfo.length >=2 && doc[total].visits[totalvisits].scaleinfo != undefined){
+                var scale_size = doc[total].visits[totalvisits].scaleinfo.length - 1;
+                if (doc[total].visits[totalvisits].scaleinfo.length >= 2 && doc[total].visits[totalvisits].scaleinfo != undefined) {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                     flag = true;
                     // adding 2.5 score if scales have Dementia testing scale
-                    while(scale_size >= 0 && flag == true){
-                        if(doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA"){
+                    while (scale_size >= 0 && flag == true) {
+                        if (doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA") {
                             proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                             flag = false;
                         }
@@ -1122,141 +1126,141 @@ function genreport(doc,proreport){
                     }
                 }
                 // Psychotherapy points
-                if(doc[total].visits[totalvisits].thtime == "Upto 30 min"){
+                if (doc[total].visits[totalvisits].thtime == "Upto 30 min") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
                 }
-                if(doc[total].visits[totalvisits].thtime == "Upto 45 min"){
+                if (doc[total].visits[totalvisits].thtime == "Upto 45 min") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                 }
-                if(doc[total].visits[totalvisits].thtime == "Upto 1 Hr"){
+                if (doc[total].visits[totalvisits].thtime == "Upto 1 Hr") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
                 }
-                if(doc[total].visits[totalvisits].thtime == "More then 1 Hr"){
+                if (doc[total].visits[totalvisits].thtime == "More then 1 Hr") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                 }
                 // medicine continued but addded stop date
-                if(firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined){
-                    if(doc[total].visits[totalvisits].medstopdate != null  ){
+                if (firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined) {
+                    if (doc[total].visits[totalvisits].medstopdate != null) {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined){
-                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits-1].medstopdate && doc[total].visits[totalvisits].medstopdate != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined) {
+                    if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits - 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].medstopdate != undefined){
-                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits+1].medstopdate && doc[total].visits[totalvisits].medstopdate != ""){
+                else if (doc[total].visits[totalvisits].medstopdate != undefined) {
+                    if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits + 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
                 // stop date of added medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined){
-                    if(doc[total].visits[totalvisits].addeddate != null  ){
+                if (firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined) {
+                    if (doc[total].visits[totalvisits].addeddate != null) {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined){
-                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits-1].addeddate && doc[total].visits[totalvisits].addeddate != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined) {
+                    if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits - 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].addeddate != undefined){
-                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits+1].addeddate && doc[total].visits[totalvisits].addeddate != ""){
+                else if (doc[total].visits[totalvisits].addeddate != undefined) {
+                    if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits + 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
                 // Added Medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].added != undefined){
-                    if(doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].added != undefined) {
+                    if (doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined) {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined){
-                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits-1].added && doc[total].visits[totalvisits].added != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined) {
+                    if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits - 1].added && doc[total].visits[totalvisits].added != "") {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].added != undefined){
-                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits+1].added && doc[total].visits[totalvisits].added != ""){
+                else if (doc[total].visits[totalvisits].added != undefined) {
+                    if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits + 1].added && doc[total].visits[totalvisits].added != "") {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
                 // Increased Medicine
-                if(doc[total].visits[totalvisits].increase != undefined){
-                if(firstvisit == true){
-                    if(doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined ){
-                        proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+                if (doc[total].visits[totalvisits].increase != undefined) {
+                    if (firstvisit == true) {
+                        if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
+                            proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+                        }
+                    }
+                    else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined) {
+                        if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits - 1].increase && doc[total].visits[totalvisits].increase != "") {
+                            proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+                        }
+                    }
+                    else if (doc[total].visits[totalvisits].increase != undefined) {
+                        if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits + 1].increase && doc[total].visits[totalvisits].increase != "") {
+                            proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+                        }
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined){
-                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits-1].increase && doc[total].visits[totalvisits].increase != ""){
-                        proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
-                    }
-                }
-                else if(doc[total].visits[totalvisits].increase != undefined){
-                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits+1].increase && doc[total].visits[totalvisits].increase != ""){
-                        proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
-                    }
-                }
-            }
                 // Stopped Medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined){
-                    if(doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined) {
+                    if (doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined) {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined){
-                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits-1].stopped2 && doc[total].visits[totalvisits].stopped2 != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined) {
+                    if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits - 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].stopped2 != undefined){
-                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits+1].stopped2 && doc[total].visits[totalvisits].stopped2 != ""){
+                else if (doc[total].visits[totalvisits].stopped2 != undefined) {
+                    if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
                 // meds lowered or decreased
-                if(firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined){
-                    if(doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined) {
+                    if (doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined) {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined){
-                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits-1].decrease2 && doc[total].visits[totalvisits].decrease2 != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined) {
+                    if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits - 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].decrease2 != undefined){
-                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits+1].decrease2 && doc[total].visits[totalvisits].decrease2 != ""){
+                else if (doc[total].visits[totalvisits].decrease2 != undefined) {
+                    if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits + 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
                 // scales performed
-                if(firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0){
-                    if(doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    if (doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined) {
                         proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0){
-                    if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits-1].scaleinfo.length){
-                        if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
-                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                        if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
-                        else{
+                        else {
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
-                else if(doc[total].visits[totalvisits].scaleinfo.length != 0){
-                   
-                    if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits+1].scaleinfo.length){
-                        
-                        if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
-                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
+                else if (doc[total].visits[totalvisits].scaleinfo.length != 0) {
+
+                    if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits + 1].scaleinfo.length) {
+
+                        if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
-                        else{
+                        else {
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
@@ -1265,31 +1269,31 @@ function genreport(doc,proreport){
                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
                 console.log("scales scale length : " + scale_length);
                 var ff = 0;
-                for(k=0;k<scale_length;k++){
+                for (k = 0; k < scale_length; k++) {
                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
-                    console.log(proreport[workon].scales_details.length-1);
+                    console.log(proreport[workon].scales_details.length - 1);
                     console.log("error kidr hai ? 1");
-                    for( p=0; p<=proreport[workon].scales_details.length-1; p++){
+                    for (p = 0; p <= proreport[workon].scales_details.length - 1; p++) {
                         console.log("error kidr hai ? 2 " + k + " " + p);
-                        if(proreport[workon].scales_details.length == 1 && ff==0){
+                        if (proreport[workon].scales_details.length == 1 && ff == 0) {
                             console.log("error kidr hai ? 3");
                             console.log("first scale to be added in record");
                             proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
-                            proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1; 
+                            proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
                             ff = 1;
                             break;
                         }
-                        else if(proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name){
+                        else if (proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name) {
                             console.log("error kidr hai ? 4");
-                            if(totalvisits > 0){
-                                var isPresent = doc[total].visits[totalvisits-1].scaleinfo.some((el)=>{ 
-                                    if(el.scale_name === proreport[workon].scales_details[p].scale_name){
+                            if (totalvisits > 0) {
+                                var isPresent = doc[total].visits[totalvisits - 1].scaleinfo.some((el) => {
+                                    if (el.scale_name === proreport[workon].scales_details[p].scale_name) {
                                         return true;
-                                    }else{
+                                    } else {
                                         return false;
                                     }
                                 });
-                                if(isPresent == false){
+                                if (isPresent == false) {
                                     console.log("error kidr hai ? 5");
                                     console.log("pata nh");
                                     proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
@@ -1298,16 +1302,16 @@ function genreport(doc,proreport){
                             console.log("same record");
                             break;
                         }
-                        else if(proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length-1){
+                        else if (proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length - 1) {
                             console.log("new record for scale");
                             console.log("error kidr hai ? 6");
-                                 console.log(proreport[workon].scales_details.length-1);
-                                 proreport[workon].scales_details.push({
-                                        scale_name : doc[total].visits[totalvisits].scaleinfo[k].scale_name,
-                                        count : 1,
-                                        average_score : 0
-                                 })
-                             break;
+                            console.log(proreport[workon].scales_details.length - 1);
+                            proreport[workon].scales_details.push({
+                                scale_name: doc[total].visits[totalvisits].scaleinfo[k].scale_name,
+                                count: 1,
+                                average_score: 0
+                            })
+                            break;
                         }
                     }
                 }
@@ -1317,88 +1321,92 @@ function genreport(doc,proreport){
         console.log(proreport[workon].scales_details);
         total--;
     }
-        // console.log(proreport);
-        return proreport;
+    // console.log(proreport);
+    return proreport;
 }
 
 router.post('/facilityreport', verifyToken, (req, res) => {
     from = new Date(req.body.fromdate1);
     to = new Date(req.body.todate1);
-    var proreport=[{
-        provider_name:'',
-        no_of_patients_seen : 0,
-        points_seen : 0,
-        meds_added : 0,
-        meds_lowered : 0,
-        meds_increased : 0,
-        meds_added_with_stop_date : 0,
-        meds_continued_but_added_stop_date : 0,
-        meds_stopped : 0,
-        scales_performed : 0,
-        scales_details:[{scale_name:'',
-                            count:0,
-                            average_score:0}],
-        number_of_each_subscale_performed : 0,
-        average_score_of_each_scale : 0,
+    var proreport = [{
+        provider_name: '',
+        no_of_patients_seen: 0,
+        points_seen: 0,
+        meds_added: 0,
+        meds_lowered: 0,
+        meds_increased: 0,
+        meds_added_with_stop_date: 0,
+        meds_continued_but_added_stop_date: 0,
+        meds_stopped: 0,
+        scales_performed: 0,
+        scales_details: [{
+            scale_name: '',
+            count: 0,
+            average_score: 0
+        }],
+        number_of_each_subscale_performed: 0,
+        average_score_of_each_scale: 0,
     }]
-    MasterPatientModel.find({ 'visits.facility' : req.body.facility1,'visits.visit': {"$gte": new Date(req.body.fromdate1),"$lte": new Date(req.body.todate1)}})
-    .then(doc => {
-        if(doc.length  != 0 ){
-           proreport = genreport2(doc,proreport);
-           setTimeout(() => {
-               console.log(proreport);
+    MasterPatientModel.find({ 'visits.facility': req.body.facility1, 'visits.visit': { "$gte": new Date(req.body.fromdate1), "$lte": new Date(req.body.todate1) } })
+        .then(doc => {
+            if (doc.length != 0) {
+                proreport = genreport2(doc, proreport);
+                setTimeout(() => {
+                    console.log(proreport);
                     res.json(proreport);
                 }, 1000)
-    }
-    else{
-        res.json("no");
-    }
-    })
+            }
+            else {
+                res.json("no");
+            }
+        })
 })
-function genreport2(doc,proreport){
-    var total = doc.length-1;
+function genreport2(doc, proreport) {
+    var total = doc.length - 1;
     // console.log(proreport.length);
     firstvisit = false;
-    if(doc[0].visits.length == 1){
+    if (doc[0].visits.length == 1) {
         firstvisit = true;
     }
     var flag = 0;
-    while(total >= 0){
-        var totalvisits = doc[total].visits.length-1;
-        while(totalvisits >= 0){
-            if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
-                var finalsize = proreport.length-1;
+    while (total >= 0) {
+        var totalvisits = doc[total].visits.length - 1;
+        while (totalvisits >= 0) {
+            if (doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to) {
+                var finalsize = proreport.length - 1;
                 var workon = 0;
-                for( i=0; i<=finalsize; i++){
-                    if(proreport[i].provider_name != doc[total].visits[totalvisits].provider && i == finalsize && flag!=0){
+                for (i = 0; i <= finalsize; i++) {
+                    if (proreport[i].provider_name != doc[total].visits[totalvisits].provider && i == finalsize && flag != 0) {
                         proreport.push({
-                            provider_name:'',
-                            no_of_patients_seen : 0,
-                            points_seen : 0,
-                            meds_added : 0,
-                            meds_lowered : 0,
-                            meds_increased : 0,
-                            meds_added_with_stop_date : 0,
-                            meds_continued_but_added_stop_date : 0,
-                            meds_stopped : 0,
-                            scales_performed : 0,
-                            scales_details:[{scale_name:'',
-                            count:0,
-                            average_score:0}],
-                            number_of_each_subscale_performed : 0,
-                            average_score_of_each_scale : 0,
+                            provider_name: '',
+                            no_of_patients_seen: 0,
+                            points_seen: 0,
+                            meds_added: 0,
+                            meds_lowered: 0,
+                            meds_increased: 0,
+                            meds_added_with_stop_date: 0,
+                            meds_continued_but_added_stop_date: 0,
+                            meds_stopped: 0,
+                            scales_performed: 0,
+                            scales_details: [{
+                                scale_name: '',
+                                count: 0,
+                                average_score: 0
+                            }],
+                            number_of_each_subscale_performed: 0,
+                            average_score_of_each_scale: 0,
                         });
-                        console.log("new object bnata "+proreport.length + " after new object");
-                        workon = proreport.length-1;
+                        console.log("new object bnata " + proreport.length + " after new object");
+                        workon = proreport.length - 1;
                         console.log(workon);
                         break;
                     }
-                    else if(proreport[i].provider_name == doc[total].visits[totalvisits].provider){
+                    else if (proreport[i].provider_name == doc[total].visits[totalvisits].provider) {
                         workon = i;
                         console.log("found exisiting object for this provider at positon " + workon);
                         break;
                     }
-                    else if(finalsize == 0 && flag == 0){
+                    else if (finalsize == 0 && flag == 0) {
                         workon = i;
                         console.log("first time visit");
                         flag = 1;
@@ -1408,27 +1416,27 @@ function genreport2(doc,proreport){
                 // patients seen
                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
                 // setting provider
-                if(doc[total].visits[totalvisits].provider != undefined && doc[total].visits[totalvisits].provider != null && doc[total].visits[totalvisits].provider != ""){
+                if (doc[total].visits[totalvisits].provider != undefined && doc[total].visits[totalvisits].provider != null && doc[total].visits[totalvisits].provider != "") {
                     proreport[workon].provider_name = doc[total].visits[totalvisits].provider;
                 }
                 // checking for new patient
-                if(doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined){
+                if (doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined) {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
                 }
                 // checking for medication management follow up
-                if(doc[total].visits[totalvisits].typevisit ==  "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined){
+                if (doc[total].visits[totalvisits].typevisit == "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined) {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
                 }
                 // checking for atleast two
                 // console.log(doc[total].visits[totalvisits].scaleinfo.length + "visit no" + totalvisits);
-                var scale_size = doc[total].visits[totalvisits].scaleinfo.length-1;
-                if(doc[total].visits[totalvisits].scaleinfo.length >=2 && doc[total].visits[totalvisits].scaleinfo != undefined){
-                   
+                var scale_size = doc[total].visits[totalvisits].scaleinfo.length - 1;
+                if (doc[total].visits[totalvisits].scaleinfo.length >= 2 && doc[total].visits[totalvisits].scaleinfo != undefined) {
+
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                     flag = true;
                     // adding 2.5 score if scales have Dementia testing scale 
-                    while(scale_size >= 0 && flag == true){
-                        if(doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA"){
+                    while (scale_size >= 0 && flag == true) {
+                        if (doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA") {
                             proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                             flag = false;
                         }
@@ -1436,138 +1444,138 @@ function genreport2(doc,proreport){
                     }
                 }
                 // Psychotherapy points
-                if(doc[total].visits[totalvisits].thtime == "Upto 30 min"){
+                if (doc[total].visits[totalvisits].thtime == "Upto 30 min") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
                 }
-                if(doc[total].visits[totalvisits].thtime == "Upto 45 min"){
+                if (doc[total].visits[totalvisits].thtime == "Upto 45 min") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                 }
-                if(doc[total].visits[totalvisits].thtime == "Upto 1 Hr"){
+                if (doc[total].visits[totalvisits].thtime == "Upto 1 Hr") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
                 }
-                if(doc[total].visits[totalvisits].thtime == "More then 1 Hr"){
+                if (doc[total].visits[totalvisits].thtime == "More then 1 Hr") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                 }
                 // medicine continued but addded stop date
-                if(firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined){
-                    if(doc[total].visits[totalvisits].medstopdate != null  ){
+                if (firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined) {
+                    if (doc[total].visits[totalvisits].medstopdate != null) {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined){
-                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits-1].medstopdate && doc[total].visits[totalvisits].medstopdate != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined) {
+                    if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits - 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].medstopdate != undefined){
-                    if(doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits+1].medstopdate && doc[total].visits[totalvisits].medstopdate != ""){
+                else if (doc[total].visits[totalvisits].medstopdate != undefined) {
+                    if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits + 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
                 // stop date of added medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined){
-                    if(doc[total].visits[totalvisits].addeddate != null  ){
+                if (firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined) {
+                    if (doc[total].visits[totalvisits].addeddate != null) {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined){
-                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits-1].addeddate && doc[total].visits[totalvisits].addeddate != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined) {
+                    if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits - 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].addeddate != undefined){
-                    if(doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits+1].addeddate && doc[total].visits[totalvisits].addeddate != ""){
+                else if (doc[total].visits[totalvisits].addeddate != undefined) {
+                    if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits + 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
                 // Added Medicine 
-                if(firstvisit == true && doc[total].visits[totalvisits].added != undefined){
-                    if(doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].added != undefined) {
+                    if (doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined) {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined){
-                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits-1].added && doc[total].visits[totalvisits].added != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined) {
+                    if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits - 1].added && doc[total].visits[totalvisits].added != "") {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].added != undefined){
-                    if(doc[total].visits[totalvisits].added != doc[total].visits[totalvisits+1].added && doc[total].visits[totalvisits].added != ""){
+                else if (doc[total].visits[totalvisits].added != undefined) {
+                    if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits + 1].added && doc[total].visits[totalvisits].added != "") {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
                 // Increased Medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].increase != undefined){
-                    if(doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].increase != undefined) {
+                    if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined){
-                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits-1].increase && doc[total].visits[totalvisits].increase != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined) {
+                    if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits - 1].increase && doc[total].visits[totalvisits].increase != "") {
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].increase != undefined){
-                    if(doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits+1].increase && doc[total].visits[totalvisits].increase != ""){
+                else if (doc[total].visits[totalvisits].increase != undefined) {
+                    if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits + 1].increase && doc[total].visits[totalvisits].increase != "") {
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
                 // Stopped Medicine
-                if(firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined){
-                    if(doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined) {
+                    if (doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined) {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined){
-                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits-1].stopped2 && doc[total].visits[totalvisits].stopped2 != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined) {
+                    if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits - 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].stopped2 != undefined){
-                    if(doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits+1].stopped2 && doc[total].visits[totalvisits].stopped2 != ""){
+                else if (doc[total].visits[totalvisits].stopped2 != undefined) {
+                    if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
                 // meds lowered or decreased
-                if(firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined){
-                    if(doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined) {
+                    if (doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined) {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined){
-                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits-1].decrease2 && doc[total].visits[totalvisits].decrease2 != ""){
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined) {
+                    if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits - 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if(doc[total].visits[totalvisits].decrease2 != undefined){
-                    if(doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits+1].decrease2 && doc[total].visits[totalvisits].decrease2 != ""){
+                else if (doc[total].visits[totalvisits].decrease2 != undefined) {
+                    if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits + 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
                 // scales performed
-                if(firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0){
-                    if(doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined ){
+                if (firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    if (doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined) {
                         proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
                     }
                 }
-                else if(totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0){
-                    if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits-1].scaleinfo.length){
-                        if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
-                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
+                else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                        if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
-                        else{
+                        else {
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
-                else if(doc[total].visits[totalvisits].scaleinfo.length != 0){
-                    if(doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits+1].scaleinfo.length 
-                        && totalvisits > 0){
-                        if(doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits-1].scaleinfo.length){
-                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits-1].scaleinfo.length;
+                else if (doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits + 1].scaleinfo.length
+                        && totalvisits > 0) {
+                        if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
-                        else{
+                        else {
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
@@ -1577,31 +1585,31 @@ function genreport2(doc,proreport){
                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
                 console.log("scales");
                 var ff = 0;
-                for(k=0;k<scale_length;k++){
+                for (k = 0; k < scale_length; k++) {
                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
-                    console.log(proreport[workon].scales_details.length-1);
+                    console.log(proreport[workon].scales_details.length - 1);
                     console.log("error kidr hai ? 1");
-                    for( p=0; p<=proreport[workon].scales_details.length-1; p++){
+                    for (p = 0; p <= proreport[workon].scales_details.length - 1; p++) {
                         console.log("error kidr hai ? 2 " + k + " " + p);
-                        if(proreport[workon].scales_details.length == 1 && ff==0){
+                        if (proreport[workon].scales_details.length == 1 && ff == 0) {
                             console.log("error kidr hai ? 3");
                             console.log("first scale to be added in record");
                             proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
-                            proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1; 
+                            proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
                             ff = 1;
                             break;
                         }
-                        else if(proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name){
+                        else if (proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name) {
                             console.log("error kidr hai ? 4");
-                            if(totalvisits > 0){
-                                var isPresent = doc[total].visits[totalvisits-1].scaleinfo.some((el)=>{ 
-                                    if(el.scale_name === proreport[workon].scales_details[p].scale_name){
+                            if (totalvisits > 0) {
+                                var isPresent = doc[total].visits[totalvisits - 1].scaleinfo.some((el) => {
+                                    if (el.scale_name === proreport[workon].scales_details[p].scale_name) {
                                         return true;
-                                    }else{
+                                    } else {
                                         return false;
                                     }
                                 });
-                                if(isPresent == false){
+                                if (isPresent == false) {
                                     console.log("error kidr hai ? 5");
                                     console.log("pata nh");
                                     proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
@@ -1610,15 +1618,15 @@ function genreport2(doc,proreport){
                             console.log("same record");
                             break;
                         }
-                        else if(proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length-1){
+                        else if (proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length - 1) {
                             console.log("new record for scale");
-                                 console.log(proreport[workon].scales_details.length-1);
-                                 proreport[workon].scales_details.push({
-                                        scale_name : doc[total].visits[totalvisits].scaleinfo[k].scale_name,
-                                        count : 1,
-                                        average_score : 0
-                                 })
-                             break;
+                            console.log(proreport[workon].scales_details.length - 1);
+                            proreport[workon].scales_details.push({
+                                scale_name: doc[total].visits[totalvisits].scaleinfo[k].scale_name,
+                                count: 1,
+                                average_score: 0
+                            })
+                            break;
                         }
                     }
                 }
@@ -1634,20 +1642,20 @@ function genreport2(doc,proreport){
 router.post('/postreport', verifyToken, (req, res) => {
     console.log(req.body)
     let nextDate = new Date(req.body.date);
-    nextDate.setDate(nextDate.getDate()+1);
+    nextDate.setDate(nextDate.getDate() + 1);
     MasterPatientModel.find(
         {
-            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
         }
-    ).then(ma=>{
+    ).then(ma => {
         console.log(ma);
     })
     MasterPatientModel.find(
         {
             "visits.provider": req.body.provider,
             "visits.facility": req.body.facility,
-            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
-        },{name:1,visits:{$slice:-1}}
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
+        }, { name: 1, visits: { $slice: -1 } }
     ).then(log => {
         res.json(log);
     }).catch(err => {
@@ -1657,30 +1665,37 @@ router.post('/postreport', verifyToken, (req, res) => {
 router.post('/medreport', verifyToken, (req, res) => {
     console.log(req.body)
     let nextDate = new Date(req.body.date);
-    nextDate.setDate(nextDate.getDate()+1);
-    MasterPatientModel.find(
-        {
-            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
-        }
-    ).then(ma=>{
-        console.log(ma);
-    })
+    nextDate.setDate(nextDate.getDate() + 1);
     MasterPatientModel.find(
         {
             "visits.provider": req.body.provider,
             "visits.facility": req.body.facility,
             "visits.nostable": "no",
-            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) } 
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
         }
     ).then(log => {
-        res.json(log);
+        let mighty;
+        FacilityModel.find({ name: req.body.facility }, (err, fac) => {
+            if (!err) {
+                console.log(fac);
+                log.facilityAddress = fac[0].address
+                mighty=fac;
+            }
+            else {
+                console.log(err)
+            }
+        })
+        setTimeout(() => {
+            console.log(log)
+            res.json(log);
+        }, 1000)
     }).catch(err => {
         res.json(err)
     })
 })
-router.get('/fetchByName',verifyToken,(req,res)=>{
+router.get('/fetchByName', verifyToken, (req, res) => {
     let name = new RegExp(req.query.name);
-    MasterPatientModel.find({"name": new RegExp(name,'i')}).then(out=>{
+    MasterPatientModel.find({ "name": new RegExp(name, 'i') }).then(out => {
         // console.log(out);
         res.json(out)
     })
