@@ -188,6 +188,10 @@ export class ReportsComponent implements OnInit {
 }
 
   // provider report
+  scales = [ 'PHQ9', 'GDS', 'BDI',  'BIMS', 'MMSE',  'BTQ', 
+  'LEC-5',  'GAD', 'BAI', 'PCL', 'NSESS', 'BSDS', 'MDQ',
+   'BEHAVE-AD', 'RMBC', 'Dementia testing', 'MOCA', 'NPQ',  'ISQ', 'ISI',  'CSSRS', 'BSS',
+    'PNASS', 'BPRS',  'AUDIT', 'DAST', 'FAGERSTORM', 'CNSLS', 'AIMS'];
   notvalidate2 : Boolean;
   submitproviderreport(form){
     this.proFacReportInput = form.value;
@@ -198,10 +202,43 @@ export class ReportsComponent implements OnInit {
     this.spinnerService.show();
     this.service.findproviderreport(form.value).subscribe(res =>{
       this.providerreportoutput = Array.of(res);
-      // console.log(this.providerreportoutput[0].length);
-      // console.log(this.providerreportoutput[0][0]);
+      console.log(this.providerreportoutput[0].length);
+      console.log(this.scales);
+      
+        for(let ii=0; ii<this.providerreportoutput[0].length; ii++){
+          console.log(this.providerreportoutput[0].length + "yes");
+          for(let kp=0;kp<this.scales.length;kp++){
+            console.log("scale name : " + this.scales[kp]);
+          for(let ik=0; ik<this.providerreportoutput[0][ii].scales_details.length; ik++){
+            if(this.scales[kp] == this.providerreportoutput[0][ii].scales_details[ik].scale_name){
+              break;
+            }
+            else if(this.providerreportoutput[0][ii].scales_details[ik].scale_name=="" && ik == this.providerreportoutput[0][ii].scales_details.length-1){
+              this.providerreportoutput[0][ii].scales_details.push({
+                scale_name : this.scales[kp],
+                count : 0,
+                average_score : 0
+            })
+              break;
+            }
+            else if(this.scales[kp] != this.providerreportoutput[0][ii].scales_details[ik].scale_name && ik == this.providerreportoutput[0][ii].scales_details.length-1){
+              this.providerreportoutput[0][ii].scales_details.push({
+                scale_name : this.scales[kp],
+                count : 0,
+                average_score : 0
+            })
+              break;
+            }
+          }
+        }
+        if(this.providerreportoutput[0][ii].scales_details.length==30){
+          this.providerreportoutput[0][ii].scales_details.shift();
+        }
+      }
+      console.log(this.providerreportoutput[0][0]);
+      this.spinnerService.show();
       if(this.providerreportoutput[0] == "no"){
-        this.spinnerService.hide();
+        this.spinnerService.show();
         this.nodata3 = true;
         this.showit3 = true;
         this.gammma3 = false;
@@ -210,6 +247,7 @@ export class ReportsComponent implements OnInit {
           fromdate:'',
           todate:''
         };
+        this.spinnerService.hide();
       }
       else{
       this.spinnerService.hide();
@@ -237,6 +275,38 @@ export class ReportsComponent implements OnInit {
       this.facilityreportoutput = Array.of(res);
       console.log(this.facilityreportoutput);
       console.log(this.facilityreportoutput[0][0]);
+     
+     
+      for(let ii=0; ii<this.facilityreportoutput[0].length; ii++){
+        console.log(this.facilityreportoutput[0].length + "yes");
+        for(let kp=0;kp<this.scales.length;kp++){
+          console.log("scale name : " + this.scales[kp]);
+        for(let ik=0; ik<this.facilityreportoutput[0][ii].scales_details.length; ik++){
+          if(this.scales[kp] == this.facilityreportoutput[0][ii].scales_details[ik].scale_name){
+            break;
+          }
+          else if(this.facilityreportoutput[0][ii].scales_details[ik].scale_name=="" && ik == this.facilityreportoutput[0][ii].scales_details.length-1){
+            this.facilityreportoutput[0][ii].scales_details.push({
+              scale_name : this.scales[kp],
+              count : 0,
+              average_score : 0
+          })
+            break;
+          }
+          else if(this.scales[kp] != this.facilityreportoutput[0][ii].scales_details[ik].scale_name && ik == this.facilityreportoutput[0][ii].scales_details.length-1){
+            this.facilityreportoutput[0][ii].scales_details.push({
+              scale_name : this.scales[kp],
+              count : 0,
+              average_score : 0
+          })
+            break;
+          }
+        }
+      }
+      if(this.facilityreportoutput[0][ii].scales_details.length==30){
+        this.facilityreportoutput[0][ii].scales_details.shift();
+      }
+    }
       if(this.facilityreportoutput[0] == "no"){
         this.spinnerService.hide();
         this.nodata4 = true;
