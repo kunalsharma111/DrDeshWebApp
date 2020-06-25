@@ -54,8 +54,8 @@
     <section id="content-wrapper" style=" padding-left: 0rem;  ">
         <div class="row">
             <div class="col-lg-12">
-              <img src="/assets/img/shared/reportslogo.png" class="img-fluid ptl">
-              <h2 class="content-title">Reports</h2>
+                <img src="/assets/img/shared/reportslogo.png" class="img-fluid ptl">
+                <h2 class="content-title">Reports</h2>
             </div>
             <div class="box"></div>
         </div>
@@ -64,26 +64,29 @@
             <div class="col-md-3">
                 <figure>
                     <div>
-                      <span data-toggle="modal" (click)="re1()" data-target="#myModalap">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span>Pre Rounding</span>
+                        <span data-toggle="modal" (click)="re1()" data-target="#myModalap">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span>Pre Rounding</span>
                     </div>
-                  </figure>
+                </figure>
             </div>
             <div class="col-md-3">
                 <figure>
                     <div>
-                      <span data-toggle="modal" (click)="re2()" data-target="#myModalap2">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span>Post Rounding</span>
+                        <span data-toggle="modal" (click)="re2()" data-target="#myModalap2">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span>Post Rounding</span>
                     </div>
-                  </figure>
+                </figure>
             </div>
             <div class="col-md-3">
                 <figure>
                     <div>
-                      <span data-toggle="modal" data-target="#myModalfacility" (click)="re4()">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span>Facility Report</span>
+                        <span data-toggle="modal" data-target="#myModalfacility" (click)="re4()">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span>Facility Report</span>
                     </div>
-                  </figure>
+                </figure>
             </div>
 
             <div class="col-md-1"></div>
@@ -93,10 +96,21 @@
             <div class="col-md-3">
                 <figure>
                     <div>
-                      <span data-toggle="modal" data-target="#myModalprovider" (click)="re3()">Get Report <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span>Provider Report</span>
+                        <span data-toggle="modal" data-target="#myModalprovider2">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true" ></i></span>
+                        <span>P.O. Sheet</span>
                     </div>
-                  </figure>
+                </figure>
+            </div>
+            <!-- <div class="col-md-1"></div> -->
+            <div class="col-md-3">
+                <figure>
+                    <div>
+                        <span data-toggle="modal" data-target="#myModalprovider" (click)="re3()">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span>Provider Report</span>
+                    </div>
+                </figure>
             </div>
         </div>
     </section>
@@ -128,7 +142,7 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content mc1">
-            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal" ><i class="fa fa-times"
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
                     aria-hidden="true"></i></p>
             <div class="modal-body">
                 <div class="row">
@@ -426,7 +440,7 @@
                             </tr>
                         </thead>
                         <tbody *ngFor="let i of providerreportoutput">
-                                <tr *ngFor="let j of i">
+                            <tr *ngFor="let j of i">
                                 <td>{{j.facility_name}}</td>
                                 <td>{{j.no_of_patients_seen}}</td>
                                 <td>{{j.points_seen}}</td>
@@ -442,8 +456,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div> <button (click)="exportToExcel('provider_performance_report.xlsx', 'PROVIDER PERFORMANCE REPORT')"
-                        class="btn btn-success">Export To Excel</button> </div>
+                    <div> <button
+                            (click)="exportToExcel('provider_performance_report.xlsx', 'PROVIDER PERFORMANCE REPORT')"
+                            class="btn btn-success">Export To Excel</button> </div>
                 </div>
                 <div class="ball" #ball>
                     <p> LOADING </p>
@@ -513,7 +528,7 @@
 
                     <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
                     <table class="table table-stripped table-hover table-condensed mt-4" #table>
-                        <thead >
+                        <thead>
                             <tr>
                                 <th>Facility</th>
                                 <th>No. of patient's Seen</th>
@@ -531,7 +546,7 @@
                         </thead>
                         <tbody *ngFor="let i of facilityreportoutput">
                             <!-- <div > -->
-                                <tr *ngFor="let j of i">
+                            <tr *ngFor="let j of i">
                                 <td>{{j.provider_name}}</td>
                                 <td>{{j.no_of_patients_seen}}</td>
                                 <td>{{j.points_seen}}</td>
@@ -611,37 +626,56 @@
                     </div>
                 </form>
                 <h1 #like style="color: #87c442;"></h1>
-                <!-- <canvas id="canvas" width="400" height="200" #canvas></canvas> --><button style="border: none; background: #ff726f;color:white;font-size: 1.19rem;padding: 6px 20px; border-radius: 10px;"
+                <!-- <canvas id="canvas" width="400" height="200" #canvas></canvas> --><button
+                    style="border: none; background: #ff726f;color:white;font-size: 1.19rem;padding: 6px 20px; border-radius: 10px;"
                     (click)="pages()">downloadAsPDF</button>
                 <div class="out" #design>
                     <div class="boxxx" *ngFor="let item of patlist">
-                        <div class="fr1"><small>Facility</small><br><h5>{{item.visits[item.visits.length-1].facility}}</h5></div>
-                        <div class="fr2"><small>Address</small><h5>to be fetched...</h5></div>
-                        <div class="fr3"><small>Full Name</small><h5>{{item.name}}</h5></div>
-                        <div class="fr4"><small>Attending Physician: Dr. Deshmukh Provider: </small><h5>{{item.visits[item.visits.length-1].provider}}</h5></div>
-                        <div class="fr5"><small>Room</small><h5>{{item.visits[item.visits.length-1].room}}</h5></div>
-                        <div class="fr6"><small>Date</small><h5>{{item.visits[item.visits.length-1].visit|date}}</h5></div>
-                        <div class="fr7"><small>Order</small></div>
-                        <div class="fr8"><small>Indication</small></div>
-                        <div class="fr9" style="padding-bottom: 10px;">
-                            <h5 *ngIf="item.visits[item.visits.length-1].started">Started</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].increase">Increased</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].decrease">Decreased</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].added">Added</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].stopped">stopped</h5>
+                    <!-- <div class="boxxx"> -->
+
+                        <div class="fr1"><small>Facility</small><br>
+                            <h5>{{item.visits[item.visits.length-1].facility}}</h5>
                         </div>
+                        <div class="fr2"><small>Address</small>
+                            <h5>{{item.facilityAddress}}</h5>
+                        </div>
+                        <div class="fr3"><small>Full Name</small>
+                            <h5>{{item.name}}</h5>
+                        </div>
+                        <div class="fr4"><small>Attending Physician: Dr. Deshmukh Provider: </small>
+                            <h5>{{item.visits[item.visits.length-1].provider}}</h5>
+                        </div>
+                        <div class="fr5"><small>Room</small>
+                            <h5>{{item.visits[item.visits.length-1].room}}</h5>
+                        </div>
+                        <div class="fr6"><small>Date</small>
+                        </div>
+                        <!-- <div class="fr7"><small></small></div> -->
+                        <div class="fr8"><small>Order Indication</small></div>
+                        <!-- <div class="fr9" style="padding-bottom: 10px;">
+                            
+                            
+                            
+                            
+                        </div> -->
                         <div class="fr10" style="padding-bottom: 10px;">
-                            <h5 *ngIf="item.visits[item.visits.length-1].started">{{item.visits[item.visits.length-1].started}}</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].increase">{{item.visits[item.visits.length-1].increase}}</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].decrease">{{item.visits[item.visits.length-1].decrease}}</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].added">{{item.visits[item.visits.length-1].added}}</h5>
-                            <h5 *ngIf="item.visits[item.visits.length-1].stopped">{{item.visits[item.visits.length-1].stopped}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].started">
+                                Started => {{item.visits[item.visits.length-1].started}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].increase">
+                                Increased => {{item.visits[item.visits.length-1].increase}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].decrease">
+                                Decreased => {{item.visits[item.visits.length-1].decrease}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].added">
+                                Added => {{item.visits[item.visits.length-1].added}}</h5>
+                            <h5 *ngIf="item.visits[item.visits.length-1].stopped">
+                                stopped => {{item.visits[item.visits.length-1].stopped}}</h5>
                         </div>
-                        <div class="fr11"></div>
+                        <div class="fr11">
+                            <h5>{{item.visits[item.visits.length-1].visit|date}}</h5></div>
                         <div class="fr12"><small>Signature of Nurse <br>
-                            Receiving Order</small></div>
-                        <div class="fr13"><small>Signature of  <br>
-                            Physician/Provider: </small></div>
+                                Receiving Order</small></div>
+                        <div class="fr13"><small>Signature of <br>
+                                Physician/Provider: </small></div>
                         <!-- <div class="fr18"></div> -->
                     </div>
                 </div>
