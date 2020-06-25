@@ -253,6 +253,16 @@ router.get('/getfacility', verifyToken, (req, res) => {
         }
     })
 })
+router.get('/getactivefacility', verifyToken, (req, res) => {
+    FacilityModel.find({"ain":"Active"}, (err, doc) => {
+        if (!err) {
+            res.json(doc);
+        }
+        else {
+            console.log('err to fetch details');
+        }
+    })
+})
 router.post('/insuranceadd', verifyToken, (req, res) => {
     console.log(req.body);
     if (req.body.id == null) {
@@ -312,6 +322,16 @@ router.post('/provideradd', verifyToken, (req, res) => {
 })
 router.get('/getprovider', verifyToken, (req, res) => {
     ProviderModel.find({}, (err, doc) => {
+        if (!err) {
+            res.json(doc);
+        }
+        else {
+            console.log('err to fetch details');
+        }
+    })
+})
+router.get('/getactiveprovider', verifyToken, (req, res) => {
+    ProviderModel.find({"ain":"Active"}, (err, doc) => {
         if (!err) {
             res.json(doc);
         }

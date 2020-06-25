@@ -79,11 +79,11 @@ export class ReportsComponent implements OnInit {
             this.service.router.navigateByUrl('/');
           }
         })
-    this.service.getProvider().subscribe(res => {
+    this.service.getActiveProvider().subscribe(res => {
       this.providers = res;
       console.log(this.providers);
     });
-    this.service.getFacility().subscribe(res => {
+    this.service.getActiveFacility().subscribe(res => {
       this.facilities = res;
     })
   }
