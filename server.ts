@@ -26,7 +26,7 @@ import { join } from "path";
 const app = express();
 require("./models/db");
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), "dist/browser");
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
