@@ -396,11 +396,9 @@ export class CombinepatComponent implements OnInit {
       var scaleinfo = { scaleinfo: scaleData }
       summary += `Date: ${new Date(this.combined.visit).toString().slice(0,15)}  |  Provider name: ${form.value.provider} . | `
       if (form.value.generictest == 'no') {
-        if (form.value.geneticreason != 'Other') {
-          summary +=`Reasons for discontinuations from Genetic testing: ${form.value.geneticreason} . | `
-        }
-        else {
-          summary += `Reasons for discontinuations from Genetic testing: ${form.value.othergeneticreason} . | `
+        if (form.value.geneticreason) {
+          summary +=`Reasons for discontinuations from Genetic testing: 
+          ${(form.value.geneticreason=='Other'?form.value.othergeneticreason:form.value.geneticreason)} . | `
         }
       }
       if (form.value.generictest == 'yes') {
