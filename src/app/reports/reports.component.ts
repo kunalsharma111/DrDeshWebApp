@@ -967,10 +967,12 @@ designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadin
   patlist=[]
   address = []
   submitprovidermedreport(form) {
+    this.spinnerService.show();
     this.service.getMedRelatedData(form.value).subscribe(res => {
       console.log(res);
       this.patlist = res.log;
       this.address = res.address
+      this.spinnerService.hide();
     })
   }
   pages() {

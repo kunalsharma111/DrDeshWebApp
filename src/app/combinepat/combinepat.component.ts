@@ -171,7 +171,7 @@ export class CombinepatComponent implements OnInit {
         })
     this.resetForm();
     console.log(typeof this.combined.sinsurance)
-    this.service.getFacility().subscribe(res => {
+    this.service.getActiveFacility().subscribe(res => {
       // console.log(res);
       this.facilities = res;
     })
@@ -183,7 +183,7 @@ export class CombinepatComponent implements OnInit {
       // console.log(res);
       this.meds = res;
     })
-    this.service.getProvider().subscribe(res => {
+    this.service.getActiveProvider().subscribe(res => {
       this.providers = res;
     })
     console.log(this.update)
