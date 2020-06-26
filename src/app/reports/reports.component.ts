@@ -965,10 +965,12 @@ designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadin
     }
   }
   patlist=[]
+  address = []
   submitprovidermedreport(form) {
     this.service.getMedRelatedData(form.value).subscribe(res => {
       console.log(res);
-      this.patlist = res;
+      this.patlist = res.log;
+      this.address = res.address
     })
   }
   pages() {

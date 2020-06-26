@@ -1701,10 +1701,9 @@ router.post('/medreport', verifyToken, (req, res) => {
         }
     ).then(log => {
         let mighty;
+        if(log.length)
         FacilityModel.find({ name: req.body.facility }, (err, fac) => {
             if (!err) {
-                console.log(fac);
-                log.facilityAddress = fac[0].address
                 mighty=fac;
             }
             else {
@@ -1713,7 +1712,7 @@ router.post('/medreport', verifyToken, (req, res) => {
         })
         setTimeout(() => {
             console.log(log)
-            res.json(log);
+            res.json({log:log,address:mighty});
         }, 1000)
     }).catch(err => {
         res.json(err)
