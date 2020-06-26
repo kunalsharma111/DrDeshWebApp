@@ -258,7 +258,8 @@ export class DataTransferService {
   url25 = `${this.metcha}/postreport`;
   url26 = `${this.metcha}/medreport`;
   url27 = `${this.metcha}/fetchByName`;
-
+  url28 = `${this.metcha}/getactivefacility`;
+  url29 = `${this.metcha}/getactiveprovider`;
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
   subject = new BehaviorSubject("123");
@@ -313,6 +314,9 @@ export class DataTransferService {
   getFacility() {
     return this.http.get<any>(this.url9);
   }
+  getActiveFacility() {
+    return this.http.get<any>(this.url28);
+  }
   sendInsurance(form) {
     return this.http.post<any>(this.url10, form.value);
   }
@@ -324,6 +328,9 @@ export class DataTransferService {
   }
   getProvider() {
     return this.http.get<any>(this.url13);
+  }
+  getActiveProvider() {
+    return this.http.get<any>(this.url29);
   }
   sendMed(form) {
     return this.http.post<any>(this.url14, form.value);
