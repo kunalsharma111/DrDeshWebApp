@@ -228,8 +228,8 @@ export class DataTransferService {
   private c4 = new Subject<String>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<String>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<String>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.18.232:4000/api';
-//   metcha = 'http://localhost:4000/api';
+  // metcha = 'http://3.23.88.122:4000/api';
+  metcha = 'http://localhost:4000/api';
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
   url2 = `${this.metcha}/red`;

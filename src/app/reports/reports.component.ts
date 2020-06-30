@@ -160,6 +160,7 @@ export class ReportsComponent implements OnInit {
     this.service.getpostroundingreport(form.value).subscribe(res=>{
       this.postData = res;
       console.log(this.postData);
+      console.log(this.postData);
       if(this.postData.length == []){
         console.log("empty");
         this.spinnerService.hide();
@@ -275,9 +276,9 @@ export class ReportsComponent implements OnInit {
       console.log(this.facilityreportoutput.length);
       this.facilityreportoutput = Array.of(res);
       console.log(this.facilityreportoutput);
-      console.log(this.facilityreportoutput[0][0]);
+      console.log(this.facilityreportoutput[0]);
 
-
+      if(this.facilityreportoutput[0] != "no"){
       for(let ii=0; ii<this.facilityreportoutput[0].length; ii++){
         console.log(this.facilityreportoutput[0].length + "yes");
         for(let kp=0;kp<this.scales.length;kp++){
@@ -307,7 +308,7 @@ export class ReportsComponent implements OnInit {
       if(this.facilityreportoutput[0][ii].scales_details.length==30){
         this.facilityreportoutput[0][ii].scales_details.shift();
       }
-    }
+    }}
       if(this.facilityreportoutput[0] == "no"){
         this.spinnerService.hide();
         this.nodata4 = true;
