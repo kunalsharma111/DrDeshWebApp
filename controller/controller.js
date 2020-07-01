@@ -14,7 +14,7 @@ const MedicationModel = mongoose.model("Medication");
 const ProviderModel = mongoose.model("Provider");
 const MasterPatientModel = mongoose.model("MasterPatient");
 const PostModel = mongoose.model("PostRoundUp");
-const VModel = mongoose.model('VM');
+const VModel = mongoose.model('MVM');
 var bcrypt = require('bcryptjs');
 
 //register
@@ -986,7 +986,6 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
             }
         })
 })
-
 // function genreportt(doc,proreport){
 //     var total = doc.length-1;
 //     var flag = 0;
