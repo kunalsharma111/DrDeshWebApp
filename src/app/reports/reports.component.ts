@@ -111,7 +111,7 @@ export class ReportsComponent implements OnInit {
   nodata2 = false;
   nodata3 = false;
   nodata4 = false;
-
+  nodata5 = false;
 
   // prerounding report
   notvalidate:boolean;
@@ -160,6 +160,7 @@ export class ReportsComponent implements OnInit {
     this.service.getpostroundingreport(form.value).subscribe(res=>{
       this.postData = res;
       console.log(this.postData);
+      console.log(this.postData);
       if(this.postData.length == []){
         console.log("empty");
         this.spinnerService.hide();
@@ -203,9 +204,9 @@ export class ReportsComponent implements OnInit {
     this.spinnerService.show();
     this.service.findproviderreport(form.value).subscribe(res =>{
       this.providerreportoutput = Array.of(res);
-      console.log(this.providerreportoutput[0].length);
+      console.log(this.providerreportoutput[0]);
       console.log(this.scales);
-
+      if(this.providerreportoutput[0] != "no"){
         for(let ii=0; ii<this.providerreportoutput[0].length; ii++){
           console.log(this.providerreportoutput[0].length + "yes");
           for(let kp=0;kp<this.scales.length;kp++){
@@ -235,7 +236,7 @@ export class ReportsComponent implements OnInit {
         if(this.providerreportoutput[0][ii].scales_details.length==30){
           this.providerreportoutput[0][ii].scales_details.shift();
         }
-      }
+      }}
       console.log(this.providerreportoutput[0][0]);
       this.spinnerService.show();
       if(this.providerreportoutput[0] == "no"){
@@ -275,9 +276,9 @@ export class ReportsComponent implements OnInit {
       console.log(this.facilityreportoutput.length);
       this.facilityreportoutput = Array.of(res);
       console.log(this.facilityreportoutput);
-      console.log(this.facilityreportoutput[0][0]);
+      console.log(this.facilityreportoutput[0]);
 
-
+      if(this.facilityreportoutput[0] != "no"){
       for(let ii=0; ii<this.facilityreportoutput[0].length; ii++){
         console.log(this.facilityreportoutput[0].length + "yes");
         for(let kp=0;kp<this.scales.length;kp++){
@@ -307,7 +308,7 @@ export class ReportsComponent implements OnInit {
       if(this.facilityreportoutput[0][ii].scales_details.length==30){
         this.facilityreportoutput[0][ii].scales_details.shift();
       }
-    }
+    }}
       if(this.facilityreportoutput[0] == "no"){
         this.spinnerService.hide();
         this.nodata4 = true;
@@ -967,12 +968,18 @@ designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadin
   patlist=[]
   address = []
   submitprovidermedreport(form) {
+    this.nodata5 = false;
     this.spinnerService.show();
     this.service.getMedRelatedData(form.value).subscribe(res => {
-      console.log(res);
       this.patlist = res.log;
-      this.address = res.address
-      this.spinnerService.hide();
+      this.address = res.address;
+      if(this.patlist.length == 0){
+        this.nodata5 = true;
+        this.spinnerService.hide();
+      }
+      else{
+        this.spinnerService.hide();
+      }
     })
   }
   pages() {
