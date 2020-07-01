@@ -261,7 +261,7 @@ router.get('/getactivefacility', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.post('/insuranceadd', verifyToken, (req, res) => {
     console.log(req.body);
@@ -338,7 +338,7 @@ router.get('/getactiveprovider', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.post('/medadd', verifyToken, (req, res) => {
     console.log(req.body);
