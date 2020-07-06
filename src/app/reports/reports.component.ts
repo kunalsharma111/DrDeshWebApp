@@ -9,6 +9,7 @@ import * as xlsx from 'xlsx';
 import * as logoFile from '../img/logo.js';
 import * as Excel from "exceljs/dist/exceljs.min.js";
 import * as fs from 'file-saver';
+import { formatDate} from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
@@ -40,9 +41,11 @@ export class ReportsComponent implements OnInit {
   providers:Provider;
   facilities:Facility;
   output:any;
-  providerreportoutput: any = [];
-  facilityreportoutput: any = [];
-  proFacReportInput : any = [];
+  providerreportoutput :any = [];
+  facilityreportoutput :any = [];
+  inputForFacilitySummary :any = [];
+  proFacReportInput :any = [];
+  facilitySummaries :any = []
 
   logout() {
     this.service.logout();
@@ -93,15 +96,18 @@ export class ReportsComponent implements OnInit {
     provider:string,
     date:string
   }
-  repo1: any = {  }
-  repo2 :any ={ }
+  repo1: any = {}
+  repo2 :any = {}
+  facilitySummary :any = {};
   showit = true;
   gammma = false;
   showit2 = true;
   showit3 = true;
+  showFacilitySummaryReport = true;
   showit4 = true;
   gammma2= false;
   gammma3 = false;
+  showDataForFacilitySummary = false;
   gammma4 = false;
   fn;
   pn;
@@ -110,6 +116,7 @@ export class ReportsComponent implements OnInit {
   nodata = false;
   nodata2 = false;
   nodata3 = false;
+  noDataForFacilitySummary = false;
   nodata4 = false;
 
 
@@ -364,6 +371,15 @@ export class ReportsComponent implements OnInit {
     }
     this.providerreportoutput=[];
   }
+
+  resetFacilitySummaryReportModel() {
+    this.showFacilitySummaryReport = true;
+    this.noDataForFacilitySummary = false;
+    this.showDataForFacilitySummary = false;
+    this.facilitySummary = {};
+    this.facilitySummaries = [];
+  }
+
   re4(){
     this.showit4 = true;
     this.gammma4 = false;
@@ -374,6 +390,191 @@ export class ReportsComponent implements OnInit {
     this.facilityreportoutput=[];
 
   }
+
+  validateFacilitySummary: boolean;
+  submitFacilitySummaryReport(form) {
+    console.log("form1", form);
+    if(form.valid){
+      this.inputForFacilitySummary = form.value;
+      this.noDataForFacilitySummary = false;
+      this.showFacilitySummaryReport = false;
+      this.spinnerService.show();
+      this.service.facilitySummaryReport(form.value).subscribe(res =>{
+        this.facilitySummaries = Array.of(res);
+        console.log("this.facilitySummaries", res)
+
+        if(this.facilitySummaries[0] == "no"){
+          this.spinnerService.hide();
+          this.showFacilitySummaryReport = true;
+          this.noDataForFacilitySummary = true;
+          this.showDataForFacilitySummary = false;
+
+          this.facilitySummary = {
+            facilitySummary: '',
+            facilitySummaryFromdate: '',
+            facilitySummaryTodate: ''
+          };
+        }
+        else{
+          this.facilitySummaries[0].sort((a, b) =>
+            a.visits.room === b.visits.room ? 0 - (a.visits.visit > b.visits.visit ? -1 : 1) : 0 - (+a.visits.room > +b.visits.room ? -1 : 1)
+          );
+          this.spinnerService.hide();
+          this.showFacilitySummaryReport = false;
+          this.showDataForFacilitySummary = true;
+          this.noDataForFacilitySummary = false;
+        }
+      })
+    }else {
+      this.validateFacilitySummary = true;
+    }
+  }
+
+  exportFacilitySummaryToExcel(fileName, reportName) {
+    const workbooke = new Excel.Workbook();
+    const worksheet = workbooke.addWorksheet(reportName);
+    var tableRowHeading = ['', 'Patient Room', 'Patient Name', 'Visit Date', 'Summary']
+    worksheet.addRow([]);
+    console.log("inputForFacilitySummary", this.inputForFacilitySummary);
+    var reportLogo = workbooke.addImage({
+      base64: logoFile.logoBase64,
+      extension: 'png',
+    });
+
+    worksheet.addImage(reportLogo, {
+      tl: { col: 2.5, row: 0 },
+      br: { col: 3.5, row: 4.5 }
+    });
+
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    const address = worksheet.addRow(['', 'Psychiatry Care \n10840 N US Highway 301 \nOxford FL 34484 Oxford FL 34484 \nOffice:(352) 445-1200 \nFax: (888) 248-4348',]);
+
+    address.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.mergeCells(['B6:D10']);
+    const reportNameHeading = worksheet.addRow(['', reportName]);
+    worksheet.mergeCells(['B11:D11']);
+    reportNameHeading.font = {size: 16, underline: 'double', bold: true };
+
+    reportNameHeading.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+    console.log("this.proFacReportInput", this.proFacReportInput)
+    const facilityRow = worksheet.addRow(['', 'Facility Name', this.inputForFacilitySummary.facilitySummary]);
+    const fromDate = worksheet.addRow(['', 'From Date', formatDate(this.inputForFacilitySummary.facilitySummaryFromdate, 'dd-MM-yyyy', 'en-US')]);
+    const toDate = worksheet.addRow(['', 'To Date', formatDate(this.inputForFacilitySummary.facilitySummaryTodate, 'dd-MM-yyyy', 'en-US')]);
+
+    facilityRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    fromDate.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    toDate.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    worksheet.getColumn(2).width = 25;
+    worksheet.getColumn(3).width = 25;
+    worksheet.getColumn(4).width = 25;
+    worksheet.getColumn(5).width = 100;
+    worksheet.addRow([]);
+    let headerRow = worksheet.addRow(tableRowHeading);
+    worksheet.getRow(16).height = 30;
+
+    headerRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      this.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
+    });
+
+    const blankRow = worksheet.addRow(['','','','','']);
+    blankRow.eachCell((cell, number) => {
+      if(number == 1) return;
+      this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+      });
+
+    for(let facilitySummariesIndex = 0; facilitySummariesIndex < this.facilitySummaries[0].length; facilitySummariesIndex++){
+      console.log("d",facilitySummariesIndex ,this.facilitySummaries[0][facilitySummariesIndex]);
+      const patientName = this.facilitySummaries[0][facilitySummariesIndex].name;
+      const patientRoom = this.facilitySummaries[0][facilitySummariesIndex].visits.room;
+      let patientVisitDate = this.facilitySummaries[0][facilitySummariesIndex].visits.visit;
+      patientVisitDate = formatDate(patientVisitDate, 'dd-MM-yyyy', 'en-US');
+      const patientSummary = this.facilitySummaries[0][facilitySummariesIndex].visits.summary;
+      let tableData;
+      if(this.facilitySummaries[0][facilitySummariesIndex].visits.summary === undefined) {
+        tableData = worksheet.addRow(['', patientRoom , patientName, patientVisitDate, 'NA']);
+      }
+      else{
+        tableData = worksheet.addRow(['', patientRoom , patientName, patientVisitDate, this.facilitySummaries[0][facilitySummariesIndex].visits.summary]);
+        worksheet.getRow(18+facilitySummariesIndex).height = 100;
+      }
+
+      tableData.eachCell((cell, number) => {
+        if(number == 1) return;
+        if(facilitySummariesIndex == this.facilitySummaries[0].length-1){
+          this.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
+        }else
+        {
+          this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+        }
+      });
+    }
+    workbooke.xlsx.writeBuffer().then((dataa) => {
+      const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fs.saveAs(blob, fileName);
+    });
+  }
+
+  genericExceStyleFormat(cell, number, excelFormatFor, columnlength){
+    if(excelFormatFor == 'header') {
+      cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+      if(number == 2){
+        cell.border = { top: { style: 'thick' }, left: { style: 'thick' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+      }
+      if(number == columnlength.length) {
+        cell.border = { top: { style: 'thick' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thick' } }
+      }
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    }
+    if(excelFormatFor == 'middle') {
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+      if(number == 2){
+        cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+      }
+      if(number == columnlength.length) {
+        cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thick' } }
+      }
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+      if(number === 5){
+        cell.alignment = { vertical: 'top', horizontal: 'left', wrapText: true };
+      }
+    }
+    if(excelFormatFor == 'bottom') {
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thick' }, right: { style: 'thin' } }
+      if(number == 2){
+        cell.border = { top: { style: 'thin' }, left: { style: 'thick' }, bottom: { style: 'thick' }, right: { style: 'thin' } }
+      }
+      if(number == columnlength.length) {
+        cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thick' }, right: { style: 'thick' } }
+      }
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    }
+  }
+
   // navbar navigation
   ap() {
     this.service.topatient('yes');
