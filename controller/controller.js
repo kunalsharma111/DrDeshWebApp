@@ -1003,8 +1003,8 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //         while(totalvisits >= 0){
 //             if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
 //                 var outputlength = proreport.length-1;
-                
-                
+
+
 //                 if(first_object == true){
 //                     var workon = 0;
 //                     console.log("first time will workon " + workon);
@@ -1017,7 +1017,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //                             console.log("found exisiting facility will addon details on same positon " + workon);
 //                             break;
 //                         }
-//                         else if(proreport[i].facility_name != doc[total].visits[totalvisits].facility 
+//                         else if(proreport[i].facility_name != doc[total].visits[totalvisits].facility
 //                             && i == outputlength){
 //                             proreport.push({
 //                                 facility_name:'',
@@ -1044,13 +1044,13 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //                         }
 //                     }
 //                 }
-               
+
 //                 // patients seen
 //                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
 
 
 //                 // // setting facility
-//                 if(doc[total].visits[totalvisits].facility != undefined && 
+//                 if(doc[total].visits[totalvisits].facility != undefined &&
 //                 doc[total].visits[totalvisits].facility != null && doc[total].visits[totalvisits].facility != ""){
 //                     proreport[workon].facility_name = doc[total].visits[totalvisits].facility;
 //                 }
@@ -1479,7 +1479,7 @@ function genreport(doc, proreport) {
                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
                         console.log("6");
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
-                        }   
+                        }
                 }
                 else{
                     console.log("7");
@@ -1650,6 +1650,28 @@ router.post('/facilityreport', verifyToken, (req, res) => {
             }
         })
 })
+
+router.post('/facilitysummaryreport', verifyToken, (req, res) => {
+    var toDateAddTime = new Date(req.body.facilitySummaryTodate);
+    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
+    MasterPatientModel.aggregate([
+                {
+                    '$unwind':"$visits"
+                },
+                {"$match": {"visits.visit": {"$gte": new Date(req.body.facilitySummaryFromdate), "$lte": toDateAddTime
+                                            } ,  "visits.facility":  req.body.facilitySummaryName
+                           }
+                }
+    ]).then(doc => {
+            if (doc.length != 0) {
+                res.json(doc);
+            }
+            else {
+                res.json("no");
+            }
+        })
+});
+
 function genreport2(doc, proreport) {
     var total = doc.length - 1;
     // console.log(proreport.length);
@@ -1723,7 +1745,7 @@ function genreport2(doc, proreport) {
 
                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
                     flag = true;
-                    // adding 2.5 score if scales have Dementia testing scale 
+                    // adding 2.5 score if scales have Dementia testing scale
                     while (scale_size >= 0 && flag == true) {
                         if (doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA") {
                             proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
@@ -1783,7 +1805,7 @@ function genreport2(doc, proreport) {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                // Added Medicine 
+                // Added Medicine
                 if (firstvisit == true && doc[total].visits[totalvisits].added != undefined) {
                     if (doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined) {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
