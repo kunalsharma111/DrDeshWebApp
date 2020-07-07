@@ -636,8 +636,12 @@
                 </form>
                 <h1 #like style="color: #87c442;"></h1>
                 <!-- <canvas id="canvas" width="400" height="200" #canvas></canvas> --><button
-                    style="border: none; background: #ff726f;color:white;font-size: 1.19rem;padding: 6px 20px; border-radius: 10px;"
-                    (click)="pages()">downloadAsPDF</button>
+                    style="border: none; background: #87c442;color:white;font-size: 1.19rem;padding: 6px 20px; border-radius: 10px;"
+                    (click)="pages()">DownloadAsPDF</button>
+                    <div class="col-md-12 mb-4 mt-3" style="text-align: center; color:#87c442;" *ngIf="nodata5">
+                        <h1>No data Found</h1>
+                        <p>check with different input</p>
+                    </div>
                 <div class="out" #design>
                     <div class="boxxx" *ngFor="let item of patlist">
                     <!-- <div class="boxxx"> -->
@@ -720,12 +724,12 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="facilitySummary">Facility</label>
-                            <select name="facilitySummary" id="facilitySummary" #facilitySummary="ngModel" [(ngModel)]="facilitySummary.facilitySummary"
+                            <select name="facilitySummaryName" id="facilitySummaryName" #facilitySummaryName="ngModel" [(ngModel)]="facilitySummary.facilitySummaryName"
                                 required>
                                 <option *ngFor="let facilitie of facilities" [value]="facilitie.name">{{facilitie.name}}</option>
                             </select>
-                            <div *ngIf="validateFacilitySummary && facilitySummary.invalid" class="alert alert-danger mt-1">
-                                <div *ngIf="facilitySummary.errors.required">Field is required.</div>
+                            <div *ngIf="validateFacilitySummary && facilitySummaryName.invalid" class="alert alert-danger mt-1">
+                                <div *ngIf="facilitySummaryName.errors.required">Field is required.</div>
                             </div>
                         </div>
                         <div class="col-md-3">

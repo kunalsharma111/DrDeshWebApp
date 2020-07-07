@@ -14,7 +14,7 @@ const MedicationModel = mongoose.model("Medication");
 const ProviderModel = mongoose.model("Provider");
 const MasterPatientModel = mongoose.model("MasterPatient");
 const PostModel = mongoose.model("PostRoundUp");
-const VModel = mongoose.model('VM');
+const VModel = mongoose.model('MVM');
 var bcrypt = require('bcryptjs');
 
 //register
@@ -251,7 +251,7 @@ router.get('/getfacility', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.get('/getactivefacility', verifyToken, (req, res) => {
     FacilityModel.find({"ain":"Active"}, (err, doc) => {
@@ -261,7 +261,7 @@ router.get('/getactivefacility', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.post('/insuranceadd', verifyToken, (req, res) => {
     console.log(req.body);
@@ -294,7 +294,7 @@ router.get('/getinsurance', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.post('/provideradd', verifyToken, (req, res) => {
     if (req.body.id == null) {
@@ -328,7 +328,7 @@ router.get('/getprovider', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.get('/getactiveprovider', verifyToken, (req, res) => {
     ProviderModel.find({"ain":"Active"}, (err, doc) => {
@@ -338,7 +338,7 @@ router.get('/getactiveprovider', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.post('/medadd', verifyToken, (req, res) => {
     console.log(req.body);
@@ -505,7 +505,7 @@ router.get('/getmed', verifyToken, (req, res) => {
         else {
             console.log('err to fetch details');
         }
-    })
+    }).sort({"name":1})
 })
 router.post("/confirmotp", (req, res) => {
     var user = req.body;
@@ -986,14 +986,17 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
             }
         })
 })
-
 // function genreportt(doc,proreport){
 //     var total = doc.length-1;
 //     var flag = 0;
+//     var first_object = false;
+//     var firstvisit = false;
 //     while(total >= 0){
 //         var totalvisits = doc[total].visits.length-1;
+//         if(total == doc.length-1){
+//             first_object = true;
+//         }
 //         // check if this is patients first visit or not
-//         firstvisit = false;
 //         if(totalvisits == 0){
 //             firstvisit = true;
 //         }
@@ -1001,47 +1004,46 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //             if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
 //                 var outputlength = proreport.length-1;
 
-//                 //  will run always expect for the first visit of patient
-//                 if(firstvisit == false){
-//                 // For deciding on which position to workon
-//                 for(i=0;i<=outputlength; i++){
-//                     if(proreport[i].facility_name == doc[total].visits[totalvisits].facility){
-//                         workon = i;
-//                         console.log("found exisiting facility will addon details on same positon " + workon);
-//                         break;
-//                     }
-//                     else if(proreport[i].facility_name != doc[total].visits[totalvisits].facility
-//                         && i == outputlength){
-//                         proreport.push({
-//                             facility_name:'',
-//                             no_of_patients_seen : 0,
-//                             points_seen : 0,
-//                             meds_added : 0,
-//                             meds_lowered : 0,
-//                             meds_increased : 0,
-//                             meds_added_with_stop_date : 0,
-//                             meds_continued_but_added_stop_date : 0,
-//                             meds_stopped : 0,
-//                             scales_performed : 0,
-//                             scales_details:[{scale_name:'',
-//                             count:0,
-//                             average_score:0}],
-//                             number_of_each_subscale_performed : 0,
-//                             average_score_of_each_scale : 0,
-//                         });
-//                         console.log("Creating New Facility Line "+proreport.length +
-//                          " Output Length after creating new Fac");
-//                         workon = proreport.length-1;
-//                         console.log("Now will workon this position of output " + workon);
-//                         break;
+
+//                 if(first_object == true){
+//                     var workon = 0;
+//                     console.log("first time will workon " + workon);
+//                     first_object = false;
+//                 }
+//                 else{
+//                     for(i=0;i<=outputlength; i++){
+//                         if(proreport[i].facility_name == doc[total].visits[totalvisits].facility){
+//                             workon = i;
+//                             console.log("found exisiting facility will addon details on same positon " + workon);
+//                             break;
+//                         }
+//                         else if(proreport[i].facility_name != doc[total].visits[totalvisits].facility
+//                             && i == outputlength){
+//                             proreport.push({
+//                                 facility_name:'',
+//                                 no_of_patients_seen : 0,
+//                                 points_seen : 0,
+//                                 meds_added : 0,
+//                                 meds_lowered : 0,
+//                                 meds_increased : 0,
+//                                 meds_added_with_stop_date : 0,
+//                                 meds_continued_but_added_stop_date : 0,
+//                                 meds_stopped : 0,
+//                                 scales_performed : 0,
+//                                 scales_details:[{scale_name:'',
+//                                 count:0,
+//                                 average_score:0}],
+//                                 number_of_each_subscale_performed : 0,
+//                                 average_score_of_each_scale : 0,
+//                             });
+//                             console.log("Creating New Facility Line "+proreport.length +
+//                              " Output Length after creating new Fac");
+//                             workon = proreport.length-1;
+//                             console.log("Now will workon this position of output " + workon);
+//                             break;
+//                         }
 //                     }
 //                 }
-//             }
-//             else{
-//                 var workon = 0;
-//                 console.log("first time will workon " + workon);
-//             }
-
 
 //                 // patients seen
 //                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
@@ -1059,6 +1061,221 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
 //                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
 //                 }
 
+//                 // checking for medication management follow up
+//                 if (doc[total].visits[totalvisits].typevisit == "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined) {
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
+//                 }
+
+//                   // checking for atleast two
+//                 // console.log(doc[total].visits[totalvisits].scaleinfo.length + "visit no" + totalvisits);
+//                 var scale_size = doc[total].visits[totalvisits].scaleinfo.length - 1;
+//                 if (doc[total].visits[totalvisits].scaleinfo.length >= 2 && doc[total].visits[totalvisits].scaleinfo != undefined) {
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
+//                     flag = true;
+//                     // adding 2.5 score if scales have Dementia testing scale
+//                     while (scale_size >= 0 && flag == true) {
+//                         if (doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA") {
+//                             proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
+//                             flag = false;
+//                         }
+//                         scale_size--;
+//                     }
+//                 }
+
+//                   // Psychotherapy points
+//                   if (doc[total].visits[totalvisits].thtime == "Upto 30 min") {
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
+//                 }
+//                 if (doc[total].visits[totalvisits].thtime == "Upto 45 min") {
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
+//                 }
+//                 if (doc[total].visits[totalvisits].thtime == "Upto 1 Hr") {
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
+//                 }
+//                 if (doc[total].visits[totalvisits].thtime == "More then 1 Hr") {
+//                     proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
+//                 }
+//                 // medicine continued but addded stop date
+//                 if (firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
+//                     if (doc[total].visits[totalvisits].medstopdate != null) {
+//                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
+//                     }
+//                 }
+//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
+//                     if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits - 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
+//                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
+//                     }
+//                 }
+//                 else if (doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
+//                     if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits + 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
+//                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
+//                     }
+//                 }
+//                 // stop date of added medicine
+//                 if (firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
+//                     if (doc[total].visits[totalvisits].addeddate != null) {
+//                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
+//                     }
+//                 }
+//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
+//                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits - 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
+//                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
+//                     }
+//                 }
+//                 else if (doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
+//                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits + 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
+//                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
+//                     }
+//                 }
+//                 // Added Medicine
+//                 if (firstvisit == true && doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
+//                     if (doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined) {
+//                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
+//                     }
+//                 }
+//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
+//                     if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits - 1].added && doc[total].visits[totalvisits].added != "") {
+//                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
+//                     }
+//                 }
+//                 else if (doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
+//                     if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits + 1].added && doc[total].visits[totalvisits].added != "") {
+//                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
+//                     }
+//                 }
+//                 // Increased Medicine
+//                 if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
+//                     if (firstvisit == true) {
+//                         if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
+//                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+//                         }
+//                     }
+//                     else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
+//                         if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits - 1].increase && doc[total].visits[totalvisits].increase != "") {
+//                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+//                         }
+//                     }
+//                     else if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
+//                         if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits + 1].increase && doc[total].visits[totalvisits].increase != "") {
+//                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+//                         }
+//                     }
+//                 }
+//                 // Stopped Medicine
+//                 if (firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
+//                     if (doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined) {
+//                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
+//                     }
+//                 }
+//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
+//                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits - 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
+//                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
+//                     }
+//                 }
+//                 else if (doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
+//                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
+//                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
+//                     }
+//                 }
+//                 // meds lowered or decreased
+//                 if (firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
+//                     if (doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined) {
+//                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
+//                     }
+//                 }
+//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
+//                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits - 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
+//                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
+//                     }
+//                 }
+//                 else if (doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
+//                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits + 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
+//                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
+//                     }
+//                 }
+
+//                  // scales performed
+//                  if (firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+//                     if (doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined) {
+//                         proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
+//                     }
+//                 }
+//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+//                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits - 1].scaleinfo.length) {
+//                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+//                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
+//                         }
+//                         else {
+//                             add = 0;
+//                         }
+//                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
+//                     }
+//                 }
+//                 else if (doc[total].visits[totalvisits].scaleinfo.length != 0) {
+
+//                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits + 1].scaleinfo.length) {
+
+//                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+//                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
+//                         }
+//                         else {
+//                             add = 0;
+//                         }
+//                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
+//                     }
+//                 }
+
+
+//                 // scale count array
+//                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
+//                 console.log("scales scale length : " + scale_length);
+//                 var ff = 0;
+//                 for (k = 0; k < scale_length; k++) {
+//                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
+//                     console.log(proreport[workon].scales_details.length - 1);
+//                     console.log("error kidr hai ? 1");
+//                     for (p = 0; p <= proreport[workon].scales_details.length - 1; p++) {
+//                         console.log("error kidr hai ? 2 " + k + " " + p);
+//                         if (proreport[workon].scales_details.length == 1 && ff == 0) {
+//                             console.log("error kidr hai ? 3");
+//                             console.log("first scale to be added in record");
+//                             proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
+//                             proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
+//                             ff = 1;
+//                             break;
+//                         }
+//                         else if (proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name) {
+//                             console.log("error kidr hai ? 4");
+//                             if (totalvisits > 0) {
+//                                 var isPresent = doc[total].visits[totalvisits - 1].scaleinfo.some((el) => {
+//                                     if (el.scale_name === proreport[workon].scales_details[p].scale_name) {
+//                                         return true;
+//                                     } else {
+//                                         return false;
+//                                     }
+//                                 });
+//                                 if (isPresent == false) {
+//                                     console.log("error kidr hai ? 5");
+//                                     console.log("pata nh");
+//                                     proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
+//                                 }
+//                             }
+//                             console.log("same record");
+//                             break;
+//                         }
+//                         else if (proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length - 1) {
+//                             console.log("new record for scale");
+//                             console.log("error kidr hai ? 6");
+//                             console.log(proreport[workon].scales_details.length - 1);
+//                             proreport[workon].scales_details.push({
+//                                 scale_name: doc[total].visits[totalvisits].scaleinfo[k].scale_name,
+//                                 count: 1,
+//                                 average_score: 0
+//                             })
+//                             break;
+//                         }
+//                     }
+//                 }
 //             }
 //             firstvisit = false;
 //             totalvisits--;
@@ -1163,6 +1380,7 @@ function genreport(doc, proreport) {
                 if (doc[total].visits[totalvisits].thtime == "More then 1 Hr") {
                     proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
                 }
+                console.log(doc[total].visits[totalvisits].medstopdate + "Med Stop Date");
                 // medicine continued but addded stop date
                 if (firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
                     if (doc[total].visits[totalvisits].medstopdate != null) {
@@ -1174,11 +1392,12 @@ function genreport(doc, proreport) {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
+                else if (doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "" && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits + 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
+                console.log(doc[total].visits[totalvisits].addeddate + " Added DateDate");
                 // stop date of added medicine
                 if (firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
                     if (doc[total].visits[totalvisits].addeddate != null) {
@@ -1190,11 +1409,12 @@ function genreport(doc, proreport) {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
+                else if (doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "" && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits + 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
+                console.log(doc[total].visits[totalvisits].added+"added");
                 // Added Medicine
                 if (firstvisit == true && doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
                     if (doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined) {
@@ -1206,92 +1426,135 @@ function genreport(doc, proreport) {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
+                else if (doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "" && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits + 1].added && doc[total].visits[totalvisits].added != "") {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
+                console.log(doc[total].visits[totalvisits].increase + " increase ");
                 // Increased Medicine
                 if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
+                    console.log("1");
                     if (firstvisit == true) {
+                        console.log("2");
                         if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
+                            console.log("3");
                         }
                     }
                     else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
+                        console.log("4");
                         if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits - 1].increase && doc[total].visits[totalvisits].increase != "") {
+                            console.log("5");
                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                         }
                     }
-                    else if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
+                    else if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "" && totalvisits > 0) {
+                        console.log("6");
                         if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits + 1].increase && doc[total].visits[totalvisits].increase != "") {
+                            console.log("7");
                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                         }
                     }
                 }
+                console.log(doc[total].visits[totalvisits].stopped2 + " stopped2 ");
                 // Stopped Medicine
                 if (firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
+                    console.log("1");
                     if (doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined) {
+                        console.log("2");
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
+                    console.log("3");
                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits - 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
+                        console.log("4");
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
+                else if (doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "" && totalvisits >0) {
+                    console.log("5");
+                    console.log(totalvisits + "cx");
                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
+                        console.log("6");
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
-                    }
+                        }
                 }
+                else{
+                    console.log("7");
+                }
+                console.log(doc[total].visits[totalvisits].decrease2 + " Decrease2 ");
                 // meds lowered or decreased
                 if (firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
+                    console.log("1");
                     if (doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined) {
+                        console.log("2");
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
+                    console.log("3");
                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits - 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
+                        console.log("4");
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
+                else if (doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "" && totalvisits > 0) {
+                    console.log("5");
                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits + 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
+                        console.log("6");
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
+                console.log(doc[total].visits[totalvisits].scaleinfo.length + "ScaleInfo");
                 // scales performed
                 if (firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    console.log("1");
                     if (doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined) {
+                        console.log("2");
                         proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
                     }
                 }
                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    console.log("3");
                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                        console.log("4");
                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            console.log("5");
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
                         else {
+                            console.log("6");
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
                 else if (doc[total].visits[totalvisits].scaleinfo.length != 0) {
-
+                    console.log("7");
+                    if(totalvisits > 0){
                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits + 1].scaleinfo.length) {
-
+                        console.log("8");
+                        if(totalvisits > 0){
                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            console.log("9");
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
                         else {
+                            console.log("10");
                             add = 0;
                         }
+                    }
+                    else {
+                        console.log("10");
+                        add = 0;
+                    }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
-
+                }
+                console.log("abcdefghijklmnopqrstuvwxyz");
                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
                 console.log("scales scale length : " + scale_length);
                 var ff = 0;
@@ -1396,7 +1659,7 @@ router.post('/facilitysummaryreport', verifyToken, (req, res) => {
                     '$unwind':"$visits"
                 },
                 {"$match": {"visits.visit": {"$gte": new Date(req.body.facilitySummaryFromdate), "$lte": toDateAddTime
-                                            } ,  "visits.facility":  req.body.facilitySummary
+                                            } ,  "visits.facility":  req.body.facilitySummaryName
                            }
                 }
     ]).then(doc => {
@@ -1515,24 +1778,30 @@ function genreport2(doc, proreport) {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].medstopdate != undefined) {
+                else if (doc[total].visits[totalvisits].medstopdate != undefined && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits + 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
                     }
                 }
                 // stop date of added medicine
                 if (firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined) {
+                    console.log("1");
                     if (doc[total].visits[totalvisits].addeddate != null) {
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
+                        console.log("2");
                     }
                 }
                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined) {
+                    console.log("3");
                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits - 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
+                        console.log("4");
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].addeddate != undefined) {
+                else if (doc[total].visits[totalvisits].addeddate != undefined && totalvisits > 0) {
+                    console.log("5");
                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits + 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
+                        console.log("6");
                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
                     }
                 }
@@ -1547,24 +1816,30 @@ function genreport2(doc, proreport) {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].added != undefined) {
+                else if (doc[total].visits[totalvisits].added != undefined && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits + 1].added && doc[total].visits[totalvisits].added != "") {
                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
                     }
                 }
                 // Increased Medicine
                 if (firstvisit == true && doc[total].visits[totalvisits].increase != undefined) {
+                    console.log("1");
                     if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
+                        console.log("2");
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined) {
+                    console.log("3");
                     if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits - 1].increase && doc[total].visits[totalvisits].increase != "") {
+                        console.log("4");
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].increase != undefined) {
+                else if (doc[total].visits[totalvisits].increase != undefined && totalvisits > 0) {
+                    console.log("5");
                     if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits + 1].increase && doc[total].visits[totalvisits].increase != "") {
+                        console.log("6");
                         proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
                     }
                 }
@@ -1579,7 +1854,7 @@ function genreport2(doc, proreport) {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].stopped2 != undefined) {
+                else if (doc[total].visits[totalvisits].stopped2 != undefined && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
                     }
@@ -1595,35 +1870,46 @@ function genreport2(doc, proreport) {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
-                else if (doc[total].visits[totalvisits].decrease2 != undefined) {
+                else if (doc[total].visits[totalvisits].decrease2 != undefined && totalvisits > 0) {
                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits + 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
                     }
                 }
                 // scales performed
+                console.log("heyyy");
                 if (firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    console.log("1");
                     if (doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined) {
+                        console.log("2");
                         proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
                     }
                 }
                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                    console.log("3");
                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                        console.log("4");
                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            console.log("5");
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
                         else {
+                            console.log("6");
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
                     }
                 }
-                else if (doc[total].visits[totalvisits].scaleinfo.length != 0) {
+                else if (doc[total].visits[totalvisits].scaleinfo.length != 0 && totalvisits > 0) {
+                    console.log("7");
                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits + 1].scaleinfo.length
-                        && totalvisits > 0) {
+                        ) {
+                            console.log("8");
                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
+                            console.log("9");
                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
                         }
                         else {
+                            console.log("10");
                             add = 0;
                         }
                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
