@@ -260,6 +260,7 @@ export class DataTransferService {
   url27 = `${this.metcha}/fetchByName`;
   url28 = `${this.metcha}/getactivefacility`;
   url29 = `${this.metcha}/getactiveprovider`;
+  apiUrlForFacilitySummary = `${this.metcha}/facilitysummaryreport`;
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
   subject = new BehaviorSubject("123");
@@ -417,6 +418,11 @@ export class DataTransferService {
   findfacilityreport(data){
     return this.http.post<any>(this.url24,data);
   }
+
+  facilitySummaryReport(data){
+    return this.http.post<any>(this.apiUrlForFacilitySummary, data);
+  }
+
   private history = [];
   public loadRouting(): void {
     this.router.events
