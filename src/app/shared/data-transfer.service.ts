@@ -390,9 +390,14 @@ export class DataTransferService {
   }
   sendBaseData(data) {
     console.log(data)
-    this.http.post<any>(this.url17, data).subscribe(res => {
-      console.log(res);
-    })
+    return this.http.post<any>(this.url17, data).subscribe(res => {
+      console.log(res)
+      var flag = 0;
+      if(res == "errors in save"){
+        flag = 1;
+      }
+      return flag;
+    });;
   }
   getByid(id) {
     const params = new HttpParams().set('id', id);

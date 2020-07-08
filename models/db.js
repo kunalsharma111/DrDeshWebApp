@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-const uri = "mongodb+srv://sukrit:love@cluster0-bn91a.mongodb.net/test?retryWrites=true&w=majority";
+// old db
+// const uri = "mongodb+srv://sukrit:love@cluster0-bn91a.mongodb.net/test?retryWrites=true&w=majority";
+// production DB
+const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
+// testing DB
 require('./users.model');
 require('./patient.model');
 require('./r2patient.model');

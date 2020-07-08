@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+var uniqueValidator = require('mongoose-unique-validator')
 let visitSchema = new mongoose.Schema({
     visit: Date,
     careconditiontimespent: String,
@@ -115,9 +115,13 @@ let visitSchema = new mongoose.Schema({
 })
 mongoose.model('MVM', visitSchema);
 let masterptSchema = new mongoose.Schema({
-    name: String,
+    name:{ type: String,
+        required: true,
+        unique: true,
+        },
     dob: Date,
     flag:Number,
     visits: [visitSchema]
 });
+masterptSchema.plugin(uniqueValidator)
 mongoose.model('MasterPatient', masterptSchema);
