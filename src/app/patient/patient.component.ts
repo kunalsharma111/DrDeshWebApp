@@ -207,9 +207,10 @@ export class PatientComponent implements OnInit {
     this.service.logout();
   }
   submit(form: NgForm) {
-
-   var ans = this.service.sendBaseData(form.value);
-   console.log(ans); 
+    res:0;
+  this.service.sendBaseData(form.value).subscribe(res => {
+    console.log(res)
+  }); 
 
   //  this.toastr.success('', 'Patient Added Successfully');
     $("#myModal").modal("hide");

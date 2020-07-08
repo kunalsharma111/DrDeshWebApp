@@ -640,18 +640,28 @@ router.post("/login", (req, res) => {
 
 });
 
-router.post('/basedata', verifyToken, (req, res) => {
-    // console.log(req.body);
-    let data = req.body;
-    let basedata = new MasterPatientModel(data);
-    console.log(basedata.name);
-    basedata.save().then(res => {
-        console.log("saved to db");
-    }, err => {
-        console.log(err);
-        res.json("errors in save")
-    })
-})
+// router.post('/basedata', verifyToken, (req, res) => {
+//     let data = req.body;
+//     let basedata = new MasterPatientModel(data);
+//     console.log(basedata);
+//     MasterPatientModel.findOne({  name: basedata.name,dob: new Date(basedata.dob) }).then(res=>{
+//         if(res == null){
+//             basedata.save().then(res => {
+//                 res.send("saved to db");
+//             }, err => {
+//                 console.log(err);
+//                 res.send("errors in save");
+//             })
+//         }
+//         else{
+//             res.send("patient already exists");
+//         }
+//     },err=>{
+//         console.log(err);
+//     })
+
+    
+// })
 
 router.get('/get', verifyToken, (req, res) => {
     MasterPatientModel.findById(req.query.id).then(doc => {

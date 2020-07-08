@@ -115,13 +115,9 @@ let visitSchema = new mongoose.Schema({
 })
 mongoose.model('MVM', visitSchema);
 let masterptSchema = new mongoose.Schema({
-    name:{ type: String,
-        required: true,
-        unique: true,
-        },
+    name: String,
     dob: Date,
     flag:Number,
     visits: [visitSchema]
 });
-masterptSchema.plugin(uniqueValidator)
 mongoose.model('MasterPatient', masterptSchema);
