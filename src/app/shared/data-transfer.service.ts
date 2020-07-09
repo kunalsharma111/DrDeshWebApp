@@ -261,6 +261,7 @@ export class DataTransferService {
   url28 = `${this.metcha}/getactivefacility`;
   url29 = `${this.metcha}/getactiveprovider`;
   apiUrlForFacilitySummary = `${this.metcha}/facilitysummaryreport`;
+  apiUrlForPatientSummary = `${this.metcha}/patientsummaryreport`;
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
   subject = new BehaviorSubject("123");
@@ -416,6 +417,10 @@ export class DataTransferService {
 
   facilitySummaryReport(data){
     return this.http.post<any>(this.apiUrlForFacilitySummary, data);
+  }
+
+  patientSummaryReport(data){
+    return this.http.post<any>(this.apiUrlForPatientSummary, data);
   }
 
   private history = [];

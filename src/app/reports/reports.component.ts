@@ -44,8 +44,10 @@ export class ReportsComponent implements OnInit {
   providerreportoutput :any = [];
   facilityreportoutput :any = [];
   inputForFacilitySummary :any = [];
+  inputForPatientSummary :any = [];
   proFacReportInput :any = [];
-  facilitySummaries :any = []
+  facilitySummaries :any = [];
+  patientSummaries :any = [];
 
   logout() {
     this.service.logout();
@@ -99,15 +101,18 @@ export class ReportsComponent implements OnInit {
   repo1: any = {}
   repo2 :any = {}
   facilitySummary :any = {};
+  patientSummary :any = {};
   showit = true;
   gammma = false;
   showit2 = true;
   showit3 = true;
   showFacilitySummaryReport = true;
+  showPatientSummaryReport = true;
   showit4 = true;
   gammma2= false;
   gammma3 = false;
   showDataForFacilitySummary = false;
+  showDataForPatientSummary = false;
   gammma4 = false;
   fn;
   pn;
@@ -117,6 +122,7 @@ export class ReportsComponent implements OnInit {
   nodata2 = false;
   nodata3 = false;
   noDataForFacilitySummary = false;
+  noDataForPatientSummary = false;
   nodata4 = false;
   nodata5 = false;
 
@@ -381,6 +387,14 @@ export class ReportsComponent implements OnInit {
     this.facilitySummaries = [];
   }
 
+  resetPatientSummaryReportModel() {
+    this.showPatientSummaryReport = true;
+    this.noDataForPatientSummary = false;
+    this.showDataForPatientSummary = false;
+    this.patientSummary = {};
+    this.patientSummaries = [];
+  }
+
   re4(){
     this.showit4 = true;
     this.gammma4 = false;
@@ -431,6 +445,43 @@ export class ReportsComponent implements OnInit {
     }
   }
 
+  validatePatientSummary: boolean;
+  submitPatientSummaryReport(form) {
+    if(form.valid){
+      this.inputForPatientSummary = form.value;
+      this.noDataForPatientSummary = false;
+      this.showPatientSummaryReport = false;
+      this.spinnerService.show();
+      this.service.patientSummaryReport(form.value).subscribe(res =>{
+        this.patientSummaries = Array.of(res);
+
+        if(this.patientSummaries[0] == "no"){
+          this.spinnerService.hide();
+          this.showPatientSummaryReport = true;
+          this.noDataForPatientSummary = true;
+          this.showDataForPatientSummary = false;
+
+          this.patientSummary = {
+            patientName: '',
+            patientSummaryFromdate: '',
+            patientSummaryTodate: ''
+          };
+        }
+        else{
+          this.patientSummaries[0].sort((a, b) =>
+          0 - a.visits.visit > b.visits.visit ? -1 : 1
+          );
+          this.spinnerService.hide();
+          this.showPatientSummaryReport = false;
+          this.showDataForPatientSummary = true;
+          this.noDataForPatientSummary = false;
+        }
+      })
+    }else {
+      this.validatePatientSummary = true;
+    }
+  }
+
   exportFacilitySummaryToExcel(fileName, reportName) {
     const workbooke = new Excel.Workbook();
     const worksheet = workbooke.addWorksheet(reportName);
@@ -469,8 +520,7 @@ export class ReportsComponent implements OnInit {
     reportNameHeading.eachCell((cell, number) => {
       cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
     });
-    console.log("this.proFacReportInput", this.proFacReportInput)
-    const facilityRow = worksheet.addRow(['', 'Facility Name', this.inputForFacilitySummary.facilitySummary]);
+    const facilityRow = worksheet.addRow(['', 'Facility Name', this.inputForFacilitySummary.facilitySummaryName]);
     const fromDate = worksheet.addRow(['', 'From Date', formatDate(this.inputForFacilitySummary.facilitySummaryFromdate, 'dd-MM-yyyy', 'en-US')]);
     const toDate = worksheet.addRow(['', 'To Date', formatDate(this.inputForFacilitySummary.facilitySummaryTodate, 'dd-MM-yyyy', 'en-US')]);
 
@@ -509,7 +559,6 @@ export class ReportsComponent implements OnInit {
       });
 
     for(let facilitySummariesIndex = 0; facilitySummariesIndex < this.facilitySummaries[0].length; facilitySummariesIndex++){
-      console.log("d",facilitySummariesIndex ,this.facilitySummaries[0][facilitySummariesIndex]);
       const patientName = this.facilitySummaries[0][facilitySummariesIndex].name;
       const patientRoom = this.facilitySummaries[0][facilitySummariesIndex].visits.room;
       let patientVisitDate = this.facilitySummaries[0][facilitySummariesIndex].visits.visit;
@@ -533,6 +582,118 @@ export class ReportsComponent implements OnInit {
           this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
         }
       });
+    }
+    workbooke.xlsx.writeBuffer().then((dataa) => {
+      const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fs.saveAs(blob, fileName);
+    });
+  }
+
+  exportPatientSummaryToExcel(fileName, reportName){
+    const workbooke = new Excel.Workbook();
+    const worksheet = workbooke.addWorksheet(reportName);
+    var tableRowHeading = ['', 'Visit Date', 'Summary'];
+    worksheet.addRow([]);
+    var reportLogo = workbooke.addImage({
+      base64: logoFile.logoBase64,
+      extension: 'png',
+    });
+
+    worksheet.addImage(reportLogo, {
+      tl: { col: 2.5, row: 0 },
+      br: { col: 3.5, row: 4.5 }
+    });
+
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    const address = worksheet.addRow(['', 'Psychiatry Care \n10840 N US Highway 301 \nOxford FL 34484 Oxford FL 34484 \nOffice:(352) 445-1200 \nFax: (888) 248-4348',]);
+
+    address.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.mergeCells(['B6:D10']);
+    const reportNameHeading = worksheet.addRow(['', reportName]);
+    worksheet.mergeCells(['B11:D11']);
+    reportNameHeading.font = {size: 16, underline: 'double', bold: true };
+
+    reportNameHeading.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+
+    const patientRow = worksheet.addRow(['', 'Patient Name', this.inputForPatientSummary.patientName]);
+    const fromDate = worksheet.addRow(['', 'From Date', formatDate(this.inputForPatientSummary.patientSummaryFromdate, 'dd-MM-yyyy', 'en-US')]);
+    const toDate = worksheet.addRow(['', 'To Date', formatDate(this.inputForPatientSummary.patientSummaryTodate, 'dd-MM-yyyy', 'en-US')]);
+
+    patientRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    fromDate.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    toDate.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    worksheet.getColumn(2).width = 25;
+    worksheet.getColumn(3).width = 25;
+    worksheet.getColumn(4).width = 25;
+    worksheet.getColumn(5).width = 50;
+    worksheet.addRow([]);
+    let headerRow = worksheet.addRow(tableRowHeading);
+    worksheet.getRow(16).height = 30;
+
+    headerRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      this.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
+    });
+
+    const blankRow = worksheet.addRow(['','','']);
+    worksheet.mergeCells(['C16:E16']);
+
+    blankRow.eachCell((cell, number) => {
+      if(number == 1) return;
+      this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+      });
+    worksheet.mergeCells(['C17:E17']);
+
+    for(let patientSummariesIndex = 0; patientSummariesIndex < this.patientSummaries[0].length; patientSummariesIndex++){
+      let patientVisitDate = this.patientSummaries[0][patientSummariesIndex].visits.visit;
+      patientVisitDate = formatDate(patientVisitDate, 'dd-MM-yyyy', 'en-US');
+      const patientSummary = this.patientSummaries[0][patientSummariesIndex].visits.summary;
+      let tableData;
+      if(this.patientSummaries[0][patientSummariesIndex].visits.summary === undefined) {
+        tableData = worksheet.addRow(['', patientVisitDate, 'NA']);
+      }
+      else{
+        tableData = worksheet.addRow(['', patientVisitDate, this.patientSummaries[0][patientSummariesIndex].visits.summary]);
+        worksheet.getRow(18+patientSummariesIndex).height = 100;
+      }
+
+      tableData.eachCell((cell, number) => {
+        if(number == 1) return;
+        if(patientSummariesIndex == this.patientSummaries[0].length-1){
+          this.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
+        }else
+        {
+          this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+        }
+      });
+
+      var rowNumber = 18+patientSummariesIndex;
+      var joinColumn = 'C'+rowNumber+':E'+rowNumber;
+      worksheet.mergeCells([joinColumn]);
     }
     workbooke.xlsx.writeBuffer().then((dataa) => {
       const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
