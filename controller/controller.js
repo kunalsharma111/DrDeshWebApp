@@ -66,9 +66,11 @@ function verifyToken(req, res, next) {
     next()
 }
 //get current user
+var currentuser;
 router.get('/red', verifyToken, (req, res) => {
     userModel.findOne({ _id: sub }, function (err, user) {
         if (!err) {
+            currentuser = user.fname;
             res.json(user);
         }
         if (err) {
@@ -372,7 +374,15 @@ router.post('/goku', verifyToken, (req, res) => {
     if (!req.body.visit) {
         req.body.visit = new Date()
     }
+    if(!req.body.savedon){
+    req.body.savedon = new Date(); 
+    }
+    if(!req.body.savedby){
+        req.body.savedby = currentuser;
+    }
     let masterdata = {
+        savedon : req.body.savedon,
+        savedby : req.body.savedby,
         visit: req.body.visit,
         careconditiontimespent: req.body.careconditiontimespent,
         seedoc: req.body.seedoc,
@@ -646,6 +656,12 @@ router.post('/basedata', verifyToken, (req, res) => {
     console.log(basedata);
     MasterPatientModel.findOne({  name: basedata.name,dob: new Date(basedata.dob) }).then(res=>{
         if(res == null){
+            if(!basedata.patientcreatedon){
+            basedata.patientcreatedon = new Date();
+             }
+             if(!basedata.patientcreatedby){
+            basedata.patientcreatedby = currentuser;
+             }
             basedata.save().then(res => {
                 res.send("saved to db");
             }, err => {
@@ -696,22 +712,32 @@ router.post('/preround', verifyToken, (req, res) => {
             res.json(err)
         })
         .then(result => {
+            // details of provider for whom we are generating the report in result
             console.log(result);
             MasterPatientModel.find({}).then(step2 => {
                 let preroundupdata = [];
                 let mainDate = req.body.date;
+                // loop is traversing and going through all patient data approx more then 8k+ time
                 step2.forEach(pat => {
+                    // in x we are storing the last visit of the patient
                     let x = pat.visits[pat.visits.length - 1]
+                    // if patient never visited it will not go in this if statement
                     if (x != undefined) {
                         let veryUrgent = false;
-                        if (x.medfollowup == "Very Urgent") veryUrgent =
-                            true;
+                        // checking if patient is very urgent marking it very urgent
+                        if (x.medfollowup == "Very Urgent") 
+                        veryUrgent = true;
+                            // if patients insurance mathes the provider insurance or the patient is very urgent then it will go in this if statement
                         if (result.insurance.includes(x.pinsurance) ||
                             result.insurance.includes(x.sinsurance) || veryUrgent) {
+                                // in pat variable we have patients data 
                             console.log(pat.name)
+                            // here we are checking if patient is in same facility or nursing home where provider is gonna visit ? if yes then it will go in loop
                             if (req.body.facility === x.facility) {
                                 console.log(pat.name)
+                                // in visitdate we are fetching the visit date of patient which is stores in our DB
                                 let visitdate = new Date(x.visit);
+                                // in select date we are fetching the date for which we want to generate report
                                 let selecteddate = new
                                     Date(req.body.date);
                                 let psydate = new Date(x.visit);
@@ -719,6 +745,7 @@ router.post('/preround', verifyToken, (req, res) => {
                                 let p_s = [];
                                 let s_d = [];
                                 let urgent = false;
+                                // checking for urgent
                                 if (x.medfollowup == 'urgent') {
                                     urgent = true;
                                 }
@@ -747,6 +774,7 @@ router.post('/preround', verifyToken, (req, res) => {
                                     visitdate.setDate(visitdate.getDate() + 30);
                                     medmanage = true;
                                 }
+                                // intialized array to check for which programs patient has signed
                                 let s_e = [];
                                 if (x.medmanage == 'yes') {
                                     s_e.push('Med-Management')
@@ -767,17 +795,21 @@ router.post('/preround', verifyToken, (req, res) => {
                                     s_e.push("virtual clinic")
                                 }
                                 let scale_dataa = false;
+                                //provider for whom we are fetching records , if he/she also do scales then we will go in this loop
                                 if (result.role.includes('Scale Performer')) {
                                     x.scaleinfo.forEach(scale => {
                                         console.log(scale)
+                                        // NOT SURE may be checking for pending scales
                                         if (scale.scale_score == '') {
                                             console.log('insidestep1/2');
 
                                             p_s.push(scale.scale_name)
                                         }
+                                        // if scale is pending
                                         if (scale.scaledays != "" || scale.scaledays != "Not Applicable") {
                                             let scale_visit_date = new Date(scale.scale_date);
                                             console.log("scale visitdate" + scale_visit_date)
+                                            // after going inside below if checking for is there again time to do any scale
                                             if (scale_visit_date != "Invalid Date" || scale.scale_date != "") {
                                                 console.log('insidestep2')
                                                 if (scale.scaledays == "6 Months") {
@@ -816,6 +848,7 @@ router.post('/preround', verifyToken, (req, res) => {
                                 if (x.followupreason != undefined) {
                                     followup_reason = x.followupreason
                                 }
+                                // + used to tell js that type of variable is number and if it is med management
                                 if (+visitdate <= +selecteddate &&
                                     result.role.includes('Medication management') && medmanage || urgent ||
                                     veryUrgent) {
@@ -830,7 +863,7 @@ router.post('/preround', verifyToken, (req, res) => {
                                     if (veryUrgent) {
                                         v_t.push("very urgent");
                                     }
-
+                                    // making one object to send data
                                     let data_partial = {
                                         id: pat._id,
                                         name: pat.name,
@@ -849,6 +882,7 @@ router.post('/preround', verifyToken, (req, res) => {
                                     console.log(data_partial);
                                     preroundupdata.push(data_partial);
                                 }
+                                // if it is for Psychotherapist
                                 if (+psydate <= +selecteddate &&
                                     result.role.includes('Psychotherapist') && psyco) {
                                     v_t.push("Psycothreapy");
@@ -870,6 +904,7 @@ router.post('/preround', verifyToken, (req, res) => {
                                     console.log(data_partial);
                                     preroundupdata.push(data_partial);
                                 }
+                                // if scale performer
                                 if (result.role.includes('Scale Performer')) {
                                     let data_partial = {
                                         id: pat._id,
@@ -887,17 +922,19 @@ router.post('/preround', verifyToken, (req, res) => {
                                         providerName: x.provider,
                                         facility: x.facility
                                     }
-                                    console.log(data_partial);
+                                    console.log(data_partial + "YES WE GOT THE DATA");
                                     preroundupdata.push(data_partial);
                                 }
                             }
                         }
                     }
                 })
+                // traversing through all the patient data which we got after calculations 
                 preroundupdata.forEach(id => {
                     console.log('**************************************', id)
+                    // DON'T KNOW why we have made this collection and for what we are using it
                     PostModel.find({ patientId: id.id, visitDate: { "$eq": new Date(id.visit) } }).then(res => {
-                        console.log(res);
+                        // console.log(res);
                         if (!res.length) {
                             let pd = new PostModel({
                                 patientId: id.id,
@@ -906,10 +943,10 @@ router.post('/preround', verifyToken, (req, res) => {
                                 facility: id.facility
                             })
                             console.log("------------")
-                            console.log(pd)
+                            // console.log(pd)
                             console.log('------------');
                             pd.save().then(res => {
-                                console.log(res);
+                                // console.log(res);
                             })
                         }
                     })
@@ -963,6 +1000,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
     console.log(req.body.provider1);
     from = new Date(req.body.fromdate);
     to = new Date(req.body.todate);
+    to.setHours(to.getHours() + 24);
     provider_name = req.body.provider1;
     var proreport = [{
         facility_name: '',
@@ -984,7 +1022,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
         average_score_of_each_scale: 0,
     }]
     console.log(new Date(req.body.fromdate) + " " + new Date(req.body.todate))
-    MasterPatientModel.find({  'visits.provider': req.body.provider1, 'visits.visit': { "$gte": new Date(req.body.fromdate), "$lte": new Date(req.body.todate) } })
+    MasterPatientModel.find({  'visits.provider': req.body.provider1, 'visits.visit': { "$gte": new Date(req.body.fromdate), "$lte": to } })
         .then(doc => {
             if (doc.length != 0) {
                 proreport = genreport(doc, proreport);
@@ -1620,6 +1658,7 @@ function genreport(doc, proreport) {
 router.post('/facilityreport', verifyToken, (req, res) => {
     from = new Date(req.body.fromdate1);
     to = new Date(req.body.todate1);
+    to.setHours(to.getHours() + 24);
     facility_name = req.body.facility1;
     var proreport = [{
         provider_name: '',
@@ -1640,7 +1679,7 @@ router.post('/facilityreport', verifyToken, (req, res) => {
         number_of_each_subscale_performed: 0,
         average_score_of_each_scale: 0,
     }]
-    MasterPatientModel.find({ 'visits.facility': req.body.facility1, 'visits.visit': { "$gte": new Date(req.body.fromdate1), "$lte": new Date(req.body.todate1) } })
+    MasterPatientModel.find({ 'visits.facility': req.body.facility1, 'visits.visit': { "$gte": new Date(req.body.fromdate1), "$lte": to } })
         .then(doc => {
             if (doc.length != 0) {
                 proreport = genreport2(doc, proreport);

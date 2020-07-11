@@ -129,6 +129,16 @@
         <form (submit)="submit(form)" #form="ngForm">
           <hr>
           <input type="hidden" name="flag" #flag="ngModel" [(ngModel)]="combined.flag">
+          <div class="form-row" style="display: none;">
+            <div class="form-group">
+                <input type="date" class="form-control aq" name="patientcreatedon" #patientcreatedon="ngModel"
+            [(ngModel)]="combined.patientcreatedon">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control aq" name="patientcreatedby" #patientcreatedby="ngModel"
+            [(ngModel)]="combined.patientcreatedby" value={{role}}>
+            </div>
+        </div>
           <div class="row">
             <div class="col-md-12">
               <div class="row">
