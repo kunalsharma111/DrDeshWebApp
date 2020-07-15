@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, PLATFORM_ID, Inject, Provider } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, PLATFORM_ID, Inject, Provider, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataTransferService, PatientRound2, Facility } from '../shared/data-transfer.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,8 +9,12 @@ import * as xlsx from 'xlsx';
 import * as logoFile from '../img/logo.js';
 import * as Excel from "exceljs/dist/exceljs.min.js";
 import * as fs from 'file-saver';
-import { formatDate} from '@angular/common';
+import { formatDate, CommonModule} from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { Observable, Subject} from 'rxjs';
+import { map, switchMap, debounceTime} from 'rxjs/operators';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 
 @Component({
   selector: 'app-reports',
@@ -18,10 +22,24 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
+
+  patientNames = [];
+  public input = new EventEmitter<string>();
+  selectedPersonId = '';
   role;
   isBrowser;
   constructor(private spinnerService: Ng4LoadingSpinnerService,public service: DataTransferService, public renderer: Renderer2) {
-    // this.isBrowser = isPlatformBrowser(platformId);
+    this.input
+            .pipe(
+                debounceTime(200),
+                switchMap(term => this.service.getPeople(term))
+            )
+            .subscribe(patientnames => {
+                this.patientNames = patientnames;
+            }, (err) => {
+                console.log('error', err);
+                this.patientNames = [];
+            });
   }
   @ViewChild('ball', { static: true }) ball;
   @ViewChild('table', { static: false }) table: ElementRef;
@@ -48,13 +66,15 @@ export class ReportsComponent implements OnInit {
   proFacReportInput :any = [];
   facilitySummaries :any = [];
   patientSummaries :any = [];
-
+  patientLoading;
+  allPatientData: any = [];
   logout() {
     this.service.logout();
   }
 
 
   ngOnInit() {
+    this.patientLoading = true;
     this.service.cc6$
     .subscribe(
       message => {

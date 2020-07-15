@@ -1693,6 +1693,17 @@ router.post('/patientsummaryreport', verifyToken, (req, res) => {
         })
 });
 
+router.post('/getpatientsasperkey', verifyToken, (req, res) => {
+    MasterPatientModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
+        if (doc.length != 0) {
+            res.json(doc);
+        }
+        else {
+            res.json("no");
+        }
+    })
+});
+
 function genreport2(doc, proreport) {
     var total = doc.length - 1;
     // console.log(proreport.length);
