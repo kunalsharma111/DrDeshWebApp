@@ -829,15 +829,19 @@
                             <ng-select [items]="patientNames"
                                 bindLabel="name"
                                 id="patientName"
+                                class="custom"
                                 [closeOnSelect]="true"
                                 [hideSelected]="true"
                                 name="patientName"
                                 bindValue="name"
+                                typeToSearchText="Enter minimum 3 char."
                                 [typeahead]="input"
-                                [(ngModel)]="patientSummary.patientName">
+                                notFoundText="No Patients"
+                                [(ngModel)]="patientSummary.patientName"
+                                required>
                             </ng-select>
-                            <!-- <div *ngIf="validatePatientSummary && patientName.invalid" class="alert alert-danger mt-1">
-                                <div *ngIf="patientName.errors.required">Field is required.</div>
+                            <!-- <div *ngIf="patientSummary.patientName === undefined" class="alert alert-danger mt-1">
+                                <div *ngIf="patientSummary.patientName === undefined" >Field is required.</div>
                             </div> -->
                         </div>
                         <div class="col-md-3">
