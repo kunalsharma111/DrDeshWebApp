@@ -234,16 +234,16 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let i of output">
-                                <td>{{i.room}}</td>
+                                <td>{{i.visits[0].room}}</td>
                                 <td>{{i.name}}<p [routerLink]="['/cpat']"><i class="fa fa-pencil" aria-hidden="true"
                                             style="color: #87c442;" (click)="service.useriden(i.id)"
                                             tooltip="Update Patient record" data-dismiss="modal" placement="right"></i>
                                     </p>
                                 </td>
-                                <td>{{i.insurance}}</td>
+                                <td>{{i.visits[0].pinsurance}}</td>
                                 <td>Service Eligible : {{i.services_eligible}}
                                     <hr>
-                                    Visit Type : {{i.visit_type}}
+                                    Visit Type : {{i.visits[0].typevisit}}
                                     <hr>
                                     Pending Scales : {{i.pending_scales}}
                                 </td>

@@ -494,7 +494,8 @@ router.post('/goku', verifyToken, (req, res) => {
         scaleeligiblereason: req.body.scaleeligiblereason,
         otherscaleeligiblereason: req.body.otherscaleeligiblereason,
         scaledays: req.body.scaledays,
-        summary: req.body.summary
+        summary: req.body.summary,
+        nextvisitdate: req.body.nextvisitdate
     }
     MasterPatientModel.findById(req.body.id, (err, doc) => {
         if (!err) {
@@ -699,10 +700,90 @@ router.get('/get', verifyToken, (req, res) => {
     })
 })
 
+router.post('/preround', verifyToken,async (req, res) => {
+   try{
+    const provider_details = await ProviderModel.find({ name: req.body.provider });
+    const veryurgent_patients = await MasterPatientModel.aggregate([
+        { $project: {name:1, visits: { $slice : [ "$visits" , -1 ] } } },
+        { $match: {'visits.facility': req.body.facility ,'visits.medfollowup':"Very Urgent" } }
+    ])
+    const urgent_patients = await MasterPatientModel.aggregate([
+        { $project: {name:1, visits: { $slice : [ "$visits" , -1 ] } } },
+        { $match: {'visits.facility': req.body.facility ,'visits.medfollowup':"Urgent", "$or":[
+            {
+            'visits.pinsurance':{ "$in" : provider_details[0].insurance}
+            },{
+            'visits.sinsurance':{ "$in" : provider_details[0].insurance}
+            }]
+                }
+        }
+    ])
+    const specific_date = await MasterPatientModel.aggregate([
+        { $project: {name:1, visits: { $slice : [ "$visits" , -1 ] } } },
+        { $match: {'visits.facility': req.body.facility ,
+                   'visits.typevisit': { "$in" : provider_details[0].role } ,
+                   'visits.followupdays': { "$lte" : new Date(req.body.date ) },
+                   "$or":[
+                    {
+                    'visits.pinsurance':{ "$in" : provider_details[0].insurance}
+                    },{
+                    'visits.sinsurance':{ "$in" : provider_details[0].insurance}
+                    }] 
+                }
+        }
+    ])
+    const psychotherapy_result =  await MasterPatientModel.aggregate([
+        { $project: { name:1,visits: { $slice : [ "$visits" , -1 ] } } },
+        { $match: {'visits.facility': req.body.facility ,
+        "$and":[
+                    {'visits.typevisit':'Psycothreapy'},
+                    {'visits.typevisit': { "$in" : provider_details[0].role } } 
+               ],
+               
+            } }
+    ])
+    for(i=0;i<psychotherapy_result.length;i++){
+        let visitd = new Date(psychotherapy_result[i].visits[0].visit);
+        visitd.setHours(visitd.getHours() + (psychotherapy_result[i].visits[0].followup * 24 ));
+        inputdate = new Date(req.body.date);
+        var ok = visitd.getFullYear()+'/'+(visitd.getMonth()+1)+'/'+visitd.getDate();
+        var id = inputdate.getFullYear()+'/'+(inputdate.getMonth()+1)+'/'+ inputdate.getDate();
+        if(ok == id){
+            console.log("yes");
+        }
+        else{
+            console.log("no");
+        }
+    }
+    const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...psychotherapy_result];
+    function removeDuplicates(data){
+       let final_result = [];
+       data.forEach(element => {
+           if(!final_result.includes(element)){
+            final_result.push(element)
+           }
+       })
+       return final_result;
+    }
+    console.log(removeDuplicates(result));
+    // for(i=0;i<result.length;i++){
+    //     console.log(result[i]);
+    // }
+    // if(veryurgent_patients.length>0){
+    // console.log(veryurgent_patients);
+    // console.log(veryurgent_patients[0].visits[0].medfollowup);
+    // }else{
+    //     console.log("no very urgent patient");
+    // }
+    res.json(result);
+
+}catch(error){
+    console.log(error);
+   }
+})
 
 
-
-router.post('/preround', verifyToken, (req, res) => {
+router.post('/preroundd', verifyToken, (req, res) => {
 
     ProviderModel.find({ name: req.body.provider }).then(doc => {
         return doc[0];

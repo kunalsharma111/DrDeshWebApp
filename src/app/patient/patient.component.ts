@@ -203,7 +203,8 @@ export class PatientComponent implements OnInit {
       followupdays: null,
       scaleeligiblereason: '',
       otherscaleeligiblereason: '',
-      flag: 0
+      flag: 0,
+      nextvisitdate:null
     }
   }
 

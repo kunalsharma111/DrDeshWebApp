@@ -189,7 +189,7 @@ export class CombinepatComponent implements OnInit {
     console.log(this.update)
   }
   unstable_syms = ['depression', 'anxiety', 'mania', 'psychosis', 'dementia progression and related behaviors', 'delirium and related behaviors', 'pseudobulbar affect']
-  type_visits = ['Med-management follow up', 'Psycothreapy', 'Case Management/Psychiatric screenings', 'Care coordination time spent']
+  type_visits = ['Med-management follow up',  'Psycothreapy', 'Case Management/Psychiatric screenings', 'Care coordination time spent']
   scales = ['Depression', 'PHQ9', 'GDS', 'BDI', 'Cognitive impairment', 'BIMS', 'MMSE', 'Trauma', 'BTQ', 'LEC-5', 'Anxiety', 'GAD', 'BAI', 'PTSD', 'PCL', 'NSESS', 'Bipolar diagnostic', 'BSDS', 'MDQ', 'Dementia with behaviors', 'BEHAVE-AD', 'RMBC', 'Dementia testing', 'MOCA', 'NPQ', 'Insomnia', 'ISQ', 'ISI', 'Suicidal assessment', 'CSSRS', 'BSS', 'Schizophrenia', 'PNASS', 'BPRS', 'Substance use', 'AUDIT', 'DAST', 'FAGERSTORM', 'Misc', 'CNSLS', 'AIMS'];
   med_reasons = ['Patient did not tolerate side effects', 'Patient did not benefit from it', 'Patient cannot afford it', 'Medicine interacts with other medicines', 'Other', 'Not Applicable'];
   genatic_reasons = ['Insurance does not cover it', 'Patient cannot afford copay', 'Patient/POA denied consent', 'Other', 'Not Applicable'];
@@ -325,7 +325,8 @@ export class CombinepatComponent implements OnInit {
       followupdays: null,
       scaleeligiblereason: 'Not Applicable',
       otherscaleeligiblereason: '',
-      flag: null
+      flag: null,
+      nextvisitdate:null
     }
   }
   one(val: any) {
