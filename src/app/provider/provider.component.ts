@@ -18,7 +18,7 @@ export class ProviderComponent implements OnInit {
   public searchString: string;
 
   fname = '';
-  types = ['Medication management', 'Psychotherapist', 'Scale Performer'];
+  types = ['Med-management follow up', 'Psycothreapy', 'Case Management/Psychiatric screenings'];
   metaData = false;
   providers: Provider;
   role;

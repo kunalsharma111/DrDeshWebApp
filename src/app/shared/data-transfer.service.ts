@@ -33,6 +33,10 @@ export interface combined {
   id: string;
   name: string,
   dob: Date,
+  patientcreatedon : Date,
+  patientcreatedby : string,
+  savedon : Date,
+  savedby : string,
   pcp: string;
   typevisit: string;
   visit: Date;
@@ -139,7 +143,8 @@ export interface combined {
   followupdays:Date,
   scaleeligiblereason:string,
   otherscaleeligiblereason:string,
-  flag:Number
+  flag:Number,
+  nextvisitdate:Date
 }
 export interface PatientRound2 {
   id: string;
@@ -393,9 +398,7 @@ export class DataTransferService {
   }
   sendBaseData(data) {
     console.log(data)
-    this.http.post<any>(this.url17, data).subscribe(res => {
-      console.log(res);
-    })
+    return this.http.post<any>(this.url17, data);
   }
   getByid(id) {
     const params = new HttpParams().set('id', id);

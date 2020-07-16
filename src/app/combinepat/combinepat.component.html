@@ -68,6 +68,16 @@
                     <h3 style="color: #87c442;"> <b> General Details </b> <span
                             style="font-size: 1.2rem; color: #87c442;">( {{combined.name}}, {{combined.dob|date}}
                             )</span></h3>
+                            <div class="form-row" style="display: none;">
+                                <div class="form-group">
+                                    <input type="date" class="form-control aq" name="savedon" #savedon="ngModel"
+                                [(ngModel)]="combined.savedon">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control aq" name="savedby" #savedby="ngModel"
+                                [(ngModel)]="combined.savedby" value={{role}}>
+                                </div>
+                            </div>
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="inputname4">Visitation Date <span>*</span> </label>

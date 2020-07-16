@@ -94,6 +94,10 @@ export class PatientComponent implements OnInit {
       visit: null,
       name: '',
       dob: null,
+      patientcreatedon : null,
+      patientcreatedby:'',
+      savedon:null,
+      savedby:'',
       careconditiontimespent: '',
       seedoc: '',
       noseedocreason: '',
@@ -199,7 +203,8 @@ export class PatientComponent implements OnInit {
       followupdays: null,
       scaleeligiblereason: '',
       otherscaleeligiblereason: '',
-      flag: 0
+      flag: 0,
+      nextvisitdate:null
     }
   }
 
@@ -207,11 +212,14 @@ export class PatientComponent implements OnInit {
     this.service.logout();
   }
   submit(form: NgForm) {
+    res:0;
+  this.service.sendBaseData(form.value).subscribe(res => {
+    console.log(res)
+  }); 
 
-    this.service.sendBaseData(form.value);
-    this.resetStuff();
-    this.toastr.success('', 'Patient Added Successfully');
+  //  this.toastr.success('', 'Patient Added Successfully');
     $("#myModal").modal("hide");
+    this.resetStuff();
   }
   patients;
   searchDate;
