@@ -580,6 +580,38 @@ select {
     margin: 5px;
     border-radius: 1px;
 }
+
+.ng-select.custom {
+    font-size: 1.4rem;
+    padding: 5px;
+    width: 100%;
+    border: 2px solid #87c442;
+    background: none;
+    margin: 5px;
+    border-radius: 1px;
+}
+.ng-select.custom ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items  {
+    max-height: 100px;
+    margin-top: 7px;
+    margin-right: 3px;
+}
+// .ng-select.custom.ng-invalid.ng-touched ::ng-deep .ng-select-container {
+//     border-color: #dc3545;
+//     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px #fde6e8;
+// }
+
+.ng-select.custom ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+.ng-select.custom ::ng-deep .ng-arrow-wrapper .ng-arrow {
+    border-color: #999 transparent transparent;
+    border-style: solid;
+    border-width: 8px 9px 1.5px;
+}
+.ng-select.custom ::ng-deep .ng-arrow-wrapper {
+    margin-left: 4px;
+}
 input[type="Date"] {
     font-size: 1.32rem;
     padding: 4.5px;
@@ -652,20 +684,20 @@ label{
 ::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
   }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: $green; 
+    background: $green;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: $green; 
+    background: $green;
   }
   figure {
     width: 100%;
@@ -707,7 +739,7 @@ label{
     transform: rotateX(90deg) translate3d(0, 0, 30px);
     -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px);
   }
-  
+
 .ss{
     font-weight: 600;
 }

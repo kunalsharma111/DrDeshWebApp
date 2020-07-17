@@ -29,6 +29,8 @@ import { CombinepatComponent } from './combinepat/combinepat.component';
 import {DatePipe} from '@angular/common';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,9 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     ToastrModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    Ng4LoadingSpinnerModule.forRoot()
+    Ng4LoadingSpinnerModule.forRoot(),
+    NgSelectModule,
+    NgOptionHighlightModule,
   ],
   providers: [DataTransferService, DatePipe,
     {

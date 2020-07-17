@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/platform-server": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ng-select/ng-option-highlight": "0.0.4",
+    "@ng-select/ng-select": "^3.7.3",
     "@nguniversal/express-engine": "^8.2.6",
     "@nguniversal/module-map-ngfactory-loader": "v8.2.6",
     "bcryptjs": "^2.4.3",
@@ -74,7 +76,7 @@
     "ts-loader": "^5.2.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3",
+    "typescript": "^3.5.3",
     "webpack-cli": "^3.1.0"
   }
 }

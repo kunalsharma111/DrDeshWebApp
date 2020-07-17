@@ -122,6 +122,18 @@
                 </figure>
             </div>
         </div>
+        <div class="row mt-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <figure>
+                    <div>
+                        <span data-toggle="modal" data-target="#patientSummaryReportModel" (click)="resetPatientSummaryReportModel()">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true" ></i></span>
+                        <span>Patient Summary</span>
+                    </div>
+                </figure>
+            </div>
+        </div>
     </section>
     <!-- <img src="/assets/img/login/logo.png" height="200px" style="position: fixed; right: 0; bottom: 0; padding: 50px;"> -->
 </div>
@@ -723,7 +735,7 @@
                 <form #facilitySummaryForm="ngForm" (submit)="submitFacilitySummaryReport(facilitySummaryForm)" *ngIf="showFacilitySummaryReport">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="facilitySummary">Facility</label>
+                            <label for="facilitySummaryName">Facility</label>
                             <select name="facilitySummaryName" id="facilitySummaryName" #facilitySummaryName="ngModel" [(ngModel)]="facilitySummary.facilitySummaryName"
                                 required>
                                 <option *ngFor="let facilitie of facilities" [value]="facilitie.name">{{facilitie.name}}</option>
@@ -794,3 +806,99 @@
 </div>
 
 <!-- Facility Summary Report End-->
+<!-- Patient Summary Report start -->
+<div class="modal lol fade" id="patientSummaryReportModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content mc1">
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+                aria-hidden="true"></i></p>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="/assets/img/login/logo.png" height="100px">
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
+                </div>
+                <h3 class="medh3 mb-4"><u>Patient Summary Report</u></h3>
+                <form #patientSummaryForm="ngForm" (submit)="submitPatientSummaryReport(patientSummaryForm)" *ngIf="showPatientSummaryReport">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="patientName">Patient</label>
+                            <ng-select [items]="patientNames"
+                                bindLabel="name"
+                                id="patientName"
+                                class="custom"
+                                [closeOnSelect]="true"
+                                [hideSelected]="true"
+                                name="patientName"
+                                bindValue="name"
+                                typeToSearchText="Enter minimum 3 char."
+                                [typeahead]="input"
+                                notFoundText="No Patients"
+                                [(ngModel)]="patientSummary.patientName"
+                                required>
+                            </ng-select>
+                            <!-- <div *ngIf="patientSummary.patientName === undefined" class="alert alert-danger mt-1">
+                                <div *ngIf="patientSummary.patientName === undefined" >Field is required.</div>
+                            </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <label for="patientSummaryFromdate">From</label>
+                            <input type="date" name="patientSummaryFromdate" id="patientSummaryFromdate" #patientSummaryFromdate="ngModel"
+                                [(ngModel)]="patientSummary.patientSummaryFromdate" required>
+                            <div *ngIf="validatePatientSummary && patientSummaryFromdate.invalid" class="alert alert-danger mt-1">
+                                <div *ngIf="patientSummaryFromdate.errors.required">Field is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="patientSummaryTodate">TO</label>
+                            <input type="date" name="patientSummaryTodate" id="patientSummaryTodate" #patientSummaryTodate="ngModel"
+                                [(ngModel)]="patientSummary.patientSummaryTodate" required>
+                            <div *ngIf="validatePatientSummary && patientSummaryTodate.invalid" class="alert alert-danger mt-1">
+                                <div *ngIf="patientSummaryTodate.errors.required">Field is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-info mt-4"
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;">Find</button>
+                        </div>
+                    </div>
+                </form>
+                <ng4-loading-spinner> </ng4-loading-spinner>
+                <div class="col-md-12 mb-4 mt-3" style="text-align: center; color:#87c442;" *ngIf="noDataForPatientSummary">
+                    <h1>No data Found</h1>
+                    <p>check with different input</p>
+                </div>
+                <div class="col-md-12 mb-4" *ngIf="showDataForPatientSummary" #epltablee>
+
+                    <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
+                    <table class="table table-stripped table-hover table-condensed mt-4" #table>
+                        <thead>
+                            <tr>
+                                <th>Visit Date</th>
+                                <th>Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let patientSummarie of patientSummaries">
+                            <!-- <div > -->
+                            <tr *ngFor="let patientSummary of patientSummarie">
+                                <td>{{patientSummary.visits.visit | date:'dd-MM-yyyy' }}</td>
+                                <td>{{patientSummary.visits.summary == undefined ? 'NA': patientSummary.visits.summary}}</td>
+                            </tr>
+                            <!-- </div> -->
+                        </tbody>
+                    </table>
+                    <div> <button (click)="exportPatientSummaryToExcel('patient_summary_report.xlsx', 'PATIENT SUMMARY REPORT')"
+                            class="btn btn-success">Export To Excel</button> </div>
+                </div>
+                <!-- <div class="ball" #ball>
+                    <p> LOADING </p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Patient Summary Report End-->

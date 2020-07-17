@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Subject, BehaviorSubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Subject, BehaviorSubject, Observable, of } from 'rxjs';
+import { filter, delay, map, catchError, switchMap} from 'rxjs/operators';
 
 export interface Admin {
   fname: string;
@@ -266,6 +266,9 @@ export class DataTransferService {
   url28 = `${this.metcha}/getactivefacility`;
   url29 = `${this.metcha}/getactiveprovider`;
   apiUrlForFacilitySummary = `${this.metcha}/facilitysummaryreport`;
+  apiUrlForPatientSummary = `${this.metcha}/patientsummaryreport`;
+  apiUrlForAllPatients = `${this.metcha}/getpatientsasperkey`;
+
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
   subject = new BehaviorSubject("123");
@@ -419,6 +422,31 @@ export class DataTransferService {
 
   facilitySummaryReport(data){
     return this.http.post<any>(this.apiUrlForFacilitySummary, data);
+  }
+
+  patientSummaryReport(data){
+    return this.http.post<any>(this.apiUrlForPatientSummary, data);
+  }
+
+  getAllPatientData(enterCharacter) {
+    return this.http.post<any>(this.apiUrlForAllPatients, enterCharacter);
+  }
+
+  getPeople(term: string | null): Observable<any[]> {
+    if(term !== null && term.length >= 3) {
+      return this.getAllPatientData({'enterKey': term}).pipe(
+        catchError(err => of([])),
+        switchMap(patients => {
+          if (patients === 'no'){
+            return of([]);
+          } else {
+            return of (patients);
+          }
+        })
+      );
+    } else {
+      return  of([]);
+    }
   }
 
   private history = [];

@@ -1796,6 +1796,38 @@ router.post('/facilitysummaryreport', verifyToken, (req, res) => {
         })
 });
 
+router.post('/patientsummaryreport', verifyToken, (req, res) => {
+    var toDateAddTime = new Date(req.body.patientSummaryTodate);
+    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
+    MasterPatientModel.aggregate([
+                {
+                    '$unwind':"$visits"
+                },
+                {"$match": {"visits.visit": {"$gte": new Date(req.body.patientSummaryFromdate), "$lte": toDateAddTime
+                                            } ,  "name":  req.body.patientName
+                           }
+                }
+    ]).then(doc => {
+            if (doc.length != 0) {
+                res.json(doc);
+            }
+            else {
+                res.json("no");
+            }
+        })
+});
+
+router.post('/getpatientsasperkey', verifyToken, (req, res) => {
+    MasterPatientModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
+        if (doc.length != 0) {
+            res.json(doc);
+        }
+        else {
+            res.json("no");
+        }
+    })
+});
+
 function genreport2(doc, proreport) {
     var total = doc.length - 1;
     // console.log(proreport.length);
