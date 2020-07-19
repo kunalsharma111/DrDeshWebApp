@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'patient', component: PatientComponent,
     canActivate: [RouteGuard]
   },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [RouteGuard] },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'facility', component: FacilityComponent, canActivate: [RouteGuard] },
   { path: 'insurance', component: InsuranceComponent, canActivate: [RouteGuard] },
