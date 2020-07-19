@@ -13,8 +13,8 @@ import { formatDate, CommonModule} from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Observable, Subject} from 'rxjs';
 import { map, switchMap, debounceTime} from 'rxjs/operators';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+// import { NgSelectModule } from '@ng-select/ng-select';
+// import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 
 @Component({
   selector: 'app-reports',

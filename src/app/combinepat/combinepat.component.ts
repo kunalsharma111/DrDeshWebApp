@@ -333,11 +333,13 @@ export class CombinepatComponent implements OnInit {
     console.log(val);
     this.combined.sinsurance = val;
   }
+  
   notvalidate: boolean;
   submit(form: NgForm) {
     let summary = '';
 
     if (form.valid) {
+       
       if(this.combined.visit == null || this.combined.visit == undefined ){
         this.combined.visit =  new Date();
       }

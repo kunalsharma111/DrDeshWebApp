@@ -742,6 +742,12 @@ router.post('/preround', verifyToken,async (req, res) => {
                
             } }
     ])
+    const per_routine_protocol = await MasterPatientModel.aggregate([
+        { $project: {name:1, visits: { $slice:[ "$visits",-1] } } },
+        { $match: {'visits.facility':req.body.facility ,
+                   'visits.typevisit': 'Per routine protocol',               
+    } }
+    ])
     for(i=0;i<psychotherapy_result.length;i++){
         let visitd = new Date(psychotherapy_result[i].visits[0].visit);
         visitd.setHours(visitd.getHours() + (psychotherapy_result[i].visits[0].followup * 24 ));
@@ -756,25 +762,8 @@ router.post('/preround', verifyToken,async (req, res) => {
         }
     }
     const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...psychotherapy_result];
-    function removeDuplicates(data){
-       let final_result = [];
-       data.forEach(element => {
-           if(!final_result.includes(element)){
-            final_result.push(element)
-           }
-       })
-       return final_result;
-    }
-    console.log(removeDuplicates(result));
-    // for(i=0;i<result.length;i++){
-    //     console.log(result[i]);
-    // }
-    // if(veryurgent_patients.length>0){
-    // console.log(veryurgent_patients);
-    // console.log(veryurgent_patients[0].visits[0].medfollowup);
-    // }else{
-    //     console.log("no very urgent patient");
-    // }
+    
+    
     res.json(result);
 
 }catch(error){
