@@ -24,7 +24,9 @@ import { map, switchMap, debounceTime} from 'rxjs/operators';
 export class ReportsComponent implements OnInit {
 
   patientNames = [];
+  medicineName = [];
   public input = new EventEmitter<string>();
+  public inputMedicine = new EventEmitter<string>();
   selectedPersonId = '';
   role;
   isBrowser;
@@ -40,6 +42,17 @@ export class ReportsComponent implements OnInit {
                 console.log('error', err);
                 this.patientNames = [];
             });
+
+    this.inputMedicine.pipe(
+      debounceTime(200),
+      switchMap(term => this.service.getMedicine(term))
+    ).subscribe(medicineNames => {
+      this.medicineName = medicineNames;
+      this.validateExpensiveMedicationForm = true;
+      }, (err) => {
+        console.log('error', err);
+        this.medicineName = [];
+      });
   }
   @ViewChild('ball', { static: true }) ball;
   @ViewChild('table', { static: false }) table: ElementRef;
@@ -63,9 +76,11 @@ export class ReportsComponent implements OnInit {
   facilityreportoutput :any = [];
   inputForFacilitySummary :any = [];
   inputForPatientSummary :any = [];
+  inputForMedicationReport :any = [];
   proFacReportInput :any = [];
   facilitySummaries :any = [];
   patientSummaries :any = [];
+  expensiveMedicationOutputs :any = [];
   patientLoading;
   allPatientData: any = [];
   logout() {
@@ -122,17 +137,20 @@ export class ReportsComponent implements OnInit {
   repo2 :any = {}
   facilitySummary :any = {};
   patientSummary :any = {};
+  expensiveMedication :any = {};
   showit = true;
   gammma = false;
   showit2 = true;
   showit3 = true;
   showFacilitySummaryReport = true;
   showPatientSummaryReport = true;
+  showExpensiveMedicationForm = true;
   showit4 = true;
   gammma2= false;
   gammma3 = false;
   showDataForFacilitySummary = false;
   showDataForPatientSummary = false;
+  showDataForExpensiveMedication = false;
   gammma4 = false;
   fn;
   pn;
@@ -143,6 +161,7 @@ export class ReportsComponent implements OnInit {
   nodata3 = false;
   noDataForFacilitySummary = false;
   noDataForPatientSummary = false;
+  noDataForExpensiveMedication = false;
   nodata4 = false;
   nodata5 = false;
 
@@ -415,6 +434,14 @@ export class ReportsComponent implements OnInit {
     this.patientSummaries = [];
   }
 
+  resetMedicationReportModel() {
+    this.showExpensiveMedicationForm = true;
+    this.noDataForExpensiveMedication = false;
+    this.showDataForExpensiveMedication = false;
+    this.expensiveMedication = {};
+    this.expensiveMedicationOutputs = [];
+  }
+
   re4(){
     this.showit4 = true;
     this.gammma4 = false;
@@ -500,6 +527,37 @@ export class ReportsComponent implements OnInit {
     }else {
       this.validatePatientSummary = true;
     }
+  }
+
+  validateExpensiveMedicationForm: boolean;
+  submitExpensiveMedicationForm(form) {
+    if(form.valid) {
+      this.inputForMedicationReport = form.value;
+      this.noDataForExpensiveMedication = false;
+      this.showExpensiveMedicationForm = false;
+      this.spinnerService.show();
+      this.service.expensiveMedicationReport(form.value).subscribe(res => {
+        this.expensiveMedicationOutputs = Array.of(res);
+        if(this.expensiveMedicationOutputs[0] == "no") {
+          this.spinnerService.hide();
+          this.showExpensiveMedicationForm = true;
+          this.noDataForExpensiveMedication = true;
+          this.showDataForExpensiveMedication = false;
+
+          this.expensiveMedication = {
+            medicineName: '',
+          };
+        } else {
+          this.spinnerService.hide();
+          this.showExpensiveMedicationForm = false;
+          this.showDataForExpensiveMedication = true;
+          this.noDataForExpensiveMedication = false;
+        }
+      })
+    } else {
+      this.validateExpensiveMedicationForm = false;
+    }
+
   }
 
   exportFacilitySummaryToExcel(fileName, reportName) {
@@ -714,6 +772,99 @@ export class ReportsComponent implements OnInit {
       var rowNumber = 18+patientSummariesIndex;
       var joinColumn = 'C'+rowNumber+':E'+rowNumber;
       worksheet.mergeCells([joinColumn]);
+    }
+    workbooke.xlsx.writeBuffer().then((dataa) => {
+      const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fs.saveAs(blob, fileName);
+    });
+  }
+
+  exportExpensiveMedicationReportToExcel(fileName, reportName) {
+    const workbooke = new Excel.Workbook();
+    const worksheet = workbooke.addWorksheet(reportName);
+    const tableRowHeading = ['', 'Patient Name', 'Date Of Birth', 'Insurance', 'Facility Name'];
+    worksheet.addRow([]);
+    const reportLogo = workbooke.addImage({
+      base64: logoFile.logoBase64,
+      extension: 'png',
+    });
+
+    worksheet.addImage(reportLogo, {
+      tl: { col: 2.5, row: 0 },
+      br: { col: 3.5, row: 4.5 }
+    });
+
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    worksheet.addRow([]);
+    const address = worksheet.addRow(['', 'Psychiatry Care \n10840 N US Highway 301 \nOxford FL 34484 Oxford FL 34484 \nOffice:(352) 445-1200 \nFax: (888) 248-4348',]);
+
+    address.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.addRow(['', '']);
+    worksheet.mergeCells(['B6:D10']);
+    const reportNameHeading = worksheet.addRow(['', reportName]);
+    worksheet.mergeCells(['B11:D11']);
+    reportNameHeading.font = {size: 16, underline: 'double', bold: true };
+
+    reportNameHeading.eachCell((cell, number) => {
+      cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+    });
+
+    const fromDate = worksheet.addRow(['', '', '']);
+    const patientRow = worksheet.addRow(['', 'Medicine Name', this.inputForMedicationReport.medicineName]);
+    const toDate = worksheet.addRow(['', '', '']);
+
+    patientRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } }
+    });
+
+    worksheet.getColumn(2).width = 25;
+    worksheet.getColumn(3).width = 25;
+    worksheet.getColumn(4).width = 25;
+    worksheet.getColumn(5).width = 50;
+    worksheet.addRow([]);
+    let headerRow = worksheet.addRow(tableRowHeading);
+    worksheet.getRow(16).height = 30;
+
+    headerRow.eachCell((cell, number) => {
+      if (number == 1) return;
+      this.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
+    });
+
+    const blankRow = worksheet.addRow(['','','', '', '']);
+
+    blankRow.eachCell((cell, number) => {
+      if(number == 1) return;
+      this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+      });
+    let tableData;
+    for(let patientDataIndex = 0; patientDataIndex < this.expensiveMedicationOutputs[0].length; patientDataIndex++){
+      let patientDob = this.expensiveMedicationOutputs[0][patientDataIndex].dob;
+      const patientName = this.expensiveMedicationOutputs[0][patientDataIndex].name;
+      patientDob = formatDate(patientDob, 'dd-MM-yyyy', 'en-US');
+      const facilityName = this.expensiveMedicationOutputs[0][patientDataIndex].patientVisits[0].facility;
+      const insurance = this.expensiveMedicationOutputs[0][patientDataIndex].patientVisits[0].pinsurance;
+      tableData = worksheet.addRow(['', patientName, patientDob, insurance, facilityName]);
+
+      tableData.eachCell((cell, number) => {
+        if(number == 1) return;
+        if(patientDataIndex == this.expensiveMedicationOutputs[0].length-1) {
+          this.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
+          cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+        } else {
+          this.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+          cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+        }
+      });
+
     }
     workbooke.xlsx.writeBuffer().then((dataa) => {
       const blob = new Blob([dataa], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
