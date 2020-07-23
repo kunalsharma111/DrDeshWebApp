@@ -133,6 +133,15 @@
                     </div>
                 </figure>
             </div>
+            <div class="col-md-3">
+                <figure>
+                    <div>
+                        <span data-toggle="modal" data-target="#medicationReportModel" (click)="resetMedicationReportModel()">Get Report <i
+                                class="fa fa-arrow-right" aria-hidden="true" ></i></span>
+                        <span>Medication Report</span>
+                    </div>
+                </figure>
+            </div>
         </div>
     </section>
     <!-- <img src="/assets/img/login/logo.png" height="200px" style="position: fixed; right: 0; bottom: 0; padding: 50px;"> -->
@@ -804,8 +813,8 @@
         </div>
     </div>
 </div>
-
 <!-- Facility Summary Report End-->
+
 <!-- Patient Summary Report start -->
 <div class="modal lol fade" id="patientSummaryReportModel" role="dialog">
     <div class="modal-dialog">
@@ -900,5 +909,89 @@
         </div>
     </div>
 </div>
-
 <!-- Patient Summary Report End-->
+
+<!-- medicationReportModel start -->
+<div class="modal lol fade" id="medicationReportModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content mc1">
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+                aria-hidden="true"></i></p>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="/assets/img/login/logo.png" height="100px">
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
+                </div>
+                <h3 class="medh3 mb-4"><u>Expensive Medication Report</u></h3>
+                <form #expensiveMedicationForm="ngForm" (submit)="submitExpensiveMedicationForm(expensiveMedicationForm)" *ngIf="showExpensiveMedicationForm">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <label for="medicine">Expensive Medicine</label>
+                            <ng-select [items]="medicineName"
+                                bindLabel="name"
+                                id="medicineName"
+                                class="custom"
+                                [closeOnSelect]="true"
+                                [hideSelected]="true"
+                                name="medicineName"
+                                bindValue="name"
+                                typeToSearchText="Enter minimum 3 char."
+                                [typeahead]="inputMedicine"
+                                notFoundText="No Medicine"
+                                [(ngModel)]="expensiveMedication.medicineName"
+                                required>
+                            </ng-select>
+                            <div *ngIf="validateExpensiveMedicationForm == false" class="alert alert-danger mt-1">
+                                <div *ngIf="validateExpensiveMedicationForm == false" >Field is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-info mt-4"
+                                style="font-size: 1.5rem; width: 100%; background: #87c442;border: none;">Find</button>
+                        </div>
+                    </div>
+                </form>
+                <ng4-loading-spinner> </ng4-loading-spinner>
+                <div class="col-md-12 mb-4 mt-3" style="text-align: center; color:#87c442;" *ngIf="noDataForExpensiveMedication">
+                    <h1>No data Found</h1>
+                    <p>check with different input</p>
+                </div>
+                <div class="col-md-12 mb-4" *ngIf="showDataForExpensiveMedication" #epltablee>
+
+                    <!-- <h4 style="color: red;"><u>Very Urgent Cases</u></h4> -->
+                    <table class="table table-stripped table-hover table-condensed mt-4" #table>
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Date Of Birth</th>
+                                <th>Insurance</th>
+                                <th>Facility Name</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let expensiveMedicationOutput of expensiveMedicationOutputs">
+                            <!-- <div > -->
+                            <tr *ngFor="let expensiveMedication of expensiveMedicationOutput">
+                                <td>{{expensiveMedication.name}}</td>
+                                <td>{{expensiveMedication.dob | date:'dd-MM-yyyy'}}</td>
+                                <td>{{expensiveMedication.patientVisits[0].pinsurance}}</td>
+                                <td>{{expensiveMedication.patientVisits[0].facility}}</td>
+                            </tr>
+                            <!-- </div> -->
+                        </tbody>
+                    </table>
+                    <div> <button (click)="exportExpensiveMedicationReportToExcel('expensive_medication_report.xlsx', 'EXPENSIVE MEDICATION REPORT')"
+                            class="btn btn-success">Export To Excel</button> </div>
+                </div>
+                <!-- <div class="ball" #ball>
+                    <p> LOADING </p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- medicationReportModel end -->
