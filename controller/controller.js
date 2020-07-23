@@ -78,6 +78,27 @@ router.get('/red', verifyToken, (req, res) => {
         }
     });
 })
+
+router.get('/patientdetail',verifyToken, (req,res) => {
+    MasterPatientModel.findById(req.query.id).then(doc => {
+        // console.log(doc.visits.length)
+        // console.log(doc.visits[doc.visits.length-1])
+        // console.log(doc.visits)
+        console.log(doc.dob)
+        console.log(doc.name)
+        if (doc.visits.length > 0) {
+            console.log("visits not null", doc.visits[doc.visits.length - 1])
+            res.json({ visit: doc.visits[doc.visits.length ], name: doc.name, dob: doc.dob });
+        }
+        else {
+            console.log("visits null", doc)
+            res.json(doc)
+        }
+    }, err => {
+        res.json(err);
+    })
+})
+
 router.get('/man', verifyToken, (req, res) => {
     res.end("god");
 })
@@ -367,13 +388,17 @@ router.post('/medadd', verifyToken, (req, res) => {
 })
 router.post('/goku', verifyToken, (req, res) => {
     var days = new Date();
-    days.setDate(days.getDate() + 7);
-    if (req.body.medfollowup != "Per routine protocol") {
-        days = req.body.followupdays;
-    }
+    // days.setDate(days.getDate() + 7);
+    // if (req.body.medfollowup != "Per routine protocol") {
+    //     days = req.body.followupdays;
+    // }
+    console.log(req.body.visit);
     if (!req.body.visit) {
+        console.log(req.body.visit);
         req.body.visit = new Date()
+        console.log(req.body.visit);
     }
+    console.log(req.body.visit);
     if(!req.body.savedon){
     req.body.savedon = new Date(); 
     }
@@ -490,7 +515,7 @@ router.post('/goku', verifyToken, (req, res) => {
         othercchreason: req.body.othercchreason,
         medfollowup: req.body.medfollowup,
         followupreason: req.body.followupreason,
-        followupdays: days,
+        followupdays: req.body.followupdays,
         scaleeligiblereason: req.body.scaleeligiblereason,
         otherscaleeligiblereason: req.body.otherscaleeligiblereason,
         scaledays: req.body.scaledays,
@@ -702,13 +727,20 @@ router.get('/get', verifyToken, (req, res) => {
 
 router.post('/preround', verifyToken,async (req, res) => {
    try{
+    //    provider details
     const provider_details = await ProviderModel.find({ name: req.body.provider });
+    console.log(provider_details);
+    // services eligible medmanage psythreapy psyscreen
+    // very urgent patient
     const veryurgent_patients = await MasterPatientModel.aggregate([
-        { $project: {name:1, visits: { $slice : [ "$visits" , -1 ] } } },
-        { $match: {'visits.facility': req.body.facility ,'visits.medfollowup':"Very Urgent" } }
+        { $project: {name:1,type:"Very Urgent Patient",visits: { $slice : [ "$visits" , -1 ] } } },
+        { $match: {'visits.facility': req.body.facility ,'visits.medfollowup':"Very Urgent",
+        } }
     ])
+    console.log("very urgent"+ veryurgent_patients);
+    // urgent patient
     const urgent_patients = await MasterPatientModel.aggregate([
-        { $project: {name:1, visits: { $slice : [ "$visits" , -1 ] } } },
+        { $project: {name:1,type:"Urgent Patient", visits: { $slice : [ "$visits" , -1 ] } } },
         { $match: {'visits.facility': req.body.facility ,'visits.medfollowup':"Urgent", "$or":[
             {
             'visits.pinsurance':{ "$in" : provider_details[0].insurance}
@@ -718,8 +750,10 @@ router.post('/preround', verifyToken,async (req, res) => {
                 }
         }
     ])
+    console.log("urgent patients" +urgent_patients);
+    // patient fetching according to specific date , we are taking specific date from field "followupdays" from masterpatient model
     const specific_date = await MasterPatientModel.aggregate([
-        { $project: {name:1, visits: { $slice : [ "$visits" , -1 ] } } },
+        { $project: {name:1,type:"Date Specific", visits: { $slice : [ "$visits" , -1 ] } } },
         { $match: {'visits.facility': req.body.facility ,
                    'visits.typevisit': { "$in" : provider_details[0].role } ,
                    'visits.followupdays': { "$lte" : new Date(req.body.date ) },
@@ -732,36 +766,80 @@ router.post('/preround', verifyToken,async (req, res) => {
                 }
         }
     ])
+    console.log("specific date" + specific_date);
+    // psychotherapy result 
+    
     const psychotherapy_result =  await MasterPatientModel.aggregate([
-        { $project: { name:1,visits: { $slice : [ "$visits" , -1 ] } } },
+        { $project: { name:1,type:"Psychotherapy",visits: { $slice : [ "$visits" , -1 ] } } },
         { $match: {'visits.facility': req.body.facility ,
-        "$and":[
-                    {'visits.typevisit':'Psycothreapy'},
-                    {'visits.typevisit': { "$in" : provider_details[0].role } } 
-               ],
-               
+        // "$and":[
+        //             {'visits.typevisit':'Psycothreapy'},
+        //             {'visits.typevisit': { "$in" : provider_details[0].role } } 
+        //        ],
             } }
     ])
-    const per_routine_protocol = await MasterPatientModel.aggregate([
-        { $project: {name:1, visits: { $slice:[ "$visits",-1] } } },
-        { $match: {'visits.facility':req.body.facility ,
-                   'visits.typevisit': 'Per routine protocol',               
-    } }
-    ])
+    // calculating final psychotherapy result
+    const final_psychotherapy_result = [];
     for(i=0;i<psychotherapy_result.length;i++){
         let visitd = new Date(psychotherapy_result[i].visits[0].visit);
         visitd.setHours(visitd.getHours() + (psychotherapy_result[i].visits[0].followup * 24 ));
         inputdate = new Date(req.body.date);
         var ok = visitd.getFullYear()+'/'+(visitd.getMonth()+1)+'/'+visitd.getDate();
         var id = inputdate.getFullYear()+'/'+(inputdate.getMonth()+1)+'/'+ inputdate.getDate();
-        if(ok == id){
-            console.log("yes");
+        var nn = provider_details[0].role.includes("Psycothreapy");
+        if(ok == id && nn == true){
+            final_psychotherapy_result.push(psychotherapy_result[i]);
         }
         else{
-            console.log("no");
+            // console.log("no");
         }
     }
-    const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...psychotherapy_result];
+    // per routine protocol
+    const final_per_routine_protocol = [];
+    const per_routine_protocol = await MasterPatientModel.aggregate([
+        { $project: {name:1,type:"Per Routine Protocol", visits: { $slice:[ "$visits",-1] } } },
+        { $match: {'visits.facility':req.body.facility ,
+                   'visits.medfollowup': 'Per routine protocol',
+                   'visits.nextvisitdate': { "$lte" : new Date(req.body.date ) },
+    } }
+    ])
+    for(let p=0;p<per_routine_protocol.length;p++){
+        var nnn = provider_details[0].role.includes("Med-management follow up");
+        if(nnn==true){
+            final_per_routine_protocol.push(per_routine_protocol[p]);
+        }
+    }
+
+    // pending scales check what provider offers
+    const pending_scales = await MasterPatientModel.aggregate([
+        { $project: {name:1,type:"Pending scales",pendings:[], visits: { $slice:[ "$visits",-1] } } },
+        { $match: {'visits.facility':req.body.facility ,
+                    'visits.scaleinfo.1':{ $exists: true },
+    } }
+    ])
+    const final_pending_scales = [];
+    for(j=0;j<pending_scales.length;j++){
+        var pending = [];
+        var flag = true;
+        for(k=0;k<pending_scales[j].visits[0].scaleinfo.length;k++){
+            // console.log(pending_scales[j].visits[0].scaleinfo[k].scale_name);
+            if(pending_scales[j].visits[0].scaleinfo[k].scale_score == "" || pending_scales[j].visits[0].scaleinfo[k].scale_score == null || pending_scales[j].visits[0].scaleinfo[k].scale_score == undefined
+              || pending_scales[j].visits[0].scaleinfo[k].scale_date == "" || pending_scales[j].visits[0].scaleinfo[k].scale_date==null||pending_scales[j].visits[0].scaleinfo[k].scale_date==undefined){     
+                pending.push(pending_scales[j].visits[0].scaleinfo[k].scale_name);
+                pending_scales[j].pendings.push(pending_scales[j].visits[0].scaleinfo[k].scale_name);
+                flag = false;
+              }
+        }
+        
+        var n = provider_details[0].role.includes("Case Management/Psychiatric screenings");
+        if(flag == false && pending_scales[j].pendings.length>0  && n == true){
+        final_pending_scales.push(pending_scales[j]);    
+        }
+    }
+
+
+    // adding full result at one place
+    const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...final_psychotherapy_result, ...final_per_routine_protocol , ...final_pending_scales];
     
     
     res.json(result);

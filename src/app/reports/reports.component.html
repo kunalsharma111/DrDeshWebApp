@@ -253,11 +253,25 @@
                                     </p>
                                 </td>
                                 <td>{{i.visits[0].pinsurance}}</td>
-                                <td>Service Eligible : {{i.services_eligible}}
+                                <td>Service Eligible : 
+                                    <div *ngIf="i.visits[0].medmanage == 'yes'"> 
+                                        Med-Management
+                                    </div>
+                                    <div *ngIf="i.visits[0].psythreapy == 'yes'"> 
+                                        Psychotherapy services
+                                    </div>
+                                    <div *ngIf="i.visits[0].psyscreen == 'yes'"> 
+                                        Case Management/Psychiatric screenings
+                                    </div>
                                     <hr>
                                     Visit Type : {{i.visits[0].typevisit}}
+                                    
+                                    <div *ngIf="i.pendings">
                                     <hr>
-                                    Pending Scales : {{i.pending_scales}}
+                                        Pending Scales : {{i.pendings}}
+                                    </div>
+                                    <hr>
+                                    Details : {{i.type}}
                                 </td>
                                 <!-- <td>{{i.visit_type}}</td>
                                 <td>{{i.pending_scales}}</td> -->

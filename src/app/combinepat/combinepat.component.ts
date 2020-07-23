@@ -23,6 +23,7 @@ export class CombinepatComponent implements OnInit {
   scale_name = [];
   combined: combined;
   providers: any;
+  patientdetail : any;
   facilities: any;
   insurances: any;
   meds: any;
@@ -333,16 +334,300 @@ export class CombinepatComponent implements OnInit {
     console.log(val);
     this.combined.sinsurance = val;
   }
-  
+  nextvisitdate(id,form){
+    // console.log(form.value.visits.followup);
+    let nextDate : Date;
+    var solution;
+    var ff = form.value;
+    // decrease stopped2 medstopdate started increase decrease2  added addeddate
+    this.service.getByid(id).subscribe(res => {
+        solution = JSON.stringify(res);
+      this.patientdetail = JSON.parse(solution);
+      console.log(this.patientdetail);
+      console.log(ff);
+      console.log(ff.medfollowup);
+       if(ff.medfollowup == "Per routine protocol" && this.patientdetail.visit != undefined){
+      if(ff.increase != this.patientdetail.visit.increase){
+        console.log("7 days 1");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.decrease != this.patientdetail.visit.decrease){
+        console.log("7 days 2");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.stopped2 != this.patientdetail.visit.stopped2){
+        console.log("7 days 3");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.medstopdate != this.patientdetail.visit.medstopdate){
+        console.log("7 days 4");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.started != this.patientdetail.visit.started){
+        console.log("7 days 5");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.decrease2 != this.patientdetail.visit.decrease2){
+        console.log("7 days 6");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.added != this.patientdetail.visit.added){
+        console.log("7 days 7");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      if(ff.addeddate != this.patientdetail.visit.addeddate){
+        console.log("7 days 8");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }
+      else{
+        console.log("30 days");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*30);
+        nextDate = dd;
+        console.log(nextDate);
+        return nextDate;
+      }      
+    }
+    else{
+      console.log("empty it !");
+      // nextDate = 0;
+        return null;
+    }
+    })
+  }
   notvalidate: boolean;
   submit(form: NgForm) {
-    let summary = '';
 
+
+
+    let nextDate : Date;
+    var solution;
+    var ff = form.value;
+    // decrease stopped2 medstopdate started increase decrease2  added addeddate
+      this.service.getByid(this.p_id).subscribe(res => {
+        solution = JSON.stringify(res);
+      this.patientdetail = JSON.parse(solution);
+      if(this.patientdetail.visit == undefined){
+        
+        if(ff.increase != undefined){
+          console.log("7 days 1");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.decrease != undefined){
+          console.log("7 days 2");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.stopped2 != undefined){
+          console.log("7 days 3");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.medstopdate != undefined){
+          console.log("7 days 4");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.started != undefined){
+          console.log("7 days 5");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.decrease2 != undefined){
+          console.log("7 days 6");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.added != undefined){
+          console.log("7 days 7");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        if(ff.addeddate != undefined){
+          console.log("7 days 8");
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*7);
+          nextDate = dd;
+          console.log(nextDate);
+        }
+        else{
+          console.log("30 days");
+          let dd = ff.visit;
+          if(dd == null){
+            dd = new Date();
+          }
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24*30);
+          nextDate = dd;
+          console.log(nextDate);
+        } 
+      }
+      else{
+      const todaysdate = new Date();
+      const perdate = new Date(this.patientdetail.visit.nextvisitdate);
+      todaysdate.setHours(0,0,0,0);
+      perdate.setHours(0,0,0,0);
+       if(ff.medfollowup == "Per routine protocol"){
+         console.log("per rounding date getting set up");
+      if(ff.increase != this.patientdetail.visit.increase){
+        console.log("7 days 1");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.decrease != this.patientdetail.visit.decrease){
+        console.log("7 days 2");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.stopped2 != this.patientdetail.visit.stopped2){
+        console.log("7 days 3");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.medstopdate != this.patientdetail.visit.medstopdate){
+        console.log("7 days 4");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.started != this.patientdetail.visit.started){
+        console.log("7 days 5");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.decrease2 != this.patientdetail.visit.decrease2){
+        console.log("7 days 6");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.added != this.patientdetail.visit.added){
+        console.log("7 days 7");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      if(ff.addeddate != this.patientdetail.visit.addeddate){
+        console.log("7 days 8");
+        let dd = ff.visit;
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*7);
+        nextDate = dd;
+        console.log(nextDate);
+      }
+      else{
+        console.log("30 days");
+        let dd = ff.visit;
+        if(dd == null){
+          dd = new Date();
+        }
+        console.log(dd);
+        dd.setHours(dd.getHours() + 24*30);
+        nextDate = dd;
+        console.log(nextDate);
+      }      
+    }
+    else{
+      console.log("empty it !");
+      // nextDate = 0;
+    }
+  }
+    })
+    let summary = '';
+    // var getdate = this.nextvisitdate(this.p_id,form);
+      
     if (form.valid) {
-       
+      setTimeout(() => {
+      
       if(this.combined.visit == null || this.combined.visit == undefined ){
         this.combined.visit =  new Date();
       }
+      console.log(this.combined.visit);
+      console.log(form.value.nextvisitdate);
+      form.value.nextvisitdate = nextDate;
+      console.log(form.value.nextvisitdate);
       var x = this.el.nativeElement.querySelectorAll('.chkbx');
       var status = this.el.nativeElement.querySelectorAll('.medstatus');
       var date = this.el.nativeElement.querySelectorAll('.meddate')
@@ -512,17 +797,18 @@ export class CombinepatComponent implements OnInit {
       let masterptdata = { ...meds, ...med_syms, ...psy_psyms, ...scaleinfo, ...formdata }
       console.log(masterptdata)
       this.service.submitMasterPatientData(masterptdata);
-      this.toastr.success('', 'Patient Record Updated Successfully');
       if (this.previousRoute == '/patient') {
         this.router.navigate(['/patient']);
       } else {
         this.gotoreport();
       }
+      this.toastr.success('', 'Patient Record Updated Successfully');
+    }, 3000)
     }
     else {
       this.notvalidate = true;
     }
-
+  
     // this.resetForm();
   }
   app() {
