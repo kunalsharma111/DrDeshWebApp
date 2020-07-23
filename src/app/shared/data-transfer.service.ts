@@ -267,8 +267,10 @@ export class DataTransferService {
   url29 = `${this.metcha}/getactiveprovider`;
   apiUrlForFacilitySummary = `${this.metcha}/facilitysummaryreport`;
   apiUrlForPatientSummary = `${this.metcha}/patientsummaryreport`;
+  apiUrlForMedicationReport = `${this.metcha}/expensivemedicationreport`;
   apiUrlForAllPatients = `${this.metcha}/getpatientsasperkey`;
   getpatientdetail = `${this.metcha}/patientdetail`;
+  apiUrlForAllExpensiveMedicine = `${this.metcha}/getmedicineasperkey`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -429,8 +431,33 @@ export class DataTransferService {
     return this.http.post<any>(this.apiUrlForPatientSummary, data);
   }
 
+  expensiveMedicationReport(data) {
+    return this.http.post<any>(this.apiUrlForMedicationReport, data);
+  }
+
   getAllPatientData(enterCharacter) {
     return this.http.post<any>(this.apiUrlForAllPatients, enterCharacter);
+  }
+
+  getAllExpensiveMedicine(enterCharacter) {
+    return this.http.post<any>(this.apiUrlForAllExpensiveMedicine, enterCharacter);
+  }
+
+  getMedicine(term: string | null): Observable<any[]> {
+    if (term !== null && term.length >= 3) {
+      return this.getAllExpensiveMedicine({'enterKey': term}).pipe(
+        catchError(err => of([])),
+        switchMap(medicines => {
+          if (medicines === 'no'){
+            return of([]);
+          } else {
+            return of (medicines);
+          }
+        })
+      );
+    } else {
+      return  of([]);
+    }
   }
 
   getPeople(term: string | null): Observable<any[]> {

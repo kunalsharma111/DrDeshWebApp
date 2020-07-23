@@ -400,7 +400,7 @@ router.post('/goku', verifyToken, (req, res) => {
     }
     console.log(req.body.visit);
     if(!req.body.savedon){
-    req.body.savedon = new Date(); 
+    req.body.savedon = new Date();
     }
     if(!req.body.savedby){
         req.body.savedby = currentuser;
@@ -702,7 +702,7 @@ router.post('/basedata', verifyToken, (req, res) => {
         console.log(err);
     })
 
-    
+
 })
 
 router.get('/get', verifyToken, (req, res) => {
@@ -762,7 +762,7 @@ router.post('/preround', verifyToken,async (req, res) => {
                     'visits.pinsurance':{ "$in" : provider_details[0].insurance}
                     },{
                     'visits.sinsurance':{ "$in" : provider_details[0].insurance}
-                    }] 
+                    }]
                 }
         }
     ])
@@ -873,12 +873,12 @@ router.post('/preroundd', verifyToken, (req, res) => {
                     if (x != undefined) {
                         let veryUrgent = false;
                         // checking if patient is very urgent marking it very urgent
-                        if (x.medfollowup == "Very Urgent") 
+                        if (x.medfollowup == "Very Urgent")
                         veryUrgent = true;
                             // if patients insurance mathes the provider insurance or the patient is very urgent then it will go in this if statement
                         if (result.insurance.includes(x.pinsurance) ||
                             result.insurance.includes(x.sinsurance) || veryUrgent) {
-                                // in pat variable we have patients data 
+                                // in pat variable we have patients data
                             console.log(pat.name)
                             // here we are checking if patient is in same facility or nursing home where provider is gonna visit ? if yes then it will go in loop
                             if (req.body.facility === x.facility) {
@@ -1077,7 +1077,7 @@ router.post('/preroundd', verifyToken, (req, res) => {
                         }
                     }
                 })
-                // traversing through all the patient data which we got after calculations 
+                // traversing through all the patient data which we got after calculations
                 preroundupdata.forEach(id => {
                     console.log('**************************************', id)
                     // DON'T KNOW why we have made this collection and for what we are using it
@@ -1190,7 +1190,7 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
                 count : {$sum:1}
             }
         },
-        {$match: { 
+        {$match: {
             count: {"$gt": 1}
             }
         },
@@ -1555,8 +1555,8 @@ function genreport(doc, proreport) {
                     }
                 }
 
-                console.log("all codition got fullfilled at patient NO : " + total + " patient's name " + doc[total].name + " at visit no : " + totalvisits 
-                + " patient's provider is " +  doc[total].visits[totalvisits].provider + " patient faciliyt is "+ doc[total].visits[totalvisits].facility + 
+                console.log("all codition got fullfilled at patient NO : " + total + " patient's name " + doc[total].name + " at visit no : " + totalvisits
+                + " patient's provider is " +  doc[total].visits[totalvisits].provider + " patient faciliyt is "+ doc[total].visits[totalvisits].facility +
                 " Type of visit : " + doc[total].visits[totalvisits].typevisit + " visit date is : " + doc[total].visits[totalvisits].visit);
                 // patients seen
                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
@@ -1654,7 +1654,7 @@ function genreport(doc, proreport) {
                 // console.log(doc[total].visits[totalvisits].increase + " increase ");
                 // Increased Medicine
                 if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
-                    
+
                     if (firstvisit == true) {
                         if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
@@ -1863,6 +1863,36 @@ router.post('/facilitysummaryreport', verifyToken, (req, res) => {
         })
 });
 
+router.post('/expensivemedicationreport', verifyToken, (req, res) => {
+    MasterPatientModel.aggregate([
+        {
+            "$project" : {
+                "id" : 1,
+                "name" : 1,
+                "dob" : 1,
+                "patientVisits" : {
+                    "$slice" : [
+                        "$visits",
+                        -1
+                    ]
+                }
+            }
+        },
+        {
+            "$match" : {
+                "patientVisits.exmeds.name" : req.body.medicineName
+            }
+        }
+    ]).then(doc => {
+            if (doc.length != 0) {
+                res.json(doc);
+            }
+            else {
+                res.json("no");
+            }
+        })
+});
+
 router.post('/patientsummaryreport', verifyToken, (req, res) => {
     var toDateAddTime = new Date(req.body.patientSummaryTodate);
     toDateAddTime.setHours(toDateAddTime.getHours() + 24);
@@ -1894,6 +1924,17 @@ router.post('/getpatientsasperkey', verifyToken, (req, res) => {
         }
     })
 });
+
+router.post('/getmedicineasperkey', verifyToken, (req, res) => {
+    MedicationModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
+        if (doc.length != 0) {
+            res.json(doc);
+        }
+        else {
+            res.json("no");
+        }
+    })
+})
 
 function genreport2(doc, proreport) {
     var total = doc.length - 1;
@@ -1947,8 +1988,8 @@ function genreport2(doc, proreport) {
                         break;
                     }
                 }
-                console.log("all codition got fullfilled at patient NO : " + total + " patient's name " + doc[total].name + " at visit no : " + totalvisits 
-                + " patient's provider is " +  doc[total].visits[totalvisits].provider + " patient faciliyt is "+ doc[total].visits[totalvisits].facility + 
+                console.log("all codition got fullfilled at patient NO : " + total + " patient's name " + doc[total].name + " at visit no : " + totalvisits
+                + " patient's provider is " +  doc[total].visits[totalvisits].provider + " patient faciliyt is "+ doc[total].visits[totalvisits].facility +
                 " Type of visit : " + doc[total].visits[totalvisits].typevisit + " visit date is : " + doc[total].visits[totalvisits].visit);
                 // patients seen
                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
