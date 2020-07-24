@@ -334,122 +334,20 @@ export class CombinepatComponent implements OnInit {
     console.log(val);
     this.combined.sinsurance = val;
   }
-  nextvisitdate(id,form){
-    // console.log(form.value.visits.followup);
-    let nextDate : Date;
-    var solution;
-    var ff = form.value;
-    // decrease stopped2 medstopdate started increase decrease2  added addeddate
-    this.service.getByid(id).subscribe(res => {
-        solution = JSON.stringify(res);
-      this.patientdetail = JSON.parse(solution);
-      console.log(this.patientdetail);
-      console.log(ff);
-      console.log(ff.medfollowup);
-       if(ff.medfollowup == "Per routine protocol" && this.patientdetail.visit != undefined){
-      if(ff.increase != this.patientdetail.visit.increase){
-        console.log("7 days 1");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.decrease != this.patientdetail.visit.decrease){
-        console.log("7 days 2");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.stopped2 != this.patientdetail.visit.stopped2){
-        console.log("7 days 3");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.medstopdate != this.patientdetail.visit.medstopdate){
-        console.log("7 days 4");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.started != this.patientdetail.visit.started){
-        console.log("7 days 5");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.decrease2 != this.patientdetail.visit.decrease2){
-        console.log("7 days 6");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.added != this.patientdetail.visit.added){
-        console.log("7 days 7");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      if(ff.addeddate != this.patientdetail.visit.addeddate){
-        console.log("7 days 8");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }
-      else{
-        console.log("30 days");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*30);
-        nextDate = dd;
-        console.log(nextDate);
-        return nextDate;
-      }      
-    }
-    else{
-      console.log("empty it !");
-      // nextDate = 0;
-        return null;
-    }
-    })
-  }
+  
   notvalidate: boolean;
   submit(form: NgForm) {
-
-
-
     let nextDate : Date;
     var solution;
     var ff = form.value;
-    // decrease stopped2 medstopdate started increase decrease2  added addeddate
-      this.service.getByid(this.p_id).subscribe(res => {
+    var what;
+        // decrease stopped2 medstopdate started increase decrease2  added addeddate
+        this.service.getByid(this.p_id).subscribe(res => {
         solution = JSON.stringify(res);
-      this.patientdetail = JSON.parse(solution);
-      if(this.patientdetail.visit == undefined){
-        
+        this.patientdetail = JSON.parse(solution);
+        console.log(this.patientdetail.visit);
+        if(this.patientdetail.visit == undefined){
+        console.log("first visit");
         if(ff.increase != undefined){
           console.log("7 days 1");
           let dd = ff.visit;
@@ -458,7 +356,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.decrease != undefined){
+        else if(ff.decrease != undefined){
           console.log("7 days 2");
           let dd = ff.visit;
           console.log(dd);
@@ -466,7 +364,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.stopped2 != undefined){
+        else if(ff.stopped2 != undefined){
           console.log("7 days 3");
           let dd = ff.visit;
           console.log(dd);
@@ -474,7 +372,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.medstopdate != undefined){
+        else if(ff.medstopdate != undefined){
           console.log("7 days 4");
           let dd = ff.visit;
           console.log(dd);
@@ -482,7 +380,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.started != undefined){
+        else if(ff.started != undefined){
           console.log("7 days 5");
           let dd = ff.visit;
           console.log(dd);
@@ -490,7 +388,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.decrease2 != undefined){
+        else if(ff.decrease2 != undefined){
           console.log("7 days 6");
           let dd = ff.visit;
           console.log(dd);
@@ -498,7 +396,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.added != undefined){
+        else if(ff.added != undefined){
           console.log("7 days 7");
           let dd = ff.visit;
           console.log(dd);
@@ -506,7 +404,7 @@ export class CombinepatComponent implements OnInit {
           nextDate = dd;
           console.log(nextDate);
         }
-        if(ff.addeddate != undefined){
+        else if(ff.addeddate != undefined){
           console.log("7 days 8");
           let dd = ff.visit;
           console.log(dd);
@@ -527,12 +425,14 @@ export class CombinepatComponent implements OnInit {
         } 
       }
       else{
-      const todaysdate = new Date();
-      const perdate = new Date(this.patientdetail.visit.nextvisitdate);
-      todaysdate.setHours(0,0,0,0);
-      perdate.setHours(0,0,0,0);
-       if(ff.medfollowup == "Per routine protocol"){
-         console.log("per rounding date getting set up");
+        what = this.patientdetail.visit.visit;
+        console.log(what);
+        const todaysdate = new Date();
+        const perdate = new Date(this.patientdetail.visit.nextvisitdate);
+        todaysdate.setHours(0,0,0,0);
+        perdate.setHours(0,0,0,0);
+        if(ff.medfollowup == "Per routine protocol"){
+        console.log("per rounding date getting set up");
       if(ff.increase != this.patientdetail.visit.increase){
         console.log("7 days 1");
         let dd = ff.visit;
@@ -541,7 +441,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.decrease != this.patientdetail.visit.decrease){
+      else if(ff.decrease != this.patientdetail.visit.decrease){
         console.log("7 days 2");
         let dd = ff.visit;
         console.log(dd);
@@ -549,7 +449,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.stopped2 != this.patientdetail.visit.stopped2){
+      else if(ff.stopped2 != this.patientdetail.visit.stopped2){
         console.log("7 days 3");
         let dd = ff.visit;
         console.log(dd);
@@ -557,7 +457,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.medstopdate != this.patientdetail.visit.medstopdate){
+      else if(ff.medstopdate != this.patientdetail.visit.medstopdate){
         console.log("7 days 4");
         let dd = ff.visit;
         console.log(dd);
@@ -565,7 +465,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.started != this.patientdetail.visit.started){
+      else if(ff.started != this.patientdetail.visit.started){
         console.log("7 days 5");
         let dd = ff.visit;
         console.log(dd);
@@ -573,7 +473,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.decrease2 != this.patientdetail.visit.decrease2){
+      else if(ff.decrease2 != this.patientdetail.visit.decrease2){
         console.log("7 days 6");
         let dd = ff.visit;
         console.log(dd);
@@ -581,7 +481,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.added != this.patientdetail.visit.added){
+      else if(ff.added != this.patientdetail.visit.added){
         console.log("7 days 7");
         let dd = ff.visit;
         console.log(dd);
@@ -589,7 +489,7 @@ export class CombinepatComponent implements OnInit {
         nextDate = dd;
         console.log(nextDate);
       }
-      if(ff.addeddate != this.patientdetail.visit.addeddate){
+      else if(ff.addeddate != this.patientdetail.visit.addeddate){
         console.log("7 days 8");
         let dd = ff.visit;
         console.log(dd);
@@ -603,6 +503,9 @@ export class CombinepatComponent implements OnInit {
         if(dd == null){
           dd = new Date();
         }
+        else{
+          dd = new Date(dd);
+        }
         console.log(dd);
         dd.setHours(dd.getHours() + 24*30);
         nextDate = dd;
@@ -611,23 +514,35 @@ export class CombinepatComponent implements OnInit {
     }
     else{
       console.log("empty it !");
-      // nextDate = 0;
     }
-  }
+    }
     })
+
     let summary = '';
     // var getdate = this.nextvisitdate(this.p_id,form);
       
     if (form.valid) {
       setTimeout(() => {
-      
       if(this.combined.visit == null || this.combined.visit == undefined ){
         this.combined.visit =  new Date();
       }
+      console.log(what);
+      console.log(form.value.visit);
       console.log(this.combined.visit);
+      // this.combined.visit = what;
       console.log(form.value.nextvisitdate);
       form.value.nextvisitdate = nextDate;
       console.log(form.value.nextvisitdate);
+      let todays_date = new Date();
+      console.log(todays_date);
+      if(form.value.visit == form.value.nextvisitdate){
+        console.log("panga edr hai");
+        form.value.visit = todays_date;
+        console.log(form.value.visit);
+      }
+      else{
+        console.log("dont know");
+      }
       var x = this.el.nativeElement.querySelectorAll('.chkbx');
       var status = this.el.nativeElement.querySelectorAll('.medstatus');
       var date = this.el.nativeElement.querySelectorAll('.meddate')

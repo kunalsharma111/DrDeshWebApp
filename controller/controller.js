@@ -392,13 +392,14 @@ router.post('/goku', verifyToken, (req, res) => {
     // if (req.body.medfollowup != "Per routine protocol") {
     //     days = req.body.followupdays;
     // }
-    console.log(req.body.visit);
+    console.log(req.body);
+    console.log("1"+ req.body.visit);
     if (!req.body.visit) {
-        console.log(req.body.visit);
+        console.log("2"+req.body.visit);
         req.body.visit = new Date()
-        console.log(req.body.visit);
+        console.log("3"+req.body.visit);
     }
-    console.log(req.body.visit);
+    console.log("4"+req.body.visit);
     if(!req.body.savedon){
     req.body.savedon = new Date();
     }
@@ -778,16 +779,17 @@ router.post('/preround', verifyToken,async (req, res) => {
         //        ],
             } }
     ])
+    console.log(psychotherapy_result);
     // calculating final psychotherapy result
     const final_psychotherapy_result = [];
     for(i=0;i<psychotherapy_result.length;i++){
         let visitd = new Date(psychotherapy_result[i].visits[0].visit);
         visitd.setHours(visitd.getHours() + (psychotherapy_result[i].visits[0].followup * 24 ));
         inputdate = new Date(req.body.date);
-        var ok = visitd.getFullYear()+'/'+(visitd.getMonth()+1)+'/'+visitd.getDate();
-        var id = inputdate.getFullYear()+'/'+(inputdate.getMonth()+1)+'/'+ inputdate.getDate();
+        // var ok = visitd.getFullYear()+'/'+(visitd.getMonth()+1)+'/'+visitd.getDate();
+        // var id = inputdate.getFullYear()+'/'+(inputdate.getMonth()+1)+'/'+ inputdate.getDate();
         var nn = provider_details[0].role.includes("Psycothreapy");
-        if(ok == id && nn == true){
+        if(inputdate >= visitd && nn == true){
             final_psychotherapy_result.push(psychotherapy_result[i]);
         }
         else{
@@ -837,9 +839,51 @@ router.post('/preround', verifyToken,async (req, res) => {
         }
     }
 
+    
+    // repeated scales
+    const repeated_scales = await MasterPatientModel.aggregate([
+        { $project: {name:1,type:"Repeated scales",repeated:[], visits: { $slice:[ "$visits",-1] } } },
+        { $match: {'visits.facility':req.body.facility ,
+                    'visits.scaleinfo.1':{ $exists: true },
+    } }
+    ])
+    const final_repeated_scales = [];
+    for(j=0;j<repeated_scales.length;j++){
+        var repeat = [];
+        var flag = true;
+        console.log(repeated_scales[j].name);
+        for(k=0;k<repeated_scales[j].visits[0].scaleinfo.length;k++){
+            console.log(repeated_scales[j].visits[0].scaleinfo[k].scale_name);
+            if(repeated_scales[j].visits[0].scaleinfo[k].scaledays == "3 Months" || repeated_scales[j].visits[0].scaleinfo[k].scaledays == "6 Months" ){
+                console.log(repeated_scales[j].visits[0].scaleinfo[k].scale_date);
+                var calculate_scale_date =  new Date(repeated_scales[j].visits[0].scaleinfo[k].scale_date);
+                console.log(calculate_scale_date + "before");
+                if(repeated_scales[j].visits[0].scaleinfo[k].scaledays == "3 Months"){
+                calculate_scale_date.setHours(calculate_scale_date.getHours() + (90 * 24 ));
+                }
+                else if(repeated_scales[j].visits[0].scaleinfo[k].scaledays == "6 Months"){
+                    calculate_scale_date.setHours(calculate_scale_date.getHours() + (180 * 24 ));
+                    }
+                console.log(calculate_scale_date + "after");
+                var input_date = new Date(req.body.date);
+                console.log(input_date + "input date");
+                if(input_date >= calculate_scale_date){
+                    repeat.push(repeated_scales[j].visits[0].scaleinfo[k].scale_name);
+                    repeated_scales[j].repeated.push(repeated_scales[j].visits[0].scaleinfo[k].scale_name);
+                    flag = false;
+                }
+            }
+        }
+        
+        var n = provider_details[0].role.includes("Case Management/Psychiatric screenings");
+        if(flag == false && repeated_scales[j].repeated.length>0  && n == true){
+        final_repeated_scales.push(repeated_scales[j]);    
+        }
+    }
+    console.log(final_repeated_scales);
 
     // adding full result at one place
-    const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...final_psychotherapy_result, ...final_per_routine_protocol , ...final_pending_scales];
+    const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...final_psychotherapy_result, ...final_per_routine_protocol , ...final_pending_scales , ...final_repeated_scales];
     
     
     res.json(result);
