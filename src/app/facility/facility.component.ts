@@ -43,7 +43,6 @@ export class FacilityComponent implements OnInit {
           }
         })
     this.service.getFacility().subscribe(res => {
-      console.log(res);
       this.facilities = res;
     })
     const $button = document.querySelector('#sidebar-toggle');
@@ -86,11 +85,10 @@ export class FacilityComponent implements OnInit {
     this.s_id = id;
     this.facilityData = data;
     this.edit = true
-  } 
+  }
   submit(form: NgForm) {
     console.log(form.value);
     this.service.sendFacility(form).subscribe(res => {
-      console.log(res);
       this.toastr.success('', 'Facility Saved Successfully')
     })
     this.resetForm(form);

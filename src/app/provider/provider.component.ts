@@ -22,6 +22,7 @@ export class ProviderComponent implements OnInit {
   metaData = false;
   providers: Provider;
   role;
+  roleType;
   providerData: Provider;
   insurances: any;
   x = [1, 2, 3, 4, 5];
@@ -29,6 +30,7 @@ export class ProviderComponent implements OnInit {
   some2 = [];
   @ViewChild('batch', { static: true }) batch: ElementRef;
   ngOnInit() {
+    this.roleType = this.service.getRole();
     this.resetForm();
     this.service.cc3$
       .subscribe(
@@ -52,11 +54,9 @@ export class ProviderComponent implements OnInit {
           }
         })
     this.service.getProvider().subscribe(res => {
-      console.log(res);
       this.providers = res;
     })
     this.service.getInsurance().subscribe(res => {
-      console.log(res);
       this.insurances = res;
     })
     const $button = document.querySelector('#sidebar-toggle');
@@ -139,8 +139,7 @@ export class ProviderComponent implements OnInit {
         this.some2.push(arr1[i].value)
       }
     }
-    // console.log(this.some);
-    // console.log(this.some2);
+
     form.value;
     let data = {
       insurance: this.some,
@@ -149,11 +148,11 @@ export class ProviderComponent implements OnInit {
       id: form.value.id,
       ain: form.value.ain
     }
-    console.log(data+"print hoja");
+
     this.service.sendProvider(data).subscribe(res => {
-      console.log(res);
       this.toastr.success('', 'Provider Saved Successfully');
     })
+
     this.resetForm(form);
     this.ngOnInit();
     $("#myModalap").modal("hide");

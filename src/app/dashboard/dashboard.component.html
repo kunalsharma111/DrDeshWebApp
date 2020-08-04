@@ -1,6 +1,6 @@
 <div id="wrapper">
   <aside id="sidebar-wrapper">
-    <div class="sidebar-brand" *ngIf="metaData">
+    <div class="sidebar-brand">
       <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
       <img src="/assets/img/login/logo.png" height="60px">
       <h2>Hello, {{fname|capitalize}}</h2>
@@ -14,22 +14,22 @@
       <li>
           <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
       </li>
-      <li>
+      <li *ngIf="roleType == 'Admin'">
           <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
       </li>
-      <li>
+      <li *ngIf="roleType == 'Admin'">
           <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
       </li>
-      <li>
+      <li *ngIf="roleType == 'Admin'">
           <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
       </li>
-      <li>
+      <li *ngIf="roleType == 'Admin'">
           <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
       </li>
       <li>
           <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
       </li>
-      <li>
+      <li *ngIf="roleType == 'Admin'">
           <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
       </li>
   </ul>
@@ -59,19 +59,19 @@
               <img src="/assets/img/dash/dl1.png" class="style_prevu_kit a1" [routerLink]="['/patient']">
             </div>
             <div class="col-md-1 gop"></div>
-            <div class="col-md-1">
+            <div class="col-md-1" *ngIf="roleType == 'Admin'">
               <img src="/assets/img/dash/dl2.png" class="style_prevu_kit" [routerLink]="['/facility']">
             </div>
-            <div class="col-md-1 gop"></div>
-            <div class="col-md-1">
+            <div class="col-md-1 gop" *ngIf="roleType == 'Admin'"></div>
+            <div class="col-md-1" *ngIf="roleType == 'Admin'">
               <img src="/assets/img/dash/dl3.png" class="style_prevu_kit" [routerLink]="['/provider']">
             </div>
-            <div class="col-md-1 gop"></div>
-            <div class="col-md-1">
+            <div class="col-md-1 gop" *ngIf="roleType == 'Admin'"></div>
+            <div class="col-md-1" *ngIf="roleType == 'Admin'">
               <img src="/assets/img/dash/dl4.png" class="style_prevu_kit" [routerLink]="['/insurance']">
             </div>
-            <div class="col-md-1 gop"></div>
-            <div class="col-md-1">
+            <div class="col-md-1 gop" *ngIf="roleType == 'Admin'"></div>
+            <div class="col-md-1" *ngIf="roleType == 'Admin'">
               <img src="/assets/img/dash/dl5.png" class="style_prevu_kit" [routerLink]="['/expensive']">
             </div>
             <div class="col-md-1 gop"></div>

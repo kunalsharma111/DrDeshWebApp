@@ -1,4 +1,4 @@
-<div id="wrapper">
+<div id="wrapper" *ngIf="roleType == 'Admin'">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand" *ngIf="metaData">
       <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
@@ -104,7 +104,7 @@
   <!-- <img src="/assets/img/login/logo.png" height="200px" style="position: fixed; right: 0; bottom: 0; padding: 50px;"> -->
 </div>
 
-<div class="modal fade" id="myModalap" role="dialog">
+<div class="modal fade" id="myModalap" role="dialog" *ngIf="roleType == 'Admin'">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content mc1">
@@ -135,12 +135,12 @@
                 <div class="col-md-12">
                   <div class="row mt-4">
                     <div class="b col-md-4" *ngFor="let i of insurances;let ii=index" #batch>
-                      <input type="checkbox" name="insurance" required id="{{ii+1}}" value="{{i.name}}" class="chkbx" 
+                      <input type="checkbox" name="insurance" required id="{{ii+1}}" value="{{i.name}}" class="chkbx"
                       >
                       <label for="{{ii+1}}">&nbsp;{{i.name}}</label>
                     </div>
                   </div>
-                  
+
                 </div>
                 <div class="col-md-12 nj mt-4">
                   <span>Select Provider type from the list</span>

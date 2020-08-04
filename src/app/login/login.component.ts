@@ -25,14 +25,13 @@ export class LoginComponent implements OnInit {
     this.user.pwd = ''
   }
   ngOnInit() {
-    console.log('ssss')
+    console.log("hello")
   }
   submit(form) {
-    console.log(form.value);
     this.renderer.setStyle(this.page.nativeElement, 'filter', 'blur(4px)');
     this.renderer.setStyle(this.ctr.nativeElement, 'display', 'block');
     this.service.checkLogin(form).subscribe(res => {
-      console.log(res);
+      this.service.setRole(res.role);
       localStorage.setItem('token', res.token);
       this.service.router.navigate(['/dash']);
     },

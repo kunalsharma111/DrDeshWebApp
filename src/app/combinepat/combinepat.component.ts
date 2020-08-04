@@ -56,7 +56,7 @@ export class CombinepatComponent implements OnInit {
     this.previousRoute = this.service.getPreviousUrl();
     this.kdate = new Date();
     this.cd = new Date();
-    
+
     this.kd = this.cd.toISOString().slice(0, 10);
     this.stringdate = this.kdate.toISOString().slice(0, 10);
     this.service.subject.subscribe(res => this.p_id = res);
@@ -334,9 +334,10 @@ export class CombinepatComponent implements OnInit {
     console.log(val);
     this.combined.sinsurance = val;
   }
-  
+
   notvalidate: boolean;
   submit(form: NgForm) {
+    console.log("form",form.value);
     let nextDate : Date;
     var solution;
     var ff = form.value;
@@ -422,7 +423,7 @@ export class CombinepatComponent implements OnInit {
           dd.setHours(dd.getHours() + 24*30);
           nextDate = dd;
           console.log(nextDate);
-        } 
+        }
       }
       else{
         what = this.patientdetail.visit.visit;
@@ -510,7 +511,7 @@ export class CombinepatComponent implements OnInit {
         dd.setHours(dd.getHours() + 24*30);
         nextDate = dd;
         console.log(nextDate);
-      }      
+      }
     }
     else{
       console.log("empty it !");
@@ -520,7 +521,7 @@ export class CombinepatComponent implements OnInit {
 
     let summary = '';
     // var getdate = this.nextvisitdate(this.p_id,form);
-      
+
     if (form.valid) {
       setTimeout(() => {
       if(this.combined.visit == null || this.combined.visit == undefined ){
@@ -604,7 +605,7 @@ export class CombinepatComponent implements OnInit {
       summary += `Date: ${new Date(this.combined.visit).toString().slice(0,15)}  |  Provider name: ${form.value.provider} . | `
       if (form.value.generictest == 'no') {
         if (form.value.geneticreason) {
-          summary +=`Reasons for discontinuations from Genetic testing: 
+          summary +=`Reasons for discontinuations from Genetic testing:
           ${(form.value.geneticreason=='Other'?form.value.othergeneticreason:form.value.geneticreason)} . | `
         }
       }
@@ -709,8 +710,8 @@ export class CombinepatComponent implements OnInit {
         formdata.followup = null;
       }
       formdata.summary = summary;
-      let masterptdata = { ...meds, ...med_syms, ...psy_psyms, ...scaleinfo, ...formdata }
-      console.log(masterptdata)
+      let masterptdata = { ...meds, ...med_syms, ...psy_psyms, ...scaleinfo, ...formdata};
+      console.log("masterptdata", masterptdata)
       this.service.submitMasterPatientData(masterptdata);
       if (this.previousRoute == '/patient') {
         this.router.navigate(['/patient']);
@@ -723,7 +724,7 @@ export class CombinepatComponent implements OnInit {
     else {
       this.notvalidate = true;
     }
-  
+
     // this.resetForm();
   }
   app() {

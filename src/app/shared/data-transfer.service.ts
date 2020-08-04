@@ -228,13 +228,14 @@ export class DataTransferService {
   patientData: combined
   private c1 = new Subject<String>();
   cc1$ = this.c1.asObservable();
+  roleType;
   private c2 = new Subject<String>(); cc2$ = this.c2.asObservable();
   private c3 = new Subject<String>(); cc3$ = this.c3.asObservable();
   private c4 = new Subject<String>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<String>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<String>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.218.140:4000/api';
-  // metcha = 'http://localhost:4000/api';
+  // metcha = 'http://3.128.218.140:4000/api';
+  metcha = 'http://localhost:4000/api';
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
   url2 = `${this.metcha}/red`;
@@ -276,7 +277,6 @@ export class DataTransferService {
 
   subject = new BehaviorSubject("123");
   checkLogin(dorm) {
-    // console.log(this._route.snapshot.url);
     return this.http.post<any>(this.url, dorm.value);
   }
   sendotp(form){
@@ -298,14 +298,13 @@ export class DataTransferService {
     return localStorage.getItem('token');
   }
   getData() {
-    return this.http.get<any>(this.url2)
+    return this.http.get<any>(this.url2);
   }
   logout() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/');
   }
   addBasePatientData(form) {
-    console.log(form);
     return this.http.post<any>(this.url3, form);
   }
   getPatientData() {
@@ -387,34 +386,25 @@ export class DataTransferService {
     this.router.navigateByUrl('/reports');
   }
   createdownloadlink(some) {
-    console.log("i do nothing")
   }
   submitMasterPatientData(data) {
-    console.log("i am inside service and getting triggered")
-    console.log(data);
+    console.log("printed in service file", data);
     this.http.post<any>(this.url16, data).subscribe(res => {
-      console.log(res)
+      console.log(res);
     });
   }
   useriden(id?: string) {
     this.subject.next(id);
   }
   sendBaseData(data) {
-    console.log(data)
     return this.http.post<any>(this.url17, data);
   }
   getByid(id) {
     const params = new HttpParams().set('id', id);
-    console.log(params)
-    return this.http.get<any>(this.url18,{params});
+    return this.http.get<any>(this.url18, {params});
   }
   findprerecords(data) {
-    //this is the data i get
-    console.log(data);
     return this.http.post<any>(this.url19,data);
-    // return this.http.post<any>(this.url19,data).subscribe(res=>{
-    //   console.log(res)
-    // })
   }
   findproviderreport(data) {
     return this.http.post<any>(this.url23,data);
@@ -433,6 +423,19 @@ export class DataTransferService {
 
   expensiveMedicationReport(data) {
     return this.http.post<any>(this.apiUrlForMedicationReport, data);
+  }
+
+  setRoleTypeAfterRefresh() {
+    return this.getData();
+  }
+
+  setRole(role) {
+    this.roleType = role;
+  }
+
+  getRole() {
+    console.log("this.roleType", this.roleType)
+    return this.roleType;
   }
 
   getAllPatientData(enterCharacter) {

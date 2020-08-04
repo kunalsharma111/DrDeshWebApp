@@ -14,7 +14,7 @@ declare var $: any
 export class ExpensiveComponent implements OnInit {
 
   constructor(public service: DataTransferService, public toastr: ToastrService) { }
-  
+
   fname = '';
   metaData = false;
   meds: Medication;
@@ -45,7 +45,6 @@ export class ExpensiveComponent implements OnInit {
           }
         })
     this.service.getMed().subscribe(res => {
-      console.log(res);
       this.meds = res;
     })
     const $button = document.querySelector('#sidebar-toggle');
@@ -83,7 +82,6 @@ export class ExpensiveComponent implements OnInit {
       form.controls[key].markAsTouched();
     });
     this.service.sendMed(form).subscribe(res => {
-      console.log(res);
       this.toastr.success('', 'Medicine Saved Successfully');
     })
     this.resetForm(form);

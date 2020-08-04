@@ -1,6 +1,6 @@
 <div id="wrapper">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand" *ngIf="metaData">
+        <div class="sidebar-brand">
             <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
             <img src="/assets/img/login/logo.png" height="60px">
             <h2>Hello, {{fname|capitalize}}</h2>
@@ -14,22 +14,22 @@
             <li>
                 <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
             </li>
-            <li>
+            <li *ngIf="roleType == 'Admin'">
                 <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
             </li>
-            <li>
+            <li *ngIf="roleType == 'Admin'">
                 <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
             </li>
-            <li>
+            <li *ngIf="roleType == 'Admin'">
                 <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
             </li>
-            <li>
+            <li *ngIf="roleType == 'Admin'">
                 <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
             </li>
             <li>
                 <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
             </li>
-            <li>
+            <li *ngIf="roleType == 'Admin'">
                 <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
             </li>
         </ul>
@@ -79,7 +79,7 @@
                     </div>
                 </figure>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3" *ngIf="roleType == 'Admin'">
                 <figure>
                     <div>
                         <span data-toggle="modal" data-target="#myModalfacility" (click)="re4()">Get Report <i
@@ -91,7 +91,7 @@
 
             <div class="col-md-1"></div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5" *ngIf="roleType == 'Admin'">
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <figure>
@@ -122,7 +122,7 @@
                 </figure>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5" *ngIf="roleType == 'Admin'">
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <figure>

@@ -23,14 +23,13 @@ export class RegisterComponent implements OnInit {
           this.user = res;
           this.name = this.user.fname;
           this.metaData = true;
-          console.log(typeof this.name);
         }, err => {
           console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.ctrl.router.navigateByUrl('/');
           }
         })
-    console.log(this.user)
+
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 

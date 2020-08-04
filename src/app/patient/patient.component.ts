@@ -16,7 +16,7 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
-
+  roleType;
   // commentbox="no";
   // @ViewChild('gate',{static:true}) sc:ElementRef;
   modalRef: BsModalRef;
@@ -33,7 +33,8 @@ export class PatientComponent implements OnInit {
   role;
 
   ngOnInit() {
-    console.log(this.search)
+    this.roleType = this.service.getRole();
+    console.log("roletype", this.roleType);
     fromEvent(this.search.nativeElement, 'input')
       .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
       .subscribe(val => {
@@ -46,7 +47,7 @@ export class PatientComponent implements OnInit {
         })
       })
     var MMddyyyy = this.datePipe.transform(new Date(), "MM-dd-yyyy");
-    console.log(MMddyyyy);
+
     this.resetStuff();
     this.cd = new Date();
     this.kd = this.cd.toISOString().slice(0, 10);
@@ -67,7 +68,6 @@ export class PatientComponent implements OnInit {
       let user = res;
       this.fname = user.fname;
       this.role = user.userrole;
-      console.log(this.fname)
       this.metaData = true;
     }, err => {
       // console.log(err);
@@ -215,7 +215,7 @@ export class PatientComponent implements OnInit {
     res:0;
   this.service.sendBaseData(form.value).subscribe(res => {
     console.log(res)
-  }); 
+  });
 
   //  this.toastr.success('', 'Patient Added Successfully');
     $("#myModal").modal("hide");

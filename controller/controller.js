@@ -68,7 +68,7 @@ function verifyToken(req, res, next) {
 //get current user
 var currentuser;
 router.get('/red', verifyToken, (req, res) => {
-    userModel.findOne({ _id: sub }, function (err, user) {
+    userModel.findOne({ _id: sub },{'fname':1,'userrole':1}, function (err, user) {
         if (!err) {
             currentuser = user.fname;
             res.json(user);
@@ -666,9 +666,11 @@ router.post("/login", (req, res) => {
                     if (!result) {
                         res.status(401).send('Invalid Password')
                     } else {
+                       let role = doc.userrole
                         let payload = { subject: doc._id }
                         let token = jwt.sign(payload, 'keysecret')
-                        res.status(200).send({ token })
+                        res.status(200).send({ token,
+                        role})
                     }
                 });
             }
@@ -768,14 +770,14 @@ router.post('/preround', verifyToken,async (req, res) => {
         }
     ])
     console.log("specific date" + specific_date);
-    // psychotherapy result 
-    
+    // psychotherapy result
+
     const psychotherapy_result =  await MasterPatientModel.aggregate([
         { $project: { name:1,type:"Psychotherapy",visits: { $slice : [ "$visits" , -1 ] } } },
         { $match: {'visits.facility': req.body.facility ,
         // "$and":[
         //             {'visits.typevisit':'Psycothreapy'},
-        //             {'visits.typevisit': { "$in" : provider_details[0].role } } 
+        //             {'visits.typevisit': { "$in" : provider_details[0].role } }
         //        ],
             } }
     ])
@@ -826,20 +828,20 @@ router.post('/preround', verifyToken,async (req, res) => {
         for(k=0;k<pending_scales[j].visits[0].scaleinfo.length;k++){
             // console.log(pending_scales[j].visits[0].scaleinfo[k].scale_name);
             if(pending_scales[j].visits[0].scaleinfo[k].scale_score == "" || pending_scales[j].visits[0].scaleinfo[k].scale_score == null || pending_scales[j].visits[0].scaleinfo[k].scale_score == undefined
-              || pending_scales[j].visits[0].scaleinfo[k].scale_date == "" || pending_scales[j].visits[0].scaleinfo[k].scale_date==null||pending_scales[j].visits[0].scaleinfo[k].scale_date==undefined){     
+              || pending_scales[j].visits[0].scaleinfo[k].scale_date == "" || pending_scales[j].visits[0].scaleinfo[k].scale_date==null||pending_scales[j].visits[0].scaleinfo[k].scale_date==undefined){
                 pending.push(pending_scales[j].visits[0].scaleinfo[k].scale_name);
                 pending_scales[j].pendings.push(pending_scales[j].visits[0].scaleinfo[k].scale_name);
                 flag = false;
               }
         }
-        
+
         var n = provider_details[0].role.includes("Case Management/Psychiatric screenings");
         if(flag == false && pending_scales[j].pendings.length>0  && n == true){
-        final_pending_scales.push(pending_scales[j]);    
+        final_pending_scales.push(pending_scales[j]);
         }
     }
 
-    
+
     // repeated scales
     const repeated_scales = await MasterPatientModel.aggregate([
         { $project: {name:1,type:"Repeated scales",repeated:[], visits: { $slice:[ "$visits",-1] } } },
@@ -874,18 +876,18 @@ router.post('/preround', verifyToken,async (req, res) => {
                 }
             }
         }
-        
+
         var n = provider_details[0].role.includes("Case Management/Psychiatric screenings");
         if(flag == false && repeated_scales[j].repeated.length>0  && n == true){
-        final_repeated_scales.push(repeated_scales[j]);    
+        final_repeated_scales.push(repeated_scales[j]);
         }
     }
     console.log(final_repeated_scales);
 
     // adding full result at one place
     const result = [...veryurgent_patients , ...urgent_patients , ...specific_date , ...final_psychotherapy_result, ...final_per_routine_protocol , ...final_pending_scales , ...final_repeated_scales];
-    
-    
+
+
     res.json(result);
 
 }catch(error){

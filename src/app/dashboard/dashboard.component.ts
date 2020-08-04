@@ -10,14 +10,24 @@ declare var $: any;
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  roleType;
 
   constructor(public service: DataTransferService) { }
   user;
   fname;
   role;
-  metaData
+  metaData;
   ngOnInit() {
+    if (this.service.getRole() === undefined ) {
+      this.service.setRoleTypeAfterRefresh().subscribe(res => {
+        this.roleType = res.userrole;
+        this.service.setRole(res.userrole);
+      });
+    } else {
+      this.roleType = this.service.getRole();
+    }
     this.fname = '';
+    // this.roleType = this.service.getRole();
     this.service.getData()
       .subscribe(
         res => {
@@ -25,14 +35,12 @@ export class DashboardComponent implements OnInit {
           this.fname = this.user.fname;
           this.role =  this.user.userrole;
           this.metaData = true;
-          console.log(this.user);
         }, err => {
           console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.service.router.navigateByUrl('/');
           }
         })
-    console.log(this.user)
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 

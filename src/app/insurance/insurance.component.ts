@@ -44,7 +44,6 @@ export class InsuranceComponent implements OnInit {
           }
         })
     this.service.getInsurance().subscribe(res => {
-      console.log(res);
       this.insurances = res;
     })
     const $button = document.querySelector('#sidebar-toggle');
@@ -79,7 +78,6 @@ export class InsuranceComponent implements OnInit {
   submit(form: NgForm) {
     console.log(form.value);
     this.service.sendInsurance(form).subscribe(res => {
-      console.log(res);
       this.toastr.success('', 'Insurance Saved Successfully');
     })
     this.resetForm(form);

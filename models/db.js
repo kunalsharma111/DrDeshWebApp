@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 // const uri = "mongodb+srv://sukrit:love@cluster0-bn91a.mongodb.net/test?retryWrites=true&w=majority";
 
 // production DB
-const uri =   "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
+// const uri =   "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
 // deveolpment DB
-// const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/DevelopmentBalancedWellbeing?retryWrites=true&w=majority";
+const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/DevelopmentBalancedWellbeing?retryWrites=true&w=majority";
 require('./users.model');
 require('./patient.model');
 require('./r2patient.model');
@@ -20,7 +20,7 @@ mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology: true,useFindAndMo
         console.log(err);
     }
     else{
-        console.log('db connected');
+        console.log('db connected',uri);
     }
 });
 mongoose.Promise = global.Promise;

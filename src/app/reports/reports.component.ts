@@ -29,6 +29,7 @@ export class ReportsComponent implements OnInit {
   public inputMedicine = new EventEmitter<string>();
   selectedPersonId = '';
   role;
+  roleType;
   isBrowser;
   constructor(private spinnerService: Ng4LoadingSpinnerService,public service: DataTransferService, public renderer: Renderer2) {
     this.input
@@ -89,6 +90,7 @@ export class ReportsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.roleType = this.service.getRole();
     this.patientLoading = true;
     this.service.cc6$
     .subscribe(
@@ -121,7 +123,6 @@ export class ReportsComponent implements OnInit {
         })
     this.service.getActiveProvider().subscribe(res => {
       this.providers = res;
-      console.log(this.providers);
     });
     this.service.getActiveFacility().subscribe(res => {
       this.facilities = res;
