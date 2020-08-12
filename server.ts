@@ -20,7 +20,7 @@ import "zone.js/dist/zone-node";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
-import { join } from "path";
+import { join, resolve } from "path";
 
 // Express server
 const app = express();
@@ -51,8 +51,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
-app.use('/api',require('./controller/controller'));
-
+app.use('/ab', express.static(resolve("./"+'../')+'/upload'));
+app.use('/api', require('./controller/controller'));
 app.set("view engine", "html");
 app.set("views", DIST_FOLDER);
 

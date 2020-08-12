@@ -13,6 +13,7 @@ import { ExpensiveComponent } from './expensive/expensive.component';
 import { ReportsComponent } from './reports/reports.component';
 import { CombinepatComponent } from './combinepat/combinepat.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { AttchFileComponent } from './attachfiles/attchfile.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'provider', component: ProviderComponent, canActivate: [RouteGuard] },
   { path: 'expensive', component: ExpensiveComponent, canActivate: [RouteGuard] },
   { path: 'reports', component: ReportsComponent, canActivate: [RouteGuard] },
-  { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  }
+  { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  },
+  { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  }
 ];
 
 @NgModule({

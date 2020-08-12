@@ -2,10 +2,12 @@ const express = require('express');
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 var nodemailer = require("nodemailer");
-const router = express.Router();
+var multer  = require('multer')
+const router = express();
 
 require('../models/db');
 const userModel = mongoose.model("User");
+const employeeModel = mongoose.model("EmployeeModel");
 const patientModel = mongoose.model("Patient");
 const R2Model = mongoose.model("R2P");
 const FacilityModel = mongoose.model("Facility");
@@ -14,6 +16,7 @@ const MedicationModel = mongoose.model("Medication");
 const ProviderModel = mongoose.model("Provider");
 const MasterPatientModel = mongoose.model("MasterPatient");
 const PostModel = mongoose.model("PostRoundUp");
+var path = require("path");
 const VModel = mongoose.model('MVM');
 var bcrypt = require('bcryptjs');
 
@@ -2308,7 +2311,6 @@ router.post('/postreport', verifyToken, (req, res) => {
     })
 })
 router.post('/medreport', verifyToken, (req, res) => {
-    console.log(req.body)
     let nextDate = new Date(req.body.date);
     nextDate.setDate(nextDate.getDate() + 1);
     MasterPatientModel.find(
@@ -2340,7 +2342,33 @@ router.post('/medreport', verifyToken, (req, res) => {
 router.get('/fetchByName', verifyToken, (req, res) => {
     let name = new RegExp(req.query.name);
     MasterPatientModel.find({ "name": new RegExp(name, 'i') }).then(out => {
-        // console.log(out);
+        res.json(out)
+    })
+})
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.resolve("./"+'../')+'/upload/images/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '_' + Date.now()+path.extname(file.originalname))
+    }
+  })
+
+  var upload = multer({ storage: storage });
+
+router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) => {
+    var employee = new employeeModel({
+        fname: req.body.test2,
+        image: req.file.filename
+    })
+    employee.save().then(doc => { console.log("saved"); res.json('saved') }, err => {
+        res.json('failure');
+    })
+})
+
+router.post('/fetchfiles', verifyToken, (req, res) => {
+    employeeModel.find({}).then(out => {
         res.json(out)
     })
 })

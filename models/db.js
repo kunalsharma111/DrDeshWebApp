@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 // deveolpment DB
 const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/DevelopmentBalancedWellbeing?retryWrites=true&w=majority";
 require('./users.model');
+require('./employee.model');
 require('./patient.model');
 require('./r2patient.model');
 require('./facility.model');

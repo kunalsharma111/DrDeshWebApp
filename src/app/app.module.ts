@@ -20,6 +20,7 @@ import { ProviderComponent } from './provider/provider.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PipePipe } from './pipe.pipe';
 import { ReportsComponent } from './reports/reports.component';
+import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { FilterPipe } from './filter.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -45,6 +46,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     ProviderComponent,
     PipePipe,
     ReportsComponent,
+    AttchFileComponent,
     FilterPipe,
     FilterNamePipe,
     FilterdatePipe,

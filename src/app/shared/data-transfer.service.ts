@@ -272,6 +272,8 @@ export class DataTransferService {
   apiUrlForAllPatients = `${this.metcha}/getpatientsasperkey`;
   getpatientdetail = `${this.metcha}/patientdetail`;
   apiUrlForAllExpensiveMedicine = `${this.metcha}/getmedicineasperkey`;
+  employeeDetails = `${this.metcha}/employeedetails`;
+  getEmployeeDetailsUrl = `${this.metcha}/fetchfiles`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -307,6 +309,15 @@ export class DataTransferService {
   addBasePatientData(form) {
     return this.http.post<any>(this.url3, form);
   }
+
+  addEmployeeDetails(form) {
+    return this.http.post<any>(this.employeeDetails, form);
+  }
+
+  getEmployeeDetails() {
+    return this.http.post<any>(this.getEmployeeDetailsUrl, {});
+  }
+
   getPatientData() {
     return this.http.get(this.url4);
   }

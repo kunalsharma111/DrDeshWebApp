@@ -1,0 +1,84 @@
+<div id="wrapper">
+    <aside id="sidebar-wrapper">
+        <div class="sidebar-brand">
+            <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
+            <img src="/assets/img/login/logo.png" height="60px">
+            <!-- <h2>Hello, {{fname|capitalize}}</h2>
+            <b>{{role}}</b> -->
+        </div>
+        <ul class="sidebar-nav">
+            <p class="qd">Quick Dashboard</p>
+            <li>
+                <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
+            </li>
+            <li>
+                <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
+            </li>
+            <li>
+                <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
+            </li>
+            <li>
+                <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
+            </li>
+            <li>
+                <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
+            </li>
+            <li>
+                <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
+            </li>
+            <li>
+                <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
+            </li>
+        </ul>
+    </aside>
+
+    <div id="navbar-wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand" id="sidebar-toggle">
+                        <!-- <i class="fa fa-bars" style="color: #87C442;"></i> -->
+                        <img src="/assets/img/bar.png" class="img-fluid"
+                            style="margin-left: -28px;transform: scale(1.45);">
+                    </a>
+                </div>
+                <div style="float: right; cursor: pointer;" (click)="logout()"><img src="/assets/img/dash/logout.png"
+                        height="50px" class="logout"></div>
+            </div>
+        </nav>
+    </div>
+
+    <section id="content-wrapper" style=" padding-left: 0rem;  ">
+        <div class="box"></div>
+        <section id="attachfile">
+            <div class="container">
+                <div class="boxit">
+                    <h1 class="text-center">Attach File</h1>
+                    <hr>
+                    <form #form="ngForm" autocomplete="off" (submit)="submit(form)" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="file" #file="ngModel" [(ngModel)]="employee.file"  (change)="fileProgress($event)"
+                                required  />
+                            <input type="test" class="form-control" name="test2" #test2="ngModel" [(ngModel)]="employee.test2"
+                            required>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-info btn-block">
+                    </form>
+                </div>
+            </div>
+
+            <div *ngIf="imagess.length >=1 ">
+                <div *ngFor="let imagefile  of imagess">
+                    <!-- <img  *ngIf="imagefile.image" src="./ab/images/{{imagefile.image}}" alt=" file -name {{imagefile.image}}" /> -->
+                    <a href="{{loadFilesFromUrl}}ab/images/{{imagefile.image}}"  target="_blank" download>{{ imagefile.image }}</a>
+                    <!-- <img  *ngIf="imagefile.image" src="/images/{{imagefile.image}}" alt="{{imagefile.image}}" /> -->
+
+                </div>
+            </div>
+        </section>
+
+    </section>
+</div>
