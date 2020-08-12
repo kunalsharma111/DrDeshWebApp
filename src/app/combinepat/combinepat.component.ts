@@ -516,32 +516,32 @@ export class CombinepatComponent implements OnInit {
       console.log("empty it !");
     }
     }
+    console.log("yes");
     })
 
     let summary = '';
     // var getdate = this.nextvisitdate(this.p_id,form);
-      
     if (form.valid) {
       setTimeout(() => {
       if(this.combined.visit == null || this.combined.visit == undefined ){
         this.combined.visit =  new Date();
       }
-      console.log(what);
-      console.log(form.value.visit);
-      console.log(this.combined.visit);
-      // this.combined.visit = what;
-      console.log(form.value.nextvisitdate);
+      // console.log(what);
+      // console.log(form.value.visit);
+      // console.log(this.combined.visit);
+      this.combined.visit = what;
+      // console.log(form.value.nextvisitdate);
       form.value.nextvisitdate = nextDate;
       console.log(form.value.nextvisitdate);
       let todays_date = new Date();
-      console.log(todays_date);
+      // console.log(todays_date);
       if(form.value.visit == form.value.nextvisitdate){
-        console.log("panga edr hai");
+        // console.log("panga edr hai");
         form.value.visit = todays_date;
-        console.log(form.value.visit);
+        // console.log(form.value.visit);
       }
       else{
-        console.log("dont know");
+        // console.log("dont know");
       }
       var x = this.el.nativeElement.querySelectorAll('.chkbx');
       var status = this.el.nativeElement.querySelectorAll('.medstatus');
@@ -549,6 +549,7 @@ export class CombinepatComponent implements OnInit {
       let medData: any = [];
       let stream$ = from(x);
       this.combined.flag = 1;
+      // first 
       stream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         let meddata: any = {}
         meddata.name = res.value;
@@ -557,6 +558,7 @@ export class CombinepatComponent implements OnInit {
         if (parstat == 'Approved')
           meddata.date = date[res.id - 1].value;
         medData.push(meddata);
+        console.log("i am complete now first");
       })
       console.log(medData)
 
@@ -568,6 +570,7 @@ export class CombinepatComponent implements OnInit {
       let scaleData = [];
       var scalestream$ = from(scalechkbx);
       let p_s = [];
+      // second
       scalestream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         let scaledata: any = {}
         scaledata.scale_name = res.value;
@@ -580,27 +583,33 @@ export class CombinepatComponent implements OnInit {
         scaledata.scaledays = scaledayss[res.id - 100].value;
         console.log(scaledayss);
         scaleData.push(scaledata);
+        console.log("i am complete now 2");
       })
 
       var medsyms = this.el.nativeElement.querySelectorAll('.symtoms_meds');
       let syn_meds = [];
       var med_syn_stream$ = from(medsyms);
+      // third
       med_syn_stream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         syn_meds.push(res.value);
+        console.log("i am complete now 3");
       })
 
       var psysyms = this.el.nativeElement.querySelectorAll('.symtoms_psy');
       let syn_psy = [];
       var psy_syn_stream$ = from(psysyms);
       console.log(psysyms)
+      // fourth
       psy_syn_stream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         syn_psy.push(res.value);
         console.log(res)
+        console.log("i am complete now 4");
       })
       var psy_psyms = { psy_symptoms: syn_psy }
       var med_syms = { meds_symptoms: syn_meds }
       var meds = { exmeds: medData }
       var scaleinfo = { scaleinfo: scaleData }
+      // fifth
       summary += `Date: ${new Date(this.combined.visit).toString().slice(0,15)}  |  Provider name: ${form.value.provider} . | `
       if (form.value.generictest == 'no') {
         if (form.value.geneticreason) {
@@ -703,6 +712,7 @@ export class CombinepatComponent implements OnInit {
       if (form.value.medfollowup == 'Urgent' || form.value.medfollowup == 'Very Urgent') {
         summary += `Patient condition is ${form.value.medfollowup} | `
       }
+      console.log("i am complete now 5");
       let formdata = form.value;
       // formdata.visit = this.combined.visit;
       if (formdata.followup == "") {
@@ -711,7 +721,11 @@ export class CombinepatComponent implements OnInit {
       formdata.summary = summary;
       let masterptdata = { ...meds, ...med_syms, ...psy_psyms, ...scaleinfo, ...formdata }
       console.log(masterptdata)
-      this.service.submitMasterPatientData(masterptdata);
+      console.log("savinggg");
+
+      this.service.submitMasterPatientData(masterptdata).subscribe(res=>{
+        console.log(res);
+      });
       if (this.previousRoute == '/patient') {
         this.router.navigate(['/patient']);
       } else {
@@ -723,6 +737,7 @@ export class CombinepatComponent implements OnInit {
     else {
       this.notvalidate = true;
     }
+    
   
     // this.resetForm();
   }

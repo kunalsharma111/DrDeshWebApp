@@ -392,9 +392,10 @@ export class DataTransferService {
   submitMasterPatientData(data) {
     console.log("i am inside service and getting triggered")
     console.log(data);
-    this.http.post<any>(this.url16, data).subscribe(res => {
-      console.log(res)
-    });
+    return this.http.post<any>(this.url16, data);
+    // .subscribe(res => {
+    //   console.log(res)
+    // });
   }
   useriden(id?: string) {
     this.subject.next(id);
