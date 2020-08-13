@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Medication, DataTransferService } from '../shared/data-transfer.service';
 import { ToastrService } from 'ngx-toastr';
 
-declare var $: any
+declare var $: any;
 
 @Component({
   selector: 'app-expensive',
@@ -30,23 +30,22 @@ export class ExpensiveComponent implements OnInit {
             this.app();
           }
         }
-      )
+      );
     this.service.getData()
       .subscribe(
         res => {
-          let user = res;
+          const user = res;
           this.fname = user.fname;
           this.role =  user.userrole;
           this.metaData = true;
         }, err => {
-          console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.service.router.navigateByUrl('/');
           }
-        })
+        });
     this.service.getMed().subscribe(res => {
       this.meds = res;
-    })
+    });
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 
@@ -56,15 +55,15 @@ export class ExpensiveComponent implements OnInit {
     });
   }
   resetForm(form?: NgForm) {
-    this.edit = false
+    this.edit = false;
     if (form != null) {
       form.resetForm();
     }
     this.medData = {
       id: null,
       name: '',
-      ain:'Active'
-    }
+      ain: 'Active'
+    };
   }
   logout() {
     this.service.logout();
@@ -74,28 +73,26 @@ export class ExpensiveComponent implements OnInit {
   assign(data, id) {
     this.s_id = id;
     this.medData = data;
-    this.edit = true
+    this.edit = true;
   }
   submit(form: NgForm) {
-    console.log(form.value);
     Object.keys(form.controls).forEach(key => {
       form.controls[key].markAsTouched();
     });
     this.service.sendMed(form).subscribe(res => {
       this.toastr.success('', 'Medicine Saved Successfully');
-    })
+    });
     this.resetForm(form);
     this.ngOnInit();
-    $("#myModalap").modal("hide");
+    $('#myModalap').modal('hide');
   }
   func() {
     this.resetForm();
   }
   app() {
     setTimeout(() => {
-      console.log("please call me");
-      $("#myModalap").modal("show");
-    }, 100)
+      $('#myModalap').modal('show');
+    }, 100);
   }
   ap() {
     this.service.topatient('yes');

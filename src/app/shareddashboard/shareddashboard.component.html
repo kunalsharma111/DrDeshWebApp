@@ -1,0 +1,49 @@
+<aside id="sidebar-wrapper">
+    <div class="sidebar-brand" *ngIf="metaData">
+        <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
+        <img src="/assets/img/login/logo.png" height="60px">
+        <h2>Hello, {{fname|capitalize}}</h2>
+        <b>{{role}}</b>
+    </div>
+    <ul class="sidebar-nav">
+        <p class="qd">Quick Dashboard</p>
+        <li >
+            <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+            <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
+        </li>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
+        </li>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
+        </li>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
+        </li>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
+        </li>
+        <li>
+            <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
+        </li>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
+        </li>
+    </ul>
+</aside>
+<div id="navbar-wrapper">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand" id="sidebar-toggle">
+                    <img src="/assets/img/bar.png" class="img-fluid" style="margin-left: -28px;transform: scale(1.45);">
+                </a>
+            </div>
+            <div style="float: right; cursor: pointer;" (click)="logout()">
+                <img src="/assets/img/dash/logout.png" height="50px" class="logout">
+            </div>
+        </div>
+    </nav>
+</div>

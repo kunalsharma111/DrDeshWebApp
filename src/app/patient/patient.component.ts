@@ -33,19 +33,15 @@ export class PatientComponent implements OnInit {
   role;
 
   ngOnInit() {
-    this.roleType = this.service.getRole();
-    console.log("roletype", this.roleType);
+    // this.roleType = this.service.getRole();
     fromEvent(this.search.nativeElement, 'input')
       .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
       .subscribe(val => {
-        // console.log(val)
         const params = new HttpParams().set('name', val);
-        console.log(params)
-        this.service.http.get(this.service.url27,{params}).subscribe(fin=>{
-          // console.log(fin);
+        this.service.http.get(this.service.url27, {params}).subscribe(fin => {
           this.patients = fin;
-        })
-      })
+        });
+      });
     var MMddyyyy = this.datePipe.transform(new Date(), "MM-dd-yyyy");
 
     this.resetStuff();
@@ -55,12 +51,10 @@ export class PatientComponent implements OnInit {
       .subscribe(
         message => {
           if (message === 'yes') {
-            console.log("patient bef");
             this.app();
-            console.log("patienty")
           }
         }
-      )
+      );
     // this.service.getPatientData().subscribe(res => {
     //   this.patients = res;
     // })
@@ -74,7 +68,7 @@ export class PatientComponent implements OnInit {
       if (err instanceof HttpErrorResponse) {
         this.service.router.navigateByUrl('/');
       }
-    })
+    });
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 
@@ -87,7 +81,7 @@ export class PatientComponent implements OnInit {
   combined: combined;
   resetStuff(form?: NgForm) {
     if (form != null) {
-      form.resetForm()
+      form.resetForm();
     }
     this.combined = {
       id: null,
@@ -95,9 +89,9 @@ export class PatientComponent implements OnInit {
       name: '',
       dob: null,
       patientcreatedon : null,
-      patientcreatedby:'',
-      savedon:null,
-      savedby:'',
+      patientcreatedby: '',
+      savedon: null,
+      savedby: '',
       careconditiontimespent: '',
       seedoc: '',
       noseedocreason: '',
@@ -204,18 +198,18 @@ export class PatientComponent implements OnInit {
       scaleeligiblereason: '',
       otherscaleeligiblereason: '',
       flag: 0,
-      nextvisitdate:null
-    }
+      nextvisitdate: null
+    };
   }
 
   logout() {
     this.service.logout();
   }
   submit(form: NgForm) {
-    res:0;
-  this.service.sendBaseData(form.value).subscribe(res => {
-    console.log(res)
-  });
+    res: 0;
+    this.service.sendBaseData(form.value).subscribe(res => {
+    console.log(res);
+    });
 
   //  this.toastr.success('', 'Patient Added Successfully');
     $("#myModal").modal("hide");
@@ -226,7 +220,7 @@ export class PatientComponent implements OnInit {
   app() {
     setTimeout(() => {
       $("#myModal").modal("show");
-    }, 100)
+    }, 100);
   }
   apr() {
     this.service.toprovider('yes');

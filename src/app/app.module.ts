@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +21,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PipePipe } from './pipe.pipe';
 import { ReportsComponent } from './reports/reports.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
+import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { FilterPipe } from './filter.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -47,6 +48,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     PipePipe,
     ReportsComponent,
     AttchFileComponent,
+    SharedDashboardComponent,
     FilterPipe,
     FilterNamePipe,
     FilterdatePipe,
@@ -69,9 +71,9 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
   ],
   providers: [DataTransferService, DatePipe,
     {
-    provide:HTTP_INTERCEPTORS,
+    provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
-    multi:true
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 <div id="wrapper">
-  <aside id="sidebar-wrapper">
+  <!-- <aside id="sidebar-wrapper">
     <div class="sidebar-brand" *ngIf="metaData">
-      <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
+      <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i>
       <img src="/assets/img/login/logo.png" height="60px">
       <h2>Hello, {{fname|capitalize}}</h2>
       <b>{{role}}</b>
@@ -33,14 +33,14 @@
           <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
       </li>
   </ul>
-  </aside>
+  </aside> -->
 
-  <div id="navbar-wrapper">
+  <!-- <div id="navbar-wrapper">
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <a href="#" class="navbar-brand" id="sidebar-toggle">
-            <!-- <i class="fa fa-bars" style="color: #87C442;"></i> -->
+            <i class="fa fa-bars" style="color: #87C442;"></i>
             <img src="/assets/img/bar.png" class="img-fluid" style="margin-left: -27px;transform: scale(1.45);">
           </a>
         </div>
@@ -48,8 +48,9 @@
             height="50px" class="logout"></div>
       </div>
     </nav>
-  </div>
+  </div> -->
 
+  <app-shareddashboard></app-shareddashboard>
   <section id="content-wrapper" style=" padding-left: 0rem;">
     <!-- header of the page   -->
     <div class="row">

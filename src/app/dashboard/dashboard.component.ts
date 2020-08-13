@@ -26,21 +26,21 @@ export class DashboardComponent implements OnInit {
     } else {
       this.roleType = this.service.getRole();
     }
-    this.fname = '';
-    // this.roleType = this.service.getRole();
-    this.service.getData()
-      .subscribe(
-        res => {
-          this.user = res;
-          this.fname = this.user.fname;
-          this.role =  this.user.userrole;
-          this.metaData = true;
-        }, err => {
-          console.log(err);
-          if (err instanceof HttpErrorResponse) {
-            this.service.router.navigateByUrl('/');
-          }
-        })
+    // this.fname = '';
+    // // this.roleType = this.service.getRole();
+    // this.service.getData()
+    //   .subscribe(
+    //     res => {
+    //       this.user = res;
+    //       this.fname = this.user.fname;
+    //       this.role =  this.user.userrole;
+    //       this.metaData = true;
+    //     }, err => {
+    //       console.log(err);
+    //       if (err instanceof HttpErrorResponse) {
+    //         this.service.router.navigateByUrl('/');
+    //       }
+    //     });
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 

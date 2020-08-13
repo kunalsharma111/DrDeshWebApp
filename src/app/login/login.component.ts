@@ -19,13 +19,12 @@ export class LoginComponent implements OnInit {
   user = {
     email: '',
     pwd: ''
-  }
+  };
   resetForm(form: NgForm) {
     this.user.email = '';
-    this.user.pwd = ''
+    this.user.pwd = '';
   }
   ngOnInit() {
-    console.log("hello")
   }
   submit(form) {
     this.renderer.setStyle(this.page.nativeElement, 'filter', 'blur(4px)');

@@ -187,9 +187,9 @@ export interface Facility {
   address2: string;
   tof: string;
   sn: string;
-  city:string;
-  state:string;
-  ain:string;
+  city: string;
+  state: string;
+  ain: string;
 }
 export interface Patient {
   id: string;
@@ -214,10 +214,10 @@ export interface Patient {
   scaleeligible: string;
   scale: string;
   comment: string;
-  patientcondition: string,
-  service_type: string,
-  psychotherapydate: string,
-  frequentlypsychotherapy: number,
+  patientcondition: string;
+  service_type: string;
+  psychotherapydate: string;
+  frequentlypsychotherapy: number;
 }
 @Injectable({
   providedIn: 'root'
@@ -225,7 +225,7 @@ export interface Patient {
 export class DataTransferService {
 
   adminData: Admin;
-  patientData: combined
+  patientData: combined;
   private c1 = new Subject<String>();
   cc1$ = this.c1.asObservable();
   roleType;
@@ -244,13 +244,13 @@ export class DataTransferService {
   url5 = `${this.metcha}/sendmoredata`;
   url6 = `${this.metcha}/r2`;
   url7 = `${this.metcha}/r2p`;
-  url8 = `${this.metcha}/facilityadd`
-  url9 = `${this.metcha}/getfacility`
-  url10 = `${this.metcha}/insuranceadd`
-  url11 = `${this.metcha}/getinsurance`
-  url12 = `${this.metcha}/provideradd`
-  url13 = `${this.metcha}/getprovider`
-  url14 = `${this.metcha}/medadd`
+  url8 = `${this.metcha}/facilityadd`;
+  url9 = `${this.metcha}/getfacility`;
+  url10 = `${this.metcha}/insuranceadd`;
+  url11 = `${this.metcha}/getinsurance`;
+  url12 = `${this.metcha}/provideradd`;
+  url13 = `${this.metcha}/getprovider`;
+  url14 = `${this.metcha}/medadd`;
   url15 = `${this.metcha}/getmed`;
   url16 = `${this.metcha}/goku`;
   url17 = `${this.metcha}/basedata`;
@@ -281,14 +281,14 @@ export class DataTransferService {
   checkLogin(dorm) {
     return this.http.post<any>(this.url, dorm.value);
   }
-  sendotp(form){
-    return this.http.post<any>(this.url20,form.value);
+  sendotp(form) {
+    return this.http.post<any>(this.url20, form.value);
   }
-  compareotp(form){
-    return this.http.post<any>(this.url21,form.value);
+  compareotp(form) {
+    return this.http.post<any>(this.url21, form.value);
   }
-  newpassword(form){
-    return this.http.post<any>(this.url22,form.value);
+  newpassword(form) {
+    return this.http.post<any>(this.url22, form.value);
   }
   transferToServer(form) {
     return this.http.post<any>(this.url1, form.value);
@@ -363,45 +363,43 @@ export class DataTransferService {
   topatient(message: string) {
     setTimeout(() => {
       this.c1.next('yes');
-    }, 100)
+    }, 100);
     this.router.navigateByUrl('/patient');
   }
   tofacility(message: string) {
     setTimeout(() => {
       this.c2.next('yes');
-    }, 100)
+    }, 100);
     this.router.navigateByUrl('/facility');
   }
   toprovider(message: string) {
     setTimeout(() => {
       this.c3.next('yes');
-    }, 100)
+    }, 100);
     this.router.navigateByUrl('/provider');
   }
   toinsurance(message: string) {
     setTimeout(() => {
       this.c4.next('yes');
-    }, 100)
+    }, 100);
     this.router.navigateByUrl('/insurance');
   }
   toexpensive(message: string) {
     setTimeout(() => {
       this.c5.next('yes');
-    }, 100)
+    }, 100);
     this.router.navigateByUrl('/expensive');
   }
   toreport(message: string) {
     setTimeout(() => {
       this.c6.next('yes');
-    }, 100)
+    }, 100);
     this.router.navigateByUrl('/reports');
   }
   createdownloadlink(some) {
   }
   submitMasterPatientData(data) {
-    console.log("printed in service file", data);
     this.http.post<any>(this.url16, data).subscribe(res => {
-      console.log(res);
     });
   }
   useriden(id?: string) {
@@ -415,20 +413,20 @@ export class DataTransferService {
     return this.http.get<any>(this.url18, {params});
   }
   findprerecords(data) {
-    return this.http.post<any>(this.url19,data);
+    return this.http.post<any>(this.url19, data);
   }
   findproviderreport(data) {
-    return this.http.post<any>(this.url23,data);
+    return this.http.post<any>(this.url23, data);
   }
-  findfacilityreport(data){
-    return this.http.post<any>(this.url24,data);
+  findfacilityreport(data) {
+    return this.http.post<any>(this.url24, data);
   }
 
-  facilitySummaryReport(data){
+  facilitySummaryReport(data) {
     return this.http.post<any>(this.apiUrlForFacilitySummary, data);
   }
 
-  patientSummaryReport(data){
+  patientSummaryReport(data) {
     return this.http.post<any>(this.apiUrlForPatientSummary, data);
   }
 
@@ -445,7 +443,6 @@ export class DataTransferService {
   }
 
   getRole() {
-    console.log("this.roleType", this.roleType)
     return this.roleType;
   }
 
@@ -462,7 +459,7 @@ export class DataTransferService {
       return this.getAllExpensiveMedicine({'enterKey': term}).pipe(
         catchError(err => of([])),
         switchMap(medicines => {
-          if (medicines === 'no'){
+          if (medicines === 'no') {
             return of([]);
           } else {
             return of (medicines);
@@ -475,11 +472,11 @@ export class DataTransferService {
   }
 
   getPeople(term: string | null): Observable<any[]> {
-    if(term !== null && term.length >= 3) {
+    if (term !== null && term.length >= 3) {
       return this.getAllPatientData({'enterKey': term}).pipe(
         catchError(err => of([])),
         switchMap(patients => {
-          if (patients === 'no'){
+          if (patients === 'no') {
             return of([]);
           } else {
             return of (patients);
@@ -508,15 +505,13 @@ export class DataTransferService {
     return this.history[this.history.length - 2] || '/index';
   }
   getpostroundingreport(data) {
-    return this.http.post<any>(this.url25,data);
+    return this.http.post<any>(this.url25, data);
   }
   getMedRelatedData(data) {
-    return this.http.post<any>(this.url26,data);
+    return this.http.post<any>(this.url26, data);
   }
-  getpatient(id){
-    console.log("3");
+  getpatient(id) {
     const params = new HttpParams().set('id', id);
-    console.log(params)
-    return this.http.get<any>(this.getpatientdetail,{params});
+    return this.http.get<any>(this.getpatientdetail, {params});
   }
 }

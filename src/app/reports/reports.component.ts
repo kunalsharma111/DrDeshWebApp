@@ -2,12 +2,12 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef, PLATFORM_ID, Injec
 import { NgForm } from '@angular/forms';
 import { DataTransferService, PatientRound2, Facility } from '../shared/data-transfer.service';
 import { HttpErrorResponse } from '@angular/common/http';
-declare var $: any
-import 'jspdf-autotable'
+declare var $: any;
+import 'jspdf-autotable';
 // import { isPlatformBrowser } from '@angular/common';
 import * as xlsx from 'xlsx';
 import * as logoFile from '../img/logo.js';
-import * as Excel from "exceljs/dist/exceljs.min.js";
+import * as Excel from 'exceljs/dist/exceljs.min.js';
 import * as fs from 'file-saver';
 import { formatDate, CommonModule} from '@angular/common';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -65,7 +65,7 @@ export class ReportsComponent implements OnInit {
     insurance: string;
     provider: string;
     date: Date;
-  }
+  };
 
   fname: string;
   metaData = false;
@@ -90,7 +90,14 @@ export class ReportsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.roleType = this.service.getRole();
+    if (this.service.getRole() === undefined ) {
+      this.service.setRoleTypeAfterRefresh().subscribe(res => {
+        this.roleType = res.userrole;
+        this.service.setRole(res.userrole);
+      });
+    } else {
+      this.roleType = this.service.getRole();
+    }
     this.patientLoading = true;
     this.service.cc6$
     .subscribe(
@@ -99,7 +106,7 @@ export class ReportsComponent implements OnInit {
           this.open();
         }
       }
-    )
+    );
     this.resetform();
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
@@ -120,13 +127,13 @@ export class ReportsComponent implements OnInit {
           if (err instanceof HttpErrorResponse) {
             this.service.router.navigateByUrl('/');
           }
-        })
+        });
     this.service.getActiveProvider().subscribe(res => {
       this.providers = res;
     });
     this.service.getActiveFacility().subscribe(res => {
       this.facilities = res;
-    })
+    });
   }
 
   repo:{

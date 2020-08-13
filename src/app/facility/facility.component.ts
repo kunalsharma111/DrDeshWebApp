@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
-declare var $: any
+declare var $: any;
 @Component({
   selector: 'app-facility',
   templateUrl: './facility.component.html',
@@ -17,7 +17,7 @@ export class FacilityComponent implements OnInit {
   metaData = false;
   facilities: any;
   public searchString: string;
-  fname = ''
+  fname = '';
   role;
   ngOnInit() {
     this.resetForm();
@@ -28,23 +28,22 @@ export class FacilityComponent implements OnInit {
             this.app();
           }
         }
-      )
+      );
     this.service.getData()
       .subscribe(
         res => {
-          let user = res;
+          const user = res;
           this.fname = user.fname;
           this.role =  user.userrole;
           this.metaData = true;
         }, err => {
-          console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.service.router.navigateByUrl('/');
           }
-        })
+        });
     this.service.getFacility().subscribe(res => {
       this.facilities = res;
-    })
+    });
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 
@@ -54,7 +53,6 @@ export class FacilityComponent implements OnInit {
     });
   }
   func() {
-    console.log("trigger");
     this.resetForm();
   }
   logout() {
@@ -74,32 +72,30 @@ export class FacilityComponent implements OnInit {
       address2: '',
       tof: 'nh',
       sn: '',
-      city:"",
-      state:'',
-      ain:'Active'
-    }
+      city: '',
+      state: '',
+      ain: 'Active'
+    };
   }
   s_id;
-  edit=false;
+  edit = false;
   assign(data, id) {
     this.s_id = id;
     this.facilityData = data;
-    this.edit = true
+    this.edit = true;
   }
   submit(form: NgForm) {
-    console.log(form.value);
     this.service.sendFacility(form).subscribe(res => {
-      this.toastr.success('', 'Facility Saved Successfully')
-    })
+      this.toastr.success('', 'Facility Saved Successfully');
+    });
     this.resetForm(form);
     this.ngOnInit();
-    $("#myModalap").modal("hide");
+    $('#myModalap').modal('hide');
   }
   app() {
     setTimeout(() => {
-      console.log("please call me");
-      $("#myModalap").modal("show");
-    }, 100)
+      $('#myModalap').modal('show');
+    }, 100);
   }
   ap() {
     this.service.topatient('yes');

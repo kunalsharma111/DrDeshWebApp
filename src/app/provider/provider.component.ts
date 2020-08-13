@@ -4,7 +4,7 @@ import { DataTransferService, Provider, Insurance } from '../shared/data-transfe
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
-declare var $: any
+declare var $: any;
 
 @Component({
   selector: 'app-provider',
@@ -39,11 +39,11 @@ export class ProviderComponent implements OnInit {
             this.app();
           }
         }
-      )
+      );
     this.service.getData()
       .subscribe(
         res => {
-          let user = res;
+          const user = res;
           this.fname = user.fname;
           this.role =  user.userrole;
           this.metaData = true;
@@ -52,13 +52,13 @@ export class ProviderComponent implements OnInit {
           if (err instanceof HttpErrorResponse) {
             this.service.router.navigateByUrl('/');
           }
-        })
+        });
     this.service.getProvider().subscribe(res => {
       this.providers = res;
-    })
+    });
     this.service.getInsurance().subscribe(res => {
       this.insurances = res;
-    })
+    });
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
 
@@ -71,7 +71,7 @@ export class ProviderComponent implements OnInit {
     console.log(this.batch.nativeElement)
   }
   resetForm(form?: NgForm) {
-    this.edit = false
+    this.edit = false;
     if (form != null) {
       form.resetForm();
     }
@@ -79,8 +79,8 @@ export class ProviderComponent implements OnInit {
       id: null,
       name: '',
       insurance: '',
-      ain:'Active'
-    }
+      ain: 'Active'
+    };
     this.some2 = [];
     this.some = [];
     let arr = this.el.nativeElement.querySelectorAll(".chkbx");
@@ -100,7 +100,7 @@ export class ProviderComponent implements OnInit {
   edit = false;
   assign(data, id) {
     this.resetForm();
-    this.edit = true
+    this.edit = true;
     this.s_id = id;
     this.providerData.name = data.name;
     this.providerData.ain = data.ain;
@@ -136,7 +136,7 @@ export class ProviderComponent implements OnInit {
     for (let i = 0; i < arr1.length; i++) {
       if (arr1[i].checked) {
         console.log('found');
-        this.some2.push(arr1[i].value)
+        this.some2.push(arr1[i].value);
       }
     }
 
@@ -147,11 +147,11 @@ export class ProviderComponent implements OnInit {
       name: form.value.name,
       id: form.value.id,
       ain: form.value.ain
-    }
+    };
 
     this.service.sendProvider(data).subscribe(res => {
       this.toastr.success('', 'Provider Saved Successfully');
-    })
+    });
 
     this.resetForm(form);
     this.ngOnInit();
@@ -167,7 +167,7 @@ export class ProviderComponent implements OnInit {
     setTimeout(() => {
       console.log("please call me");
       $("#myModalap").modal("show");
-    }, 100)
+    }, 100);
   }
   ap() {
     this.service.topatient('yes');
