@@ -7,7 +7,7 @@ import { environment } from '../src/environments/environment';
 // production DB
 // const uri =   "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
 // deveolpment DB
-const uri = environment.db_url;
+const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
 require('./users.model');
 require('./patient.model');
 require('./r2patient.model');
