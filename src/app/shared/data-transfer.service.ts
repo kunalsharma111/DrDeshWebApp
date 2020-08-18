@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subject, BehaviorSubject, Observable, of } from 'rxjs';
 import { filter, delay, map, catchError, switchMap} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 export interface Admin {
   fname: string;
@@ -233,8 +234,9 @@ export class DataTransferService {
   private c4 = new Subject<String>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<String>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<String>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.218.140:4000/api';
+  // metcha = 'http://3.128.218.140:4000/api';
   // metcha = 'http://localhost:4000/api';
+  metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
   url2 = `${this.metcha}/red`;
@@ -276,7 +278,7 @@ export class DataTransferService {
 
   subject = new BehaviorSubject("123");
   checkLogin(dorm) {
-    // console.log(this._route.snapshot.url);
+    console.log("yes"+this.metcha);
     return this.http.post<any>(this.url, dorm.value);
   }
   sendotp(form){

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 var nodemailer = require("nodemailer");
 const router = express.Router();
-
+const logger = require("../logger/logger");
 require('../models/db');
 const userModel = mongoose.model("User");
 const patientModel = mongoose.model("Patient");
@@ -17,7 +17,7 @@ const PostModel = mongoose.model("PostRoundUp");
 const VModel = mongoose.model('MVM');
 var bcrypt = require('bcryptjs');
 
-//register
+//register start
 router.post("/users", (req, res) => {
     // console.log(req.body);
     var user = new userModel(req.body);
@@ -31,20 +31,24 @@ router.post("/users", (req, res) => {
                 user.save((err, doc) => {
                     if (err) {
                         console.log("Error" + err);
+                        logger.error("Error" + err);
                         res.send("failed");
                     } else {
                         console.log(doc);
                         let payload = { subject: doc._id };
                         let token = jwt.sign(payload, 'keysecret');
                         res.status(200).json(token);
+                        logger.info("user saved successfully" + doc.email);
                     }
                 });
             } else {
+                logger.info("error in hashing the password");
                 console.log("error in hashing the password");
             }
         });
     });
 });
+// register ends
 let sub;
 function verifyToken(req, res, next) {
     if (!req.headers.authorization) {
@@ -65,19 +69,23 @@ function verifyToken(req, res, next) {
     sub = payload.subject;
     next()
 }
-//get current user
+//get current user starts
 var currentuser;
 router.get('/red', verifyToken, (req, res) => {
     userModel.findOne({ _id: sub }, function (err, user) {
         if (!err) {
             currentuser = user.fname;
+            logger.info("Name of current user is" + currentuser);
             res.json(user);
         }
         if (err) {
+            logger.error("Error in getting current user " + err);
             console.log(err);
         }
     });
 })
+// get current user ends
+
 
 router.get('/patientdetail',verifyToken, (req,res) => {
     MasterPatientModel.findById(req.query.id).then(doc => {
@@ -243,149 +251,215 @@ router.get('/r2p', verifyToken, (req, res) => {
         }
     })
 })
+
+// facility add starts
 router.post('/facilityadd', verifyToken, (req, res) => {
-    console.log(req.body + "vg");
     if (req.body.id == null) {
         let facility = new FacilityModel(req.body);
         facility.save(err => {
             if (!err) {
+                logger.info("facility saved " + facility.name);
                 res.json('saved to db');
             }
             else {
+                logger.error("error in saving facility" + err);
                 console.log(err);
             }
         })
     } else {
         FacilityModel.findByIdAndUpdate(req.body.id, req.body, (err, doc) => {
             if (!err) {
+                logger.info("facility data updated" + req.body.name);
                 res.json('record updated')
             }
             else {
+                logger.error("Error in updating facility data"+ err);
                 res.json('some error');
             }
         })
     }
 })
+// facility add end
+
+// get facility start
 router.get('/getfacility', verifyToken, (req, res) => {
     FacilityModel.find({}, (err, doc) => {
         if (!err) {
+            logger.info("Got Facility data");
             res.json(doc);
         }
         else {
+            logger.error("Error in fetching facility data" + err );
             console.log('err to fetch details');
         }
     }).sort({"name":1})
 })
+// get facility ends
+
+// get activated facility start
 router.get('/getactivefacility', verifyToken, (req, res) => {
     FacilityModel.find({"ain":"Active"}, (err, doc) => {
         if (!err) {
+            logger.info("Got activated facility");
             res.json(doc);
         }
         else {
+            logger.error("Error in getting activated facility"+err);
             console.log('err to fetch details');
         }
     }).sort({"name":1})
 })
+// get activate facility ends
+
+// add insurance starts
 router.post('/insuranceadd', verifyToken, (req, res) => {
     console.log(req.body);
     if (req.body.id == null) {
         let insurance = new InsuranceModel(req.body);
         insurance.save(err => {
             if (!err) {
+                logger.info("New Insurance got added");
                 res.json('saved to db');
             }
             else {
+                logger.error("Error in saving new insurance"+err);
                 console.log(err);
             }
         })
     } else {
         InsuranceModel.findByIdAndUpdate(req.body.id, req.body, (err, doc) => {
             if (!err) {
+                logger.info("Record updated for insurance");
                 res.json('record updated')
             }
             else {
+                logger.error("Error in updating Insurance data");
                 res.json('some error');
             }
         })
     }
 })
+// add insurance ends
+
+// get insurance starts
 router.get('/getinsurance', verifyToken, (req, res) => {
     InsuranceModel.find({}, (err, doc) => {
         if (!err) {
+            logger.info("Got all the insurances");
             res.json(doc);
         }
         else {
+            logger.error("Error in getting all the insurance"+err);
             console.log('err to fetch details');
         }
     }).sort({"name":1})
 })
+// get insurance ends
+
+// add provider starts
 router.post('/provideradd', verifyToken, (req, res) => {
     if (req.body.id == null) {
-        console.log("here");
-        console.log(req.body);
         let provider = new ProviderModel(req.body);
         provider.save(err => {
             if (!err) {
+                logger.info("Added new provider"+req.body.name);
                 res.json('saved to db');
             }
             else {
+                logger.error("Error in saving new provider"+err);
                 console.log(err);
             }
         })
     } else {
         ProviderModel.findByIdAndUpdate(req.body.id, req.body, (err, doc) => {
             if (!err) {
+                logger.info("updated provider record"+req.body.name);
                 res.json('record updated')
             }
             else {
+                logger.error("error in updating provider data"+err);
                 res.json('some error');
             }
         })
     }
 })
+// addd provider ends
+
+// get provider starts
 router.get('/getprovider', verifyToken, (req, res) => {
     ProviderModel.find({}, (err, doc) => {
         if (!err) {
+            logger.info("getting all the provider data");
             res.json(doc);
         }
         else {
+            logger.error("error in getting all the provider data"+err);
             console.log('err to fetch details');
         }
     }).sort({"name":1})
 })
+// get provider ends
+
+// get active provider starts
 router.get('/getactiveprovider', verifyToken, (req, res) => {
     ProviderModel.find({"ain":"Active"}, (err, doc) => {
         if (!err) {
+            logger.info("got all the Active provider info");
             res.json(doc);
         }
         else {
+            logger.error("Error in getting all the active provider"+err);
             console.log('err to fetch details');
         }
     }).sort({"name":1})
 })
+// get active provider ends
+
+// add meds start
 router.post('/medadd', verifyToken, (req, res) => {
-    console.log(req.body);
     if (req.body.id == null) {
         let med = new MedicationModel(req.body);
         med.save(err => {
             if (!err) {
+                logger.info("New medicine got saved "+req.body.name);
                 res.json('saved to db');
             }
             else {
+                logger.error("Error in saving new medicine"+err);
                 console.log(err);
             }
         })
     } else {
         MedicationModel.findByIdAndUpdate(req.body.id, req.body, (err, doc) => {
             if (!err) {
+                logger.info("Update Medicine data "+req.body.name);
                 res.json('record updated')
             }
             else {
+                logger.error("Error in updating medicine data");
                 res.json('some error');
             }
         })
     }
 })
+// add meds ends
+
+// get meds start
+router.get('/getmed', verifyToken, (req, res) => {
+    MedicationModel.find({}, (err, doc) => {
+        if (!err) {
+            logger.info("Got all the meds");
+            res.json(doc);
+        }
+        else {
+            logger.info("Error in getting all the meds");
+            console.log('err to fetch details');
+        }
+    }).sort({"name":1})
+})
+// get meds ends
+
+// saving visit data for patient starts
 router.post('/goku', verifyToken, (req, res) => {
     var days = new Date();
     // days.setDate(days.getDate() + 7);
@@ -404,7 +478,7 @@ router.post('/goku', verifyToken, (req, res) => {
     let masterdata = {
         savedon : req.body.savedon,
         savedby : req.body.savedby,
-        visit: req.body.visit,
+        visit: new Date(req.body.visit),
         careconditiontimespent: req.body.careconditiontimespent,
         seedoc: req.body.seedoc,
         noseedocreason: req.body.noseedocreason,
@@ -520,7 +594,6 @@ router.post('/goku', verifyToken, (req, res) => {
     }
     MasterPatientModel.findById(req.body.id, (err, doc) => {
         if (!err) {
-            console.log(masterdata);
             if(doc.visits.length > 0){
             lastdate = new Date(doc.visits[doc.visits.length-1].savedon);
             latestdate = new Date(masterdata.savedon);
@@ -528,8 +601,7 @@ router.post('/goku', verifyToken, (req, res) => {
             if(lastdate.getHours() == latestdate.getHours() && 
                 lastdate.getMonth() == latestdate.getMonth() && 
                 lastdate.getDate() == latestdate.getDate()){
-                console.log("dont add every thing is same" + lastdate.getHours());
-                console.log("dont add every thing is same" + latestdate.getHours());
+                    
             }
             else{
                 // checking for condition that it is not auto genrated and last visit is not got save in last 5 minutes
@@ -541,7 +613,9 @@ router.post('/goku', verifyToken, (req, res) => {
                     doc.visits.push(masterdata);
                     doc.save().then(res => {
                     console.log("add");
+                    logger.info("Visit data saved for patient "+ req.body.name);
                     }, err => {
+                    logger.error("Error in saving visit data for patient");
                     console.log(err);
                     })
                 }
@@ -553,7 +627,9 @@ router.post('/goku', verifyToken, (req, res) => {
                 doc.visits.push(masterdata);
                 doc.save().then(res => {
                 console.log(res);
+                logger.info("First visit for this specific patient saved "+ req.body.name);
                 }, err => {
+                logger.error("Error in saving first visit data for patient " + req.body.name + " error " + err);
                 console.log(err);
                 })
             }
@@ -561,47 +637,49 @@ router.post('/goku', verifyToken, (req, res) => {
     })
 
 });
-router.get('/getmed', verifyToken, (req, res) => {
-    MedicationModel.find({}, (err, doc) => {
-        if (!err) {
-            res.json(doc);
-        }
-        else {
-            console.log('err to fetch details');
-        }
-    }).sort({"name":1})
-})
+// saving visit data for patient ends
+
+// Change password is divided into three apis /changepassword -> /otp -> /confirmotp
+
+// confirmotp starts
 router.post("/confirmotp", (req, res) => {
     var user = req.body;
-    console.log(user.oo + user.em);
     userModel.findOne({ email: user.em }, (err, doc) => {
         if (err) {
+            logger.info("Error in confirm otp of email " + user.em);
             console.log(err);
         }
         else {
             if (!doc) {
+                logger.info("Email not preset email " + user.em);
                 res.status(401).send('Email not present');
             }
             else {
                 if (doc.otp == user.oo) {
+                    logger.info("Right OTP Change Password email" + user.em);
                     res.json("right OTP Change Passoword");
                 }
                 else {
+                    logger.info("Wrong OTP")
                     res.status(401).send('Wrong OTP');
                 }
             }
         }
     });
 })
+// confirmotp ends
 
+// changepassword starts
 router.post("/changepassword", (req, res) => {
     var userr = req.body;
     userModel.findOne({ email: userr.em }, (err, doc) => {
         if (err) {
+            logger.error("error in changing password email " + user.em);
             console.log(err);
         }
         else {
             if (!doc) {
+                logger.info("Email not present email" + user.em);
                 res.status(401).send('Email not present');
             }
             else {
@@ -613,16 +691,19 @@ router.post("/changepassword", (req, res) => {
                         if (!err) {
                             const user = userModel.updateOne({ _id: doc._id }, { $set: { pwd: userr.pw1 } }, (err, doc) => {
                                 if (!err) {
+                                    logger.info("password changed successfully email "+ user.em);
                                     res.json("password change successfully");
                                     // let payload = { subject: doc._id };
                                     // let token = jwt.sign(payload, 'keysecret');
                                     // res.status(200).json(token);
                                 }
                                 else {
+                                    logger.error("password change failed email " + user.em);
                                     res.json("password change failed");
                                 }
                             });
                         } else {
+                            logger.error("Error in changing the password email " + user.em);
                             console.log("error in hashing the password");
                         }
                     });
@@ -631,17 +712,21 @@ router.post("/changepassword", (req, res) => {
         }
     });
 })
+// changepassword ends
 
+// otp starts
 router.post("/otp", (req, res) => {
     var user = req.body;
     var ott = Math.floor(100000 + Math.random() * 900000);
     var ee = user.email;
     userModel.findOne({ email: user.email }, (err, doc) => {
         if (err) {
+            logger.error("Error in Sending OTP " + user.email);
             console.log(err);
         }
         else {
             if (!doc) {
+                logger.error("Email not registered email " + user.email);
                 res.status(401).send('Email not registered')
             }
             else {
@@ -650,12 +735,11 @@ router.post("/otp", (req, res) => {
                         res.json({ e: ee });
                     }
                 });
-                console.log("akhir te");
                 let mailTransporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
                         user: 'balwellbeingllc@gmail.com',
-                        pass: 'Balanced123'
+                        pass: '******'
                     }
                 });
 
@@ -667,8 +751,10 @@ router.post("/otp", (req, res) => {
                 };
                 mailTransporter.sendMail(mailDetails, function (err, data) {
                     if (err) {
+                        logger.error("error occur while sending OTP");
                         console.log('Error Occurs');
                     } else {
+                        logger.info("Email Sent Successfully for otp");
                         console.log('Email sent successfully');
                     }
                 });
@@ -676,20 +762,23 @@ router.post("/otp", (req, res) => {
         }
     })
 })
-router.post("/login", (req, res) => {
-    // console.log(req.body);
-    var user = req.body;
+// otp ends
 
+// login starts
+router.post("/login", (req, res) => {
+    var user = req.body;
     userModel.findOne({ email: user.email }, (err, doc) => {
         if (err) {
-            console.log(err)
+            logger.error("Error in LOGIN " + err);
+            console.log(err);
         } else {
             if (!doc) {
+                logger.info("Invalid Email " + user.email);
                 res.status(401).send('Invalid Email')
             } else {
                 bcrypt.compare(user.pwd, doc.pwd).then((result) => {
-                    console.log(result);
                     if (!result) {
+                        logger.info("Invalid password email " + user.email);
                         res.status(401).send('Invalid Password')
                     } else {
                         let payload = { subject: doc._id }
@@ -700,13 +789,13 @@ router.post("/login", (req, res) => {
             }
         }
     })
-
 });
+// login ends
 
+// adding new patient starts
 router.post('/basedata', verifyToken, (req, res) => {
     let data = req.body;
     let basedata = new MasterPatientModel(data);
-    console.log(basedata);
     MasterPatientModel.findOne({  name: basedata.name,dob: new Date(basedata.dob) }).then(res=>{
         if(res == null){
             if(!basedata.patientcreatedon){
@@ -716,29 +805,29 @@ router.post('/basedata', verifyToken, (req, res) => {
             basedata.patientcreatedby = currentuser;
              }
             basedata.save().then(res => {
+                logger.info("new patient saved to db " + basedata.name);
                 console.log("saved to db");
-                // res.send("saved to db");
             }, err => {
                 console.log(err);
+                logger.error("Error in saving new patient " + err);
                 res.send("errors in save");
             })
         }
         else{
+            logger.info("patient already exists " + basedata.name);
             console.log("patient already exists");
             // res.send("patient already exists");
         }
     },err=>{
+        logger.error("Error in saving new patient " + err);
         console.log(err);
     })
-
-
 })
+// adding new patient ends
+
 
 router.get('/get', verifyToken, (req, res) => {
     MasterPatientModel.findById(req.query.id).then(doc => {
-        // console.log(doc.visits.length)
-        // console.log(doc.visits[doc.visits.length-1])
-        // console.log(doc.visits)
         console.log(doc.dob)
         console.log(doc.name)
         if (doc.visits.length > 0) {
@@ -754,11 +843,12 @@ router.get('/get', verifyToken, (req, res) => {
     })
 })
 
+// pre rounding report start
 router.post('/preround', verifyToken,async (req, res) => {
    try{
     //    provider details
     const provider_details = await ProviderModel.find({ name: req.body.provider });
-    console.log(provider_details);
+    console.log("Provider Details " + provider_details);
     // services eligible medmanage psythreapy psyscreen
     // very urgent patient
     const veryurgent_patients = await MasterPatientModel.aggregate([
@@ -805,7 +895,8 @@ router.post('/preround', verifyToken,async (req, res) => {
         //             {'visits.typevisit':'Psycothreapy'},
         //             {'visits.typevisit': { "$in" : provider_details[0].role } } 
         //        ],
-            } }
+                  } 
+        }
     ])
     console.log(psychotherapy_result);
     // calculating final psychotherapy result
@@ -930,310 +1021,44 @@ router.post('/preround', verifyToken,async (req, res) => {
         }
     }
     res.json(result);
-
+    logger.info("Pre-rounding report got created");
 
 }catch(error){
+    logger.error("Error in creating pre-rounding report " + error);
     console.log(error);
    }
 })
+// pre rounding report ends
 
-
-router.post('/preroundd', verifyToken, (req, res) => {
-
-    ProviderModel.find({ name: req.body.provider }).then(doc => {
-        return doc[0];
+// post rounding report starts
+router.post('/postreport', verifyToken, (req, res) => {
+    let nextDate = new Date(req.body.date);
+    nextDate.setDate(nextDate.getDate() + 1);
+    MasterPatientModel.find(
+        {
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
+        }
+    ).then(ma => {
+        console.log(ma);
     })
-        .catch(err => {
-            console.log(err);
-            res.json(err)
-        })
-        .then(result => {
-            // details of provider for whom we are generating the report in result
-            console.log(result);
-            MasterPatientModel.find({}).then(step2 => {
-                let preroundupdata = [];
-                let mainDate = req.body.date;
-                // loop is traversing and going through all patient data approx more then 8k+ time
-                step2.forEach(pat => {
-                    // in x we are storing the last visit of the patient
-                    let x = pat.visits[pat.visits.length - 1]
-                    // if patient never visited it will not go in this if statement
-                    if (x != undefined) {
-                        let veryUrgent = false;
-                        // checking if patient is very urgent marking it very urgent
-                        if (x.medfollowup == "Very Urgent")
-                        veryUrgent = true;
-                            // if patients insurance mathes the provider insurance or the patient is very urgent then it will go in this if statement
-                        if (result.insurance.includes(x.pinsurance) ||
-                            result.insurance.includes(x.sinsurance) || veryUrgent) {
-                                // in pat variable we have patients data
-                            console.log(pat.name)
-                            // here we are checking if patient is in same facility or nursing home where provider is gonna visit ? if yes then it will go in loop
-                            if (req.body.facility === x.facility) {
-                                console.log(pat.name)
-                                // in visitdate we are fetching the visit date of patient which is stores in our DB
-                                let visitdate = new Date(x.visit);
-                                // in select date we are fetching the date for which we want to generate report
-                                let selecteddate = new
-                                    Date(req.body.date);
-                                let psydate = new Date(x.visit);
-                                let v_t = [];
-                                let p_s = [];
-                                let s_d = [];
-                                let urgent = false;
-                                // checking for urgent
-                                if (x.medfollowup == 'urgent') {
-                                    urgent = true;
-                                }
-                                let psyco = false;
-                                if (x.followup) {
-                                    psydate.setDate(psydate.getDate() +
-                                        parseInt(x.followup));
-                                    psyco = true;
-                                }
-                                let medmanage = false;
-                                if (x.nostable == 'no' || x.medfollowup
-                                    == "Date Specific") {
-                                    medmanage = true;
-                                    console.log(visitdate.getDate());
-                                    if (x.followupdays != null ||
-                                        x.followupdays != undefined) {
-                                        visitdate = new
-                                            Date(x.followupdays.valueOf());
-                                    }
-                                    else
-
-                                        visitdate.setDate(visitdate.getDate() + 7);
-                                }
-                                else {
-
-                                    visitdate.setDate(visitdate.getDate() + 30);
-                                    medmanage = true;
-                                }
-                                // intialized array to check for which programs patient has signed
-                                let s_e = [];
-                                if (x.medmanage == 'yes') {
-                                    s_e.push('Med-Management')
-                                }
-                                if (x.psythreapy == 'yes') {
-                                    s_e.push('Psycothreapy')
-                                }
-                                if (x.psyscreen == "yes") {
-                                    s_e.push("Psychiatric screenings")
-                                }
-                                if (x.bhi == "yes") {
-                                    s_e.push("bhi");
-                                }
-                                if (x.ccm == "yes") {
-                                    s_e.push("ccm")
-                                }
-                                if (x.homeclinic == "yes") {
-                                    s_e.push("virtual clinic")
-                                }
-                                let scale_dataa = false;
-                                //provider for whom we are fetching records , if he/she also do scales then we will go in this loop
-                                if (result.role.includes('Scale Performer')) {
-                                    x.scaleinfo.forEach(scale => {
-                                        console.log(scale)
-                                        // NOT SURE may be checking for pending scales
-                                        if (scale.scale_score == '') {
-                                            console.log('insidestep1/2');
-
-                                            p_s.push(scale.scale_name)
-                                        }
-                                        // if scale is pending
-                                        if (scale.scaledays != "" || scale.scaledays != "Not Applicable") {
-                                            let scale_visit_date = new Date(scale.scale_date);
-                                            console.log("scale visitdate" + scale_visit_date)
-                                            // after going inside below if checking for is there again time to do any scale
-                                            if (scale_visit_date != "Invalid Date" || scale.scale_date != "") {
-                                                console.log('insidestep2')
-                                                if (scale.scaledays == "6 Months") {
-                                                    console.log("6 mah")
-                                                    var newdate = new Date(scale_visit_date.setMonth(scale_visit_date.getMonth() + 6));
-                                                }
-                                                if (scale.scaledays == "3 Months") {
-                                                    console.log("3 mah")
-                                                    var newdate = new Date(scale_visit_date.setMonth(scale_visit_date.getMonth() + 3));
-                                                }
-
-                                                console.log(scale_visit_date.toString())
-                                                console.log("new date" +
-                                                    newdate);
-                                                if (+newdate <=
-                                                    +selecteddate) {
-
-                                                    console.log("inside");
-                                                    scale_dataa = true;
-                                                    s_d.push(scale);
-                                                }
-                                            }
-                                        }
-                                    })
-                                }
-                                console.log('pending scales', p_s);
-                                if (scale_dataa || p_s.length) {
-                                    v_t.push("Scales")
-                                }
-                                console.log(scale_dataa, v_t);
-                                console.log(visitdate.toString(),
-                                    selecteddate.toString(), psydate.toString())
-
-                                console.log(result.role.includes('Medication management'))
-                                let followup_reason = "-"
-                                if (x.followupreason != undefined) {
-                                    followup_reason = x.followupreason
-                                }
-                                // + used to tell js that type of variable is number and if it is med management
-                                if (+visitdate <= +selecteddate &&
-                                    result.role.includes('Medication management') && medmanage || urgent ||
-                                    veryUrgent) {
-                                    if (+visitdate <= +selecteddate &&
-                                        result.role.includes('Medication management')) {
-                                        v_t.push("Med-Management")
-                                    }
-
-                                    if (urgent) {
-                                        v_t.push("urgent");
-                                    }
-                                    if (veryUrgent) {
-                                        v_t.push("very urgent");
-                                    }
-                                    // making one object to send data
-                                    let data_partial = {
-                                        id: pat._id,
-                                        name: pat.name,
-                                        dob: pat.dob,
-                                        room: x.room,
-                                        insurance: x.pinsurance + " " +
-                                            x.sinsurance,
-                                        services_eligible: s_e,
-                                        visit_type: v_t,
-                                        followup_type: x.medfollowup,
-                                        followup_reason: followup_reason,
-                                        visit: mainDate,
-                                        providerName: x.provider,
-                                        facility: x.facility
-                                    }
-                                    console.log(data_partial);
-                                    preroundupdata.push(data_partial);
-                                }
-                                // if it is for Psychotherapist
-                                if (+psydate <= +selecteddate &&
-                                    result.role.includes('Psychotherapist') && psyco) {
-                                    v_t.push("Psycothreapy");
-                                    let data_partial = {
-                                        id: pat._id,
-                                        name: pat.name,
-                                        dob: pat.dob,
-                                        room: x.room,
-                                        insurance: x.pinsurance + " " +
-                                            x.sinsurance,
-                                        services_eligible: s_e,
-                                        visit_type: v_t,
-                                        followup_type: x.medfollowup,
-                                        followup_reason: followup_reason,
-                                        visit: mainDate,
-                                        providerName: x.provider,
-                                        facility: x.facility
-                                    }
-                                    console.log(data_partial);
-                                    preroundupdata.push(data_partial);
-                                }
-                                // if scale performer
-                                if (result.role.includes('Scale Performer')) {
-                                    let data_partial = {
-                                        id: pat._id,
-                                        name: pat.name,
-                                        dob: pat.dob,
-                                        room: x.room,
-                                        insurance: x.pinsurance + " " + x.sinsurance,
-                                        services_eligible: s_e,
-                                        pending_scales: p_s,
-                                        scales_due: s_d,
-                                        visit_type: v_t,
-                                        followup_type: x.medfollowup,
-                                        followup_reason: followup_reason,
-                                        visit: mainDate,
-                                        providerName: x.provider,
-                                        facility: x.facility
-                                    }
-                                    console.log(data_partial + "YES WE GOT THE DATA");
-                                    preroundupdata.push(data_partial);
-                                }
-                            }
-                        }
-                    }
-                })
-                // traversing through all the patient data which we got after calculations
-                preroundupdata.forEach(id => {
-                    console.log('**************************************', id)
-                    // DON'T KNOW why we have made this collection and for what we are using it
-                    PostModel.find({ patientId: id.id, visitDate: { "$eq": new Date(id.visit) } }).then(res => {
-                        // console.log(res);
-                        if (!res.length) {
-                            let pd = new PostModel({
-                                patientId: id.id,
-                                visitDate: id.visit,
-                                providerName: id.providerName,
-                                facility: id.facility
-                            })
-                            console.log("------------")
-                            // console.log(pd)
-                            console.log('------------');
-                            pd.save().then(res => {
-                                // console.log(res);
-                            })
-                        }
-                    })
-                })
-                res.json(preroundupdata)
-            })
-        })
+    MasterPatientModel.find(
+        {
+            "visits.provider": req.body.provider,
+            "visits.facility": req.body.facility,
+            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
+        }, { name: 1, visits: { $slice: -1 } }
+    ).then(log => {
+        logger.info("Post rounding generated report");
+        res.json(log);
+    }).catch(err => {
+        logger.error("Error in creating Post rounding report");
+        res.json(err)
+    })
 })
-router.post('/preroundfast', verifyToken, (req, res) => {
-    // $add: [ "$CreatedDate", 2*24*60*60000 ] }
-    MasterPatientModel.aggregate([{
-        $project: {
-            name: 1,
-            visits: { $slice: ["$visits", -1] },
-            v: "$visits.visit"
-        }
-    },
-    {
-        $addFields: {
-            // convertedQty: {
-            //     $convert: {
-            //         input: "", to: "date",
-            //         onError: "error",
-            //         onNull: "off"
-            //     }
-            // },
-            visitDate:
-            {
-                $cond: {
-                    if: { $eq: ["$visits.nostable", ["no"]] },
-                    then: { $add: [{ $arrayElemAt: ["$visits.visit", 0] }, 7 * 24 * 60 * 60000] },
-                    else: { $add: [{ $arrayElemAt: ["$visits.visit", 0] }, 30 * 24 * 60 * 60000] }
-                }
-            },
-        }
-    },
-    {
-        $match: {
-            "visits.facility": `${req.body.facility}`
-            // visitDate: { $lte: new Date(req.body.date) }
-        }
-    }
-    ])
-        .then(result => {
-            res.json(result)
-        }).catch(err => {
-            console.log(err);
-        })
-})
+// post rounding report ends
+
+// provider performance report starts
 router.post('/providerperformancereport', verifyToken, (req, res) => {
-    console.log(req.body.provider1);
     from = new Date(req.body.fromdate);
     to = new Date(req.body.todate);
     to.setHours(to.getHours() + 24);
@@ -1264,9 +1089,11 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
                 proreport = genreport(doc, proreport);
                 setTimeout(() => {
                     res.json(proreport);
+                    logger.info("Provider performance report created");
                 }, 1000)
             }
             else {
+                logger.error("Error in creating provider performance report");
                 res.json("no");
             }
         })
@@ -1290,309 +1117,11 @@ router.post('/providerperformancereport', verifyToken, (req, res) => {
             console.log(doc);
         })
 })
-// function genreportt(doc,proreport){
-//     var total = doc.length-1;
-//     var flag = 0;
-//     var first_object = false;
-//     var firstvisit = false;
-//     while(total >= 0){
-//         var totalvisits = doc[total].visits.length-1;
-//         if(total == doc.length-1){
-//             first_object = true;
-//         }
-//         // check if this is patients first visit or not
-//         if(totalvisits == 0){
-//             firstvisit = true;
-//         }
-//         while(totalvisits >= 0){
-//             if(doc[total].visits[totalvisits].visit >= from && doc[total].visits[totalvisits].visit <= to){
-//                 var outputlength = proreport.length-1;
+// provider performance report ends
 
-
-//                 if(first_object == true){
-//                     var workon = 0;
-//                     console.log("first time will workon " + workon);
-//                     first_object = false;
-//                 }
-//                 else{
-//                     for(i=0;i<=outputlength; i++){
-//                         if(proreport[i].facility_name == doc[total].visits[totalvisits].facility){
-//                             workon = i;
-//                             console.log("found exisiting facility will addon details on same positon " + workon);
-//                             break;
-//                         }
-//                         else if(proreport[i].facility_name != doc[total].visits[totalvisits].facility
-//                             && i == outputlength){
-//                             proreport.push({
-//                                 facility_name:'',
-//                                 no_of_patients_seen : 0,
-//                                 points_seen : 0,
-//                                 meds_added : 0,
-//                                 meds_lowered : 0,
-//                                 meds_increased : 0,
-//                                 meds_added_with_stop_date : 0,
-//                                 meds_continued_but_added_stop_date : 0,
-//                                 meds_stopped : 0,
-//                                 scales_performed : 0,
-//                                 scales_details:[{scale_name:'',
-//                                 count:0,
-//                                 average_score:0}],
-//                                 number_of_each_subscale_performed : 0,
-//                                 average_score_of_each_scale : 0,
-//                             });
-//                             console.log("Creating New Facility Line "+proreport.length +
-//                              " Output Length after creating new Fac");
-//                             workon = proreport.length-1;
-//                             console.log("Now will workon this position of output " + workon);
-//                             break;
-//                         }
-//                     }
-//                 }
-
-//                 // patients seen
-//                 proreport[workon].no_of_patients_seen = proreport[workon].no_of_patients_seen + 1;
-
-
-//                 // // setting facility
-//                 if(doc[total].visits[totalvisits].facility != undefined &&
-//                 doc[total].visits[totalvisits].facility != null && doc[total].visits[totalvisits].facility != ""){
-//                     proreport[workon].facility_name = doc[total].visits[totalvisits].facility;
-//                 }
-//                 console.log("Added this facility" + doc[total].visits[totalvisits].facility + "at position " + workon);
-
-//                 // checking for new patient
-//                 if(doc[total].visits[totalvisits].np == "yes" && doc[total].visits[totalvisits].np != undefined){
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
-//                 }
-
-//                 // checking for medication management follow up
-//                 if (doc[total].visits[totalvisits].typevisit == "Med-management follow up" && doc[total].visits[totalvisits].typevisit != undefined) {
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
-//                 }
-
-//                   // checking for atleast two
-//                 // console.log(doc[total].visits[totalvisits].scaleinfo.length + "visit no" + totalvisits);
-//                 var scale_size = doc[total].visits[totalvisits].scaleinfo.length - 1;
-//                 if (doc[total].visits[totalvisits].scaleinfo.length >= 2 && doc[total].visits[totalvisits].scaleinfo != undefined) {
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
-//                     flag = true;
-//                     // adding 2.5 score if scales have Dementia testing scale
-//                     while (scale_size >= 0 && flag == true) {
-//                         if (doc[total].visits[totalvisits].scaleinfo[scale_size].scale_name == "MOCA") {
-//                             proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
-//                             flag = false;
-//                         }
-//                         scale_size--;
-//                     }
-//                 }
-
-//                   // Psychotherapy points
-//                   if (doc[total].visits[totalvisits].thtime == "Upto 30 min") {
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 1;
-//                 }
-//                 if (doc[total].visits[totalvisits].thtime == "Upto 45 min") {
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 1.5;
-//                 }
-//                 if (doc[total].visits[totalvisits].thtime == "Upto 1 Hr") {
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 2;
-//                 }
-//                 if (doc[total].visits[totalvisits].thtime == "More then 1 Hr") {
-//                     proreport[workon].points_seen = proreport[workon].points_seen + 2.5;
-//                 }
-//                 // medicine continued but addded stop date
-//                 if (firstvisit == true && doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
-//                     if (doc[total].visits[totalvisits].medstopdate != null) {
-//                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
-//                     }
-//                 }
-//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
-//                     if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits - 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
-//                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
-//                     }
-//                 }
-//                 else if (doc[total].visits[totalvisits].medstopdate != undefined && doc[total].visits[totalvisits].medstopdate != "") {
-//                     if (doc[total].visits[totalvisits].medstopdate != doc[total].visits[totalvisits + 1].medstopdate && doc[total].visits[totalvisits].medstopdate != "") {
-//                         proreport[workon].meds_continued_but_added_stop_date = proreport[workon].meds_continued_but_added_stop_date + 1;
-//                     }
-//                 }
-//                 // stop date of added medicine
-//                 if (firstvisit == true && doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
-//                     if (doc[total].visits[totalvisits].addeddate != null) {
-//                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
-//                     }
-//                 }
-//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
-//                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits - 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
-//                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
-//                     }
-//                 }
-//                 else if (doc[total].visits[totalvisits].addeddate != undefined && doc[total].visits[totalvisits].addeddate != "") {
-//                     if (doc[total].visits[totalvisits].addeddate != doc[total].visits[totalvisits + 1].addeddate && doc[total].visits[totalvisits].addeddate != "") {
-//                         proreport[workon].meds_added_with_stop_date = proreport[workon].meds_added_with_stop_date + 1;
-//                     }
-//                 }
-//                 // Added Medicine
-//                 if (firstvisit == true && doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
-//                     if (doc[total].visits[totalvisits].added != null || doc[total].visits[totalvisits].added != undefined) {
-//                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
-//                     }
-//                 }
-//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
-//                     if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits - 1].added && doc[total].visits[totalvisits].added != "") {
-//                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
-//                     }
-//                 }
-//                 else if (doc[total].visits[totalvisits].added != undefined && doc[total].visits[totalvisits].added != "") {
-//                     if (doc[total].visits[totalvisits].added != doc[total].visits[totalvisits + 1].added && doc[total].visits[totalvisits].added != "") {
-//                         proreport[workon].meds_added = proreport[workon].meds_added + 1;
-//                     }
-//                 }
-//                 // Increased Medicine
-//                 if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
-//                     if (firstvisit == true) {
-//                         if (doc[total].visits[totalvisits].increase != null || doc[total].visits[totalvisits].increase != undefined) {
-//                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
-//                         }
-//                     }
-//                     else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
-//                         if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits - 1].increase && doc[total].visits[totalvisits].increase != "") {
-//                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
-//                         }
-//                     }
-//                     else if (doc[total].visits[totalvisits].increase != undefined && doc[total].visits[totalvisits].increase != "") {
-//                         if (doc[total].visits[totalvisits].increase != doc[total].visits[totalvisits + 1].increase && doc[total].visits[totalvisits].increase != "") {
-//                             proreport[workon].meds_increased = proreport[workon].meds_increased + 1;
-//                         }
-//                     }
-//                 }
-//                 // Stopped Medicine
-//                 if (firstvisit == true && doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
-//                     if (doc[total].visits[totalvisits].stopped2 != null || doc[total].visits[totalvisits].stopped2 != undefined) {
-//                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
-//                     }
-//                 }
-//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
-//                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits - 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
-//                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
-//                     }
-//                 }
-//                 else if (doc[total].visits[totalvisits].stopped2 != undefined && doc[total].visits[totalvisits].stopped2 != "") {
-//                     if (doc[total].visits[totalvisits].stopped2 != doc[total].visits[totalvisits + 1].stopped2 && doc[total].visits[totalvisits].stopped2 != "") {
-//                         proreport[workon].meds_stopped = proreport[workon].meds_stopped + 1;
-//                     }
-//                 }
-//                 // meds lowered or decreased
-//                 if (firstvisit == true && doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
-//                     if (doc[total].visits[totalvisits].decrease2 != null || doc[total].visits[totalvisits].decrease2 != undefined) {
-//                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
-//                     }
-//                 }
-//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
-//                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits - 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
-//                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
-//                     }
-//                 }
-//                 else if (doc[total].visits[totalvisits].decrease2 != undefined && doc[total].visits[totalvisits].decrease2 != "") {
-//                     if (doc[total].visits[totalvisits].decrease2 != doc[total].visits[totalvisits + 1].decrease2 && doc[total].visits[totalvisits].decrease2 != "") {
-//                         proreport[workon].meds_lowered = proreport[workon].meds_lowered + 1;
-//                     }
-//                 }
-
-//                  // scales performed
-//                  if (firstvisit == true && doc[total].visits[totalvisits].scaleinfo.length != 0) {
-//                     if (doc[total].visits[totalvisits].scaleinfo.length != null || doc[total].visits[totalvisits].scaleinfo.length != undefined) {
-//                         proreport[workon].scales_performed = proreport[workon].scales_performed + doc[total].visits[totalvisits].scaleinfo.length;
-//                     }
-//                 }
-//                 else if (totalvisits - 1 >= 0 && doc[total].visits[totalvisits].scaleinfo.length != 0) {
-//                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits - 1].scaleinfo.length) {
-//                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
-//                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
-//                         }
-//                         else {
-//                             add = 0;
-//                         }
-//                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
-//                     }
-//                 }
-//                 else if (doc[total].visits[totalvisits].scaleinfo.length != 0) {
-
-//                     if (doc[total].visits[totalvisits].scaleinfo.length != doc[total].visits[totalvisits + 1].scaleinfo.length) {
-
-//                         if (doc[total].visits[totalvisits].scaleinfo.length > doc[total].visits[totalvisits - 1].scaleinfo.length) {
-//                             add = doc[total].visits[totalvisits].scaleinfo.length - doc[total].visits[totalvisits - 1].scaleinfo.length;
-//                         }
-//                         else {
-//                             add = 0;
-//                         }
-//                         proreport[workon].scales_performed = proreport[workon].scales_performed + add;
-//                     }
-//                 }
-
-
-//                 // scale count array
-//                 var scale_length = doc[total].visits[totalvisits].scaleinfo.length;
-//                 console.log("scales scale length : " + scale_length);
-//                 var ff = 0;
-//                 for (k = 0; k < scale_length; k++) {
-//                     console.log(doc[total].visits[totalvisits].scaleinfo[k].scale_name);
-//                     console.log(proreport[workon].scales_details.length - 1);
-//                     console.log("error kidr hai ? 1");
-//                     for (p = 0; p <= proreport[workon].scales_details.length - 1; p++) {
-//                         console.log("error kidr hai ? 2 " + k + " " + p);
-//                         if (proreport[workon].scales_details.length == 1 && ff == 0) {
-//                             console.log("error kidr hai ? 3");
-//                             console.log("first scale to be added in record");
-//                             proreport[workon].scales_details[p].scale_name = doc[total].visits[totalvisits].scaleinfo[k].scale_name;
-//                             proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
-//                             ff = 1;
-//                             break;
-//                         }
-//                         else if (proreport[workon].scales_details[p].scale_name == doc[total].visits[totalvisits].scaleinfo[k].scale_name) {
-//                             console.log("error kidr hai ? 4");
-//                             if (totalvisits > 0) {
-//                                 var isPresent = doc[total].visits[totalvisits - 1].scaleinfo.some((el) => {
-//                                     if (el.scale_name === proreport[workon].scales_details[p].scale_name) {
-//                                         return true;
-//                                     } else {
-//                                         return false;
-//                                     }
-//                                 });
-//                                 if (isPresent == false) {
-//                                     console.log("error kidr hai ? 5");
-//                                     console.log("pata nh");
-//                                     proreport[workon].scales_details[p].count = proreport[workon].scales_details[p].count + 1;
-//                                 }
-//                             }
-//                             console.log("same record");
-//                             break;
-//                         }
-//                         else if (proreport[workon].scales_details[p].scale_name != doc[total].visits[totalvisits].scaleinfo[k].scale_name && p == proreport[workon].scales_details.length - 1) {
-//                             console.log("new record for scale");
-//                             console.log("error kidr hai ? 6");
-//                             console.log(proreport[workon].scales_details.length - 1);
-//                             proreport[workon].scales_details.push({
-//                                 scale_name: doc[total].visits[totalvisits].scaleinfo[k].scale_name,
-//                                 count: 1,
-//                                 average_score: 0
-//                             })
-//                             break;
-//                         }
-//                     }
-//                 }
-//             }
-//             firstvisit = false;
-//             totalvisits--;
-//         }
-//     total--;
-//     }
-//     console.log("this is sol." + proreport);
-//     return proreport;
-// }
-
+// funcction for creating provider performance report start
 function genreport(doc, proreport) {
     var total = doc.length - 1;
-    // console.log(proreport.length);
     firstvisit = false;
     if (doc[0].visits.length == 1) {
         firstvisit = true;
@@ -1890,7 +1419,9 @@ function genreport(doc, proreport) {
     // console.log(proreport);
     return proreport;
 }
+// function for creating provider performance report ends
 
+// facility report start
 router.post('/facilityreport', verifyToken, (req, res) => {
     from = new Date(req.body.fromdate1);
     to = new Date(req.body.todate1);
@@ -1922,108 +1453,18 @@ router.post('/facilityreport', verifyToken, (req, res) => {
                 setTimeout(() => {
                     // console.log(proreport);
                     res.json(proreport);
+                    logger.info("facility report generated");
                 }, 1000)
             }
             else {
+                logger.error("Error in generating facility report");
                 res.json("no");
             }
         })
 })
+// facility report ends
 
-router.post('/facilitysummaryreport', verifyToken, (req, res) => {
-    var toDateAddTime = new Date(req.body.facilitySummaryTodate);
-    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
-    MasterPatientModel.aggregate([
-                {
-                    '$unwind':"$visits"
-                },
-                {"$match": {"visits.visit": {"$gte": new Date(req.body.facilitySummaryFromdate), "$lte": toDateAddTime
-                                            } ,  "visits.facility":  req.body.facilitySummaryName
-                           }
-                }
-    ]).then(doc => {
-            if (doc.length != 0) {
-                res.json(doc);
-            }
-            else {
-                res.json("no");
-            }
-        })
-});
-
-router.post('/expensivemedicationreport', verifyToken, (req, res) => {
-    MasterPatientModel.aggregate([
-        {
-            "$project" : {
-                "id" : 1,
-                "name" : 1,
-                "dob" : 1,
-                "patientVisits" : {
-                    "$slice" : [
-                        "$visits",
-                        -1
-                    ]
-                }
-            }
-        },
-        {
-            "$match" : {
-                "patientVisits.exmeds.name" : req.body.medicineName
-            }
-        }
-    ]).then(doc => {
-            if (doc.length != 0) {
-                res.json(doc);
-            }
-            else {
-                res.json("no");
-            }
-        })
-});
-
-router.post('/patientsummaryreport', verifyToken, (req, res) => {
-    var toDateAddTime = new Date(req.body.patientSummaryTodate);
-    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
-    MasterPatientModel.aggregate([
-                {
-                    '$unwind':"$visits"
-                },
-                {"$match": {"visits.visit": {"$gte": new Date(req.body.patientSummaryFromdate), "$lte": toDateAddTime
-                                            } ,  "name":  req.body.patientName
-                           }
-                }
-    ]).then(doc => {
-            if (doc.length != 0) {
-                res.json(doc);
-            }
-            else {
-                res.json("no");
-            }
-        })
-});
-
-router.post('/getpatientsasperkey', verifyToken, (req, res) => {
-    MasterPatientModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
-        if (doc.length != 0) {
-            res.json(doc);
-        }
-        else {
-            res.json("no");
-        }
-    })
-});
-
-router.post('/getmedicineasperkey', verifyToken, (req, res) => {
-    MedicationModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
-        if (doc.length != 0) {
-            res.json(doc);
-        }
-        else {
-            res.json("no");
-        }
-    })
-})
-
+// function for creating facility report starts 
 function genreport2(doc, proreport) {
     var total = doc.length - 1;
     // console.log(proreport.length);
@@ -2325,32 +1766,124 @@ function genreport2(doc, proreport) {
     // console.log(proreport);
     return proreport;
 }
+// function for creating facility report ends
 
-router.post('/postreport', verifyToken, (req, res) => {
-    console.log(req.body)
-    let nextDate = new Date(req.body.date);
-    nextDate.setDate(nextDate.getDate() + 1);
-    MasterPatientModel.find(
+// facility summary report starts
+router.post('/facilitysummaryreport', verifyToken, (req, res) => {
+    var toDateAddTime = new Date(req.body.facilitySummaryTodate);
+    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
+    MasterPatientModel.aggregate([
+                {
+                    '$unwind':"$visits"
+                },
+                {"$match": {"visits.visit": {"$gte": new Date(req.body.facilitySummaryFromdate), "$lte": toDateAddTime
+                                            } ,  "visits.facility":  req.body.facilitySummaryName
+                           }
+                }
+    ]).then(doc => {
+            if (doc.length != 0) {
+                logger.info("facility summary report genrated");
+                res.json(doc);
+            }
+            else {
+                logger.info("facility summary report is empty");
+                res.json("no");
+            }
+        })
+});
+// facility summary reports ends
+
+// expensive medication report starts
+router.post('/expensivemedicationreport', verifyToken, (req, res) => {
+    MasterPatientModel.aggregate([
         {
-            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
+            "$project" : {
+                "id" : 1,
+                "name" : 1,
+                "dob" : 1,
+                "patientVisits" : {
+                    "$slice" : [
+                        "$visits",
+                        -1
+                    ]
+                }
+            }
+        },
+        {
+            "$match" : {
+                "patientVisits.exmeds.name" : req.body.medicineName
+            }
         }
-    ).then(ma => {
-        console.log(ma);
+    ]).then(doc => {
+            if (doc.length != 0) {
+                logger.info("Expensive medication report got generated");
+                res.json(doc);
+            }
+            else {
+                logger.info("Expensive medication report is empty");
+                res.json("no");
+            }
+        })
+});
+// expensive medication report ends
+
+// patient summary report start
+router.post('/patientsummaryreport', verifyToken, (req, res) => {
+    var toDateAddTime = new Date(req.body.patientSummaryTodate);
+    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
+    MasterPatientModel.aggregate([
+                {
+                    '$unwind':"$visits"
+                },
+                {"$match": {"visits.visit": {"$gte": new Date(req.body.patientSummaryFromdate), "$lte": toDateAddTime
+                                            } ,  "name":  req.body.patientName
+                           }
+                }
+    ]).then(doc => {
+            if (doc.length != 0) {
+                logger.info("Patient summary report got generated");
+                res.json(doc);
+            }
+            else {
+                logger.info("patient summary report is empty");
+                res.json("no");
+            }
+        })
+});
+// patient summary report ends
+
+// getting patient data as per key start
+router.post('/getpatientsasperkey', verifyToken, (req, res) => {
+    MasterPatientModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
+        if (doc.length != 0) {
+            res.json(doc);
+            logger.info("Get patient data as per id ");
+        }
+        else {
+            logger.info("No data found");
+            res.json("no");
+        }
     })
-    MasterPatientModel.find(
-        {
-            "visits.provider": req.body.provider,
-            "visits.facility": req.body.facility,
-            "visits.visit": { $gte: new Date(req.body.date), "$lt": new Date(nextDate) }
-        }, { name: 1, visits: { $slice: -1 } }
-    ).then(log => {
-        res.json(log);
-    }).catch(err => {
-        res.json(err)
+});
+// getting patient data as per key ends
+
+// getting medicine as per key start
+router.post('/getmedicineasperkey', verifyToken, (req, res) => {
+    MedicationModel.find({'name': new RegExp('^'+req.body.enterKey, 'i')},{"name":1, "_id": 0}).then(doc => {
+        if (doc.length != 0) {
+            logger.info("Get medicine as per key id");
+            res.json(doc);
+        }
+        else {
+            logger.info("No medicine found as per id");
+            res.json("no");
+        }
     })
 })
+// getting medicine as per key ends
+
+// med report start
 router.post('/medreport', verifyToken, (req, res) => {
-    console.log(req.body)
     let nextDate = new Date(req.body.date);
     nextDate.setDate(nextDate.getDate() + 1);
     MasterPatientModel.find(
@@ -2366,19 +1899,26 @@ router.post('/medreport', verifyToken, (req, res) => {
         FacilityModel.find({ name: req.body.facility }, (err, fac) => {
             if (!err) {
                 mighty=fac;
+                logger.info("Meds report got generated");
             }
             else {
+                logger.error("Meds reports error "+err);
                 console.log(err)
             }
         })
         setTimeout(() => {
             console.log(log)
             res.json({log:log,address:mighty});
+            logger.info("Meds reports generated");
         }, 1000)
     }).catch(err => {
+        logger.error("Meds report error " + err);
         res.json(err)
     })
 })
+// med report ends
+
+// fetchbyName starts
 router.get('/fetchByName', verifyToken, (req, res) => {
     let name = new RegExp(req.query.name);
     MasterPatientModel.find({ "name": new RegExp(name, 'i') }).then(out => {
@@ -2386,4 +1926,6 @@ router.get('/fetchByName', verifyToken, (req, res) => {
         res.json(out)
     })
 })
+// fetchbyName ends
+
 module.exports = router;

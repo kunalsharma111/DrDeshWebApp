@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     this.user.pwd = ''
   }
   ngOnInit() {
-    console.log('ssss')
   }
   submit(form) {
     console.log(form.value);

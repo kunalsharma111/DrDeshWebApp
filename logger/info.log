@@ -1,0 +1,58 @@
+{"level":"info","message":"Node Express server listening on http://localhost : ${PORT}","timestamp":"2020-08-17T07:16:58.391Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-17T07:30:18.549Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-17T08:27:39.099Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-17T08:27:42.068Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-17T11:00:37.087Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-17T11:00:40.363Z"}
+{"message":"Invalid Email ","level":"info","timestamp":"2020-08-17T11:04:02.838Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:04:03.680Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:04:39.750Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:04:53.581Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-17T11:04:54.437Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-17T11:04:54.555Z"}
+{"message":"Pre-rounding report got created","level":"info","timestamp":"2020-08-17T11:05:27.733Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:05:41.623Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T05:22:44.855Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T05:22:50.658Z"}
+{"message":"Invalid Email ","level":"info","timestamp":"2020-08-18T05:43:38.276Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T05:43:39.547Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T05:44:05.447Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T05:44:07.184Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T05:44:07.748Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T07:49:56.517Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T07:50:00.067Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:50:12.895Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:50:16.822Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T07:50:17.516Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:51:37.957Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:51:41.692Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T07:51:42.349Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:52:45.476Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T07:52:46.024Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:52:59.353Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-18T07:52:59.408Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:53:01.000Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-18T07:53:01.017Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:54:05.044Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:54:48.954Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T08:53:28.971Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T08:53:31.874Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:56:05.596Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:56:09.939Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T08:56:10.670Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:57:10.424Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T08:57:10.817Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:58:30.732Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-18T08:58:30.757Z"}
+{"message":"New medicine got saved check","level":"info","timestamp":"2020-08-18T08:58:39.204Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:58:39.212Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-18T08:58:39.506Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T09:18:09.363Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T09:18:13.758Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T10:14:20.513Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T10:14:23.395Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T10:32:28.199Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T10:32:31.434Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T11:10:43.884Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T11:10:47.419Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T11:11:38.010Z"}

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  name: "(DEV)",
+  api_url : 'http://localhost:4000/api',
+  db_url: 'mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/DevelopmentBalancedWellbeing?retryWrites=true&w=majority'
 };
 
 /*
