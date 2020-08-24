@@ -24,6 +24,9 @@ export class SharedDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.getModuleType() !== 'employee' && this.getModuleType() !== 'patient') {
+      this.service.router.navigate(['/moduledashboard']);
+    }
     if (this.service.getRole() === undefined ) {
       this.service.setRoleTypeAfterRefresh().subscribe(res => {
         this.roleType = res.userrole;
@@ -57,4 +60,11 @@ export class SharedDashboardComponent implements OnInit {
     });
   }
 
+  getModuleType() {
+    return localStorage.getItem('moduleType');
+  }
+
+  setModuleType(moduleName) {
+    localStorage.setItem('moduleType', moduleName);
+  }
 }

@@ -1,0 +1,27 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+
+  <section id="content-wrapper" style="padding-left: 0rem;">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="content-title">Dashboard</h2>
+        <div class="box">
+          <div class="row">
+            <div class="col-md-1">
+              <img src="" alt="patient_dashbaord"  width="50" height="60"class="style_prevu_kit a1"  (click)="setModuleType('patient')" [routerLink]="['/dash']">
+            </div>
+            <div class="col-md-1 gop"></div>
+            <div class="col-md-1 gop"></div>
+            <div class="col-md-1">
+              <img src="" alt="employee_dashbaord" width="50" height="60" class="style_prevu_kit" (click)="setModuleType('employee')" [routerLink]="['/employeedash']">
+            </div>
+            <!-- <div class="col-md-1 gop"></div> -->
+            <!-- <div class="col-md-1">
+              <img src="/assets/img/dash/dl3.png" class="style_prevu_kit" [routerLink]="['/provider']">
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

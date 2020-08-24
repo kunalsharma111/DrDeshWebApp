@@ -23,7 +23,7 @@ export class CombinepatComponent implements OnInit {
   scale_name = [];
   combined: combined;
   providers: any;
-  patientdetail : any;
+  patientdetail: any;
   facilities: any;
   insurances: any;
   meds: any;

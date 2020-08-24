@@ -15,16 +15,14 @@ import { CombinepatComponent } from './combinepat/combinepat.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
+import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'dash', component: DashboardComponent, canActivate: [RouteGuard] },
   { path: 'ak', component: AkComponent },
-  {
-    path: 'patient', component: PatientComponent,
-    canActivate: [RouteGuard]
-  },
+  { path: 'patient', component: PatientComponent, canActivate: [RouteGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [RouteGuard] },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'facility', component: FacilityComponent, canActivate: [RouteGuard] },
@@ -34,7 +32,8 @@ const routes: Routes = [
   { path: 'reports', component: ReportsComponent, canActivate: [RouteGuard] },
   { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  },
   { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  },
-  { path: 'attachfile', component: SharedDashboardComponent,  canActivate: [RouteGuard]  }
+  { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
+  { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  }
 ];
 
 @NgModule({

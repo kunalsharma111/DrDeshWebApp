@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
     this.service.checkLogin(form).subscribe(res => {
       this.service.setRole(res.role);
       localStorage.setItem('token', res.token);
-      this.service.router.navigate(['/dash']);
+      localStorage.setItem('moduleType', 'homedash');
+      this.service.router.navigate(['/moduledashboard']);
     },
       (err) => {
         this.renderer.setStyle(this.ctr.nativeElement, 'display', 'none');

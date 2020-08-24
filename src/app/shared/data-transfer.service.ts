@@ -7,6 +7,8 @@ import { filter, delay, map, catchError, switchMap} from 'rxjs/operators';
 export interface Admin {
   fname: string;
   lname: string;
+  empId: number;
+  dob: Date;
   pwd: string;
   email: string;
   mobile: string;
@@ -27,7 +29,7 @@ export interface Provider {
 export interface Medication {
   id: string;
   name: string;
-  ain:string;
+  ain: string;
 }
 export interface combined {
   id: string;
@@ -304,6 +306,7 @@ export class DataTransferService {
   }
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('moduleType');
     this.router.navigateByUrl('/');
   }
   addBasePatientData(form) {

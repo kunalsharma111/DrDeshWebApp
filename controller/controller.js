@@ -7,7 +7,7 @@ const router = express();
 
 require('../models/db');
 const userModel = mongoose.model("User");
-const employeeModel = mongoose.model("EmployeeModel");
+const employeeModel = mongoose.model("EmployeeDetail");
 const patientModel = mongoose.model("Patient");
 const R2Model = mongoose.model("R2P");
 const FacilityModel = mongoose.model("Facility");
@@ -2360,11 +2360,41 @@ var storage = multer.diskStorage({
 router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) => {
     var employee = new employeeModel({
         fname: req.body.test2,
-        image: req.file.filename
+        savedon: new Date(),
+        savedby : currentuser
     })
-    employee.save().then(doc => { console.log("saved"); res.json('saved') }, err => {
-        res.json('failure');
+
+    var employee1 = {
+        fiName: req.file.filename,
+        status: 'Pending',
+        savedon: new Date(),
+        savedby : currentuser
+    }
+
+
+
+    employeeModel.find({'fname':req.body.test2}, (err, doc) => {
+        console.log("doc", doc);
+        console.log("err", err);
+        if (!err ) {
+            if(doc.length > 0) {
+                doc[0].files.push(employee1);
+                doc[0].save().then(res => {
+                console.log("records saved")
+                 }, err => {
+                    console.log(err);
+                })
+            } else {
+                employee.save().then(doc => { console.log("saved", doc); res.json('saved') }, err => {
+                    res.json('failure');
+                })
+            }
+        }
+        else {
+            console.log("error at employeedetails", err);
+        }
     })
+
 })
 
 router.post('/fetchfiles', verifyToken, (req, res) => {

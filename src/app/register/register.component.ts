@@ -13,8 +13,8 @@ export class RegisterComponent implements OnInit {
   roles = ['Admin', 'Provider', 'Data Entry Operator'];
   constructor(public ctrl: DataTransferService, public toastr: ToastrService) { }
   user;
-  name: String;
-  metaData
+  name: string;
+  metaData;
   ngOnInit() {
     this.name = '';
     this.ctrl.getData()
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
           if (err instanceof HttpErrorResponse) {
             this.ctrl.router.navigateByUrl('/');
           }
-        })
+        });
 
     const $button = document.querySelector('#sidebar-toggle');
     const $wrapper = document.querySelector('#wrapper');
@@ -40,26 +40,29 @@ export class RegisterComponent implements OnInit {
     this.resetform();
   }
   resetform(form?: NgForm) {
-    if (form != null) form.resetForm();
+    if (form != null) {
+      form.resetForm();
+    }
     this.ctrl.adminData = {
       fname: '',
       lname: '',
+      empId: null,
+      dob: null,
       email: '',
       pwd: '',
       mobile: '',
       userrole: '',
-      otp:'',
-    }
+      otp: '',
+    };
   }
   submit(form: NgForm) {
     this.ctrl.transferToServer(form).subscribe(res => {
-      // console.log(res);
-      localStorage.setItem('token', res.token);
-      this.toastr.success("","New User Created")
+      console.log('res', res);
+      // localStorage.setItem('token', res.token);
+      this.toastr.success('', 'New User Created');
     });
-    console.log("new user created")
-    this.resetform()
-    this.ctrl.router.navigateByUrl('/dashboard')
+    this.resetform();
+    // this.ctrl.router.navigateByUrl('/dash');
   }
   logout() {
     this.ctrl.logout();

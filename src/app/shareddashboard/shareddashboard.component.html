@@ -1,11 +1,11 @@
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand" *ngIf="metaData">
         <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
-        <img src="/assets/img/login/logo.png" height="60px">
+        <a [routerLink]="['/moduledashboard']"><img src="/assets/img/login/logo.png" height="60px" (click)="setModuleType('homedash')"></a>
         <h2>Hello, {{fname|capitalize}}</h2>
         <b>{{role}}</b>
     </div>
-    <ul class="sidebar-nav">
+    <ul class="sidebar-nav" *ngIf="getModuleType() === 'patient'">
         <p class="qd">Quick Dashboard</p>
         <li >
             <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
@@ -31,6 +31,31 @@
         <li *ngIf="roleType == 'Admin'">
             <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
         </li>
+    </ul>
+    <ul class="sidebar-nav" *ngIf="getModuleType() !== 'employee' && getModuleType() !== 'patient'">
+        <p class="qd">Quick Dashboard</p>
+        <li >
+            <a [routerLink]="['/moduledashboard']"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+            <a [routerLink]="['/dash']" (click)="setModuleType('patient')"><i class="fa fa-plus-circle"></i>Patient DashBoard</a>
+        </li>
+        <li>
+            <a [routerLink]="['/employeedash']" (click)="setModuleType('employee')"><i class="fa fa-users"></i>Employee DashBoard</a>
+        </li>
+    </ul>
+    <ul class="sidebar-nav" *ngIf="getModuleType() === 'employee'">
+        <p class="qd">Quick Dashboard</p>
+        <li >
+            <a [routerLink]="['/employeedash']"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+            <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Attach File</a>
+        </li>
+        <li>
+            <a [routerLink]="['/calendar']"><i class="fa fa-plus-circle"></i>Calendar</a>
+        </li>
+
     </ul>
 </aside>
 <div id="navbar-wrapper">

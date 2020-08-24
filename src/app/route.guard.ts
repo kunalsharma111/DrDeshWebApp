@@ -8,11 +8,24 @@ import { DataTransferService } from './shared/data-transfer.service';
 })
 export class RouteGuard implements CanActivate {
   constructor(public service: DataTransferService) {}
-  providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports'];
-
+  providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard'];
+  dashBoards: Array<string> = ['/moduledashboard', '/dash', '/employeedash'];
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
+    if (this.dashBoards.includes(state.url)) {
+      switch (state.url) {
+        case '/employeedash':
+          localStorage.setItem('moduleType', 'employee');
+          break;
+        case '/dash':
+          localStorage.setItem('moduleType', 'patient');
+          break;
+        default:
+          localStorage.setItem('moduleType', 'homedash');
+          break;
+      }
+    }
     if (this.service.loggedIn()) {
       if (this.service.getRole() === 'Admin') {
         return true;

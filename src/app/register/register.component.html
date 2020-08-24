@@ -80,6 +80,20 @@
                                 </div>
                         </div>
                         <div class="form-group">
+                                <input type="number" class="form-control" name="empId" #empId="ngModel"
+                                    [(ngModel)]="ctrl.adminData.empId" placeholder="Enter Employee Id" required>
+                                    <div *ngIf="empId.invalid && (empId.dirty || empId.touched)"    class="alert alert-danger mt-1">
+                                        <div *ngIf="empId.errors.required">Employee Id required.</div>
+                                    </div>
+                        </div>
+                        <div class="form-group">
+                                <input type="date" class="form-control" name="dob" #dob="ngModel"
+                                    [(ngModel)]="ctrl.adminData.dob" placeholder="Enter Employee DOB" required>
+                                    <div *ngIf="dob.invalid && (dob.dirty || dob.touched)"    class="alert alert-danger mt-1">
+                                        <div *ngIf="dob.errors.required">Employee DOB required.</div>
+                                    </div>
+                        </div>
+                        <div class="form-group">
                             <input type="email" class="form-control" name="email" #email="ngModel"
                                 [(ngModel)]="ctrl.adminData.email" placeholder="Enter email" required>
                                 <div *ngIf="email.invalid && (email.dirty || email.touched)"    class="alert alert-danger mt-1">

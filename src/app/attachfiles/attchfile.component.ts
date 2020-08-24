@@ -50,15 +50,20 @@ export class AttchFileComponent implements OnInit {
 
     this.fileUploadProgress = '0%';
     this.service.addEmployeeDetails(formData)
-    .subscribe(events => {
-      if (events.type === HttpEventType.UploadProgress) {
-        this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
-        console.log(this.fileUploadProgress);
-      } else if (events.type === HttpEventType.Response) {
-        this.fileUploadProgress = '';
-        console.log(events.body);
-        alert('SUCCESS !!');
-      }
+    .subscribe(res => {
+      console.log("this.employee", this.employee);
+      this.employee = {
+        file : '',
+        test2 : ''
+      };
+      // if (events.type === HttpEventType.UploadProgress) {
+      //   this.fileUploadProgress = Math.round(events.loaded / events.total * 100) + '%';
+      //   console.log(this.fileUploadProgress);
+      // } else if (events.type === HttpEventType.Response) {
+      //   this.fileUploadProgress = '';
+      //   console.log(events.body);
+      //   alert('SUCCESS !!');
+      // }
 
     });
 }
@@ -67,8 +72,7 @@ export class AttchFileComponent implements OnInit {
     const str = this.service.metcha;
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
     this.service.getEmployeeDetails().subscribe(res => {
-      console.log('res', res);
-      this.imagess = res;
+      this.imagess = res[0].files;
     });
   }
 
