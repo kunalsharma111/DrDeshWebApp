@@ -1,7 +1,8 @@
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand" *ngIf="metaData">
         <!-- <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i> -->
-        <a [routerLink]="['/moduledashboard']"><img src="/assets/img/login/logo.png" height="60px" (click)="setModuleType('homedash')"></a>
+        <a [routerLink]="['/moduledashboard']" *ngIf="roleType == 'Admin' || roleType == 'Provider'"><img src="/assets/img/login/logo.png" height="60px" (click)="setModuleType('homedash')"></a>
+        <a *ngIf="roleType == 'Data Entry Operator'"><img src="/assets/img/login/logo.png" height="60px"></a>
         <h2>Hello, {{fname|capitalize}}</h2>
         <b>{{role}}</b>
     </div>
@@ -25,7 +26,7 @@
         <li *ngIf="roleType == 'Admin'">
             <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
         </li>
-        <li>
+        <li *ngIf="roleType == 'Admin' || roleType == 'Provider'">
             <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
         </li>
         <li *ngIf="roleType == 'Admin'">

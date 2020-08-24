@@ -51,7 +51,6 @@ export class AttchFileComponent implements OnInit {
     this.fileUploadProgress = '0%';
     this.service.addEmployeeDetails(formData)
     .subscribe(res => {
-      console.log("this.employee", this.employee);
       this.employee = {
         file : '',
         test2 : ''

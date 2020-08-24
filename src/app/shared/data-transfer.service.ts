@@ -33,12 +33,12 @@ export interface Medication {
 }
 export interface combined {
   id: string;
-  name: string,
-  dob: Date,
-  patientcreatedon : Date,
-  patientcreatedby : string,
-  savedon : Date,
-  savedby : string,
+  name: string;
+  dob: Date;
+  patientcreatedon: Date;
+  patientcreatedby: string;
+  savedon: Date;
+  savedby: string;
   pcp: string;
   typevisit: string;
   visit: Date;
@@ -55,14 +55,14 @@ export interface combined {
   psyscreen: string;
   psyscreenreason: string;
   followup: string;
-  patientcondition: string
-  unstable_text: string
+  patientcondition: string;
+  unstable_text: string;
   started: string;
   increase: string;
   decrease: string;
   stopped: string;
-  decrease2: string,
-  stopped2: string,
+  decrease2: string;
+  stopped2: string;
   medstopdate: Date;
   newappointmentrecord: string;
   added: string;
@@ -91,62 +91,62 @@ export interface combined {
   scaleeligible: string;
   scale: string;
   comment: string;
-  service_type: string,
-  frequentlypsychotherapy: number,
-  verystable: string,
-  psymanage: string,
-  seepsy: string,
-  noseepsyreason: string,
-  yesstablepsy: '',
-  nostablepsy: '',
-  verystablepsy: '',
-  careconditiontimespent: string,
-  medreason: string,
-  othermedreason: string,
-  geneticreason: string,
-  othergeneticreason: string,
+  service_type: string;
+  frequentlypsychotherapy: number;
+  verystable: string;
+  psymanage: string;
+  seepsy: string;
+  noseepsyreason: string;
+  yesstablepsy: '';
+  nostablepsy: '';
+  verystablepsy: '';
+  careconditiontimespent: string;
+  medreason: string;
+  othermedreason: string;
+  geneticreason: string;
+  othergeneticreason: string;
   medreason2: string;
-  othermedreason2: string,
-  psyreason: string,
-  otherpsyreason: string,
+  othermedreason2: string;
+  psyreason: string;
+  otherpsyreason: string;
   otherpsyscreenreason: string;
-  bhireason: string,
-  otherbhireason: string,
-  ccmreason: string,
-  otherccmreason: string,
-  homeclinic: string,
-  homeclinicconcent: string,
-  homeclinicreason: string
-  otherhomeclinicreason: string,
-  masterstable: string,
+  bhireason: string;
+  otherbhireason: string;
+  ccmreason: string;
+  otherccmreason: string;
+  homeclinic: string;
+  homeclinicconcent: string;
+  homeclinicreason: string;
+  otherhomeclinicreason: string;
+  masterstable: string;
   typevisitreason: string;
   masterstablereason: string;
-  thtime: number,
-  othernoseedocreason: string,
-  psynoseedocreason: string,
-  otherpsynoseedocreason: string,
-  consult: string,
-  conpsy: string,
-  conmed: string,
-  conscr: string,
-  conpsyreason: string,
-  conmedreason: string,
-  conscrreason: string,
-  conpsyname: string,
-  currentmeds: string,
-  np:string,
-  cch:string,
-  cchconcent:string,
-  cchdate:Date,
-  cchreason:string,
-  othercchreason:string,
-  medfollowup:string,
-  followupreason:string,
-  followupdays:Date,
-  scaleeligiblereason:string,
-  otherscaleeligiblereason:string,
-  flag:Number,
-  nextvisitdate:Date
+  thtime: number;
+  othernoseedocreason: string;
+  psynoseedocreason: string;
+  otherpsynoseedocreason: string;
+  consult: string;
+  conpsy: string;
+  conmed: string;
+  conscr: string;
+  conpsyreason: string;
+  conmedreason: string;
+  conscrreason: string;
+  conpsyname: string;
+  currentmeds: string;
+  np: string;
+  cch: string;
+  cchconcent: string;
+  cchdate: Date;
+  cchreason: string;
+  othercchreason: string;
+  medfollowup: string;
+  followupreason: string;
+  followupdays: Date;
+  scaleeligiblereason: string;
+  otherscaleeligiblereason: string;
+  flag: number;
+  nextvisitdate: Date;
 }
 export interface PatientRound2 {
   id: string;
@@ -163,8 +163,8 @@ export interface PatientRound2 {
   urgentcall: string;
   outreach: string;
   followup: string;
-  patientcondition: string
-  unstable_text: string
+  patientcondition: string;
+  unstable_text: string;
   started: string;
   increase: string;
   decrease: string;

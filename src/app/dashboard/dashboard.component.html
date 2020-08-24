@@ -77,8 +77,8 @@
             <div class="col-md-1" *ngIf="roleType == 'Admin'">
               <img src="/assets/img/dash/dl5.png" class="style_prevu_kit" [routerLink]="['/expensive']">
             </div>
-            <div class="col-md-1 gop"></div>
-            <div class="col-md-1">
+            <div class="col-md-1 gop" *ngIf="roleType == 'Admin' || roleType == 'Provider'"></div>
+            <div class="col-md-1" *ngIf="roleType == 'Admin' || roleType == 'Provider'">
               <img src="/assets/img/dash/dl6.png" class="style_prevu_kit" [routerLink]="['/reports']">
             </div>
           </div>

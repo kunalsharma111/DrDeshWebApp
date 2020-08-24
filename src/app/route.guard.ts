@@ -8,7 +8,8 @@ import { DataTransferService } from './shared/data-transfer.service';
 })
 export class RouteGuard implements CanActivate {
   constructor(public service: DataTransferService) {}
-  providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard'];
+  providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard', '/employeedash', '/attachfile'];
+  dataEntryAllowPaths: Array<string> = ['/patient', '/dash'];
   dashBoards: Array<string> = ['/moduledashboard', '/dash', '/employeedash'];
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -30,7 +31,9 @@ export class RouteGuard implements CanActivate {
       if (this.service.getRole() === 'Admin') {
         return true;
       } else {
-        if (this.providerAllowPaths.includes(state.url)) {
+        if (this.service.getRole() === 'Provider' && this.providerAllowPaths.includes(state.url)) {
+          return true;
+        } else if (this.dataEntryAllowPaths.includes(state.url)) {
           return true;
         } else {
           this.service.router.navigate(['/dash']);

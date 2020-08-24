@@ -33,7 +33,8 @@ const routes: Routes = [
   { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  },
   { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  },
   { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
-  { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  }
+  { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
+  { path: '**', component: DashboardComponent,  canActivate: [RouteGuard]  }
 ];
 
 @NgModule({

@@ -57,7 +57,6 @@ export class RegisterComponent implements OnInit {
   }
   submit(form: NgForm) {
     this.ctrl.transferToServer(form).subscribe(res => {
-      console.log('res', res);
       // localStorage.setItem('token', res.token);
       this.toastr.success('', 'New User Created');
     });
