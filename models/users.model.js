@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+let uploadFiles = new mongoose.Schema({
+    fiName: String,
+    status: String,
+    documentname: String,
+    savedon: Date,
+    savedby: String
+  })
+
 let userSchema = new mongoose.Schema({
     fname: {
         type: String
@@ -27,6 +35,9 @@ let userSchema = new mongoose.Schema({
     },
     otp:{
         type: String
+    },
+    files:{
+        type: [uploadFiles]
     }
 });
 

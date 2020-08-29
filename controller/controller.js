@@ -7,7 +7,7 @@ const router = express();
 
 require('../models/db');
 const userModel = mongoose.model("User");
-const employeeModel = mongoose.model("EmployeeDetail");
+const requiredDocumentModel = mongoose.model("documentrequiredfromEmployee");
 const patientModel = mongoose.model("Patient");
 const R2Model = mongoose.model("R2P");
 const FacilityModel = mongoose.model("Facility");
@@ -54,13 +54,10 @@ function verifyToken(req, res, next) {
         return res.status(401).send('Unauthorized request')
     }
     let token = req.headers.authorization.split(" ")[1];
-    // console.log(token);
     if (token === 'null') {
         return res.status(401).send('Unauthorized request')
     }
-    // console.log("no error till here");
     let payload = jwt.verify(token, 'keysecret');
-    // console.log(payload);
     if (!payload) {
         return res.status(401).send('Unauthorized request')
     }
@@ -2358,35 +2355,40 @@ var storage = multer.diskStorage({
   var upload = multer({ storage: storage });
 
 router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) => {
-    var employee = new employeeModel({
-        fname: req.body.test2,
-        savedon: new Date(),
-        savedby : currentuser
-    })
 
     var employee1 = {
         fiName: req.file.filename,
-        status: 'Pending',
+        status: 'Submited',
         savedon: new Date(),
-        savedby : currentuser
+        savedby: currentuser,
+        documentname: req.body.documentname
     }
 
-
-
-    employeeModel.find({'fname':req.body.test2}, (err, doc) => {
-        console.log("doc", doc);
-        console.log("err", err);
+    userModel.find({_id: req.userId, "files.documentname": req.body.documentname}, (err, doc) => {
         if (!err ) {
-            if(doc.length > 0) {
-                doc[0].files.push(employee1);
-                doc[0].save().then(res => {
-                console.log("records saved")
-                 }, err => {
-                    console.log(err);
+            if(doc.length == 0) {
+                userModel.find({_id: req.userId}, (error, document) => {
+                    if(!error) {
+                        document[0].files.push(employee1);
+                        document[0].save().then(ress => {
+                        res.send(document);
+                        }, err => {
+                            console.log(err);
+                        })
+
+                    } else {
+                        res.send(error);
+                    }
+
                 })
             } else {
-                employee.save().then(doc => { console.log("saved", doc); res.json('saved') }, err => {
-                    res.json('failure');
+                userModel.updateOne({_id: req.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.fiName': req.file.filename, 'files.$.savedon': new Date(), 'files.status': 'Submited' } }, (errr, docc) => {
+                    if(!errr) {
+                        res.send(docc);
+                    } else {
+                        console.log(errr);
+                        res.send(errr);
+                    }
                 })
             }
         }
@@ -2398,8 +2400,13 @@ router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) =
 })
 
 router.post('/fetchfiles', verifyToken, (req, res) => {
-    employeeModel.find({}).then(out => {
+    userModel.find({_id: req.userId},{'files': 1}).then(out => {
+        console.log('out', out[0]);
         res.json(out)
-    })
+    }, err => {
+        res.json(err);
+    });
 })
+
+
 module.exports = router;

@@ -8,8 +8,9 @@ import { DataTransferService } from './shared/data-transfer.service';
 })
 export class RouteGuard implements CanActivate {
   constructor(public service: DataTransferService) {}
-  providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard', '/employeedash', '/attachfile'];
-  dataEntryAllowPaths: Array<string> = ['/patient', '/dash'];
+  providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard',
+                                      '/employeedash', '/attachfile', '/employeedash'];
+  dataEntryAllowPaths: Array<string> = ['/patient', '/dash', '/cpat'];
   dashBoards: Array<string> = ['/moduledashboard', '/dash', '/employeedash'];
   canActivate(
     next: ActivatedRouteSnapshot,

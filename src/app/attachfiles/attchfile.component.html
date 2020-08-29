@@ -1,58 +1,6 @@
 <div id="wrapper">
     <app-shareddashboard></app-shareddashboard>
-    <!-- <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <i class="fa fa-user-secret fa-3x" aria-hidden="true"></i>
-            <img src="/assets/img/login/logo.png" height="60px">
-            <h2>Hello, {{fname|capitalize}}</h2>
-            <b>{{role}}</b>
-        </div>
-        <ul class="sidebar-nav">
-            <p class="qd">Quick Dashboard</p>
-            <li>
-                <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
-            </li>
-            <li>
-                <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
-            </li>
-            <li>
-                <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
-            </li>
-            <li>
-                <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
-            </li>
-            <li>
-                <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
-            </li>
-            <li>
-                <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
-            </li>
-            <li>
-                <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
-            </li>
-            <li>
-                <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
-            </li>
-        </ul>
-    </aside> -->
-
-    <!-- <div id="navbar-wrapper">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="#" class="navbar-brand" id="sidebar-toggle">
-                        <i class="fa fa-bars" style="color: #87C442;"></i>
-                        <img src="/assets/img/bar.png" class="img-fluid"
-                            style="margin-left: -28px;transform: scale(1.45);">
-                    </a>
-                </div>
-                <div style="float: right; cursor: pointer;" (click)="logout()"><img src="/assets/img/dash/logout.png"
-                        height="50px" class="logout"></div>
-            </div>
-        </nav>
-    </div> -->
-
-    <section id="content-wrapper" style=" padding-left: 0rem;  ">
+    <!-- <section id="content-wrapper" style=" padding-left: 0rem;  ">
         <div class="box"></div>
         <section id="attachfile">
             <div class="container">
@@ -71,15 +19,50 @@
                 </div>
             </div>
 
+
             <div *ngIf="imagess.length >=1 ">
                 <div *ngFor="let imagefile  of imagess">
-                    <!-- <img  *ngIf="imagefile.image" src="./ab/images/{{imagefile.image}}" alt=" file -name {{imagefile.image}}" /> -->
                     <a href="{{loadFilesFromUrl}}ab/images/{{imagefile.fiName}}"  target="_blank" download>{{imagefile.fiName}}</a>
-                    <!-- <img  *ngIf="imagefile.image" src="/images/{{imagefile.image}}" alt="{{imagefile.image}}" /> -->
-
                 </div>
             </div>
         </section>
 
-    </section>
+    </section> -->
+
+    <table class="table table-bordered table-sm">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>List of Documents</th>
+                <th>Download/Online Form Fill It and Upload</th>
+                <th>Select File</th>
+                <th>Upload</th>
+                <th>Status</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let element  of elements; let indexOfelement = index;">
+              <tr>
+                <td>{{indexOfelement+1}}</td>
+                <td>{{element.documentname}}</td>
+                <td>
+                    <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open And Fill form</a>
+                    <a  *ngIf="element.defaultform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.defaultform}}"  target="_blank" download> Fill It And Upload It</a>
+                </td>
+                <td>
+                    <label class="btn upload" style="width:100%" *ngIf="element.documentlink === ''">
+                        <i class="fa fa-upload"></i> &nbsp; Select Document
+                        <input type="file" [disabled]="element.documentstatus == 'Submited'" class="form-control sr-only UploadInput" (change)="fileProgress(indexOfelement ,$event)" name="file" >
+                    </label>
+                </td>
+                <td>
+                    <input type="submit" *ngIf="element.uploadbttonflag" value="Upload"  (click)="onSave(indexOfelement, element.documentname)" class="btn-blue1">
+                </td>
+                <td>{{element.documentstatus}}</td>
+                <td>
+                    <a  *ngIf="element.filename != ''" href="{{loadFilesFromUrl}}ab/images/{{element.filename}}"  target="_blank" download>view</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 </div>

@@ -7,7 +7,7 @@
         <b>{{role}}</b>
     </div>
     <ul class="sidebar-nav" *ngIf="getModuleType() === 'patient'">
-        <p class="qd">Quick Dashboard</p>
+        <p class="qd">Patient Dashboard</p>
         <li >
             <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
         </li>
@@ -46,7 +46,7 @@
         </li>
     </ul>
     <ul class="sidebar-nav" *ngIf="getModuleType() === 'employee'">
-        <p class="qd">Quick Dashboard</p>
+        <p class="qd">Employee Dashboard</p>
         <li >
             <a [routerLink]="['/employeedash']"><i class="fa fa-home"></i>Home</a>
         </li>
@@ -54,7 +54,7 @@
             <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Attach File</a>
         </li>
         <li>
-            <a [routerLink]="['/calendar']"><i class="fa fa-plus-circle"></i>Calendar</a>
+            <a [routerLink]="['/calendar']"><i class="fa fa-plus-circle"></i>Document Approvals</a>
         </li>
 
     </ul>

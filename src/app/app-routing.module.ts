@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeeDashboardComponent } from './employeedashboard/employeedashboard.component';
 import { AkComponent } from './ak/ak.component';
 import { PatientComponent } from './patient/patient.component';
 import { RegisterComponent } from './register/register.component';
@@ -21,6 +22,7 @@ import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.comp
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'dash', component: DashboardComponent, canActivate: [RouteGuard] },
+  {path: 'employeedash', component: EmployeeDashboardComponent, canActivate: [RouteGuard]},
   { path: 'ak', component: AkComponent },
   { path: 'patient', component: PatientComponent, canActivate: [RouteGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [RouteGuard] },

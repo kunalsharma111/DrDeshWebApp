@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeeDashboardComponent } from './employeedashboard/employeedashboard.component';
 import { AkComponent } from './ak/ak.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    EmployeeDashboardComponent,
     AkComponent,
     PatientComponent,
     RegisterComponent,

@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
-let uploadFiles = new mongoose.Schema({
-  fiName: String,
-  status: String,
-  savedon: Date,
-  savedby: String
-})
 
 let employeeSchema = new mongoose.Schema({
 
-    fname: String,
+    documentname: String,
+    uploadbttonflag: Boolean,
     savedon: Date,
     savedby : String,
-    files: [uploadFiles]
+    documentstatus: String,
+    documenttype: String,
+    filename: String,
+    showonui: Boolean,
+    documentlink: String,
+    defaultform: String
 });
 
-mongoose.model('EmployeeDetail', employeeSchema);
+mongoose.model('documentrequiredfromEmployee', employeeSchema);
