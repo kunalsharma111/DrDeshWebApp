@@ -2422,8 +2422,6 @@ router.post('/employeedocumentsremark', verifyToken, (req, res) => {
 
 // get all document uploaded employee
 router.post('/getemployeedocuments', verifyToken, (req, res) => {
-    let name = new RegExp(req.query.name);
-
     userModel.aggregate([
         { "$project":
             {   "fname": 1,
@@ -2438,7 +2436,7 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
         },
         { "$match":
             { "FILES_count": { "$gte": 1 },
-              "fname" : new RegExp(name, 'i')
+              "fname" : new RegExp('^'+req.body.name, 'i')
             }
         }
     ]).then(doc => {

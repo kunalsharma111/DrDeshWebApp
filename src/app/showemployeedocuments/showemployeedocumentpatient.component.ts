@@ -37,9 +37,11 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
     fromEvent(this.search.nativeElement, 'input')
       .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
       .subscribe(val => {
-        const params = new HttpParams().set('name', val);
-        this.service.getEmployeeDocuemnt({params}).subscribe(res => {
-          this.employeeDocuments = res;
+        const params = {
+          name: val
+        };
+        this.service.getEmployeeDocuemnt(params).subscribe(res => {
+          this.employeeDocuments = res === 'no' ? [] : res;
         });
       });
 
