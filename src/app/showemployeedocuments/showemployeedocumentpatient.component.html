@@ -1,0 +1,110 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+  <section id="content-wrapper" style=" padding-left: 0rem;">
+    <!-- header of the page   -->
+    <div class="row">
+      <div class="col-lg-12">
+        <img src="/assets/img/shared/patientlogo.png" class="img-fluid ptl">
+        <h2 class="content-title">Employee Document Uploaded Lists</h2>
+      </div>
+      <div class="box"></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" >
+        <!-- Search Bar -->
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-8">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search by name" style="border:2px solid #87C442;"
+                [(ngModel)]="searchString" #search>
+              <div class="input-group-append">
+                <button class="btn btn-custom" type="submit" style="background-color: #87C442; color:white;">Go</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- employeeDocument 1 -->
+        <div class="row" *ngFor="let employeeDocument of employeeDocuments;let employeedocumentsIndex=index">
+          <div class="col-md-1 counting">{{employeedocumentsIndex+1}}</div>
+          <div class="col-md-11">
+            <div class="details">
+              <div class="row">
+                <div class="col-md-4 name">{{employeeDocument.fname}} {{employeeDocument.lname}}</div>
+                <div class="col-md-4 name">{{employeeDocument.email}}               {{employeeDocument.userrole}}</div>
+                <div class="col-md-4 edit" >
+                  <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
+                    data-target="#myModal" (click)="setEmployeeData(employeeDocument, employeedocumentsIndex)"
+                    style="color: #87c442;"
+                    tooltip="Update Document Status" placement="right">
+                  </i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </section>
+  <!-- <img src="/assets/img/login/logo.png" height="200px" style="position: fixed; right: 0; bottom: 0; padding: 50px;"> -->
+</div>
+
+
+
+
+
+
+
+<!-- Add PAtient Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content mc1">
+      <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+          aria-hidden="true"></i></p>
+      <div class="modal-body">
+        <h4 class="ap">Review Document For {{employeeData.fname}} </h4>
+        <form  #form="ngForm">
+          <hr>
+          <table class="table table-bordered table-sm">
+              <thead>
+                  <tr>
+                  <th>Sr.No</th>
+                  <th>List of Documents</th>
+                  <th>Status</th>
+                  <th>Remark</th>
+                  <th>Approve</th>
+                  <th>Reject</th>
+                  </tr>
+              </thead>
+              <tbody *ngFor="let element  of employeeData.files; let indexOfelement = index;">
+                  <tr>
+                  <td>{{indexOfelement+1}}</td>
+                  <td>
+                    <a  *ngIf="element.fiName != ''" href="{{loadFilesFromUrl}}ab/images/{{element.fiName}}"  target="_blank" download>{{element.documentname}}</a>
+                    <a  *ngIf="element.fiName === ''"   target="_blank" download>{{element.documentname}}</a>
+
+                  </td>
+                  <td>{{element.status}}</td>
+                  <td>
+                    <input type="text" class="form-control" id="name"  value="{{element.remark}}" name="remark" #remark>
+                  </td>
+                  <td>
+                      <input type="submit"[disabled]="element.status === 'Approved'" value="Approve"  (click)="onSave(employeeData._id, element.documentname, indexOfelement, remark, 'Approved')" [ngClass]="{'btn-blue3': element.status === 'Approved', 'btn-blue2': element.status !== 'Approved', 'btn-blue1': true}">
+                  </td>
+                  <td>
+                      <input type="submit" [disabled]="element.status === 'Rejected'" value="Reject"  (click)="onSave(employeeData._id, element.documentname, indexOfelement, remark, 'Rejected' )" [ngClass]="{'btn-blue3': element.status === 'Rejected', 'btn-blue2': element.status !== 'Rejected', 'btn-blue1': true}">
+                  </td>
+                  </tr>
+              </tbody>
+          </table>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

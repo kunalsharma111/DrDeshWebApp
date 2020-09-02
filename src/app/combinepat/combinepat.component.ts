@@ -8,7 +8,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
-declare var $: any
+declare var $: any;
 @Component({
   selector: 'app-combinepat',
   templateUrl: './combinepat.component.html',
@@ -18,7 +18,7 @@ export class CombinepatComponent implements OnInit {
   modalRef: BsModalRef;
   previousRoute: string;
   constructor(public service: DataTransferService, private modalService: BsModalService, public el: ElementRef,
-    public toastr: ToastrService, public router: Router) { }
+              public toastr: ToastrService, public router: Router) { }
   scale_score = [];
   scale_name = [];
   combined: combined;
@@ -60,12 +60,12 @@ export class CombinepatComponent implements OnInit {
     this.kd = this.cd.toISOString().slice(0, 10);
     this.stringdate = this.kdate.toISOString().slice(0, 10);
     this.service.subject.subscribe(res => this.p_id = res);
-    if (this.p_id == null || this.p_id == undefined) {
+    if (this.p_id == null || this.p_id === undefined) {
       this.service.router.navigateByUrl('/');
     }
     this.service.getByid(this.p_id).subscribe(res => {
       this.masterobj = res;
-      if (res.visit != undefined) {
+      if (res.visit !== undefined) {
         this.combined = res.visit;
         this.update = true;
         this.combined.visit = new Date()

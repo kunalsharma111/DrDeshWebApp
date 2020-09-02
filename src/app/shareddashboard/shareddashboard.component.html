@@ -50,11 +50,11 @@
         <li >
             <a [routerLink]="['/employeedash']"><i class="fa fa-home"></i>Home</a>
         </li>
-        <li>
-            <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Attach File</a>
+        <li *ngIf="roleType !== 'Admin'">
+            <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Employee Documents</a>
         </li>
-        <li>
-            <a [routerLink]="['/calendar']"><i class="fa fa-plus-circle"></i>Document Approvals</a>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Document Approvals</a>
         </li>
 
     </ul>

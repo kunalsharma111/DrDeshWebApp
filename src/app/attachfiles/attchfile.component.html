@@ -30,39 +30,48 @@
     </section> -->
 
     <table class="table table-bordered table-sm">
-            <thead>
-              <tr>
-                <th>Sr.No</th>
-                <th>List of Documents</th>
-                <th>Download/Online Form Fill It and Upload</th>
-                <th>Select File</th>
-                <th>Upload</th>
-                <th>Status</th>
-                <th>View</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let element  of elements; let indexOfelement = index;">
-              <tr>
-                <td>{{indexOfelement+1}}</td>
-                <td>{{element.documentname}}</td>
-                <td>
-                    <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open And Fill form</a>
-                    <a  *ngIf="element.defaultform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.defaultform}}"  target="_blank" download> Fill It And Upload It</a>
-                </td>
-                <td>
-                    <label class="btn upload" style="width:100%" *ngIf="element.documentlink === ''">
-                        <i class="fa fa-upload"></i> &nbsp; Select Document
-                        <input type="file" [disabled]="element.documentstatus == 'Submited'" class="form-control sr-only UploadInput" (change)="fileProgress(indexOfelement ,$event)" name="file" >
-                    </label>
-                </td>
-                <td>
-                    <input type="submit" *ngIf="element.uploadbttonflag" value="Upload"  (click)="onSave(indexOfelement, element.documentname)" class="btn-blue1">
-                </td>
-                <td>{{element.documentstatus}}</td>
-                <td>
-                    <a  *ngIf="element.filename != ''" href="{{loadFilesFromUrl}}ab/images/{{element.filename}}"  target="_blank" download>view</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <thead>
+            <tr>
+            <th>Sr.No</th>
+            <th>List of Documents</th>
+            <!-- <th>Download/Online Form Fill It and Upload</th> -->
+            <th>Select File</th>
+            <th>Upload</th>
+            <th>Status</th>
+            <th>View</th>
+            <th>Remark</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let element  of elements; let indexOfelement = index;">
+            <tr>
+            <td>{{indexOfelement+1}}</td>
+            <td>{{element.documentname}}
+                <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open Digital Document</a>
+                <a  *ngIf="element.templateform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.templateform}}"  target="_blank" download> Download Template/Form</a>
+            </td>
+            <!-- <td>
+                <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open Digital Document</a>
+                <a  *ngIf="element.templateform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.templateform}}"  target="_blank" download> Download Template/Form</a>
+            </td> -->
+            <td>
+                <label [ngClass]="{'btn-blue3': ['Submited', 'Approved'].includes(element.documentstatus), 'btn-blue2': ['Not Submited', 'Rejected'].includes(element.documentstatus), 'upload': true}"  style="width:100%" *ngIf="element.documentlink === ''">
+                    <i class="fa fa-upload"></i> &nbsp; Select Document
+                    <input type="file" [disabled]="element.documentstatus == 'Submited' || element.documentstatus == 'Approved'" class="form-control sr-only UploadInput" (change)="fileProgress(indexOfelement ,$event)" name="file" >
+                </label>
+            </td>
+            <td>
+                <input type="submit" *ngIf="element.uploadbttonflag" value="Upload"  (click)="onSave(indexOfelement, element.documentname)" class="btn-blue1">
+                <input type="submit" *ngIf="element.documentlink !== '' && ['', 'Rejected'].includes(element.documentstatus)" value="Submit"  (click)="onSave(indexOfelement, element.documentname)" class="btn-blue1">
+
+            </td>
+            <td>{{element.documentstatus}}</td>
+            <td>
+                <a  *ngIf="element.filename != ''" href="{{loadFilesFromUrl}}ab/images/{{element.filename}}"  target="_blank" download>view</a>
+            </td>
+            <td>
+                {{element.remark}}
+            </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

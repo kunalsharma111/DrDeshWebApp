@@ -41,7 +41,7 @@ a:focus {
       }
       .btn {
         margin-top: 3vh;
-        background: #87c442;
+        // background: #87c442;
       }
     }
   }
@@ -698,7 +698,7 @@ input[type="Submit"] {
 }
 .btn-blue1 {
     background: #066ECD;
-    background-color: #d9534f;
+    background-color: #87c442;
     border-color: #d43f3a;
     display: inline-block;
     padding: 6px 12px;
@@ -721,13 +721,21 @@ input[type="Submit"] {
     border-radius: 4px;
     color: #fff;
 }
+.btn-blue3 {
+    background-color: #d1e8b6;
+  }
+
+.btn-blue2 {
+background-color: #87c442;
+}
 .upload{
-    background-color: #87c442;
+    // background-color: #87c442;
     border: none;
     color: white;
     padding: 6px 16px;
     font-size: 15px;
     cursor: pointer;
+    border-radius: 4px;
     margin: 0;
 }
 .table {

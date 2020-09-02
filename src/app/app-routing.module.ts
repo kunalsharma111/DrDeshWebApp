@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeDashboardComponent } from './employeedashboard/employeedashboard.component';
 import { AkComponent } from './ak/ak.component';
 import { PatientComponent } from './patient/patient.component';
+import { ShowEmployeeDocuemntComponent } from './showemployeedocuments/showemployeedocumentpatient.component';
 import { RegisterComponent } from './register/register.component';
 import { RouteGuard } from './route.guard';
 import { FacilityComponent } from './facility/facility.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'employeedash', component: EmployeeDashboardComponent, canActivate: [RouteGuard]},
   { path: 'ak', component: AkComponent },
   { path: 'patient', component: PatientComponent, canActivate: [RouteGuard] },
+  { path: 'showdocuments', component: ShowEmployeeDocuemntComponent,  canActivate: [RouteGuard]  },
   { path: 'register', component: RegisterComponent, canActivate: [RouteGuard] },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'facility', component: FacilityComponent, canActivate: [RouteGuard] },

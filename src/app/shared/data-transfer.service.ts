@@ -276,10 +276,13 @@ export class DataTransferService {
   apiUrlForAllExpensiveMedicine = `${this.metcha}/getmedicineasperkey`;
   employeeDetails = `${this.metcha}/employeedetails`;
   getEmployeeDetailsUrl = `${this.metcha}/fetchfiles`;
+  employeeDocumentsRemark = `${this.metcha}/employeedocumentsremark`;
+  getEmployeeDocuemntUrl = `${this.metcha}/getemployeedocuments`;
+  getRequireDocuemntUrl = `${this.metcha}/getemployeedocumentslist`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
-  subject = new BehaviorSubject("123");
+  subject = new BehaviorSubject('123');
   checkLogin(dorm) {
     return this.http.post<any>(this.url, dorm.value);
   }
@@ -513,6 +516,18 @@ export class DataTransferService {
   getMedRelatedData(data) {
     return this.http.post<any>(this.url26, data);
   }
+  getRequireDocuemnts() {
+    return this.http.post<any>(this.getRequireDocuemntUrl, {});
+  }
+
+  getEmployeeDocuemnt(data) {
+    return this.http.post<any>(this.getEmployeeDocuemntUrl, data);
+  }
+
+  attachmentRemarkByAdmin(data) {
+    return this.http.post<any>(this.employeeDocumentsRemark, data);
+  }
+
   getpatient(id) {
     const params = new HttpParams().set('id', id);
     return this.http.get<any>(this.getpatientdetail, {params});

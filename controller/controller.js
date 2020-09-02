@@ -7,7 +7,7 @@ const router = express();
 
 require('../models/db');
 const userModel = mongoose.model("User");
-const requiredDocumentModel = mongoose.model("documentrequiredfromEmployee");
+const requiredDocumentModel = mongoose.model("DocumentRequiredFromEmployee");
 const patientModel = mongoose.model("Patient");
 const R2Model = mongoose.model("R2P");
 const FacilityModel = mongoose.model("Facility");
@@ -2355,13 +2355,15 @@ var storage = multer.diskStorage({
   var upload = multer({ storage: storage });
 
 router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) => {
-
+    const fileName =  req.file !== undefined  ? req.file.filename  : '';
     var employee1 = {
-        fiName: req.file.filename,
+        fiName: fileName,
         status: 'Submited',
         savedon: new Date(),
         savedby: currentuser,
-        documentname: req.body.documentname
+        documentname: req.body.documentname,
+        remark: ''
+
     }
 
     userModel.find({_id: req.userId, "files.documentname": req.body.documentname}, (err, doc) => {
@@ -2382,7 +2384,7 @@ router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) =
 
                 })
             } else {
-                userModel.updateOne({_id: req.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.fiName': req.file.filename, 'files.$.savedon': new Date(), 'files.status': 'Submited' } }, (errr, docc) => {
+                userModel.updateOne({_id: req.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.fiName': fileName, 'files.$.savedon': new Date(), 'files.$.status': 'Submited' } }, (errr, docc) => {
                     if(!errr) {
                         res.send(docc);
                     } else {
@@ -2401,12 +2403,84 @@ router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) =
 
 router.post('/fetchfiles', verifyToken, (req, res) => {
     userModel.find({_id: req.userId},{'files': 1}).then(out => {
-        console.log('out', out[0]);
         res.json(out)
     }, err => {
         res.json(err);
     });
 })
+
+router.post('/employeedocumentsremark', verifyToken, (req, res) => {
+        userModel.updateOne({_id: req.body.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.status': req.body.documentstatus, 'files.$.remark': req.body.remark} }, (errr, docc) => {
+            if(!errr) {
+                res.send(docc);
+            } else {
+                res.send(errr);
+            }
+        });
+
+})
+
+// get all document uploaded employee
+router.post('/getemployeedocuments', verifyToken, (req, res) => {
+    let name = new RegExp(req.query.name);
+
+    userModel.aggregate([
+        { "$project":
+            {   "fname": 1,
+                'email': 1,
+                'userrole': 1,
+                "lname": 1,
+                "files": 1,
+                "FILES_count": {
+                    "$size": { "$ifNull": [ "$files", [] ] }
+                }
+            }
+        },
+        { "$match":
+            { "FILES_count": { "$gte": 1 },
+              "fname" : new RegExp(name, 'i')
+            }
+        }
+    ]).then(doc => {
+        if(doc.length != 0) {
+            res.json(doc);
+        } else {
+            res.json("no");
+        }
+    }, err => {
+        res.json(err);
+    });
+});
+
+//get all require docuemnt api
+router.post('/getemployeedocumentslist', verifyToken, (req, res) => {
+
+    // var requiredDocument = new requiredDocumentModel({
+    // documentname: 'Cer. of HSC',
+    // uploadbttonflag: false,
+    // documentstatus: 'Not Submited',
+    // filename: '',
+    // documenttype: 'downloadanduploadfile',
+    // documentlink: '',
+    // templateform: 'file_1598613389214.docx',
+    // showonui: true
+    // })
+    // requiredDocument.save().then(doc => { console.log("saved"); res.json('saved') }, err => {
+    //     console.error("error");
+    //     res.json('failure');
+    // })
+
+    requiredDocumentModel.find({showonui: {$ne: false}}).then(doc => {
+        if (doc.length != 0) {
+            res.json(doc);
+        }
+        else {
+            res.json("no");
+        }
+    }, err => {
+        res.json(err);
+    });
+});
 
 
 module.exports = router;

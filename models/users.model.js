@@ -5,7 +5,8 @@ let uploadFiles = new mongoose.Schema({
     status: String,
     documentname: String,
     savedon: Date,
-    savedby: String
+    savedby: String,
+    remark: String
   })
 
 let userSchema = new mongoose.Schema({
