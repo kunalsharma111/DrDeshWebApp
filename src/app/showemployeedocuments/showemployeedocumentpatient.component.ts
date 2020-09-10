@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 declare var $: any;
 import { Patient, DataTransferService, PatientRound2, combined } from '../shared/data-transfer.service';
@@ -17,18 +17,44 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class ShowEmployeeDocuemntComponent implements OnInit {
   modalRef: BsModalRef;
-  constructor(public service: DataTransferService, public toastr: ToastrService) { }
+  constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder) { }
 
   @ViewChild('search', { static: true }) search: ElementRef;
   searchString = '';
   employeeModelOpenIndex;
-  employeeDocuments;
+  employeeDocuments = [];
   loadFilesFromUrl;
+  reponseForSearchEmployee;
+  selectedQuantity;
   employeeData = {
     _id: '',
     fname: '',
     files: []
   };
+
+  statuses: any = ['Submited', 'Not Submited', 'Approved', 'Rejected'];
+
+  registrationForm = this.fb.group({
+    statusName: ['', [Validators.required]]
+  });
+
+  changeStatus() {
+    console.log('selectedQuantity', this.selectedQuantity);
+    console.log(this.employeeDocuments);
+    this.service.getEmployeeDocuemnt({
+      documentstatus : this.selectedQuantity
+    }).subscribe(res => {
+      this.reponseForSearchEmployee = res;
+      this.employeeDocuments = res === 'no' ? [] : res;
+    });
+  }
+
+  reset() {
+    console.log('hi');
+    this.selectedQuantity = '';
+    this.searchString = '';
+    this.employeeDocuments = [];
+  }
 
   ngOnInit() {
     const str = this.service.metcha;
@@ -37,10 +63,15 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
     fromEvent(this.search.nativeElement, 'input')
       .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
       .subscribe(val => {
+        if (val === '') {
+          this.employeeDocuments = [];
+          return;
+        }
         const params = {
           name: val
         };
         this.service.getEmployeeDocuemnt(params).subscribe(res => {
+          this.reponseForSearchEmployee = res;
           this.employeeDocuments = res === 'no' ? [] : res;
         });
       });

@@ -12,6 +12,11 @@ a:focus {
   background-color: #d1e8b6;
 }
 
+.selectBorder {
+  border: 2px solid #87C442;
+
+}
+
 .btn-blue2 {
   background-color: #87c442;
 }
@@ -440,7 +445,13 @@ a:focus {
   display: inline;
   padding-left: 50px;
 }
-
+.noEmployeeData {
+  margin-left: 18rem!important;
+  margin-top: 50px;
+}
+.headerRowFont {
+  font-weight: 700 !important;
+}
 .edit {
   display: inline;
   text-align: right;

@@ -56,6 +56,12 @@
         <li *ngIf="roleType == 'Admin'">
             <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Document Approvals</a>
         </li>
+        <li *ngIf="roleType !== 'Admin'">
+            <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Employee Calendar</a>
+        </li>
+        <li *ngIf="roleType !== 'Admin'">
+            <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Employee Reimbursement</a>
+        </li>
 
     </ul>
 </aside>

@@ -2422,32 +2422,62 @@ router.post('/employeedocumentsremark', verifyToken, (req, res) => {
 
 // get all document uploaded employee
 router.post('/getemployeedocuments', verifyToken, (req, res) => {
-    userModel.aggregate([
-        { "$project":
+    console.log('hi ', req.body)
+    const fileName =  req.body.name !== undefined  ? 'search by name'  : 'search by status';
+    console.log('fileName', fileName)
+    if(fileName === 'search by name') {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "files": 1,
+                    "FILES_count": {
+                        "$size": { "$ifNull": [ "$files", [] ] }
+                    }
+                }
+            },
+            { "$match":
+                { "FILES_count": { "$gte": 0 },
+                  "fname" : new RegExp('^'+req.body.name, 'i')
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json("no");
+            }
+        }, err => {
+            res.json(err);
+        });
+    } else {
+        userModel.aggregate([
             {   "fname": 1,
                 'email': 1,
                 'userrole': 1,
                 "lname": 1,
                 "files": 1,
                 "FILES_count": {
-                    "$size": { "$ifNull": [ "$files", [] ] }
+                    '$unwind':"$files"
                 }
+            },
+            {"$match": {"FILES_count.status": req.body.documentstatus
+                       }
             }
-        },
-        { "$match":
-            { "FILES_count": { "$gte": 1 },
-              "fname" : new RegExp('^'+req.body.name, 'i')
+        ]).then(doc => {
+            if (doc.length != 0) {
+                res.json(doc);
             }
-        }
-    ]).then(doc => {
-        if(doc.length != 0) {
-            res.json(doc);
-        } else {
-            res.json("no");
-        }
-    }, err => {
-        res.json(err);
-    });
+            else {
+                res.json("no");
+            }
+        })
+    }
+
+
+
 });
 
 //get all require docuemnt api

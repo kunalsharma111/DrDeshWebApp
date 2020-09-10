@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeDashboardComponent } from './employeedashboard/employeedashboard.component';
 import { AkComponent } from './ak/ak.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientComponent } from './patient/patient.component';
 import { ShowEmployeeDocuemntComponent } from './showemployeedocuments/showemployeedocumentpatient.component';
 import { RegisterComponent } from './register/register.component';
@@ -68,6 +68,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
