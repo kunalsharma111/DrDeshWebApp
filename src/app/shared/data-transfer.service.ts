@@ -267,6 +267,7 @@ export class DataTransferService {
   url27 = `${this.metcha}/fetchByName`;
   url28 = `${this.metcha}/getactivefacility`;
   url29 = `${this.metcha}/getactiveprovider`;
+  url30 = `${this.metcha}/call`;
   apiUrlForFacilitySummary = `${this.metcha}/facilitysummaryreport`;
   apiUrlForPatientSummary = `${this.metcha}/patientsummaryreport`;
   apiUrlForMedicationReport = `${this.metcha}/expensivemedicationreport`;
@@ -275,7 +276,13 @@ export class DataTransferService {
   apiUrlForAllExpensiveMedicine = `${this.metcha}/getmedicineasperkey`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
-
+  call(){
+    console.log("second step");
+   this.http.get<any>(this.url30).subscribe(res=>{
+     console.log("output");
+     console.log(res);
+   });
+  }
   subject = new BehaviorSubject("123");
   checkLogin(dorm) {
     console.log("yes"+this.metcha);

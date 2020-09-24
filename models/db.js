@@ -7,7 +7,7 @@ import { environment } from '../src/environments/environment';
 // production DB
 // const uri =   "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
 // deveolpment DB
-const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/BalancedWellbeing?retryWrites=true&w=majority";
+const uri = "mongodb+srv://bwb_app_user:Balanced@123@balancedwellbeing.fqn52.mongodb.net/DevelopmentBalancedWellbeing?retryWrites=true&w=majority";
 require('./users.model');
 require('./patient.model');
 require('./r2patient.model');
@@ -16,7 +16,8 @@ require('./insurance.model');
 require('./med.model');
 require('./provider.model');
 require('./masterptrecord.model');
-require('./postreport')
+require('./postreport');
+require('./testing.model');
 mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology: true,useFindAndModify:false }, (err)=>{
     if(err) {
         console.log(err);

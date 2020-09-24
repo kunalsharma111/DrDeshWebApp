@@ -1,4 +1,5 @@
 const express = require('express');
+var mongo = require('mongodb');
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 var nodemailer = require("nodemailer");
@@ -13,9 +14,17 @@ const InsuranceModel = mongoose.model("Insurance");
 const MedicationModel = mongoose.model("Medication");
 const ProviderModel = mongoose.model("Provider");
 const MasterPatientModel = mongoose.model("MasterPatient");
+const MasterPatientModell = mongoose.model("MasterPatientt");
 const PostModel = mongoose.model("PostRoundUp");
 const VModel = mongoose.model('MVM');
 var bcrypt = require('bcryptjs');
+const fs = require('fs');
+// middleware to use for all requests
+router.use(function(req, res, next) {
+    console.log('Url is: ' + req.url);
+    console.log(req.method+" Method");
+    next(); // make sure we go to the next routes and don't stop here
+  });
 
 //register start
 router.post("/users", (req, res) => {
@@ -67,7 +76,7 @@ function verifyToken(req, res, next) {
     }
     req.userId = payload.subject;
     sub = payload.subject;
-    next()
+    next();
 }
 //get current user starts
 var currentuser;
@@ -460,7 +469,7 @@ router.get('/getmed', verifyToken, (req, res) => {
 // get meds ends
 
 // saving visit data for patient starts
-router.post('/goku', verifyToken, (req, res) => {
+router.post('/goku', verifyToken, (req, res,next) => {
     var days = new Date();
     // days.setDate(days.getDate() + 7);
     // if (req.body.medfollowup != "Per routine protocol") {
@@ -601,7 +610,7 @@ router.post('/goku', verifyToken, (req, res) => {
             if(lastdate.getHours() == latestdate.getHours() && 
                 lastdate.getMonth() == latestdate.getMonth() && 
                 lastdate.getDate() == latestdate.getDate()){
-                    
+                    console.log("same");
             }
             else{
                 // checking for condition that it is not auto genrated and last visit is not got save in last 5 minutes
@@ -633,6 +642,7 @@ router.post('/goku', verifyToken, (req, res) => {
                 console.log(err);
                 })
             }
+            next();
         }
     })
 
@@ -796,6 +806,7 @@ router.post("/login", (req, res) => {
 router.post('/basedata', verifyToken, (req, res) => {
     let data = req.body;
     let basedata = new MasterPatientModel(data);
+    console.log("basedata up"+basedata);
     MasterPatientModel.findOne({  name: basedata.name,dob: new Date(basedata.dob) }).then(res=>{
         if(res == null){
             if(!basedata.patientcreatedon){
@@ -1928,4 +1939,230 @@ router.get('/fetchByName', verifyToken, (req, res) => {
 })
 // fetchbyName ends
 
+router.get('/call', verifyToken, (req, res) => {
+    console.log("third step");
+    MasterPatientModel.find({},'-__v', (err, doc) => {
+        if (!err) {
+            console.log("Length " + doc.length);
+            fi = callit(doc);
+            setTimeout(() => {
+                console.log("sending to frontend"+fi.length);
+                const data = JSON.stringify(fi,null,4);
+                // const data = fi;
+                try {
+                    fs.writeFileSync('fi.json', data);
+                    console.log("JSON data is saved.");
+                } catch (error) {
+                    console.error(err);
+                }
+                res.json(fi);
+            }, 1000)
+        }
+        else {
+            console.log(err);
+        }
+    })
+})
+function callit(doc){
+    console.log(doc.length);
+for(let i=0;i<doc.length;i++){
+    if(doc[i].visits.length > 1){
+    let l = 0;
+    console.log(doc[i].name + "Before "+doc[i].visits.length );    
+    let k = doc[i].visits.length-1;
+    while(l < k){
+        console.log("starting pos : " + l + " lasy point : " + k);
+            if(l <= (k - 1)){
+            if(doc[i].visits[l].visit == null || doc[i].visits[l+1].visit == null ||
+                doc[i].visits[l].visit == undefined || doc[i].visits[l+1].visit == undefined ){
+                console.log("saved on is not available at this position : " + l);
+                l++;
+            }
+            else if(doc[i].visits[l].visit.getTime() == doc[i].visits[l+1].visit.getTime()){
+                console.log("Date and time is duplicate for position no : " + l + " and position : " + (l+1));
+                let o_id = new mongo.ObjectID(doc[i]._id);
+                let o_idd = new mongo.ObjectID(doc[i].visits[l+1]._id);
+                MasterPatientModel.update(
+                    {"_id":o_id},
+                    {$pull:
+                        {"visits": 
+                            { "_id" : o_idd }
+                        }
+                    },
+                    { safe: true, multi:true }
+                    ).then(res=>{
+                        console.log("working");
+                    },err=>{
+                        console.log(err);
+                    })
+                    doc[i].visits.splice((l+1),1);
+                    console.log("this position got deleted : " + (l+1));
+                k--;
+                MasterPatientModel.update(
+                    {"_id":o_id},
+                    {$set:
+                        {"__v":k}}
+                    ).then(res=>{
+                        // console.log("working" + res);
+                    },err=>{
+                        console.log(err);
+                    })
+                
+            }
+            else{
+                l++;
+            }
+        }
+        console.log("starting pos : " + l + " last point : " + k);
+    }
+}
+// newdb(doc[i]);
+}
+return doc;
+}
+function newdb(data){
+    let basedataa = new MasterPatientModell(data);
+    if(basedataa.visits.length > 1){
+    MasterPatientModel.update(
+        {"name":basedataa.name},
+        {$set:
+            {"visits":[] , "__v":0}}
+        ).then(res=>{
+            // console.log("working" + res);
+        },err=>{
+            console.log(err);
+        })
+
+    for(let ii=0;ii<basedataa.visits.length;ii++){
+        let masterdata = {
+            savedon : basedataa.visits[ii].savedon,
+            savedby : basedataa.visits[ii].savedby,
+            visit: new Date(basedataa.visits[ii].visit),
+            careconditiontimespent: basedataa.visits[ii].careconditiontimespent,
+            seedoc: basedataa.visits[ii].seedoc,
+            noseedocreason: basedataa.visits[ii].noseedocreason,
+            othernoseedocreason: basedataa.visits[ii].othernoseedocreason,
+            psynoseedocreason: basedataa.visits[ii].psynoseedocreason,
+            otherpsynoseedocreason: basedataa.visits[ii].otherpsynoseedocreason,
+            stable: basedataa.visits[ii].stable,
+            gdrstable: basedataa.visits[ii].gdrstable,
+            psythreapy: basedataa.visits[ii].psythreapy,
+            reasonpsy: basedataa.visits[ii].reasonpsy,
+            psyscreen: basedataa.visits[ii].psyscreen,
+            psyscreenreason: basedataa.visits[ii].psyscreenreason,
+            labs: basedataa.visits[ii].labs,
+            labname: basedataa.visits[ii].labname,
+            medmanage: basedataa.visits[ii].medmanage,
+            reasonmedmanage: basedataa.visits[ii].reasonmedmanage,
+            followup: basedataa.visits[ii].followup,
+            patientcondition: basedataa.visits[ii].patientcondition,
+            unstable_text: basedataa.visits[ii].unstable_text,
+            started: basedataa.visits[ii].started,
+            increase: basedataa.visits[ii].increase,
+            decrease: basedataa.visits[ii].decrease,
+            stopped: basedataa.visits[ii].stopped,
+            decrease2: basedataa.visits[ii].decrease2,
+            stopped2: basedataa.visits[ii].stopped2,
+            medstopdate: basedataa.visits[ii].medstopdate,
+            newappointmentrecord: basedataa.visits[ii].newappointmentrecord,
+            added: basedataa.visits[ii].added,
+            addeddate: basedataa.visits[ii].addeddate,
+            yesstable: basedataa.visits[ii].yesstable,
+            nostable: basedataa.visits[ii].nostable,
+            verystable: basedataa.visits[ii].verystable,
+            yesstablepsy: basedataa.visits[ii].yesstablepsy,
+            nostablepsy: basedataa.visits[ii].nostablepsy,
+            verystablepsy: basedataa.visits[ii].verystablepsy,
+            psymanage: basedataa.visits[ii].psymanage,
+            seepsy: basedataa.visits[ii].seepsy,
+            noseepsyreason: basedataa.visits[ii].noseepsyreason,
+            theligible: basedataa.visits[ii].theligible,
+            pinsurance: basedataa.visits[ii].pinsurance,
+            sinsurance: basedataa.visits[ii].sinsurance,
+            facility: basedataa.visits[ii].facility,
+            provider: basedataa.visits[ii].provider,
+            room: basedataa.visits[ii].room,
+            medication: basedataa.visits[ii].medication,
+            medicationName: basedataa.visits[ii].medicationName,
+            generictest: basedataa.visits[ii].generictest,
+            pcp: basedataa.visits[ii].pcp,
+            genericresult: basedataa.visits[ii].genericresult,
+            docterupload: basedataa.visits[ii].docterupload,
+            demographicsheetuploaded: basedataa.visits[ii].demographicsheetuploaded,
+            capacityassesment: basedataa.visits[ii].capacityassesment,
+            capacity: basedataa.visits[ii].capacity,
+            bhi: basedataa.visits[ii].bhi,
+            ccm: basedataa.visits[ii].ccm,
+            bhiconcent: basedataa.visits[ii].bhiconcent,
+            ccmconcent: basedataa.visits[ii].ccmconcent,
+            medmanage2: basedataa.visits[ii].medmanage2,
+            scaleeligible: basedataa.visits[ii].scaleeligible,
+            scale: basedataa.visits[ii].scale,
+            comment: basedataa.visits[ii].comment,
+            service_type: basedataa.visits[ii].service_type,
+            frequentlypsychotherapy: basedataa.visits[ii].frequentlypsychotherapy,
+            typevisit: basedataa.visits[ii].typevisit,
+            medreason: basedataa.visits[ii].medreason,
+            othermedreason: basedataa.visits[ii].othermedreason,
+            geneticreason: basedataa.visits[ii].geneticreason,
+            othergeneticreason: basedataa.visits[ii].othergeneticreason,
+            medreason2: basedataa.visits[ii].medreason2,
+            othermedreason2: basedataa.visits[ii].othermedreason2,
+            psyreason: basedataa.visits[ii].psyreason,
+            otherpsyreason: basedataa.visits[ii].otherpsyreason,
+            otherpsyscreenreason: basedataa.visits[ii].otherpsyscreenreason,
+            bhireason: basedataa.visits[ii].bhireason,
+            otherbhireason: basedataa.visits[ii].otherbhireason,
+            ccmreason: basedataa.visits[ii].ccmreason,
+            otherccmreason: basedataa.visits[ii].otherccmreason,
+            homeclinic: basedataa.visits[ii].homeclinic,
+            homeclinicconcent: basedataa.visits[ii].homeclinicconcent,
+            homeclinicreason: basedataa.visits[ii].homeclinicreason,
+            otherhomeclinicreason: basedataa.visits[ii].otherhomeclinicreason,
+            masterstable: basedataa.visits[ii].masterstable,
+            masterstablereason: basedataa.visits[ii].masterstablereason,
+            typevisitreason: basedataa.visits[ii].typevisitreason,
+            thtime: basedataa.visits[ii].thtime,
+            consult: basedataa.visits[ii].consult,
+            conpsy: basedataa.visits[ii].conpsy,
+            conmed: basedataa.visits[ii].conmed,
+            conscr: basedataa.visits[ii].conscr,
+            conpsyreason: basedataa.visits[ii].conpsyreason,
+            conmedreason: basedataa.visits[ii].conmedreason,
+            conscrreason: basedataa.visits[ii].conscrreason,
+            conpsyname: basedataa.visits[ii].conpsyname,
+            currentmeds: basedataa.visits[ii].currentmeds,
+            psy_symptoms: basedataa.visits[ii].psy_symptoms,
+            meds_symptoms: basedataa.visits[ii].meds_symptoms,
+            exmeds: basedataa.visits[ii].exmeds,
+            scaleinfo: basedataa.visits[ii].scaleinfo,
+            np: basedataa.visits[ii].np,
+            cch: basedataa.visits[ii].cch,
+            cchconcent: basedataa.visits[ii].cchconcent,
+            cchdate: basedataa.visits[ii].cchdate,
+            cchreason: basedataa.visits[ii].cchreason,
+            othercchreason: basedataa.visits[ii].othercchreason,
+            medfollowup: basedataa.visits[ii].medfollowup,
+            followupreason: basedataa.visits[ii].followupreason,
+            followupdays: basedataa.visits[ii].followupdays,
+            scaleeligiblereason: basedataa.visits[ii].scaleeligiblereason,
+            otherscaleeligiblereason: basedataa.visits[ii].otherscaleeligiblereason,
+            scaledays: basedataa.visits[ii].scaledays,
+            summary: basedataa.visits[ii].summary,
+            nextvisitdate: basedataa.visits[ii].nextvisitdate
+        }
+        MasterPatientModel.findById(basedataa._id, (err, doc) => {
+            doc.visits.push(masterdata);
+            doc.save().then(res => {
+            console.log("add");
+            logger.info("Visit data saved for patient "+ basedataa.name);
+            }, err => {
+            logger.error("Error in saving visit data for patient");
+            console.log(err);
+            })
+        })
+    }
+}
+    console.log(basedataa.name + "after " + basedataa.visits.length);
+}
 module.exports = router;
