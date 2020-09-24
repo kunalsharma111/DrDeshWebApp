@@ -1652,3 +1652,16 @@
 {"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-02T05:38:46.108Z"}
 {"message":"DB connected:","level":"info","timestamp":"2020-09-02T05:38:52.082Z"}
 {"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-02T05:47:16.256Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-24T10:47:32.223Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-24T10:47:35.981Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:29.489Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:35.159Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:36.549Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:39.019Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-24T11:11:39.381Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-24T11:11:40.139Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:12:04.299Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:12:05.392Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:12:12.523Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-24T11:12:12.565Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-24T11:12:12.981Z"}
