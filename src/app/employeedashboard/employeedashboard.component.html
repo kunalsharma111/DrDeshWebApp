@@ -1,26 +1,73 @@
 <div id="wrapper">
   <app-shareddashboard></app-shareddashboard>
   <section id="content-wrapper" style=" padding-left: 0rem;  ">
-    <div class="row">
-      <div class="col-lg-12">
-        <h2 class="content-title">Employee Dashboard</h2>
-        <div class="box">
-          <div class="row">
-            <div class="col-md-1">
-              <img src=""  *ngIf="roleType !== 'Admin'"  alt="Attach File" class="style_prevu_kit a1 fa fa-paperclip" [routerLink]="['/attachfile']">
-            </div>
-            <div class="col-md-1 gop"></div>
-            <!-- <div class="col-md-1">
-              <img src="" class="style_prevu_kit" [routerLink]="['/facility']">
-            </div> -->
-            <!-- <div class="col-md-1 gop" ></div> -->
-            <!-- <div class="col-md-1">
-              <img src="/assets/img/dash/dl3.png" class="style_prevu_kit" [routerLink]="['/provider']">
-            </div> -->
-            <!-- <div class="col-md-1 gop"></div> -->
+      <div class="row">
+          <div class="col-lg-12">
+              <h2 class="content-title">Employee Dashboard</h2>
           </div>
-        </div>
+          <div class="box"></div>
       </div>
-    </div>
+      <div class="row reports goa">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">
+              <figure>
+                  <div>
+                      <span [routerLink]="['/attachfile']">Upload Document<i
+                              class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>Upload Document</span>
+                  </div>
+              </figure>
+          </div>
+          <div class="col-md-3">
+              <figure>
+                  <div>
+                      <span data-toggle="modal" data-target="#myModalap2">calendar <i
+                              class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                      <span>calendar</span>
+                  </div>
+              </figure>
+          </div>
+          <div class="col-md-3">
+              <figure>
+                  <div>
+                      <span><a href="https://vacationtracker.io/" target="_blank">Vacation Tracker<i
+                              class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                      <span>Vacation Tracker</span>
+                  </div>
+              </figure>
+          </div>
+      </div>
+      <div class="row reports goa">
+          <div class="col-md-1"></div>
+          <div class="col-md-3">
+              <figure>
+                  <div>
+                      <span><a href="https://www.adp.com/" target="_blank">Adp<i
+                              class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                      <span>Adp</span>
+                  </div>
+              </figure>
+          </div>
+      </div>
   </section>
+</div>
+
+<div class="modal lol fade" id="myModalap2" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content mc1">
+            <p style="text-align: end; margin:25px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+                    aria-hidden="true"></i></p>
+            <div class="modal-body">
+                <div class="row topMargin">
+                    <div class="col-md-1">
+                        <img src="/assets/img/login/logo.png" height="100px">
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
+                    </div>
+                </div>
+                <iframe  class="leftMargin"style="border: 0" width="1000" height="500" frameborder="0" scrolling="no" [src]="urlSafe"></iframe>
+            </div>
+        </div>
+    </div>
 </div>

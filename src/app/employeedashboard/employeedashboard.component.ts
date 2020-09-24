@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTransferService, Admin } from '../shared/data-transfer.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 declare var $: any;
 
 
@@ -11,13 +12,17 @@ declare var $: any;
 })
 export class EmployeeDashboardComponent implements OnInit {
   roleType;
+  name = 'Set iframe source';
+  url = 'https://calendar.google.com/calendar/embed?src=balwellbeing%40gmail.com&ctz=America%2FNew_York';
+  urlSafe: SafeResourceUrl;
 
-  constructor(public service: DataTransferService) { }
+  constructor(public service: DataTransferService, public sanitizer: DomSanitizer) { }
   user;
   fname;
   role;
   metaData;
   ngOnInit() {
+    this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
     if (this.service.getRole() === undefined ) {
       this.service.setRoleTypeAfterRefresh().subscribe(res => {
         this.roleType = res.userrole;

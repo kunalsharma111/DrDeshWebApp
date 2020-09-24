@@ -6,6 +6,17 @@ $yellow: #f4e5a9;
 a {
     transition: background 0.2s, color 0.2s;
 }
+
+.dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dott{
+  background-color: green;
+}
 a:hover,
 a:focus {
     text-decoration: none;
@@ -740,11 +751,20 @@ background-color: #87c442;
 }
 .table {
     // border: 1px solid black;
-    width: 85%;
+    width: 90%;
     margin-left: 55px;
-    margin-top: 101px;
+    margin-top: 95px;
+    font-size: 12px;
     padding-right: 70px;
 }
+.noteTableTopMargin {
+    margin-top: 14px;
+}
+
+.tableSelectColumn {
+    column-width: 110px;
+}
+
 tbody tr td{
     // width: 50px;
     // background-color: red;
@@ -753,8 +773,26 @@ tbody tr td{
     text-align: center;
     vertical-align: middle;
 }
+
+.notebox {
+    background: beige;
+    padding: 0.5%;
+    margin-top: 9px;
+    margin-left: 55px;
+    width: 90%;
+    font-size: 15px;
+	margin-bottom: -50px;
+}
+
+.notebox ul li {
+    padding: 0px 0px 5px 15px;
+    color: #293f67;
+    background: url("/assets/img/shared/arrow_left.png") no-repeat 0px 5px;
+    list-style-type: none;
+}
+
 .table tbody td{
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
 }
 label{

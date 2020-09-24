@@ -53,14 +53,11 @@
         <li *ngIf="roleType !== 'Admin'">
             <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Employee Documents</a>
         </li>
+        <li>
+            <a [routerLink]="['/dash']"><i class="fa fa-user-o"></i>Patient Dashboard</a>
+        </li>
         <li *ngIf="roleType == 'Admin'">
             <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Document Approvals</a>
-        </li>
-        <li *ngIf="roleType !== 'Admin'">
-            <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Employee Calendar</a>
-        </li>
-        <li *ngIf="roleType !== 'Admin'">
-            <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Employee Reimbursement</a>
         </li>
 
     </ul>

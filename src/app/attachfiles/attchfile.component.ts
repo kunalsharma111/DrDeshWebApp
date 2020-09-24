@@ -19,7 +19,7 @@ export class AttchFileComponent implements OnInit {
   imagess: any = [];
   elements: any = [];
   loadFilesFromUrl ;
-
+  provider = ["APRN", "LCSW", "PA", "Psychiatrist", "Psychologists"];
   // elements: any = [
   //   {documentname: 'Statement of SSC ', uploadbttonflag: false,
   //    documentstatus: 'Not Submited', filename: '' , documenttype: 'uploadfile', documentlink: '', templateform: ''},
@@ -73,6 +73,10 @@ export class AttchFileComponent implements OnInit {
     const str = this.service.metcha;
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
 
+  }
+
+  checkForProvider(elements) {
+    return JSON.stringify(this.provider) === JSON.stringify(elements.sort());
   }
 
   getUploadedFiles() {

@@ -26,6 +26,7 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
   loadFilesFromUrl;
   reponseForSearchEmployee;
   selectedQuantity;
+  getAllDocuments;
   employeeData = {
     _id: '',
     fname: '',
@@ -39,8 +40,6 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
   });
 
   changeStatus() {
-    console.log('selectedQuantity', this.selectedQuantity);
-    console.log(this.employeeDocuments);
     this.service.getEmployeeDocuemnt({
       documentstatus : this.selectedQuantity
     }).subscribe(res => {
@@ -50,7 +49,6 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
   }
 
   reset() {
-    console.log('hi');
     this.selectedQuantity = '';
     this.searchString = '';
     this.employeeDocuments = [];
@@ -73,6 +71,7 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
         this.service.getEmployeeDocuemnt(params).subscribe(res => {
           this.reponseForSearchEmployee = res;
           this.employeeDocuments = res === 'no' ? [] : res;
+          // this.getUploadedFiles();
         });
       });
 
@@ -82,6 +81,10 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
     $button.addEventListener('click', (e) => {
       e.preventDefault();
       $wrapper.classList.toggle('toggled');
+    });
+
+    this.service.getRequireDocuemnts().subscribe(res => {
+      this.getAllDocuments = res;
     });
 
   }

@@ -28,14 +28,100 @@
         </section>
 
     </section> -->
+    <div class="notebox">
+        <h4>Note :</h4>
+        <ul>
+            <li>Upload Scanned Documents.</li>
+            <li><b>Employee will have to upload all the relevant documents as per his/her position. The same documents need to be produced at Admin side for confirmation.</b></li>
+            <table class="table table-bordered table-sm noteTableTopMargin">
+                    <thead>
+                        <tr>
+                        <th>Sr.No</th>
+                        <th>Role</th>
+                        <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Provider</td>
+                            <td>Provider means APRN, PA, Psychiatrist, Psychologist, or LCSW</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>MA</td>
+                            <td>MA means Medical Assistants</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>APRN</td>
+                            <td>APRN means Nurse Practitioner</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>PA</td>
+                            <td>PA means Physician Assistant</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Psychologists</td>
+                            <td>Psychologists means PhD or PsyD</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>LCSW</td>
+                            <td>LCSW means Licensed Social Worker or Licensed Mental Health Counselor</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>ALL</td>
+                            <td>Indicates Documents are Compulsory for all Employee</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <table class="table table-bordered table-sm noteTableTopMargin">
+                <thead>
+                    <tr>
+                    <th>Sr.No</th>
+                    <th>Document Status</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Submited</td>
+                        <td>Documents uploaded By Employee.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Not Submited</td>
+                        <td>Documents not uploaded By Employee.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Approved</td>
+                        <td>Indicates Documents Approve By Admin.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Rejected</td>
+                        <td>Documents Reject By Admin.</td>
+                    </tr>
 
+                </tbody>
+            </table>
+
+        </ul>
+    </div>
     <table class="table table-bordered table-sm">
         <thead>
             <tr>
             <th>Sr.No</th>
             <th>List of Documents</th>
+            <th>Applicable <br>For</th>
             <!-- <th>Download/Online Form Fill It and Upload</th> -->
-            <th>Select File</th>
+            <th class="tableSelectColumn">Select File</th>
             <th>Upload</th>
             <th>Status</th>
             <th>View</th>
@@ -47,15 +133,26 @@
             <td>{{indexOfelement+1}}</td>
             <td>{{element.documentname}}
                 <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open Digital Document</a>
-                <a  *ngIf="element.templateform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.templateform}}"  target="_blank" download> Download Template/Form</a>
+                <a  *ngIf="element.templateform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.templateform}}"  target="_blank" download> <br>Download Template/Form</a>
+            </td>
+            <td>
+                <div *ngFor="let applicable  of element.applicablefor; let indexOfApplicable = index;">
+                    <div *ngIf="checkForProvider(element.applicablefor) && indexOfApplicable === 0">
+                           PROVIDER
+                    </div>
+                    <div *ngIf="checkForProvider(element.applicablefor) !== true">
+                        {{ applicable | uppercase}}
+                        {{element.applicablefor.length !== indexOfApplicable+1 ? "," :"" }}
+                    </div>
+                </div>
             </td>
             <!-- <td>
                 <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open Digital Document</a>
                 <a  *ngIf="element.templateform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.templateform}}"  target="_blank" download> Download Template/Form</a>
             </td> -->
-            <td>
+            <td class="tableSelectColumn">
                 <label [ngClass]="{'btn-blue3': ['Submited', 'Approved'].includes(element.documentstatus), 'btn-blue2': ['Not Submited', 'Rejected'].includes(element.documentstatus), 'upload': true}"  style="width:100%" *ngIf="element.documentlink === ''">
-                    <i class="fa fa-upload"></i> &nbsp; Select Document
+                    <i class="fa fa-upload"></i> &nbsp; Select
                     <input type="file" [disabled]="element.documentstatus == 'Submited' || element.documentstatus == 'Approved'" class="form-control sr-only UploadInput" (change)="fileProgress(indexOfelement ,$event)" name="file" >
                 </label>
             </td>
