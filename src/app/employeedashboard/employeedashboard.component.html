@@ -9,7 +9,7 @@
       </div>
       <div class="row reports goa">
           <div class="col-md-1"></div>
-          <div class="col-md-3">
+          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
               <figure>
                   <div>
                       <span [routerLink]="['/attachfile']">Upload Document<i
@@ -27,7 +27,7 @@
                   </div>
               </figure>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
               <figure>
                   <div>
                       <span><a href="https://vacationtracker.io/" target="_blank">Vacation Tracker<i
@@ -37,9 +37,9 @@
               </figure>
           </div>
       </div>
-      <div class="row reports goa">
+      <div class="row reports goa" >
           <div class="col-md-1"></div>
-          <div class="col-md-3">
+          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
               <figure>
                   <div>
                       <span><a href="https://www.adp.com/" target="_blank">Adp<i
