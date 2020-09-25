@@ -3,7 +3,7 @@ import { combined, DataTransferService } from '../shared/data-transfer.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of, from, fromEvent } from 'rxjs';
-import { map, first, filter } from 'rxjs/operators'
+import { map, first, filter } from 'rxjs/operators';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
@@ -41,7 +41,7 @@ export class CombinepatComponent implements OnInit {
     scale_date: string;
     scale_score: number;
     scaledays: string;
-  }
+  };
   p_id: string;
   masterobj;
   update = false;
@@ -49,7 +49,7 @@ export class CombinepatComponent implements OnInit {
   stringdate: string;
   cd: Date;
   kd;
-  default_scales = ['PHQ9', 'GDS', "BIMS", "MMSE", "BTQ", 'LEC-5', 'GAD', "BAI"];
+  default_scales = ['PHQ9', 'GDS', 'BIMS', 'MMSE', 'BTQ', 'LEC-5', 'GAD', 'BAI'];
   scale60days = ['PHQ9', 'GDS', 'BIMS', 'MMSE', 'GAD', 'BAI', 'BEHAVE-AD', 'RMBC', 'MOCA', 'NPQ', 'ISI', 'AIS', 'PNASS', 'BPRS'];
 
   ngOnInit() {
@@ -68,7 +68,7 @@ export class CombinepatComponent implements OnInit {
       if (res.visit !== undefined) {
         this.combined = res.visit;
         this.update = true;
-        this.combined.visit = new Date()
+        this.combined.visit = new Date();
         console.log('########################################################################');
         setTimeout(() => {
           var x = this.el.nativeElement.querySelectorAll('.chkbx');
@@ -78,7 +78,7 @@ export class CombinepatComponent implements OnInit {
           this.el.nativeElement.querySelector('#cid').value = this.stringdate;
           x.forEach((item, index) => {
             this.masterobj.visit.exmeds.forEach(med => {
-              if (med.name == item.value) {
+              if (med.name === item.value) {
                 item.checked = true;
                 status[index].value = med.status;
                 if (med.status == "Approved")
@@ -187,7 +187,7 @@ export class CombinepatComponent implements OnInit {
     this.service.getActiveProvider().subscribe(res => {
       this.providers = res;
     })
-    console.log(this.update)
+    console.log(this.update);
   }
   unstable_syms = ['depression', 'anxiety', 'mania', 'psychosis', 'dementia progression and related behaviors', 'delirium and related behaviors', 'pseudobulbar affect']
   type_visits = ['Med-management follow up',  'Psycothreapy', 'Case Management/Psychiatric screenings', 'Care coordination time spent']
@@ -343,206 +343,186 @@ export class CombinepatComponent implements OnInit {
     var ff = form.value;
     var what;
         // decrease stopped2 medstopdate started increase decrease2  added addeddate
-        this.service.getByid(this.p_id).subscribe(res => {
-        solution = JSON.stringify(res);
-        this.patientdetail = JSON.parse(solution);
-        console.log(this.patientdetail.visit);
-        if(this.patientdetail.visit == undefined){
-        console.log("first visit");
-        if(ff.increase != undefined){
-          console.log("7 days 1");
+    this.service.getByid(this.p_id).subscribe(res => {
+      solution = JSON.stringify(res);
+      this.patientdetail = JSON.parse(solution);
+      console.log(this.patientdetail.visit);
+      if (this.patientdetail.visit === undefined) {
+        console.log('first visit');
+        if (ff.increase !== undefined) {
+          console.log('7 days 1');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.decrease != undefined){
-          console.log("7 days 2");
+        } else if (ff.decrease !== undefined) {
+          console.log('7 days 2');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.stopped2 != undefined){
-          console.log("7 days 3");
+        } else if (ff.stopped2 !== undefined) {
+          console.log('7 days 3');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.medstopdate != undefined){
-          console.log("7 days 4");
+        } else if (ff.medstopdate !== undefined) {
+          console.log('7 days 4');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.started != undefined){
-          console.log("7 days 5");
+        } else if (ff.started !== undefined) {
+          console.log('7 days 5');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.decrease2 != undefined){
-          console.log("7 days 6");
+        } else if (ff.decrease2 !== undefined) {
+          console.log('7 days 6');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.added != undefined){
-          console.log("7 days 7");
+        } else if (ff.added !== undefined) {
+          console.log('7 days 7');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else if(ff.addeddate != undefined){
-          console.log("7 days 8");
+        } else if (ff.addeddate !== undefined) {
+          console.log('7 days 8');
           let dd = ff.visit;
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*7);
+          dd.setHours(dd.getHours() + 24 * 7);
           nextDate = dd;
           console.log(nextDate);
-        }
-        else{
-          console.log("30 days");
+        } else {
+          console.log('30 days');
           let dd = ff.visit;
-          if(dd == null){
+          if (dd == null) {
             dd = new Date();
           }
           console.log(dd);
-          dd.setHours(dd.getHours() + 24*30);
+          dd.setHours(dd.getHours() + 24 * 30);
           nextDate = dd;
           console.log(nextDate);
         }
-      }
-      else{
+      } else {
         what = this.patientdetail.visit.visit;
         console.log(what);
         const todaysdate = new Date();
         const perdate = new Date(this.patientdetail.visit.nextvisitdate);
-        todaysdate.setHours(0,0,0,0);
-        perdate.setHours(0,0,0,0);
-        if(ff.medfollowup == "Per routine protocol"){
-        console.log("per rounding date getting set up");
-      if(ff.increase != this.patientdetail.visit.increase){
-        console.log("7 days 1");
+        todaysdate.setHours(0, 0, 0, 0);
+        perdate.setHours(0, 0, 0, 0);
+        if (ff.medfollowup === 'Per routine protocol') {
+          console.log('per rounding date getting set up');
+          if (ff.increase !== this.patientdetail.visit.increase) {
+        console.log('7 days 1');
         let dd = ff.visit;
         console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
+        dd.setHours(dd.getHours() + 24 * 7);
         nextDate = dd;
         console.log(nextDate);
-      }
-      else if(ff.decrease != this.patientdetail.visit.decrease){
-        console.log("7 days 2");
+      } else if (ff.decrease !== this.patientdetail.visit.decrease) {
+          console.log('7 days 2');
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24 * 7);
+          nextDate = dd;
+          console.log(nextDate);
+      } else if (ff.stopped2 !== this.patientdetail.visit.stopped2) {
+          console.log('7 days 3');
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24 * 7);
+          nextDate = dd;
+          console.log(nextDate);
+      } else if (ff.medstopdate !== this.patientdetail.visit.medstopdate) {
+          console.log('7 days 4');
+          let dd = ff.visit;
+          console.log(dd);
+          dd.setHours(dd.getHours() + 24 * 7);
+          nextDate = dd;
+          console.log(nextDate);
+      } else if (ff.started !== this.patientdetail.visit.started) {
+        console.log('7 days 5');
         let dd = ff.visit;
         console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
+        dd.setHours(dd.getHours() + 24 * 7);
         nextDate = dd;
         console.log(nextDate);
-      }
-      else if(ff.stopped2 != this.patientdetail.visit.stopped2){
-        console.log("7 days 3");
+      } else if (ff.decrease2 !== this.patientdetail.visit.decrease2) {
+        console.log('7 days 6');
         let dd = ff.visit;
         console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
+        dd.setHours(dd.getHours() + 24 * 7);
         nextDate = dd;
         console.log(nextDate);
-      }
-      else if(ff.medstopdate != this.patientdetail.visit.medstopdate){
-        console.log("7 days 4");
+      } else if (ff.added !== this.patientdetail.visit.added) {
+        console.log('7 days 7');
         let dd = ff.visit;
         console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
+        dd.setHours(dd.getHours() + 24 * 7);
         nextDate = dd;
         console.log(nextDate);
-      }
-      else if(ff.started != this.patientdetail.visit.started){
-        console.log("7 days 5");
+      } else if (ff.addeddate !== this.patientdetail.visit.addeddate) {
+        console.log('7 days 8');
         let dd = ff.visit;
         console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
+        dd.setHours(dd.getHours() + 24 * 7);
         nextDate = dd;
         console.log(nextDate);
-      }
-      else if(ff.decrease2 != this.patientdetail.visit.decrease2){
-        console.log("7 days 6");
+      } else {
+        console.log('30 days');
         let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-      }
-      else if(ff.added != this.patientdetail.visit.added){
-        console.log("7 days 7");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-      }
-      else if(ff.addeddate != this.patientdetail.visit.addeddate){
-        console.log("7 days 8");
-        let dd = ff.visit;
-        console.log(dd);
-        dd.setHours(dd.getHours() + 24*7);
-        nextDate = dd;
-        console.log(nextDate);
-      }
-      else{
-        console.log("30 days");
-        let dd = ff.visit;
-        if(dd == null){
+        if (dd == null) {
           dd = new Date();
-        }
-        else{
+        } else {
           dd = new Date(dd);
         }
         console.log(dd);
-        dd.setHours(dd.getHours() + 24*30);
+        dd.setHours(dd.getHours() + 24 * 30);
         nextDate = dd;
         console.log(nextDate);
       }
+    } else {
+      console.log('empty it !');
     }
-    else{
-      console.log("empty it !");
-    }
-    }
-    })
+    } console.log('yes');
+    });
 
     let summary = '';
     // var getdate = this.nextvisitdate(this.p_id,form);
-
     if (form.valid) {
       setTimeout(() => {
       if(this.combined.visit == null || this.combined.visit == undefined ){
         this.combined.visit =  new Date();
       }
-      console.log(what);
-      console.log(form.value.visit);
-      console.log(this.combined.visit);
-      // this.combined.visit = what;
-      console.log(form.value.nextvisitdate);
+      // console.log(what);
+      // console.log(form.value.visit);
+      // console.log(this.combined.visit);
+      this.combined.visit = what;
+      // console.log(form.value.nextvisitdate);
       form.value.nextvisitdate = nextDate;
       console.log(form.value.nextvisitdate);
       let todays_date = new Date();
-      console.log(todays_date);
+      // console.log(todays_date);
       if(form.value.visit == form.value.nextvisitdate){
-        console.log("panga edr hai");
+        // console.log("panga edr hai");
         form.value.visit = todays_date;
-        console.log(form.value.visit);
+        // console.log(form.value.visit);
       }
       else{
-        console.log("dont know");
+        // console.log("dont know");
       }
       var x = this.el.nativeElement.querySelectorAll('.chkbx');
       var status = this.el.nativeElement.querySelectorAll('.medstatus');
@@ -550,14 +530,16 @@ export class CombinepatComponent implements OnInit {
       let medData: any = [];
       let stream$ = from(x);
       this.combined.flag = 1;
+      // first
       stream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
-        let meddata: any = {}
+        let meddata: any = {};
         meddata.name = res.value;
         let parstat = status[parseInt(res.id) - 1].value;
         meddata.status = parstat;
         if (parstat == 'Approved')
           meddata.date = date[res.id - 1].value;
         medData.push(meddata);
+        console.log("i am complete now first");
       })
       console.log(medData)
 
@@ -569,6 +551,7 @@ export class CombinepatComponent implements OnInit {
       let scaleData = [];
       var scalestream$ = from(scalechkbx);
       let p_s = [];
+      // second
       scalestream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         let scaledata: any = {}
         scaledata.scale_name = res.value;
@@ -581,27 +564,33 @@ export class CombinepatComponent implements OnInit {
         scaledata.scaledays = scaledayss[res.id - 100].value;
         console.log(scaledayss);
         scaleData.push(scaledata);
+        console.log("i am complete now 2");
       })
 
       var medsyms = this.el.nativeElement.querySelectorAll('.symtoms_meds');
       let syn_meds = [];
       var med_syn_stream$ = from(medsyms);
+      // third
       med_syn_stream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         syn_meds.push(res.value);
-      })
+        console.log('i am complete now 3');
+      });
 
       var psysyms = this.el.nativeElement.querySelectorAll('.symtoms_psy');
       let syn_psy = [];
       var psy_syn_stream$ = from(psysyms);
-      console.log(psysyms)
+      console.log(psysyms);
+      // fourth
       psy_syn_stream$.pipe(filter((val: any) => val.checked)).subscribe((res: any) => {
         syn_psy.push(res.value);
         console.log(res)
+        console.log("i am complete now 4");
       })
       var psy_psyms = { psy_symptoms: syn_psy }
       var med_syms = { meds_symptoms: syn_meds }
       var meds = { exmeds: medData }
       var scaleinfo = { scaleinfo: scaleData }
+      // fifth
       summary += `Date: ${new Date(this.combined.visit).toString().slice(0,15)}  |  Provider name: ${form.value.provider} . | `
       if (form.value.generictest == 'no') {
         if (form.value.geneticreason) {
@@ -704,6 +693,7 @@ export class CombinepatComponent implements OnInit {
       if (form.value.medfollowup == 'Urgent' || form.value.medfollowup == 'Very Urgent') {
         summary += `Patient condition is ${form.value.medfollowup} | `
       }
+      console.log("i am complete now 5");
       let formdata = form.value;
       // formdata.visit = this.combined.visit;
       if (formdata.followup == "") {
@@ -711,20 +701,18 @@ export class CombinepatComponent implements OnInit {
       }
       formdata.summary = summary;
       let masterptdata = { ...meds, ...med_syms, ...psy_psyms, ...scaleinfo, ...formdata};
-      console.log("masterptdata", masterptdata)
+      console.log("masterptdata", masterptdata);
       this.service.submitMasterPatientData(masterptdata);
-      if (this.previousRoute == '/patient') {
+      if (this.previousRoute === '/patient') {
         this.router.navigate(['/patient']);
       } else {
         this.gotoreport();
       }
       this.toastr.success('', 'Patient Record Updated Successfully');
-    }, 3000)
-    }
-    else {
+    }, 3000);
+    } else {
       this.notvalidate = true;
     }
-
     // this.resetForm();
   }
   app() {
@@ -759,14 +747,14 @@ export class CombinepatComponent implements OnInit {
     this.service.toreport('yes');
   }
   fill(e) {
-    if (e == "yes" && this.combined.flag == 0) {
+    if (e === 'yes' && this.combined.flag === 0) {
       setTimeout(() => {
         this.el.nativeElement.querySelectorAll('.scaleschkbx').forEach(res => {
           if (this.default_scales.includes(res.value)) {
             res.checked = 1;
           }
-        })
-      }, 1000)
+        });
+      }, 1000);
       // setTimeout(()=>{
       //   this.masterobj.visit.scaleinfo.forEach(res => {
       //     if (this.scale60days.includes(res.value)) {

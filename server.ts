@@ -26,6 +26,8 @@ import { join, resolve } from "path";
 const app = express();
 require("./models/db");
 
+const logger = require("./logger/logger");
+const compression = require('compression');
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), "dist/browser");
 
@@ -38,6 +40,7 @@ const {
 } = require("./dist/server/main");
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+app.use(compression());
 app.use(cors());
 app.engine(
   "html",
@@ -73,5 +76,6 @@ app.get("*", (req, res) => {
 
 // Start up the Node server
 app.listen(PORT, () => {
-  console.log(`Node Express server listening on http://localhost:${PORT}`);
+    logger.info(`Node Express server listening on http://localhost:${PORT}`);
+  // console.log(`Node Express server listening on http://localhost:${PORT}`);
 });

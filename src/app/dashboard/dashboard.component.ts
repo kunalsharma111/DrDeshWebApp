@@ -58,6 +58,10 @@ export class DashboardComponent implements OnInit {
       // $('.centered1').css('display', 'none');
     });
   }
+  zxc(){
+    console.log("first step");
+    this.service.call();
+  }
   logout() {
     this.service.logout();
   }

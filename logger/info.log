@@ -1,0 +1,1711 @@
+{"level":"info","message":"Node Express server listening on http://localhost : ${PORT}","timestamp":"2020-08-17T07:16:58.391Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-17T07:30:18.549Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-17T08:27:39.099Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-17T08:27:42.068Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-17T11:00:37.087Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-17T11:00:40.363Z"}
+{"message":"Invalid Email ","level":"info","timestamp":"2020-08-17T11:04:02.838Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:04:03.680Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:04:39.750Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:04:53.581Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-17T11:04:54.437Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-17T11:04:54.555Z"}
+{"message":"Pre-rounding report got created","level":"info","timestamp":"2020-08-17T11:05:27.733Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-17T11:05:41.623Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T05:22:44.855Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T05:22:50.658Z"}
+{"message":"Invalid Email ","level":"info","timestamp":"2020-08-18T05:43:38.276Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T05:43:39.547Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T05:44:05.447Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T05:44:07.184Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T05:44:07.748Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T07:49:56.517Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T07:50:00.067Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:50:12.895Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:50:16.822Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T07:50:17.516Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:51:37.957Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:51:41.692Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T07:51:42.349Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:52:45.476Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T07:52:46.024Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:52:59.353Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-18T07:52:59.408Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:53:01.000Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-18T07:53:01.017Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:54:05.044Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T07:54:48.954Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T08:53:28.971Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T08:53:31.874Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:56:05.596Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:56:09.939Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T08:56:10.670Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:57:10.424Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-18T08:57:10.817Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:58:30.732Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-18T08:58:30.757Z"}
+{"message":"New medicine got saved check","level":"info","timestamp":"2020-08-18T08:58:39.204Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T08:58:39.212Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-18T08:58:39.506Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T09:18:09.363Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T09:18:13.758Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T10:14:20.513Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T10:14:23.395Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T10:32:28.199Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T10:32:31.434Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T11:10:43.884Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T11:10:47.419Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-18T11:11:38.010Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-18T11:32:38.568Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-18T11:32:42.310Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T07:12:58.657Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T07:13:01.647Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:21:22.530Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:21:27.927Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-19T07:21:28.259Z"}
+{"message":"New medicine got saved tess","level":"info","timestamp":"2020-08-19T07:21:46.417Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:21:46.427Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-19T07:21:46.990Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:23:22.188Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:23:25.220Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:25:58.820Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:05.594Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:06.283Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:06.799Z"}
+{"message":"getting all the provider data","level":"info","timestamp":"2020-08-19T07:26:06.902Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:06.969Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:07.309Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:07.367Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:07.759Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-19T07:26:07.770Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:08.113Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:10.275Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-19T07:26:10.333Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-19T07:26:10.645Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-19T07:26:10.675Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:10.682Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:11.324Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:11.337Z"}
+{"message":"getting all the provider data","level":"info","timestamp":"2020-08-19T07:26:11.625Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:11.685Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:11.703Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-19T07:26:12.142Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:12.178Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:12.851Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:13.215Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:13.532Z"}
+{"message":"getting all the provider data","level":"info","timestamp":"2020-08-19T07:26:13.890Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:13.923Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:13.935Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-19T07:26:14.804Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:14.840Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:14.867Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:15.225Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-19T07:26:15.530Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:15.615Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:15.953Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:16.500Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:18.002Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-19T07:26:18.369Z"}
+{"message":"getting all the provider data","level":"info","timestamp":"2020-08-19T07:26:18.423Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:18.431Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:18.448Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:18.987Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:19.005Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:19.681Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-19T07:26:19.705Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:20.098Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-19T07:26:20.119Z"}
+{"message":"getting all the provider data","level":"info","timestamp":"2020-08-19T07:26:20.158Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:20.551Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-19T07:26:20.889Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:26:55.455Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:27:59.280Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:28:24.787Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:33:05.844Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:35:06.380Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:36:04.296Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T07:39:20.317Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T07:39:25.818Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:41:28.430Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:41:53.621Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T07:43:38.863Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T07:43:41.278Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:44:12.253Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:46:49.949Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T07:49:27.338Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T07:49:29.952Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T07:52:12.585Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T07:52:15.709Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T07:52:39.726Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T07:54:20.484Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T07:54:24.348Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T08:04:42.193Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T08:04:44.924Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T08:15:06.462Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T08:15:09.035Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T08:20:59.182Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T08:21:01.464Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T08:26:27.859Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T08:26:31.510Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T08:42:55.214Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T08:42:58.248Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T09:26:49.257Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T09:26:52.834Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T09:30:12.659Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T09:30:16.389Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T09:56:55.232Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T09:56:57.936Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-19T09:57:28.311Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T10:02:24.870Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T10:02:28.213Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T10:05:59.457Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T10:06:01.964Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T10:13:54.603Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T10:13:58.163Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T10:23:50.297Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T10:23:52.468Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T10:44:52.139Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T10:44:55.022Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T10:53:49.225Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T10:53:51.991Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T11:05:10.771Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T11:05:13.928Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T11:11:33.701Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T11:11:36.895Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T11:24:46.891Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T11:24:49.580Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T11:29:09.509Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T11:29:12.324Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T11:44:01.696Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T11:44:04.513Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T11:50:19.425Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T11:50:23.046Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T12:11:05.212Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T12:11:08.492Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T12:18:19.002Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T12:18:21.445Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T12:36:56.950Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T12:36:59.188Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T12:40:46.114Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T12:40:48.814Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T12:47:04.643Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T12:47:07.203Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T12:57:49.452Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T12:57:52.015Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-19T13:03:45.257Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-19T13:03:48.167Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T05:16:45.610Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T05:16:48.557Z"}
+{"message":"Invalid Email ","level":"info","timestamp":"2020-08-20T05:19:28.443Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T05:19:29.871Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T05:28:39.681Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T05:28:42.165Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T05:36:57.515Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T05:37:00.200Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T05:46:33.818Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T05:46:49.373Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-20T05:46:49.613Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-20T05:46:49.668Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-20T05:46:49.978Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-20T05:46:50.268Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T05:47:38.918Z"}
+{"message":"Visit data saved for patient undefined","level":"info","timestamp":"2020-08-20T05:47:39.241Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T05:48:06.656Z"}
+{"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2020-08-20T07:22:12.470Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T10:12:47.003Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T10:12:49.581Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T10:15:43.850Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T10:22:10.847Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T10:22:13.564Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T10:24:36.155Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T10:24:38.648Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T10:32:51.324Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T10:32:53.564Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-20T10:52:05.332Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T10:53:47.092Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T10:53:50.098Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T11:00:36.085Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T11:00:38.615Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T11:37:06.514Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T11:37:09.163Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T11:42:08.554Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T11:42:11.568Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T11:47:34.961Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T11:47:37.895Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T11:55:14.621Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T11:55:17.254Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T11:58:23.751Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T11:58:26.374Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T12:10:18.205Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T12:10:20.786Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T12:13:46.511Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T12:13:48.989Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T12:20:56.942Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T12:20:59.326Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T12:23:16.251Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T12:23:18.847Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-20T12:26:08.092Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-20T12:26:11.043Z"}
+{"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2020-08-20T14:23:16.349Z"}
+{"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2020-08-20T14:25:16.292Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T05:42:54.949Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T05:42:58.530Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T05:44:20.102Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T05:56:51.827Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T05:56:56.335Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T06:03:27.484Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T06:06:51.842Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T06:07:45.204Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T06:07:49.777Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T06:08:10.829Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T06:21:54.384Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T06:21:58.420Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T06:29:34.567Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T06:29:36.912Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T06:32:55.190Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T06:32:57.624Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T06:34:33.163Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T06:34:35.638Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T06:40:14.028Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T06:40:16.417Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-21T07:02:57.491Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-21T07:05:49.729Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-08-21T07:06:22.641Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T07:21:08.017Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T07:21:11.002Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T07:24:05.134Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T07:24:09.444Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T07:45:17.847Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T07:45:20.919Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T08:47:11.000Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T08:47:19.429Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T08:50:58.232Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T08:52:07.796Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T08:52:14.435Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T08:57:38.724Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T08:58:32.749Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T08:58:33.067Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T08:58:34.637Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T08:58:34.652Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T08:58:34.723Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T08:58:54.488Z"}
+{"message":"Visit data saved for patient undefined","level":"info","timestamp":"2020-08-21T08:58:55.426Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T10:15:25.333Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T10:15:28.493Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:16:12.538Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:16:22.241Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:17:01.236Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T10:17:02.162Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T10:17:02.951Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T10:17:03.267Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T10:17:03.335Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:17:13.889Z"}
+{"message":"Visit data saved for patient undefined","level":"info","timestamp":"2020-08-21T10:17:14.231Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T10:37:31.792Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T10:37:37.431Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:37:48.270Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:37:48.680Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:38:02.136Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T10:38:03.028Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T10:38:03.865Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T10:38:04.281Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T10:38:04.412Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:38:13.480Z"}
+{"message":"Visit data saved for patient undefined","level":"info","timestamp":"2020-08-21T10:38:13.871Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T10:45:17.419Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T10:45:19.756Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:45:40.575Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T10:45:41.623Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T10:45:41.949Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T10:45:42.402Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T10:45:43.107Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:46:16.391Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-21T10:46:16.748Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:47:53.134Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:47:59.171Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T10:48:46.993Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T10:48:50.342Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:49:06.717Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:49:09.526Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:49:33.187Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T10:49:34.064Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T10:49:34.513Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T10:49:34.827Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T10:49:34.930Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:49:49.159Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T10:54:17.505Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T10:54:20.583Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:55:15.947Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:55:16.299Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:55:29.347Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T10:55:30.212Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T10:55:30.574Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T10:55:30.977Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T10:55:31.629Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T10:55:41.954Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:05:28.794Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T11:05:29.775Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T11:05:30.149Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T11:05:30.586Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T11:05:30.631Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-21T11:05:49.239Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:05:49.373Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T11:06:14.485Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T11:06:14.543Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T11:06:14.595Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:06:14.636Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T11:06:14.900Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:06:32.583Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-21T11:06:32.673Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:06:52.879Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T11:06:53.103Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T11:06:53.127Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T11:06:53.328Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T11:06:53.556Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T11:09:31.583Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T11:09:34.490Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:09:37.972Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:09:54.011Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T11:12:17.662Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T11:12:27.827Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:12:36.752Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T11:21:15.968Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T11:21:19.145Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:21:48.265Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:21:58.785Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-21T11:21:59.164Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-21T11:21:59.825Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-21T11:22:00.180Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-21T11:22:00.744Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:22:21.658Z"}
+{"message":"Visit data saved for patient undefined","level":"info","timestamp":"2020-08-21T11:22:22.026Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T11:39:38.080Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T11:39:42.304Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-21T11:39:52.200Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T12:02:08.778Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T12:02:12.013Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T12:06:48.977Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T12:06:54.245Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T12:25:40.030Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T12:25:42.202Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T12:33:06.309Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T12:33:08.774Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T12:45:26.839Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T12:45:29.758Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T13:12:23.344Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T13:12:25.849Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-21T13:24:25.802Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-21T13:24:29.674Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T05:31:21.507Z"}
+{"errno":"ECONNREFUSED","code":"ECONNREFUSED","syscall":"querySrv","hostname":"_mongodb._tcp.balancedwellbeing.fqn52.mongodb.net","level":"error","timestamp":"2020-08-24T05:31:21.519Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T05:32:15.632Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T05:32:19.610Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T06:13:10.295Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T06:13:15.648Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T06:13:32.192Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T06:35:43.917Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T06:35:46.778Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T07:20:31.190Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T07:20:35.397Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T08:00:07.027Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T08:00:09.795Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T08:06:59.919Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T08:07:01.998Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T08:08:15.572Z"}
+{"message":"new patient saved to db fewfgr","level":"info","timestamp":"2020-08-24T08:08:27.669Z"}
+{"message":"patient already exists fewfgr","level":"info","timestamp":"2020-08-24T08:10:27.320Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T08:13:09.366Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T08:13:12.215Z"}
+{"message":"new patient saved to db cc","level":"info","timestamp":"2020-08-24T08:13:28.507Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T08:15:08.347Z"}
+{"message":"patient already exists cc","level":"info","timestamp":"2020-08-24T08:15:26.464Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T08:30:59.885Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T08:31:03.430Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T08:47:27.822Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T08:47:29.879Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T08:47:45.345Z"}
+{"message":"new patient saved to db qwe","level":"info","timestamp":"2020-08-24T08:47:52.705Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T08:48:20.852Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T08:58:33.289Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T08:58:37.183Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:01:24.773Z"}
+{"errno":"ECONNREFUSED","code":"ECONNREFUSED","syscall":"querySrv","hostname":"_mongodb._tcp.balancedwellbeing.fqn52.mongodb.net","level":"error","timestamp":"2020-08-24T09:01:24.807Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:02:21.606Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:02:23.746Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:07:42.655Z"}
+{"errno":"ECONNREFUSED","code":"ECONNREFUSED","syscall":"querySrv","hostname":"_mongodb._tcp.balancedwellbeing.fqn52.mongodb.net","level":"error","timestamp":"2020-08-24T09:07:42.673Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:19:50.480Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:19:57.848Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:28:06.512Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:29:34.284Z"}
+{"message":"new patient saved to db ew","level":"info","timestamp":"2020-08-24T09:29:47.979Z"}
+{"message":"patient already exists ew","level":"info","timestamp":"2020-08-24T09:31:46.714Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:34:44.959Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:34:47.524Z"}
+{"message":"new patient saved to db gvyh","level":"info","timestamp":"2020-08-24T09:35:22.064Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:38:13.360Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:38:15.514Z"}
+{"message":"new patient saved to db cddf","level":"info","timestamp":"2020-08-24T09:38:30.882Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:38:47.526Z"}
+{"message":"patient already exists cddf","level":"info","timestamp":"2020-08-24T09:40:27.887Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:41:08.462Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:41:10.892Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:41:23.358Z"}
+{"message":"new patient saved to db jmjgh","level":"info","timestamp":"2020-08-24T09:41:27.019Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:41:40.051Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:44:07.686Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:44:11.031Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:44:16.385Z"}
+{"message":"new patient saved to db hng","level":"info","timestamp":"2020-08-24T09:44:19.968Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:44:23.299Z"}
+{"message":"patient already exists hng","level":"info","timestamp":"2020-08-24T09:46:19.310Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:50:25.013Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:50:27.052Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:51:00.495Z"}
+{"message":"new patient saved to db htyhjyu","level":"info","timestamp":"2020-08-24T09:51:07.016Z"}
+{"message":"patient already exists htyhjyu","level":"info","timestamp":"2020-08-24T09:53:06.620Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T09:58:24.641Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T09:58:26.727Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T09:58:39.850Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:02:34.549Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:02:36.654Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:06:22.580Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:06:24.814Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:09:22.196Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:09:24.635Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:13:43.708Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:13:46.428Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:17:13.308Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:17:15.365Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:18:27.831Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:18:30.036Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:34:36.208Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:34:39.367Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:52:30.178Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:52:32.592Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:54:29.779Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:54:31.933Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:58:08.950Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T10:58:11.099Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T10:59:58.929Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:00:01.228Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:02:48.258Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:02:50.448Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:04:10.883Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:04:13.702Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:23:22.400Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:23:24.981Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:33:22.164Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:33:24.319Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:36:29.703Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:36:33.101Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:42:55.549Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:42:57.553Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:47:59.111Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:48:01.460Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:50:02.290Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:50:11.685Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:53:33.322Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:53:35.868Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:55:02.569Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:55:05.137Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T11:55:23.838Z"}
+{"message":"new patient saved to db ok","level":"info","timestamp":"2020-08-24T11:55:34.199Z"}
+{"message":"new patient saved to db g","level":"info","timestamp":"2020-08-24T11:55:39.682Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T11:56:00.657Z"}
+{"message":"new patient saved to db ok","level":"info","timestamp":"2020-08-24T11:57:34.230Z"}
+{"message":"new patient saved to db g","level":"info","timestamp":"2020-08-24T11:57:39.698Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T11:59:01.239Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T11:59:03.282Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:02:14.253Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:02:16.505Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:02:41.580Z"}
+{"message":"new patient saved to db cd","level":"info","timestamp":"2020-08-24T12:02:47.604Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:02:52.864Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:04:31.891Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:04:34.081Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:04:42.707Z"}
+{"message":"new patient saved to db nhj","level":"info","timestamp":"2020-08-24T12:04:53.611Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:05:00.661Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:06:37.559Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:06:39.842Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:06:44.652Z"}
+{"message":"new patient saved to db cfd","level":"info","timestamp":"2020-08-24T12:06:48.398Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:07:14.803Z"}
+{"message":"new patient saved to db cfd","level":"info","timestamp":"2020-08-24T12:08:48.801Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:18:34.974Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:18:37.343Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:18:44.025Z"}
+{"message":"new patient saved to db cs","level":"info","timestamp":"2020-08-24T12:18:46.895Z"}
+{"message":"new patient saved to db qwerty","level":"info","timestamp":"2020-08-24T12:18:55.200Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:19:09.331Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T12:19:10.171Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T12:19:10.527Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T12:19:10.885Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T12:19:11.316Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:19:22.140Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-24T12:19:22.460Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:19:24.723Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T12:19:24.829Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T12:19:25.252Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:19:25.372Z"}
+{"message":"patient already exists cs","level":"info","timestamp":"2020-08-24T12:20:46.332Z"}
+{"message":"patient already exists qwerty","level":"info","timestamp":"2020-08-24T12:20:54.862Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:23:57.953Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:24:00.491Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:25:02.124Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:25:04.771Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:27:04.871Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:27:07.707Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:28:37.955Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:28:40.890Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:34:09.944Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:34:12.345Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:35:53.789Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:35:56.110Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T12:58:50.274Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T12:58:52.413Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:59:43.636Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T12:59:49.342Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T12:59:50.224Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T12:59:50.599Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T12:59:50.925Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T12:59:51.283Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:00:11.589Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-24T13:00:11.949Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:00:30.796Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:04:30.071Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:04:32.059Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:06:31.890Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:06:34.213Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:09:31.154Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:09:33.312Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:10:29.829Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:10:32.190Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:13:05.175Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:13:07.546Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:14:13.844Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:14:16.233Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:18:09.410Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:18:11.433Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:25:28.564Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:25:30.991Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:26:53.140Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:26:55.287Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:28:22.184Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:28:24.371Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:29:34.877Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:29:40.927Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:29:41.324Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:29:41.651Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:29:41.711Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:29:42.066Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:29:52.673Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-24T13:29:53.094Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:30:01.828Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:31:13.668Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:31:17.475Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:31:27.633Z"}
+{"message":"new patient saved to db kunal","level":"info","timestamp":"2020-08-24T13:31:34.643Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:31:46.332Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:31:46.652Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:31:46.684Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:31:46.942Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:31:47.064Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:32:03.661Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-24T13:32:03.952Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:32:32.710Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:32:59.980Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:33:06.827Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:33:06.861Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:33:07.105Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:33:07.164Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:33:07.735Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:33:24.330Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-24T13:33:24.700Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:33:29.895Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:33:30.032Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:33:30.058Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:33:30.317Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:33:30.433Z"}
+{"message":"patient already exists kunal","level":"info","timestamp":"2020-08-24T13:33:34.266Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:33:48.616Z"}
+{"message":"First visit for this specific patient saved undefined","level":"info","timestamp":"2020-08-24T13:33:48.963Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:34:06.487Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:34:06.547Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:34:06.572Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:34:06.906Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:34:06.993Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:34:16.210Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:35:08.590Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:35:08.609Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:35:08.634Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:35:09.022Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:35:09.111Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:35:20.860Z"}
+{"message":"patient already exists kunal","level":"info","timestamp":"2020-08-24T13:35:34.287Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:35:49.806Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-08-24T13:35:49.814Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-08-24T13:35:49.828Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-08-24T13:35:50.247Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-08-24T13:35:50.290Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T13:36:03.425Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T13:41:26.639Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T13:41:28.731Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:03:52.672Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:03:55.268Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:12:13.536Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:12:15.895Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:24:22.626Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:24:26.656Z"}
+{"message":"Invalid Email ","level":"info","timestamp":"2020-08-24T14:24:41.089Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T14:24:41.678Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:26:37.579Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:26:40.047Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:30:07.224Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:30:10.170Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:34:29.665Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:34:32.259Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T14:34:46.644Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:40:03.935Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:40:06.659Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-24T14:40:15.606Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:41:02.366Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:41:04.853Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:42:45.223Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:42:47.472Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:44:02.198Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:44:05.532Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:46:41.914Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:46:44.272Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:49:05.686Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:49:08.272Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:51:54.649Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:51:57.218Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:53:35.575Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:53:38.030Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:55:54.941Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:55:57.696Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T14:57:52.243Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T14:57:55.130Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T15:02:17.232Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T15:02:19.951Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T15:04:48.419Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T15:04:51.328Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T15:20:31.126Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T15:20:33.747Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-24T15:22:53.844Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-24T15:22:56.456Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-25T05:42:18.957Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-25T05:42:21.835Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-25T05:42:39.956Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T05:43:09.112Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T05:43:09.121Z"}
+{"message":"Visit data saved for patient JAMES RILEY","level":"info","timestamp":"2020-08-25T05:43:09.317Z"}
+{"message":"Visit data saved for patient JAMES RILEY","level":"info","timestamp":"2020-08-25T05:43:09.325Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-25T05:43:09.363Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-25T05:43:09.383Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T05:43:09.395Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T05:43:09.402Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T05:43:09.407Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T05:43:09.442Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T05:43:09.465Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T05:43:09.653Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T05:43:09.659Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T05:43:09.668Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T05:43:09.693Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T05:43:09.741Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T05:43:09.749Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T05:43:09.752Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T05:43:09.798Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T05:43:09.805Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T05:43:09.809Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T05:43:10.007Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T05:43:10.014Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T05:43:10.021Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T05:43:10.028Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T05:43:10.063Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T05:43:10.084Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T05:43:10.087Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T05:43:10.125Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T05:43:10.145Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T05:43:10.150Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T05:43:10.335Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T05:43:10.341Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T05:43:10.348Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T05:43:10.360Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T05:43:10.390Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T05:43:10.406Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T05:43:10.407Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T05:43:10.438Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T05:43:10.479Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T05:43:10.497Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T05:43:10.668Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-25T05:43:10.674Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-25T05:43:10.680Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T05:43:10.690Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-25T05:43:10.718Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T05:43:10.786Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T05:43:10.787Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T05:43:10.800Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-25T05:43:10.816Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-25T05:43:10.840Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T05:43:11.003Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T05:43:11.006Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T05:43:11.008Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T05:43:11.010Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T05:43:11.053Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T05:43:11.113Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T05:43:11.116Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T05:43:11.124Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T05:43:11.131Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T05:43:11.171Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T05:43:11.335Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T05:43:11.340Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T05:43:11.347Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T05:43:11.353Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T05:43:11.400Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T05:43:11.450Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T05:43:11.452Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T05:43:11.454Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T05:43:11.460Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T05:43:11.496Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T05:43:11.663Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-25T05:43:11.677Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-25T05:43:11.682Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T05:43:11.698Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T05:43:11.926Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T05:43:11.934Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T05:43:11.941Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T05:43:11.950Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T05:43:11.952Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T05:43:11.954Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T05:43:11.997Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T05:43:12.068Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T05:43:12.070Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-25T05:43:12.074Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-25T05:43:12.254Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T05:43:12.265Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T05:43:12.284Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T05:43:12.287Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T05:43:12.290Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-25T05:43:12.305Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-25T05:43:12.318Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T05:43:12.397Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T05:43:12.402Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T05:43:12.406Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T05:43:12.578Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T05:43:12.590Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T05:43:12.620Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-25T05:43:12.634Z"}
+{"message":"Visit data saved for patient CATHERINE A LARSON","level":"info","timestamp":"2020-08-25T05:43:12.661Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-25T05:43:12.663Z"}
+{"message":"Visit data saved for patient CATHERINE A LARSON","level":"info","timestamp":"2020-08-25T05:43:12.665Z"}
+{"message":"Visit data saved for patient MARY GUINAN","level":"info","timestamp":"2020-08-25T05:43:12.713Z"}
+{"message":"Visit data saved for patient MARY GUINAN","level":"info","timestamp":"2020-08-25T05:43:12.725Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-25T05:43:12.730Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-25T05:43:12.905Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T05:43:12.910Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T05:43:12.932Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T05:43:12.997Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.000Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.004Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.008Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.049Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.052Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.054Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T05:43:13.228Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T05:43:13.233Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T05:43:13.298Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T05:43:13.315Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T05:43:13.317Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T05:43:13.326Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T05:43:13.342Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T05:43:13.385Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T05:43:13.390Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T05:43:13.391Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T05:43:13.552Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T05:43:13.557Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-25T05:43:13.622Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T05:43:13.634Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-25T05:43:13.638Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T05:43:13.658Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T05:43:13.661Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-25T05:43:13.705Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-25T05:43:13.719Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-25T05:43:13.723Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-25T05:43:13.883Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-25T05:43:13.889Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T05:43:13.965Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T05:43:13.968Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T05:43:13.971Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T05:43:13.985Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T05:43:13.988Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T05:43:14.057Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T05:43:14.062Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T05:43:14.066Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T05:43:14.214Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T05:43:14.223Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T05:43:14.296Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T05:43:14.301Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T05:43:14.309Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T05:43:14.329Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T05:43:14.331Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T05:43:14.380Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T05:43:14.384Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T05:43:14.385Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-25T05:43:14.548Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-25T05:43:14.554Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T05:43:14.628Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T05:43:14.631Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T05:43:14.635Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-25T05:43:14.640Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-25T05:43:14.645Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T05:43:14.706Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T05:43:14.715Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T05:43:14.724Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T05:43:14.873Z"}
+{"message":"Visit data saved for patient JOHN WHITCOM","level":"info","timestamp":"2020-08-25T05:43:14.885Z"}
+{"message":"Visit data saved for patient JOHN WHITCOM","level":"info","timestamp":"2020-08-25T05:43:14.952Z"}
+{"message":"Visit data saved for patient LOUIS SCHIANO","level":"info","timestamp":"2020-08-25T05:43:14.955Z"}
+{"message":"Visit data saved for patient LOUIS SCHIANO","level":"info","timestamp":"2020-08-25T05:43:14.972Z"}
+{"message":"Visit data saved for patient LOUIS SCHIANO","level":"info","timestamp":"2020-08-25T05:43:14.984Z"}
+{"message":"Visit data saved for patient LOUIS SCHIANO","level":"info","timestamp":"2020-08-25T05:43:14.990Z"}
+{"message":"Visit data saved for patient LOUIS SCHIANO","level":"info","timestamp":"2020-08-25T05:43:15.039Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-25T06:41:43.755Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-25T06:41:46.567Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-25T06:42:47.680Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-25T06:42:47.684Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-25T06:42:47.686Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-25T06:42:47.696Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:47.698Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:47.701Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:47.750Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:47.753Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:47.755Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:47.985Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-25T06:42:48.010Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T06:42:48.019Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T06:42:48.034Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T06:42:48.057Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T06:42:48.060Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-25T06:42:48.063Z"}
+{"message":"Visit data saved for patient JAMES RILEY","level":"info","timestamp":"2020-08-25T06:42:48.065Z"}
+{"message":"Visit data saved for patient JAMES RILEY","level":"info","timestamp":"2020-08-25T06:42:48.137Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-25T06:42:48.143Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-25T06:42:48.318Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-25T06:42:48.341Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-25T06:42:48.352Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T06:42:48.368Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T06:42:48.390Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T06:42:48.397Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T06:42:48.407Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-25T06:42:48.412Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T06:42:48.486Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T06:42:48.519Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T06:42:48.651Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T06:42:48.682Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T06:42:48.692Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-25T06:42:48.700Z"}
+{"message":"Visit data saved for patient CARMEN KEAY","level":"info","timestamp":"2020-08-25T06:42:48.703Z"}
+{"message":"Visit data saved for patient CARMEN KEAY","level":"info","timestamp":"2020-08-25T06:42:48.722Z"}
+{"message":"Visit data saved for patient CARMEN KEAY","level":"info","timestamp":"2020-08-25T06:42:48.750Z"}
+{"message":"Visit data saved for patient FARMER GROSS","level":"info","timestamp":"2020-08-25T06:42:48.756Z"}
+{"message":"Visit data saved for patient FARMER GROSS","level":"info","timestamp":"2020-08-25T06:42:48.859Z"}
+{"message":"Visit data saved for patient FARMER GROSS","level":"info","timestamp":"2020-08-25T06:42:48.901Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:48.986Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.029Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.037Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.040Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.052Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.056Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.095Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:49.097Z"}
+{"message":"Visit data saved for patient EILEEN BLITZER","level":"info","timestamp":"2020-08-25T06:42:49.192Z"}
+{"message":"Visit data saved for patient EILEEN BLITZER","level":"info","timestamp":"2020-08-25T06:42:49.225Z"}
+{"message":"Visit data saved for patient EILEEN BLITZER","level":"info","timestamp":"2020-08-25T06:42:49.317Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.378Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.390Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.395Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.401Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.406Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.422Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.429Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-25T06:42:49.530Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-25T06:42:49.594Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.666Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-25T06:42:49.712Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-25T06:42:49.717Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-25T06:42:49.732Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T06:42:49.735Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T06:42:49.744Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T06:42:49.748Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T06:42:49.751Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T06:42:49.874Z"}
+{"message":"Visit data saved for patient SUSAN TECSI","level":"info","timestamp":"2020-08-25T06:42:49.939Z"}
+{"message":"Visit data saved for patient SUSAN TECSI","level":"info","timestamp":"2020-08-25T06:42:49.995Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-25T06:42:50.053Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.058Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.066Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.071Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.081Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.184Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.188Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.244Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.275Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T06:42:50.322Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T06:42:50.510Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T06:42:50.516Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T06:42:50.520Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T06:42:50.524Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-25T06:42:50.529Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-25T06:42:50.536Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.541Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.569Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.620Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.661Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.843Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.859Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.880Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.888Z"}
+{"message":"Visit data saved for patient MEL HARTE","level":"info","timestamp":"2020-08-25T06:42:50.890Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.896Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-25T06:42:50.899Z"}
+{"message":"Visit data saved for patient MEL HARTE","level":"info","timestamp":"2020-08-25T06:42:50.913Z"}
+{"message":"Visit data saved for patient MEL HARTE","level":"info","timestamp":"2020-08-25T06:42:50.986Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T06:42:51.002Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T06:42:51.185Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-25T06:42:51.256Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-25T06:42:51.258Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T06:42:51.261Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T06:42:51.263Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-25T06:42:51.265Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T06:42:51.267Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T06:42:51.314Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-25T06:42:51.335Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-25T06:42:51.517Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-25T06:42:51.613Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-25T06:42:51.616Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.628Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-25T06:42:51.630Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.634Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.637Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.644Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.662Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-25T06:42:51.812Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.835Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-25T06:42:51.935Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:51.944Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:51.949Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:51.953Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:51.957Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:51.962Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:51.966Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:52.018Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.156Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-25T06:42:52.162Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.267Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.278Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.289Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.291Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.295Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-25T06:42:52.297Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T06:42:52.320Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T06:42:52.363Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T06:42:52.488Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T06:42:52.493Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T06:42:52.589Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-25T06:42:52.640Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T06:42:52.643Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T06:42:52.646Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T06:42:52.650Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T06:42:52.652Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-25T06:42:52.653Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-25T06:42:52.714Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-25T06:42:52.813Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-25T06:42:52.818Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-25T06:42:52.910Z"}
+{"message":"Visit data saved for patient ROSETTA CASON","level":"info","timestamp":"2020-08-25T06:42:52.952Z"}
+{"message":"Visit data saved for patient ROSETTA CASON","level":"info","timestamp":"2020-08-25T06:42:53.013Z"}
+{"message":"Visit data saved for patient ROSETTA CASON","level":"info","timestamp":"2020-08-25T06:42:53.025Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T06:42:53.034Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T06:42:53.045Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T06:42:53.055Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T06:42:53.075Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-25T06:42:53.136Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T06:42:53.141Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T06:42:53.249Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T06:42:53.300Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T06:42:53.348Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-25T06:42:53.370Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-25T06:42:53.373Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-25T06:42:53.378Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-25T06:42:53.385Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-25T06:42:53.420Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:53.463Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:53.466Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:53.565Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:53.639Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:53.678Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:53.688Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.698Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.701Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.714Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.775Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.794Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.809Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-25T06:42:53.902Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-25T06:42:54.008Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-25T06:42:54.049Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-25T06:42:54.051Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-25T06:42:54.053Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T06:42:54.055Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T06:42:54.058Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T06:42:54.124Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T06:42:54.127Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T06:42:54.136Z"}
+{"message":"Visit data saved for patient SALLY KING","level":"info","timestamp":"2020-08-25T06:42:54.293Z"}
+{"message":"Visit data saved for patient SALLY KING","level":"info","timestamp":"2020-08-25T06:42:54.375Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-25T06:42:54.378Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-25T06:42:54.383Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-25T06:42:54.386Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-25T06:42:54.407Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-25T06:42:54.411Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.451Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.467Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.481Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.623Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.709Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.714Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.735Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.737Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-25T06:42:54.739Z"}
+{"message":"Visit data saved for patient WILLIAM FENWICK","level":"info","timestamp":"2020-08-25T06:42:54.754Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-25T06:42:54.795Z"}
+{"message":"Visit data saved for patient WILLIAM FENWICK","level":"info","timestamp":"2020-08-25T06:42:54.823Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-25T06:42:54.825Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-25T06:42:54.967Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-25T06:42:55.046Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-25T06:42:55.049Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-25T06:42:55.052Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-25T06:42:55.065Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-25T06:42:55.068Z"}
+{"message":"Visit data saved for patient CATHERINE A LARSON","level":"info","timestamp":"2020-08-25T06:42:55.071Z"}
+{"message":"Visit data saved for patient CATHERINE A LARSON","level":"info","timestamp":"2020-08-25T06:42:55.113Z"}
+{"message":"Visit data saved for patient MARY F. SCHENCK","level":"info","timestamp":"2020-08-25T06:42:55.120Z"}
+{"message":"Visit data saved for patient MARY F. SCHENCK","level":"info","timestamp":"2020-08-25T06:42:55.168Z"}
+{"message":"Visit data saved for patient MARY GUINAN","level":"info","timestamp":"2020-08-25T06:42:55.290Z"}
+{"message":"Visit data saved for patient MARY GUINAN","level":"info","timestamp":"2020-08-25T06:42:55.375Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-25T06:42:55.404Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-25T06:42:55.406Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-25T06:42:55.408Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T06:42:55.412Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-25T06:42:55.418Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T06:42:55.436Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T06:42:55.450Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T06:42:55.512Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-25T06:42:55.634Z"}
+{"message":"Visit data saved for patient EARL SULLIVAN","level":"info","timestamp":"2020-08-25T06:42:55.696Z"}
+{"message":"Visit data saved for patient EARL SULLIVAN","level":"info","timestamp":"2020-08-25T06:42:55.700Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.749Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.753Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.756Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.758Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.764Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.766Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.861Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:55.969Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-25T06:42:56.067Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.074Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.077Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.096Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.098Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.100Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.112Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.116Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.212Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-25T06:42:56.301Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.378Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.404Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.407Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.413Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.437Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.471Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-25T06:42:56.474Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-25T06:42:56.477Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-25T06:42:56.585Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-25T06:42:56.631Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-25T06:42:56.711Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.733Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.736Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.737Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.774Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.778Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.883Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-25T06:42:56.928Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-25T06:42:56.930Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-25T06:42:56.956Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-25T06:42:57.036Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-25T06:42:57.058Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-25T06:42:57.065Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-25T06:42:57.070Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-25T06:42:57.104Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T06:42:57.116Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T06:42:57.209Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T06:42:57.216Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T06:42:57.269Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-25T06:42:57.282Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T06:42:57.369Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T06:42:57.376Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T06:42:57.387Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T06:42:57.388Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T06:42:57.497Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T06:42:57.529Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T06:42:57.539Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-25T06:42:57.552Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T06:42:57.591Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-25T06:42:57.621Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.705Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.711Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.713Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.719Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.858Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.862Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-25T06:42:57.867Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T06:42:57.882Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T06:42:57.921Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T06:42:57.964Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T06:42:58.021Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-25T06:42:58.023Z"}
+{"message":"Visit data saved for patient REMONA HATCHER","level":"info","timestamp":"2020-08-25T06:42:58.039Z"}
+{"message":"Visit data saved for patient REMONA HATCHER","level":"info","timestamp":"2020-08-25T06:42:58.045Z"}
+{"message":"Visit data saved for patient MICHELLE TIERNEY","level":"info","timestamp":"2020-08-25T06:42:58.183Z"}
+{"message":"Visit data saved for patient ROBERTA PERRELL","level":"info","timestamp":"2020-08-25T06:42:58.188Z"}
+{"message":"Visit data saved for patient ROBERTA PERRELL","level":"info","timestamp":"2020-08-25T06:42:58.193Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-25T06:42:58.208Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-25T06:42:58.235Z"}
+{"message":"Visit data saved for patient MICHELLE TIERNEY","level":"info","timestamp":"2020-08-25T06:42:58.314Z"}
+{"message":"Visit data saved for patient MICHELLE TIERNEY","level":"info","timestamp":"2020-08-25T06:42:58.359Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-25T06:42:58.365Z"}
+{"message":"Visit data saved for patient CAROL MCQUEEN","level":"info","timestamp":"2020-08-25T06:42:58.369Z"}
+{"message":"Visit data saved for patient CAROL MCQUEEN","level":"info","timestamp":"2020-08-25T06:42:58.371Z"}
+{"message":"Visit data saved for patient GLORIA POLICASTRO","level":"info","timestamp":"2020-08-25T06:42:58.518Z"}
+{"message":"Visit data saved for patient JOHN WINES","level":"info","timestamp":"2020-08-25T06:42:58.521Z"}
+{"message":"Visit data saved for patient GLORIA POLICASTRO","level":"info","timestamp":"2020-08-25T06:42:58.524Z"}
+{"message":"Visit data saved for patient JOHN WINES","level":"info","timestamp":"2020-08-25T06:42:58.531Z"}
+{"message":"Visit data saved for patient JOHN WINES","level":"info","timestamp":"2020-08-25T06:42:58.580Z"}
+{"message":"Visit data saved for patient GLORIA POLICASTRO","level":"info","timestamp":"2020-08-25T06:42:58.651Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T06:42:58.683Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T06:42:58.690Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-25T06:42:58.695Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T06:42:58.698Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-25T06:42:58.840Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T06:42:58.850Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-25T06:42:58.854Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-25T06:42:58.858Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:58.900Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:58.991Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:59.011Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:59.019Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:59.023Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:59.030Z"}
+{"message":"Visit data saved for patient DENNIS SUISSE","level":"info","timestamp":"2020-08-25T06:42:59.181Z"}
+{"message":"Visit data saved for patient DENNIS SUISSE","level":"info","timestamp":"2020-08-25T06:42:59.185Z"}
+{"message":"Visit data saved for patient DENNIS SUISSE","level":"info","timestamp":"2020-08-25T06:42:59.212Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-25T06:42:59.215Z"}
+{"message":"Visit data saved for patient JOHN BATLLE","level":"info","timestamp":"2020-08-25T06:42:59.218Z"}
+{"message":"Visit data saved for patient JOHN BATLLE","level":"info","timestamp":"2020-08-25T06:42:59.311Z"}
+{"message":"Visit data saved for patient JOHN BATLLE","level":"info","timestamp":"2020-08-25T06:42:59.331Z"}
+{"message":"Visit data saved for patient DEBRA WILT","level":"info","timestamp":"2020-08-25T06:42:59.396Z"}
+{"message":"Visit data saved for patient DEBRA WILT","level":"info","timestamp":"2020-08-25T06:42:59.401Z"}
+{"message":"Visit data saved for patient JOHN WHITCOM","level":"info","timestamp":"2020-08-25T06:42:59.406Z"}
+{"message":"Visit data saved for patient TEDDIE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:59.519Z"}
+{"message":"Visit data saved for patient TEDDIE JOHNSON","level":"info","timestamp":"2020-08-25T06:42:59.525Z"}
+{"message":"Visit data saved for patient JOHN WHITCOM","level":"info","timestamp":"2020-08-25T06:42:59.532Z"}
+{"message":"Visit data saved for patient JANE GALLENSTEIN","level":"info","timestamp":"2020-08-25T06:42:59.570Z"}
+{"message":"Visit data saved for patient JANE GALLENSTEIN","level":"info","timestamp":"2020-08-25T06:42:59.572Z"}
+{"message":"Visit data saved for patient JANE GALLENSTEIN","level":"info","timestamp":"2020-08-25T06:42:59.642Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-25T06:42:59.677Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-25T06:42:59.724Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-25T06:42:59.732Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-25T06:42:59.734Z"}
+{"message":"Visit data saved for patient ELSIE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:59.839Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-25T06:42:59.851Z"}
+{"message":"Visit data saved for patient ELSIE FREEMAN","level":"info","timestamp":"2020-08-25T06:42:59.883Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-25T06:42:59.886Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-25T06:42:59.913Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-25T06:42:59.970Z"}
+{"message":"Visit data saved for patient ROBERT SMITH","level":"info","timestamp":"2020-08-25T06:43:00.028Z"}
+{"message":"Visit data saved for patient ROBERT SMITH","level":"info","timestamp":"2020-08-25T06:43:00.056Z"}
+{"message":"Visit data saved for patient ROBERT SMITH","level":"info","timestamp":"2020-08-25T06:43:00.061Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.074Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.164Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.168Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.176Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.211Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.230Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-25T06:43:00.306Z"}
+{"message":"Visit data saved for patient DOROTHY FORMISANO","level":"info","timestamp":"2020-08-25T06:43:00.387Z"}
+{"message":"Visit data saved for patient DOROTHY FORMISANO","level":"info","timestamp":"2020-08-25T06:43:00.389Z"}
+{"message":"Visit data saved for patient DOROTHY FORMISANO","level":"info","timestamp":"2020-08-25T06:43:00.390Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T05:36:21.952Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T05:36:26.299Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-27T05:36:56.844Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T05:46:20.929Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T05:46:25.112Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-08-27T05:46:48.816Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-27T05:47:20.646Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-27T05:47:20.696Z"}
+{"message":"Visit data saved for patient GABRIELE RASNICK","level":"info","timestamp":"2020-08-27T05:47:20.700Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-27T05:47:20.717Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-27T05:47:20.726Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-27T05:47:20.738Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-27T05:47:20.758Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-27T05:47:20.793Z"}
+{"message":"Visit data saved for patient BRANDON DUBLIN","level":"info","timestamp":"2020-08-27T05:47:20.835Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-27T05:47:20.944Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-27T05:47:20.981Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-27T05:47:21.065Z"}
+{"message":"Visit data saved for patient JOSEPHINE WHITE","level":"info","timestamp":"2020-08-27T05:47:21.069Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-27T05:47:21.075Z"}
+{"message":"Visit data saved for patient JAMES RILEY","level":"info","timestamp":"2020-08-27T05:47:21.080Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-27T05:47:21.084Z"}
+{"message":"Visit data saved for patient LUBA PIMENIDIS","level":"info","timestamp":"2020-08-27T05:47:21.109Z"}
+{"message":"Visit data saved for patient JAMES RILEY","level":"info","timestamp":"2020-08-27T05:47:21.113Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-27T05:47:21.178Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-27T05:47:21.267Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-27T05:47:21.347Z"}
+{"message":"Visit data saved for patient Warren Stines","level":"info","timestamp":"2020-08-27T05:47:21.410Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-27T05:47:21.426Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-27T05:47:21.438Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-27T05:47:21.440Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-27T05:47:21.448Z"}
+{"message":"Visit data saved for patient PAMILLA LALUMONDIER","level":"info","timestamp":"2020-08-27T05:47:21.456Z"}
+{"message":"Visit data saved for patient CARMEN KEAY","level":"info","timestamp":"2020-08-27T05:47:21.473Z"}
+{"message":"Visit data saved for patient CARMEN KEAY","level":"info","timestamp":"2020-08-27T05:47:21.516Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.595Z"}
+{"message":"Visit data saved for patient FARMER GROSS","level":"info","timestamp":"2020-08-27T05:47:21.678Z"}
+{"message":"Visit data saved for patient FARMER GROSS","level":"info","timestamp":"2020-08-27T05:47:21.744Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.750Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.760Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.778Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.799Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.804Z"}
+{"message":"Visit data saved for patient ANNE FREEMAN","level":"info","timestamp":"2020-08-27T05:47:21.821Z"}
+{"message":"Visit data saved for patient EILEEN BLITZER","level":"info","timestamp":"2020-08-27T05:47:21.870Z"}
+{"message":"Visit data saved for patient EILEEN BLITZER","level":"info","timestamp":"2020-08-27T05:47:21.941Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.023Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.070Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.074Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.095Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.127Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.132Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.187Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-27T05:47:22.213Z"}
+{"message":"Visit data saved for patient ROSEMARY BELLON","level":"info","timestamp":"2020-08-27T05:47:22.218Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-27T05:47:22.272Z"}
+{"message":"Visit data saved for patient DOROTHY BEACHAM","level":"info","timestamp":"2020-08-27T05:47:22.349Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-27T05:47:22.404Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-27T05:47:22.410Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-27T05:47:22.444Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-27T05:47:22.456Z"}
+{"message":"Visit data saved for patient HELEN QUESNELL","level":"info","timestamp":"2020-08-27T05:47:22.469Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.501Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.567Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.576Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.637Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.670Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.732Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.742Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.778Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-27T05:47:22.781Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-27T05:47:22.785Z"}
+{"message":"Visit data saved for patient PATRICIA BRANHAM","level":"info","timestamp":"2020-08-27T05:47:22.839Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-27T05:47:22.907Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-27T05:47:22.918Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:22.969Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:22.993Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.052Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.069Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.101Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.131Z"}
+{"message":"Visit data saved for patient NANCY VALLIMONT","level":"info","timestamp":"2020-08-27T05:47:23.137Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.168Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.233Z"}
+{"message":"Visit data saved for patient RUTH BROOKS","level":"info","timestamp":"2020-08-27T05:47:23.247Z"}
+{"message":"Visit data saved for patient MEL HARTE","level":"info","timestamp":"2020-08-27T05:47:23.436Z"}
+{"message":"Visit data saved for patient MEL HARTE","level":"info","timestamp":"2020-08-27T05:47:23.443Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-27T05:47:23.454Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-27T05:47:23.468Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-27T05:47:23.476Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-27T05:47:23.491Z"}
+{"message":"Visit data saved for patient JOANN AMELUNG","level":"info","timestamp":"2020-08-27T05:47:23.498Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-27T05:47:23.503Z"}
+{"message":"Visit data saved for patient WILLIAM FELL","level":"info","timestamp":"2020-08-27T05:47:23.616Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-27T05:47:23.622Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-27T05:47:23.769Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-27T05:47:23.777Z"}
+{"message":"Visit data saved for patient RAYMOND FREGEAU","level":"info","timestamp":"2020-08-27T05:47:23.784Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-27T05:47:23.791Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-27T05:47:23.810Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-27T05:47:23.815Z"}
+{"message":"Visit data saved for patient CAROL RAPP","level":"info","timestamp":"2020-08-27T05:47:23.819Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-27T05:47:23.826Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-27T05:47:23.961Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-27T05:47:23.966Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-27T05:47:24.103Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-27T05:47:24.115Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.123Z"}
+{"message":"Visit data saved for patient HEATHER COFFEY","level":"info","timestamp":"2020-08-27T05:47:24.130Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.143Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.148Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.152Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.156Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.296Z"}
+{"message":"Visit data saved for patient ANGELA WHALEN","level":"info","timestamp":"2020-08-27T05:47:24.305Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.425Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.435Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.451Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.461Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.477Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.482Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-27T05:47:24.491Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-27T05:47:24.498Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-27T05:47:24.734Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-27T05:47:24.742Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-27T05:47:24.748Z"}
+{"message":"Visit data saved for patient DAISY HILL","level":"info","timestamp":"2020-08-27T05:47:24.758Z"}
+{"message":"Visit data saved for patient GEORGIANNA L JEGEN","level":"info","timestamp":"2020-08-27T05:47:24.774Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-27T05:47:24.777Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-27T05:47:24.792Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-27T05:47:24.805Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-27T05:47:24.809Z"}
+{"message":"Visit data saved for patient CAROLYN WARE","level":"info","timestamp":"2020-08-27T05:47:24.887Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-27T05:47:25.064Z"}
+{"message":"Visit data saved for patient ROSETTA CASON","level":"info","timestamp":"2020-08-27T05:47:25.070Z"}
+{"message":"Visit data saved for patient ROSETTA CASON","level":"info","timestamp":"2020-08-27T05:47:25.076Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-27T05:47:25.090Z"}
+{"message":"Visit data saved for patient BRYANT DECOTEAU","level":"info","timestamp":"2020-08-27T05:47:25.099Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-27T05:47:25.105Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-27T05:47:25.180Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-27T05:47:25.196Z"}
+{"message":"Visit data saved for patient PATSY LANDRI","level":"info","timestamp":"2020-08-27T05:47:25.203Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-27T05:47:25.218Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-27T05:47:25.394Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-27T05:47:25.404Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-27T05:47:25.408Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-27T05:47:25.424Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-27T05:47:25.426Z"}
+{"message":"Visit data saved for patient KEITH DAVIDSON","level":"info","timestamp":"2020-08-27T05:47:25.431Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:25.501Z"}
+{"message":"Visit data saved for patient ROSE STORKS","level":"info","timestamp":"2020-08-27T05:47:25.514Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:25.523Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:25.563Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:25.719Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:25.736Z"}
+{"message":"Visit data saved for patient BETTE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:25.744Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-27T05:47:25.763Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-27T05:47:25.777Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-27T05:47:25.780Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-27T05:47:25.854Z"}
+{"message":"Visit data saved for patient HUGH STEWART","level":"info","timestamp":"2020-08-27T05:47:25.862Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-27T05:47:25.868Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-27T05:47:25.874Z"}
+{"message":"Visit data saved for patient RAYMOND REDDING","level":"info","timestamp":"2020-08-27T05:47:26.044Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-27T05:47:26.088Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-27T05:47:26.093Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-27T05:47:26.097Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-27T05:47:26.112Z"}
+{"message":"Visit data saved for patient PAMELA ALLEN","level":"info","timestamp":"2020-08-27T05:47:26.125Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-27T05:47:26.200Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-27T05:47:26.208Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-27T05:47:26.219Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.234Z"}
+{"message":"Visit data saved for patient SUZANNE STEVENS","level":"info","timestamp":"2020-08-27T05:47:26.380Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.557Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.562Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.568Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.575Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.581Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.587Z"}
+{"message":"Visit data saved for patient JANE CLARK","level":"info","timestamp":"2020-08-27T05:47:26.596Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-27T05:47:26.603Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-27T05:47:26.606Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-27T05:47:26.714Z"}
+{"message":"Visit data saved for patient JOSEPH NESSIM","level":"info","timestamp":"2020-08-27T05:47:26.899Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-27T05:47:26.921Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-27T05:47:26.929Z"}
+{"message":"Visit data saved for patient MADELIN ROBERTS","level":"info","timestamp":"2020-08-27T05:47:26.940Z"}
+{"message":"Visit data saved for patient CATHERINE A LARSON","level":"info","timestamp":"2020-08-27T05:47:26.943Z"}
+{"message":"Visit data saved for patient CATHERINE A LARSON","level":"info","timestamp":"2020-08-27T05:47:26.949Z"}
+{"message":"Visit data saved for patient MARY GUINAN","level":"info","timestamp":"2020-08-27T05:47:26.956Z"}
+{"message":"Visit data saved for patient MARY GUINAN","level":"info","timestamp":"2020-08-27T05:47:26.967Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-27T05:47:26.985Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-27T05:47:27.035Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-27T05:47:27.240Z"}
+{"message":"Visit data saved for patient JODY BURDSALL","level":"info","timestamp":"2020-08-27T05:47:27.246Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-27T05:47:27.268Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-27T05:47:27.279Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-27T05:47:27.286Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-27T05:47:27.293Z"}
+{"message":"Visit data saved for patient DIANA BODIE","level":"info","timestamp":"2020-08-27T05:47:27.299Z"}
+{"message":"Visit data saved for patient EARL SULLIVAN","level":"info","timestamp":"2020-08-27T05:47:27.337Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.372Z"}
+{"message":"Visit data saved for patient EARL SULLIVAN","level":"info","timestamp":"2020-08-27T05:47:27.374Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.571Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.612Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.621Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.631Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.636Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.649Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.657Z"}
+{"message":"Visit data saved for patient HELEN JOHNSON","level":"info","timestamp":"2020-08-27T05:47:27.660Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.759Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.775Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.904Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.955Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.961Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.974Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:27.984Z"}
+{"message":"Visit data saved for patient SUSAN BEBOW","level":"info","timestamp":"2020-08-27T05:47:28.012Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-27T05:47:28.018Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-27T05:47:28.041Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-27T05:47:28.085Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-27T05:47:28.103Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-27T05:47:28.228Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-27T05:47:28.283Z"}
+{"message":"Visit data saved for patient WILLIAM TRAINOR","level":"info","timestamp":"2020-08-27T05:47:28.285Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-27T05:47:28.302Z"}
+{"message":"Visit data saved for patient VIOLA TYBURSKI","level":"info","timestamp":"2020-08-27T05:47:28.305Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-27T05:47:28.354Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-27T05:47:28.358Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-27T05:47:28.372Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-27T05:47:28.408Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-27T05:47:28.423Z"}
+{"message":"Visit data saved for patient PATRICIA BABOS","level":"info","timestamp":"2020-08-27T05:47:28.575Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-27T05:47:28.616Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-27T05:47:28.638Z"}
+{"message":"Visit data saved for patient ANN SYKES","level":"info","timestamp":"2020-08-27T05:47:28.643Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-27T05:47:28.646Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-27T05:47:28.767Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-27T05:47:28.773Z"}
+{"message":"Visit data saved for patient EATHER BOUGES","level":"info","timestamp":"2020-08-27T05:47:28.779Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-27T05:47:28.784Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-27T05:47:28.790Z"}
+{"message":"Visit data saved for patient AGNES PORTZ","level":"info","timestamp":"2020-08-27T05:47:28.904Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-27T05:47:28.947Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-27T05:47:28.954Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-27T05:47:28.958Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-27T05:47:29.119Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-27T05:47:29.140Z"}
+{"message":"Visit data saved for patient HARRY ALVAREZ","level":"info","timestamp":"2020-08-27T05:47:29.148Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-27T05:47:29.177Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-27T05:47:29.184Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-27T05:47:29.213Z"}
+{"message":"Visit data saved for patient DIXIE RUZZO","level":"info","timestamp":"2020-08-27T05:47:29.217Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.307Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.312Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.319Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.455Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.463Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.502Z"}
+{"message":"Visit data saved for patient CHARLES BRAHM","level":"info","timestamp":"2020-08-27T05:47:29.508Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-27T05:47:29.683Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-27T05:47:29.689Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-27T05:47:29.697Z"}
+{"message":"Visit data saved for patient LOIS DEFILLIPO","level":"info","timestamp":"2020-08-27T05:47:29.710Z"}
+{"message":"Visit data saved for patient REMONA HATCHER","level":"info","timestamp":"2020-08-27T05:47:29.715Z"}
+{"message":"Visit data saved for patient REMONA HATCHER","level":"info","timestamp":"2020-08-27T05:47:29.718Z"}
+{"message":"Visit data saved for patient ROBERTA PERRELL","level":"info","timestamp":"2020-08-27T05:47:29.793Z"}
+{"message":"Visit data saved for patient ROBERTA PERRELL","level":"info","timestamp":"2020-08-27T05:47:29.796Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-27T05:47:29.844Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-27T05:47:29.847Z"}
+{"message":"Visit data saved for patient MICHELLE TIERNEY","level":"info","timestamp":"2020-08-27T05:47:30.027Z"}
+{"message":"Visit data saved for patient JOSEPHINE SAUNDERS","level":"info","timestamp":"2020-08-27T05:47:30.035Z"}
+{"message":"Visit data saved for patient MICHELLE TIERNEY","level":"info","timestamp":"2020-08-27T05:47:30.038Z"}
+{"message":"Visit data saved for patient MICHELLE TIERNEY","level":"info","timestamp":"2020-08-27T05:47:30.042Z"}
+{"message":"Visit data saved for patient CAROL MCQUEEN","level":"info","timestamp":"2020-08-27T05:47:30.044Z"}
+{"message":"Visit data saved for patient CAROL MCQUEEN","level":"info","timestamp":"2020-08-27T05:47:30.047Z"}
+{"message":"Visit data saved for patient JOHN WINES","level":"info","timestamp":"2020-08-27T05:47:30.124Z"}
+{"message":"Visit data saved for patient JOHN WINES","level":"info","timestamp":"2020-08-27T05:47:30.142Z"}
+{"message":"Visit data saved for patient GLORIA POLICASTRO","level":"info","timestamp":"2020-08-27T05:47:30.162Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-27T05:47:30.181Z"}
+{"message":"Visit data saved for patient GLORIA POLICASTRO","level":"info","timestamp":"2020-08-27T05:47:30.352Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-27T05:47:30.362Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-27T05:47:30.373Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-27T05:47:30.377Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-27T05:47:30.381Z"}
+{"message":"Visit data saved for patient ROBERT DELISLE","level":"info","timestamp":"2020-08-27T05:47:30.384Z"}
+{"message":"Visit data saved for patient LENORE SELZO","level":"info","timestamp":"2020-08-27T05:47:30.436Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.471Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.493Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.523Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.691Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.702Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.713Z"}
+{"message":"Visit data saved for patient DENNIS SUISSE","level":"info","timestamp":"2020-08-27T05:47:30.723Z"}
+{"message":"Visit data saved for patient EUGENIA WEEKS","level":"info","timestamp":"2020-08-27T05:47:30.735Z"}
+{"message":"Visit data saved for patient DENNIS SUISSE","level":"info","timestamp":"2020-08-27T05:47:30.741Z"}
+{"message":"Visit data saved for patient DENNIS SUISSE","level":"info","timestamp":"2020-08-27T05:47:30.781Z"}
+{"message":"Visit data saved for patient JOHN BATLLE","level":"info","timestamp":"2020-08-27T05:47:30.797Z"}
+{"message":"Visit data saved for patient JOHN BATLLE","level":"info","timestamp":"2020-08-27T05:47:30.801Z"}
+{"message":"Visit data saved for patient JOHN BATLLE","level":"info","timestamp":"2020-08-27T05:47:30.857Z"}
+{"message":"Visit data saved for patient JOHN WHITCOM","level":"info","timestamp":"2020-08-27T05:47:31.034Z"}
+{"message":"Visit data saved for patient JOHN WHITCOM","level":"info","timestamp":"2020-08-27T05:47:31.040Z"}
+{"message":"Visit data saved for patient TEDDIE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:31.055Z"}
+{"message":"Visit data saved for patient TEDDIE JOHNSON","level":"info","timestamp":"2020-08-27T05:47:31.063Z"}
+{"message":"Visit data saved for patient JANE GALLENSTEIN","level":"info","timestamp":"2020-08-27T05:47:31.069Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-27T05:47:31.082Z"}
+{"message":"Visit data saved for patient JANE GALLENSTEIN","level":"info","timestamp":"2020-08-27T05:47:31.117Z"}
+{"message":"Visit data saved for patient JANE GALLENSTEIN","level":"info","timestamp":"2020-08-27T05:47:31.133Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-27T05:47:31.139Z"}
+{"message":"Visit data saved for patient GLORIA GLISSON","level":"info","timestamp":"2020-08-27T05:47:31.197Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-27T05:47:31.361Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-27T05:47:31.383Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-27T05:47:31.391Z"}
+{"message":"Visit data saved for patient GARY COMPTON","level":"info","timestamp":"2020-08-27T05:47:31.408Z"}
+{"message":"Visit data saved for patient ROBERT SMITH","level":"info","timestamp":"2020-08-27T05:47:31.424Z"}
+{"message":"Visit data saved for patient ROBERT SMITH","level":"info","timestamp":"2020-08-27T05:47:31.433Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.436Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.443Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.447Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.531Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.678Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.724Z"}
+{"message":"Visit data saved for patient STEPHEN BOARD","level":"info","timestamp":"2020-08-27T05:47:31.730Z"}
+{"message":"Visit data saved for patient DOROTHY FORMISANO","level":"info","timestamp":"2020-08-27T05:47:31.746Z"}
+{"message":"Visit data saved for patient DOROTHY FORMISANO","level":"info","timestamp":"2020-08-27T05:47:31.750Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T06:45:35.805Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T06:45:38.658Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T06:54:36.672Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T06:54:39.493Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T06:57:27.831Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T06:57:31.181Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:11:05.625Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:11:07.813Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:17:28.547Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:17:30.778Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:19:08.720Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:19:10.822Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:22:46.239Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:22:48.659Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:31:18.070Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:31:20.082Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:33:41.401Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:33:43.428Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:36:23.238Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:36:25.200Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:38:03.562Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:38:05.564Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:39:16.293Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:39:18.349Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:40:04.544Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:40:06.548Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:41:38.004Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:41:40.164Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:44:35.783Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:44:41.366Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:46:07.546Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:46:09.505Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T07:54:00.990Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T07:54:03.048Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T08:26:39.910Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T08:26:42.161Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T08:33:46.585Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T08:33:49.659Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T10:27:52.112Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T10:27:58.564Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T10:32:05.859Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T10:32:08.347Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T10:34:34.006Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T10:34:37.717Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T10:41:23.370Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T10:41:25.895Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T10:53:35.669Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T10:53:38.381Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T10:55:20.114Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T10:55:22.407Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T11:06:21.688Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T11:06:24.604Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T11:12:40.969Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T11:12:43.342Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T11:24:44.096Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T11:24:46.850Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T11:27:38.284Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T11:27:40.598Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T11:31:10.375Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T11:31:12.457Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T11:33:59.628Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T11:34:02.000Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T12:04:05.190Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T12:04:07.746Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-08-27T12:07:57.481Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-08-27T12:07:59.679Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-01T14:09:36.591Z"}
+{"errno":"ECONNREFUSED","code":"ECONNREFUSED","syscall":"querySrv","hostname":"_mongodb._tcp.balancedwellbeing.fqn52.mongodb.net","level":"error","timestamp":"2020-09-01T14:09:36.618Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-02T05:04:41.444Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-02T05:04:46.545Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-02T05:23:23.280Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-02T05:23:26.103Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-02T05:25:23.029Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-02T05:38:46.108Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-02T05:38:52.082Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-02T05:47:16.256Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-24T10:47:32.223Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-24T10:47:35.981Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:29.489Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:35.159Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:36.549Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:11:39.019Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-24T11:11:39.381Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-24T11:11:40.139Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:12:04.299Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:12:05.392Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T11:12:12.523Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-24T11:12:12.565Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-24T11:12:12.981Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-24T12:54:27.781Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-24T12:54:35.275Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:56:09.902Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:56:32.094Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:56:34.088Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:57:01.748Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:57:06.416Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:57:14.330Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:58:00.745Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T12:58:24.070Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:33.969Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:35.308Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:37.034Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:44.741Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:46.424Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:55.679Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-24T13:00:56.150Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-24T13:00:56.984Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-24T13:01:00.649Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:07.576Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:12.680Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:21.463Z"}
+{"message":"Got Facility data","level":"info","timestamp":"2020-09-24T13:01:22.854Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-24T13:01:23.067Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-09-24T13:01:23.099Z"}
+{"message":"getting all the provider data","level":"info","timestamp":"2020-09-24T13:01:24.420Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:24.715Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-09-24T13:01:24.789Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-24T13:01:25.950Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:26.385Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:27.330Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:27.727Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:29.022Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:29.586Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:30.368Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:31.839Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:32.685Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:33.503Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:34.789Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:38.099Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:39.664Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-24T13:01:41.963Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-25T04:51:07.498Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-25T05:37:44.533Z"}

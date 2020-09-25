@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subject, BehaviorSubject, Observable, of } from 'rxjs';
 import { filter, delay, map, catchError, switchMap} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 export interface Admin {
   fname: string;
@@ -228,16 +229,18 @@ export class DataTransferService {
 
   adminData: Admin;
   patientData: combined;
-  private c1 = new Subject<String>();
+  private c1 = new Subject<string>();
   cc1$ = this.c1.asObservable();
   roleType;
-  private c2 = new Subject<String>(); cc2$ = this.c2.asObservable();
-  private c3 = new Subject<String>(); cc3$ = this.c3.asObservable();
-  private c4 = new Subject<String>(); cc4$ = this.c4.asObservable();
-  private c5 = new Subject<String>(); cc5$ = this.c5.asObservable();
-  private c6 = new Subject<String>(); cc6$ = this.c6.asObservable();
+  private c2 = new Subject<string>(); cc2$ = this.c2.asObservable();
+  private c3 = new Subject<string>(); cc3$ = this.c3.asObservable();
+  private c4 = new Subject<string>(); cc4$ = this.c4.asObservable();
+  private c5 = new Subject<string>(); cc5$ = this.c5.asObservable();
+  private c6 = new Subject<string>(); cc6$ = this.c6.asObservable();
   // metcha = 'http://3.128.218.140:4000/api';
-  metcha = 'http://localhost:4000/api';
+  // metcha = 'http://localhost:4000/api';
+  // metcha = 'http://localhost:4000/api';
+  metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
   url2 = `${this.metcha}/red`;
@@ -268,6 +271,7 @@ export class DataTransferService {
   url27 = `${this.metcha}/fetchByName`;
   url28 = `${this.metcha}/getactivefacility`;
   url29 = `${this.metcha}/getactiveprovider`;
+  url30 = `${this.metcha}/call`;
   apiUrlForFacilitySummary = `${this.metcha}/facilitysummaryreport`;
   apiUrlForPatientSummary = `${this.metcha}/patientsummaryreport`;
   apiUrlForMedicationReport = `${this.metcha}/expensivemedicationreport`;
@@ -285,6 +289,13 @@ export class DataTransferService {
   subject = new BehaviorSubject('123');
   checkLogin(dorm) {
     return this.http.post<any>(this.url, dorm.value);
+  }
+  call() {
+    console.log('second step');
+    this.http.get<any>(this.url30).subscribe(res => {
+    console.log('output');
+    console.log(res);
+   });
   }
   sendotp(form) {
     return this.http.post<any>(this.url20, form.value);
@@ -405,8 +416,12 @@ export class DataTransferService {
   createdownloadlink(some) {
   }
   submitMasterPatientData(data) {
-    this.http.post<any>(this.url16, data).subscribe(res => {
-    });
+    console.log('i am inside service and getting triggered');
+    console.log(data);
+    return this.http.post<any>(this.url16, data);
+    // .subscribe(res => {
+    //   console.log(res)
+    // });
   }
   useriden(id?: string) {
     this.subject.next(id);
