@@ -14,8 +14,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EmployeeFacilityComponent implements OnInit {
 
-  fileData: any = [];
-  imagess: any = [];
+  employeeFacilitySubcription: any = [];
+  employeeSubscribed: any = [];
   facilities: any = [];
 
   constructor(public service: DataTransferService,
@@ -25,24 +25,25 @@ export class EmployeeFacilityComponent implements OnInit {
     this.service.logout();
   }
 
-  fileProgress(indexOfelement, facilityname, fileInput: any) {
-    console.log(indexOfelement, fileInput, facilityname);
-    // this.fileData[indexOfelement] = fileInput.target.files[0];
-    // if (fileInput.target.files[0]) {
-    //   this.elements[indexOfelement].uploadbttonflag = true;
-    // }
+  onCheckboxChange(event, facilityname, indexOfelement) {
+    this.employeeFacilitySubcription[indexOfelement] = event.target.checked;
+    if (event.target.checked) {
+      this.facilities[indexOfelement].submitbutton = true;
+    } else {
+      this.facilities[indexOfelement].submitbutton = false;
+    }
   }
 
   onSave(indexOfelement, facilityName) {
 
-    const formData = new FormData();
-    formData.append('facilityname', facilityName);
-    // formData.append('documentname', fileName);
+    const  params = {
+      'facilityName': facilityName,
+      'subscribeStatus': this.employeeFacilitySubcription[indexOfelement]
+    };
 
-    this.service.addfacilityForEmployee(formData)
+    this.service.addfacilityForEmployee(params)
     .subscribe(res => {
-      // this.getUploadedFiles();
-      // this.elements[indexOfelement].uploadbttonflag = false;
+      this.facilities[indexOfelement].subscribeStatus = true;
       this.toastr.success('', 'Facility Subscribe Sucessfully!!');
     }, err => {
       this.toastr.error('', 'Facility Not Subscribe !!');
@@ -51,43 +52,40 @@ export class EmployeeFacilityComponent implements OnInit {
 
   ngOnInit() {
     this.service.getEmployeeFacility().subscribe(res => {
+      console.log('res-0', res)
       this.facilities = res;
-      // this.getUploadedFiles();
+      this.getUploadedFiles();
     }, err => {
       this.facilities = [];
     });
-
-    // const str = this.service.metcha;
-    // this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
-
   }
 
-  // checkForProvider(elements) {
-  //   return JSON.stringify(this.provider) === JSON.stringify(elements.sort());
-  // }
+  getUploadedFiles() {
+    this.service.getEmployeeSubscribeFacility().subscribe(res => {
+      console.log('res-1', res)
+      this.employeeSubscribed = res[0].facilities;
+      if (res[0].facilities.length > 0) {
+        // tslint:disable-next-line:prefer-for-of
+        for (let subscribedIndex = 0; subscribedIndex < res[0].facilities.length; subscribedIndex++) {
+          // tslint:disable-next-line:prefer-for-of
+          for (let subscribeIndex = 0; subscribeIndex < this.facilities.length; subscribeIndex++) {
+            if (res[0].facilities[subscribedIndex].facilityName.trim().toLowerCase( ) ===
+              this.facilities[subscribeIndex].facilityname.trim().toLowerCase( )) {
 
-  // getUploadedFiles() {
-  //   this.service.getEmployeeDetails().subscribe(res => {
-  //     this.imagess = res[0].files;
-  //     if (res[0].files.length > 0) {
-  //       // tslint:disable-next-line:prefer-for-of
-  //       for (let uploadFileIndex = 0; uploadFileIndex < res[0].files.length; uploadFileIndex++) {
-  //         // tslint:disable-next-line:prefer-for-of
-  //         for (let requiredDocIndex = 0; requiredDocIndex < this.elements.length; requiredDocIndex++) {
-  //           if ( res[0].files[uploadFileIndex].documentname.trim().toLowerCase( ) ===
-  //             this.elements[requiredDocIndex].documentname.trim().toLowerCase( )) {
-  //             this.elements[requiredDocIndex].documentstatus = res[0].files[uploadFileIndex].status;
-  //             this.elements[requiredDocIndex].filename = res[0].files[uploadFileIndex].fiName;
-  //             this.elements[requiredDocIndex].remark = res[0].files[uploadFileIndex].remark;
+              this.facilities[subscribeIndex].facilityStartDate = res[0].facilities[subscribedIndex].facilityStartDate;
+              this.facilities[subscribeIndex].facilityEndDate = res[0].facilities[subscribedIndex].facilityEndDate;
+              this.facilities[subscribeIndex].facilityCharges = 'USD' + ' ' + res[0].facilities[subscribedIndex].facilityCharges;
+              this.facilities[subscribeIndex].submitbutton =  res[0].facilities[subscribedIndex].submitbutton;
+              this.facilities[subscribeIndex].subscribeStatus =  res[0].facilities[subscribedIndex].subscribeStatus;
 
-  //             break;
-  //           }
+              break;
+            }
 
-  //         }
-  //       }
+          }
+        }
 
-  //     }
-  //   });
-  // }
+      }
+    });
+  }
 
 }

@@ -17,7 +17,8 @@ let uploadFiles = new mongoose.Schema({
     facilityCharges: Number,
     savedon: Date,
     savedby: String,
-    remark: String
+    remark: String,
+    submitbutton: Boolean
   })
 
 let userSchema = new mongoose.Schema({

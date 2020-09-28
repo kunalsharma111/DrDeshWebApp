@@ -2025,3 +2025,225 @@
 {"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:16:11.346Z"}
 {"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:16:19.946Z"}
 {"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:16:20.249Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T01:19:24.379Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T01:19:26.794Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:42:17.447Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:42:18.140Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T01:46:10.823Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T01:46:23.710Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:46:46.035Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:46:48.623Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:46:50.550Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:46:54.861Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T01:53:58.777Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T01:54:39.622Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:55:23.502Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T01:55:24.243Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:01:27.848Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T02:01:32.241Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:01:39.128Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:01:41.675Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:11:20.243Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T02:11:28.141Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:13:27.251Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:13:28.918Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:22:55.115Z"}
+{"message":"Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","timestamp":"2020-09-28T02:23:26.442Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:23:34.104Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:24:34.223Z"}
+{"code":"ESERVFAIL","syscall":"queryTxt","hostname":"balancedwellbeing.fqn52.mongodb.net","level":"error","timestamp":"2020-09-28T02:25:05.735Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:25:24.477Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T02:25:49.630Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:25:59.191Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:26:01.158Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:26:03.329Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T02:34:53.910Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T02:34:56.563Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:38:27.658Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:38:28.094Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:50:35.954Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:50:36.542Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:53:24.573Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:53:24.980Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:54:29.899Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T02:54:30.309Z"}
+{"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2020-09-28T03:22:14.944Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:22:35.638Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:22:35.644Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:22:36.013Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:25:58.937Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:25:59.482Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:28:45.226Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:28:45.494Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T03:34:13.212Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T03:34:15.502Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:37:55.627Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:37:55.902Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:40:30.068Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:40:30.557Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:41:06.962Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:41:07.448Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:42:30.822Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:42:31.437Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:44:17.496Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:44:17.802Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:45:46.057Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:45:46.495Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T03:53:58.433Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T03:54:01.487Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:54:04.893Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:54:06.651Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T03:54:08.072Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:12:50.732Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:12:51.031Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:13:44.977Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:13:45.504Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:14:29.844Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:14:30.246Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:15:29.678Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:15:29.943Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:15:51.309Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:15:51.870Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:17:07.801Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:17:08.179Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:20:05.554Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:20:05.849Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:20:52.144Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:20:52.517Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:21:38.932Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:21:39.406Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:22:41.828Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:22:42.466Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:23:50.715Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:23:51.024Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:26:46.600Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:26:46.864Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:33:38.805Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:33:39.342Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:43:32.874Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:43:33.229Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:48:41.704Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:48:42.100Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:51:59.773Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:52:00.049Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:53:14.307Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:53:15.449Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:53:15.722Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:53:22.494Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-09-28T04:53:22.811Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-28T04:53:23.406Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-09-28T04:53:23.418Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-28T04:53:23.725Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:53:23.738Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:56:53.117Z"}
+{"message":"Got all the insurances","level":"info","timestamp":"2020-09-28T04:56:53.126Z"}
+{"message":"Got all the meds","level":"info","timestamp":"2020-09-28T04:56:53.132Z"}
+{"message":"got all the Active provider info","level":"info","timestamp":"2020-09-28T04:56:53.147Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:56:53.426Z"}
+{"message":"Got activated facility","level":"info","timestamp":"2020-09-28T04:56:53.467Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:56:53.937Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:56:56.019Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:56:57.189Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:56:59.061Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:58:09.008Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T04:58:09.290Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:01:11.012Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:01:11.937Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:05:53.483Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:05:54.196Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:06:31.183Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:06:31.468Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:07:20.197Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:07:20.828Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:07:49.815Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:07:50.113Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:08:23.255Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:08:23.527Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:08:49.641Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:08:50.013Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:09:58.719Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:09:59.336Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:11:01.041Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:11:01.332Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:11:31.931Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:11:32.213Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:11:48.335Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:11:49.107Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:12:51.359Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:12:51.678Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:23:39.034Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:23:39.342Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:25:03.032Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:26:35.279Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:26:37.015Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:27:53.613Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:27:53.924Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:29:44.473Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:29:44.744Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:30:02.813Z"}
+{"message":"Name of current user istrushali","level":"info","timestamp":"2020-09-28T05:30:03.089Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:24.066Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:25.339Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:30.818Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:49.907Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:53.139Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:54.572Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T05:32:54.842Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T05:33:35.929Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T05:33:37.563Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T05:33:39.203Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T05:39:30.799Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T05:39:31.392Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-09-28T06:11:27.446Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-09-28T06:11:39.206Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:12:50.790Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:12:55.447Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:14:55.093Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:15:19.669Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:15:22.754Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:15:24.476Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:15:46.646Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:15:50.249Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:16:05.971Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:16:18.200Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:16:26.423Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:17:05.240Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:17:05.920Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:19:13.888Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:19:15.409Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:19:17.741Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:20:16.994Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:20:17.485Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:21:23.459Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:21:27.243Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:22:47.704Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:23:00.204Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:23:55.850Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:23:56.148Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:24:16.489Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:24:16.776Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:24:28.001Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:24:28.290Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:24:51.008Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2020-09-28T06:24:51.330Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T06:25:15.511Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T06:25:18.422Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T06:25:20.173Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T06:25:22.358Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-09-28T06:25:22.666Z"}
+{"message":"user saved successfullypankaj@gmail.com","level":"info","timestamp":"2020-09-28T06:26:07.986Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:26:17.740Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:26:18.941Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:26:20.116Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:29:07.818Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:29:08.460Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:33:53.328Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:33:54.153Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:35:49.437Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:35:49.864Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:36:00.061Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:36:00.418Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:37:09.105Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:37:09.433Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:54:59.704Z"}
+{"message":"Name of current user ispankaj","level":"info","timestamp":"2020-09-28T06:55:00.227Z"}

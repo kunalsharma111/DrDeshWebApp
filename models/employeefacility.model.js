@@ -13,6 +13,10 @@ let employeeFacilitySchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    subscribeStatus: {
+        type: Boolean,
+        default: false
+    },
     savedbby: {
         type: String
     }

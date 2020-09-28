@@ -102,21 +102,23 @@
             <tr>
             <td>{{indexOfelement+1}}</td>
             <td>{{facility.facilityname}}</td>
-            <td>
-                <div class="onoffswitch">
-                    <input type="checkbox" name="onoffswitch{{indexOfelement}}" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" [value]="">
-                    <label class="onoffswitch-label" for="myonoffswitch">
-                        <span class="onoffswitch-inner"></span>
-                        <span class="onoffswitch-switch"></span>
-                    </label>
-                </div>
+            <td class="columnalign">
+                <input type="checkbox" name="onoffswitch{{indexOfelement}}"
+                [checked]="facility.subscribeStatus"
+                [disabled]="facility.subscribeStatus"
+                [value]="facility.subscribeStatus"
+                (change)="onCheckboxChange($event, facility.facilityname, indexOfelement)">
             </td>
             <td class="columnalign">
-                <input type="submit"  value="Submit"  (click)="onSave(indexOfelement, facility.facilityname)" class="btn-blue1">
+                <input type="submit"
+                [hidden]="facility.subscribeStatus || !facility.submitbutton"
+                value="Submit"
+                (click)="onSave(indexOfelement, facility.facilityname)"
+                class="btn-blue1">
             </td>
-            <td class="tableSelectColumn"><input type="date" class="fontmargin" [disabled]="true" [value]=""></td>
-            <td class="tableSelectColumn"><input type="date" class="fontmargin" [disabled]="true" [value]=""></td>
-            <td><input type="text" [disabled]="true" [value]=""></td>
+            <td class="tableSelectColumn"><input type="date" class="fontmargin"  [ngModel]="facility.facilityStartDate | date:'yyyy-MM-dd'" [disabled]="true" value="facility.facilityStartDate"></td>
+            <td class="tableSelectColumn"><input type="date" class="fontmargin" [ngModel]="facility.facilityEndDate | date:'yyyy-MM-dd'" [disabled]="true" value="facility.facilityEndDate"></td>
+            <td><input type="text" [disabled]="true" [value]="facility.facilityCharges"></td>
             </tr>
         </tbody>
     </table>

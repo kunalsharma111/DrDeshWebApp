@@ -1962,7 +1962,6 @@ router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) =
         savedby: currentuser,
         documentname: req.body.documentname,
         remark: ''
-
     }
 
     userModel.find({_id: req.userId, "files.documentname": req.body.documentname}, (err, doc) => {
@@ -2002,6 +2001,14 @@ router.post('/employeedetails', verifyToken, upload.single('file'), (req, res) =
 
 router.post('/fetchfiles', verifyToken, (req, res) => {
     userModel.find({_id: req.userId},{'files': 1}).then(out => {
+        res.json(out)
+    }, err => {
+        res.json(err);
+    });
+})
+
+router.post('/getEmployeeSubscribefacilities', verifyToken, (req, res) => {
+    userModel.find({_id: req.userId},{'facilities': 1}).then(out => {
         res.json(out)
     }, err => {
         res.json(err);
@@ -2134,6 +2141,54 @@ router.post('/getEmployeeFacilities', verifyToken, (req, res) => {
     }, err => {
         res.json(err);
     });
+});
+
+router.post('/addFacilityToEmployee', verifyToken, (req, res) => {
+    console.log('req', req.body)
+    let empFacility ={
+        facilityName: req.body.facilityName,
+        subscribeStatus: req.body.subscribeStatus || true,
+        facilityStartDate: undefined,
+        facilityEndDate: undefined,
+        facilityCharges: undefined,
+        savedon: new Date(),
+        savedby: currentuser,
+        remark: undefined,
+        submitbutton: true
+      };
+    userModel.find({_id: req.userId, "facilities.facilityName": req.body.facilityName}, (err, doc) => {
+        console.log('doc-eror', err, doc);
+        if (!err ) {
+            if(doc.length == 0) {
+                userModel.find({_id: req.userId}, (error, document) => {
+                    if(!error) {
+                        document[0].facilities.push(empFacility);
+                        document[0].save().then(ress => {
+                        res.send(document);
+                        }, err => {
+                            console.log(err);
+                        })
+
+                    } else {
+                        res.send(error);
+                    }
+
+                })
+            } else {
+                userModel.updateOne({_id: req.userId, 'facilities.facilityName': req.body.facilityName}, { $set: { 'facilities.$.facilityStartDate': empFacility.facilityStartDate, 'facilities.$.facilityEndDate': empFacility.facilityEndDate, 'facilities.$.facilityCharges': empFacility.facilityCharges } }, (errr, docc) => {
+                    if(!errr) {
+                        res.send(docc);
+                    } else {
+                        console.log(errr);
+                        res.send(errr);
+                    }
+                })
+            }
+        }
+        else {
+            console.log("error at employeedetails", err);
+        }
+    })
 });
 
 // fetchbyName ends

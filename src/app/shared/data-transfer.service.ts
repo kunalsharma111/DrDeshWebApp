@@ -286,6 +286,7 @@ export class DataTransferService {
   storeEmployeeFacility = `${this.metcha}/storeEmployeeFacility`;
   getEmployeeFacilities = `${this.metcha}/getEmployeeFacilities`;
   addFacilityToEmployee = `${this.metcha}/addFacilityToEmployee`;
+  getEmployeeSubscribefacilities = `${this.metcha}/getEmployeeSubscribefacilities`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -335,7 +336,12 @@ export class DataTransferService {
   }
 
   addfacilityForEmployee(data) {
+    console.log('data', data);
     return this.http.post<any>(this.addFacilityToEmployee, data);
+  }
+
+  getEmployeeSubscribeFacility() {
+    return this.http.post<any>(this.getEmployeeSubscribefacilities, {});
   }
 
   getEmployeeDetails() {

@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"wrapper\">\n    <app-shareddashboard></app-shareddashboard>\n    <!-- <div class=\"notebox\">\n        <h4>Note :</h4>\n        <ul>\n            <li>Upload Scanned Documents.</li>\n            <li><b>Employee will have to upload all the relevant documents as per his/her position. The same documents need to be produced at Admin side for confirmation.</b></li>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                    <thead>\n                        <tr>\n                        <th>Sr.No</th>\n                        <th>Role</th>\n                        <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>1</td>\n                            <td>Provider</td>\n                            <td>Provider means APRN, PA, Psychiatrist, Psychologist, or LCSW</td>\n                        </tr>\n                        <tr>\n                            <td>2</td>\n                            <td>MA</td>\n                            <td>MA means Medical Assistants</td>\n                        </tr>\n                        <tr>\n                            <td>3</td>\n                            <td>APRN</td>\n                            <td>APRN means Nurse Practitioner</td>\n                        </tr>\n                        <tr>\n                            <td>4</td>\n                            <td>PA</td>\n                            <td>PA means Physician Assistant</td>\n                        </tr>\n                        <tr>\n                            <td>5</td>\n                            <td>Psychologists</td>\n                            <td>Psychologists means PhD or PsyD</td>\n                        </tr>\n                        <tr>\n                            <td>6</td>\n                            <td>LCSW</td>\n                            <td>LCSW means Licensed Social Worker or Licensed Mental Health Counselor</td>\n                        </tr>\n                        <tr>\n                            <td>7</td>\n                            <td>ALL</td>\n                            <td>Indicates Documents are Compulsory for all Employee</td>\n                        </tr>\n                    </tbody>\n                </table>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                <thead>\n                    <tr>\n                    <th>Sr.No</th>\n                    <th>Document Status</th>\n                    <th>Description</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td>1</td>\n                        <td>Submited</td>\n                        <td>Documents uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>2</td>\n                        <td>Not Submited</td>\n                        <td>Documents not uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>3</td>\n                        <td>Approved</td>\n                        <td>Indicates Documents Approve By Admin.</td>\n                    </tr>\n                    <tr>\n                        <td>4</td>\n                        <td>Rejected</td>\n                        <td>Documents Reject By Admin.</td>\n                    </tr>\n\n                </tbody>\n            </table>\n\n        </ul>\n    </div> -->\n    <table class=\"table table-bordered table-sm\">\n        <thead>\n            <tr>\n            <th>Sr.No</th>\n            <th>Description</th>\n            <th>Subscribe</th>\n            <th>Submit</th>\n            <th>Start Date</th>\n            <th>End Date</th>\n            <th>Charges</th>\n            </tr>\n        </thead>\n        <tbody *ngFor=\"let facility  of facilities; let indexOfelement = index;\">\n            <tr>\n            <td>{{indexOfelement+1}}</td>\n            <td>{{facility.facilityname}}</td>\n            <td>\n                <div class=\"onoffswitch\">\n                    <input type=\"checkbox\" name=\"onoffswitch{{indexOfelement}}\" class=\"onoffswitch-checkbox\" id=\"myonoffswitch\" tabindex=\"0\" [value]=\"\">\n                    <label class=\"onoffswitch-label\" for=\"myonoffswitch\">\n                        <span class=\"onoffswitch-inner\"></span>\n                        <span class=\"onoffswitch-switch\"></span>\n                    </label>\n                </div>\n            </td>\n            <td class=\"columnalign\">\n                <input type=\"submit\"  value=\"Submit\"  (click)=\"onSave(indexOfelement, facility.facilityname)\" class=\"btn-blue1\">\n            </td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\" [disabled]=\"true\" [value]=\"\"></td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\" [disabled]=\"true\" [value]=\"\"></td>\n            <td><input type=\"text\" [disabled]=\"true\" [value]=\"\"></td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div id=\"wrapper\">\n    <app-shareddashboard></app-shareddashboard>\n    <!-- <div class=\"notebox\">\n        <h4>Note :</h4>\n        <ul>\n            <li>Upload Scanned Documents.</li>\n            <li><b>Employee will have to upload all the relevant documents as per his/her position. The same documents need to be produced at Admin side for confirmation.</b></li>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                    <thead>\n                        <tr>\n                        <th>Sr.No</th>\n                        <th>Role</th>\n                        <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>1</td>\n                            <td>Provider</td>\n                            <td>Provider means APRN, PA, Psychiatrist, Psychologist, or LCSW</td>\n                        </tr>\n                        <tr>\n                            <td>2</td>\n                            <td>MA</td>\n                            <td>MA means Medical Assistants</td>\n                        </tr>\n                        <tr>\n                            <td>3</td>\n                            <td>APRN</td>\n                            <td>APRN means Nurse Practitioner</td>\n                        </tr>\n                        <tr>\n                            <td>4</td>\n                            <td>PA</td>\n                            <td>PA means Physician Assistant</td>\n                        </tr>\n                        <tr>\n                            <td>5</td>\n                            <td>Psychologists</td>\n                            <td>Psychologists means PhD or PsyD</td>\n                        </tr>\n                        <tr>\n                            <td>6</td>\n                            <td>LCSW</td>\n                            <td>LCSW means Licensed Social Worker or Licensed Mental Health Counselor</td>\n                        </tr>\n                        <tr>\n                            <td>7</td>\n                            <td>ALL</td>\n                            <td>Indicates Documents are Compulsory for all Employee</td>\n                        </tr>\n                    </tbody>\n                </table>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                <thead>\n                    <tr>\n                    <th>Sr.No</th>\n                    <th>Document Status</th>\n                    <th>Description</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td>1</td>\n                        <td>Submited</td>\n                        <td>Documents uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>2</td>\n                        <td>Not Submited</td>\n                        <td>Documents not uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>3</td>\n                        <td>Approved</td>\n                        <td>Indicates Documents Approve By Admin.</td>\n                    </tr>\n                    <tr>\n                        <td>4</td>\n                        <td>Rejected</td>\n                        <td>Documents Reject By Admin.</td>\n                    </tr>\n\n                </tbody>\n            </table>\n\n        </ul>\n    </div> -->\n    <table class=\"table table-bordered table-sm\">\n        <thead>\n            <tr>\n            <th>Sr.No</th>\n            <th>Description</th>\n            <th>Subscribe</th>\n            <th>Submit</th>\n            <th>Start Date</th>\n            <th>End Date</th>\n            <th>Charges</th>\n            </tr>\n        </thead>\n        <tbody *ngFor=\"let facility  of facilities; let indexOfelement = index;\">\n            <tr>\n            <td>{{indexOfelement+1}}</td>\n            <td>{{facility.facilityname}}</td>\n            <td class=\"columnalign\">\n                <input type=\"checkbox\" name=\"onoffswitch{{indexOfelement}}\"\n                [checked]=\"facility.subscribeStatus\"\n                [disabled]=\"facility.subscribeStatus\"\n                [value]=\"facility.subscribeStatus\"\n                (change)=\"onCheckboxChange($event, facility.facilityname, indexOfelement)\">\n            </td>\n            <td class=\"columnalign\">\n                {{facility.submitbutton}}\n                <input type=\"submit\"\n                [ngClass]=\"{'btn-blue3': facility.submitbutton}\"\n                [disabled]=\"!facility.submitbutton\"\n                value=\"Submit\"\n                (click)=\"onSave(indexOfelement, facility.facilityname)\"\n                class=\"btn-blue1\">\n            </td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\"  [ngModel]=\"facility.facilityStartDate | date:'yyyy-MM-dd'\" [disabled]=\"true\" value=\"facility.facilityStartDate\"></td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\" [ngModel]=\"facility.facilityEndDate | date:'yyyy-MM-dd'\" [disabled]=\"true\" value=\"facility.facilityEndDate\"></td>\n            <td><input type=\"text\" [disabled]=\"true\" [value]=\"facility.facilityCharges\"></td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n");
 
 /***/ }),
 
@@ -2090,28 +2090,27 @@ let EmployeeFacilityComponent = class EmployeeFacilityComponent {
     constructor(service, toastr) {
         this.service = service;
         this.toastr = toastr;
-        this.fileData = [];
-        this.imagess = [];
+        this.employeeFacilitySubcription = [];
+        this.employeeSubscribed = [];
         this.facilities = [];
     }
     logout() {
         this.service.logout();
     }
-    fileProgress(indexOfelement, facilityname, fileInput) {
-        console.log(indexOfelement, fileInput, facilityname);
-        // this.fileData[indexOfelement] = fileInput.target.files[0];
-        // if (fileInput.target.files[0]) {
-        //   this.elements[indexOfelement].uploadbttonflag = true;
-        // }
+    onCheckboxChange(event, facilityname, indexOfelement) {
+        console.log(indexOfelement, event.target.checked, facilityname);
+        this.employeeFacilitySubcription[indexOfelement] = event.target.checked;
+        if (event.target.checked === true) {
+            this.facilities[indexOfelement].submitbutton = true;
+        }
     }
     onSave(indexOfelement, facilityName) {
-        const formData = new FormData();
-        formData.append('facilityname', facilityName);
-        // formData.append('documentname', fileName);
-        this.service.addfacilityForEmployee(formData)
+        const params = {
+            'facilityName': facilityName,
+            'subscribeStatus': this.employeeFacilitySubcription[indexOfelement]
+        };
+        this.service.addfacilityForEmployee(params)
             .subscribe(res => {
-            // this.getUploadedFiles();
-            // this.elements[indexOfelement].uploadbttonflag = false;
             this.toastr.success('', 'Facility Subscribe Sucessfully!!');
         }, err => {
             this.toastr.error('', 'Facility Not Subscribe !!');
@@ -2120,12 +2119,32 @@ let EmployeeFacilityComponent = class EmployeeFacilityComponent {
     ngOnInit() {
         this.service.getEmployeeFacility().subscribe(res => {
             this.facilities = res;
-            // this.getUploadedFiles();
+            this.getUploadedFiles();
         }, err => {
             this.facilities = [];
         });
-        // const str = this.service.metcha;
-        // this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
+    }
+    getUploadedFiles() {
+        this.service.getEmployeeSubscribeFacility().subscribe(res => {
+            this.employeeSubscribed = res[0].facilities;
+            if (res[0].facilities.length > 0) {
+                // tslint:disable-next-line:prefer-for-of
+                for (let subscribedIndex = 0; subscribedIndex < res[0].facilities.length; subscribedIndex++) {
+                    // tslint:disable-next-line:prefer-for-of
+                    for (let subscribeIndex = 0; subscribeIndex < this.facilities.length; subscribeIndex++) {
+                        if (res[0].facilities[subscribedIndex].facilityName.trim().toLowerCase() ===
+                            this.facilities[subscribeIndex].facilityname.trim().toLowerCase()) {
+                            this.facilities[subscribeIndex].facilityStartDate = res[0].facilities[subscribedIndex].facilityStartDate;
+                            this.facilities[subscribeIndex].facilityEndDate = res[0].facilities[subscribedIndex].facilityEndDate;
+                            this.facilities[subscribeIndex].facilityCharges = 'USD' + ' ' + res[0].facilities[subscribedIndex].facilityCharges;
+                            this.facilities[subscribeIndex].submitbutton = res[0].facilities[subscribedIndex].submitbutton;
+                            this.facilities[subscribeIndex].subscribeStatus = res[0].facilities[subscribedIndex].subscribeStatus;
+                            break;
+                        }
+                    }
+                }
+            }
+        });
     }
 };
 EmployeeFacilityComponent.ctorParameters = () => [
@@ -5292,6 +5311,7 @@ let DataTransferService = class DataTransferService {
         this.storeEmployeeFacility = `${this.metcha}/storeEmployeeFacility`;
         this.getEmployeeFacilities = `${this.metcha}/getEmployeeFacilities`;
         this.addFacilityToEmployee = `${this.metcha}/addFacilityToEmployee`;
+        this.getEmployeeSubscribefacilities = `${this.metcha}/getEmployeeSubscribefacilities`;
         this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]('123');
         this.history = [];
     }
@@ -5338,7 +5358,11 @@ let DataTransferService = class DataTransferService {
         return this.http.post(this.employeeDetails, form);
     }
     addfacilityForEmployee(data) {
+        console.log('data', data);
         return this.http.post(this.addFacilityToEmployee, data);
+    }
+    getEmployeeSubscribeFacility() {
+        return this.http.post(this.getEmployeeSubscribefacilities, {});
     }
     getEmployeeDetails() {
         return this.http.post(this.getEmployeeDetailsUrl, {});

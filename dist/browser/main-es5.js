@@ -183,7 +183,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div id=\"wrapper\">\n    <app-shareddashboard></app-shareddashboard>\n    <!-- <div class=\"notebox\">\n        <h4>Note :</h4>\n        <ul>\n            <li>Upload Scanned Documents.</li>\n            <li><b>Employee will have to upload all the relevant documents as per his/her position. The same documents need to be produced at Admin side for confirmation.</b></li>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                    <thead>\n                        <tr>\n                        <th>Sr.No</th>\n                        <th>Role</th>\n                        <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>1</td>\n                            <td>Provider</td>\n                            <td>Provider means APRN, PA, Psychiatrist, Psychologist, or LCSW</td>\n                        </tr>\n                        <tr>\n                            <td>2</td>\n                            <td>MA</td>\n                            <td>MA means Medical Assistants</td>\n                        </tr>\n                        <tr>\n                            <td>3</td>\n                            <td>APRN</td>\n                            <td>APRN means Nurse Practitioner</td>\n                        </tr>\n                        <tr>\n                            <td>4</td>\n                            <td>PA</td>\n                            <td>PA means Physician Assistant</td>\n                        </tr>\n                        <tr>\n                            <td>5</td>\n                            <td>Psychologists</td>\n                            <td>Psychologists means PhD or PsyD</td>\n                        </tr>\n                        <tr>\n                            <td>6</td>\n                            <td>LCSW</td>\n                            <td>LCSW means Licensed Social Worker or Licensed Mental Health Counselor</td>\n                        </tr>\n                        <tr>\n                            <td>7</td>\n                            <td>ALL</td>\n                            <td>Indicates Documents are Compulsory for all Employee</td>\n                        </tr>\n                    </tbody>\n                </table>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                <thead>\n                    <tr>\n                    <th>Sr.No</th>\n                    <th>Document Status</th>\n                    <th>Description</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td>1</td>\n                        <td>Submited</td>\n                        <td>Documents uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>2</td>\n                        <td>Not Submited</td>\n                        <td>Documents not uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>3</td>\n                        <td>Approved</td>\n                        <td>Indicates Documents Approve By Admin.</td>\n                    </tr>\n                    <tr>\n                        <td>4</td>\n                        <td>Rejected</td>\n                        <td>Documents Reject By Admin.</td>\n                    </tr>\n\n                </tbody>\n            </table>\n\n        </ul>\n    </div> -->\n    <table class=\"table table-bordered table-sm\">\n        <thead>\n            <tr>\n            <th>Sr.No</th>\n            <th>Description</th>\n            <th>Subscribe</th>\n            <th>Submit</th>\n            <th>Start Date</th>\n            <th>End Date</th>\n            <th>Charges</th>\n            </tr>\n        </thead>\n        <tbody *ngFor=\"let facility  of facilities; let indexOfelement = index;\">\n            <tr>\n            <td>{{indexOfelement+1}}</td>\n            <td>{{facility.facilityname}}</td>\n            <td>\n                <div class=\"onoffswitch\">\n                    <input type=\"checkbox\" name=\"onoffswitch{{indexOfelement}}\" class=\"onoffswitch-checkbox\" id=\"myonoffswitch\" tabindex=\"0\" [value]=\"\">\n                    <label class=\"onoffswitch-label\" for=\"myonoffswitch\">\n                        <span class=\"onoffswitch-inner\"></span>\n                        <span class=\"onoffswitch-switch\"></span>\n                    </label>\n                </div>\n            </td>\n            <td class=\"columnalign\">\n                <input type=\"submit\"  value=\"Submit\"  (click)=\"onSave(indexOfelement, facility.facilityname)\" class=\"btn-blue1\">\n            </td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\" [disabled]=\"true\" [value]=\"\"></td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\" [disabled]=\"true\" [value]=\"\"></td>\n            <td><input type=\"text\" [disabled]=\"true\" [value]=\"\"></td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n";
+    __webpack_exports__["default"] = "<div id=\"wrapper\">\n    <app-shareddashboard></app-shareddashboard>\n    <!-- <div class=\"notebox\">\n        <h4>Note :</h4>\n        <ul>\n            <li>Upload Scanned Documents.</li>\n            <li><b>Employee will have to upload all the relevant documents as per his/her position. The same documents need to be produced at Admin side for confirmation.</b></li>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                    <thead>\n                        <tr>\n                        <th>Sr.No</th>\n                        <th>Role</th>\n                        <th>Description</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td>1</td>\n                            <td>Provider</td>\n                            <td>Provider means APRN, PA, Psychiatrist, Psychologist, or LCSW</td>\n                        </tr>\n                        <tr>\n                            <td>2</td>\n                            <td>MA</td>\n                            <td>MA means Medical Assistants</td>\n                        </tr>\n                        <tr>\n                            <td>3</td>\n                            <td>APRN</td>\n                            <td>APRN means Nurse Practitioner</td>\n                        </tr>\n                        <tr>\n                            <td>4</td>\n                            <td>PA</td>\n                            <td>PA means Physician Assistant</td>\n                        </tr>\n                        <tr>\n                            <td>5</td>\n                            <td>Psychologists</td>\n                            <td>Psychologists means PhD or PsyD</td>\n                        </tr>\n                        <tr>\n                            <td>6</td>\n                            <td>LCSW</td>\n                            <td>LCSW means Licensed Social Worker or Licensed Mental Health Counselor</td>\n                        </tr>\n                        <tr>\n                            <td>7</td>\n                            <td>ALL</td>\n                            <td>Indicates Documents are Compulsory for all Employee</td>\n                        </tr>\n                    </tbody>\n                </table>\n            <table class=\"table table-bordered table-sm noteTableTopMargin\">\n                <thead>\n                    <tr>\n                    <th>Sr.No</th>\n                    <th>Document Status</th>\n                    <th>Description</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <td>1</td>\n                        <td>Submited</td>\n                        <td>Documents uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>2</td>\n                        <td>Not Submited</td>\n                        <td>Documents not uploaded By Employee.</td>\n                    </tr>\n                    <tr>\n                        <td>3</td>\n                        <td>Approved</td>\n                        <td>Indicates Documents Approve By Admin.</td>\n                    </tr>\n                    <tr>\n                        <td>4</td>\n                        <td>Rejected</td>\n                        <td>Documents Reject By Admin.</td>\n                    </tr>\n\n                </tbody>\n            </table>\n\n        </ul>\n    </div> -->\n    <table class=\"table table-bordered table-sm\">\n        <thead>\n            <tr>\n            <th>Sr.No</th>\n            <th>Description</th>\n            <th>Subscribe</th>\n            <th>Submit</th>\n            <th>Start Date</th>\n            <th>End Date</th>\n            <th>Charges</th>\n            </tr>\n        </thead>\n        <tbody *ngFor=\"let facility  of facilities; let indexOfelement = index;\">\n            <tr>\n            <td>{{indexOfelement+1}}</td>\n            <td>{{facility.facilityname}}</td>\n            <td class=\"columnalign\">\n                <input type=\"checkbox\" name=\"onoffswitch{{indexOfelement}}\"\n                [checked]=\"facility.subscribeStatus\"\n                [disabled]=\"facility.subscribeStatus\"\n                [value]=\"facility.subscribeStatus\"\n                (change)=\"onCheckboxChange($event, facility.facilityname, indexOfelement)\">\n            </td>\n            <td class=\"columnalign\">\n                {{facility.submitbutton}}\n                <input type=\"submit\"\n                [ngClass]=\"{'btn-blue3': facility.submitbutton}\"\n                [disabled]=\"!facility.submitbutton\"\n                value=\"Submit\"\n                (click)=\"onSave(indexOfelement, facility.facilityname)\"\n                class=\"btn-blue1\">\n            </td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\"  [ngModel]=\"facility.facilityStartDate | date:'yyyy-MM-dd'\" [disabled]=\"true\" value=\"facility.facilityStartDate\"></td>\n            <td class=\"tableSelectColumn\"><input type=\"date\" class=\"fontmargin\" [ngModel]=\"facility.facilityEndDate | date:'yyyy-MM-dd'\" [disabled]=\"true\" value=\"facility.facilityEndDate\"></td>\n            <td><input type=\"text\" [disabled]=\"true\" [value]=\"facility.facilityCharges\"></td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n";
     /***/
   },
 
@@ -3390,8 +3390,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.service = service;
         this.toastr = toastr;
-        this.fileData = [];
-        this.imagess = [];
+        this.employeeFacilitySubcription = [];
+        this.employeeSubscribed = [];
         this.facilities = [];
       }
 
@@ -3401,24 +3401,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.service.logout();
         }
       }, {
-        key: "fileProgress",
-        value: function fileProgress(indexOfelement, facilityname, fileInput) {
-          console.log(indexOfelement, fileInput, facilityname); // this.fileData[indexOfelement] = fileInput.target.files[0];
-          // if (fileInput.target.files[0]) {
-          //   this.elements[indexOfelement].uploadbttonflag = true;
-          // }
+        key: "onCheckboxChange",
+        value: function onCheckboxChange(event, facilityname, indexOfelement) {
+          console.log(indexOfelement, event.target.checked, facilityname);
+          this.employeeFacilitySubcription[indexOfelement] = event.target.checked;
+
+          if (event.target.checked === true) {
+            this.facilities[indexOfelement].submitbutton = true;
+          }
         }
       }, {
         key: "onSave",
         value: function onSave(indexOfelement, facilityName) {
           var _this9 = this;
 
-          var formData = new FormData();
-          formData.append('facilityname', facilityName); // formData.append('documentname', fileName);
-
-          this.service.addfacilityForEmployee(formData).subscribe(function (res) {
-            // this.getUploadedFiles();
-            // this.elements[indexOfelement].uploadbttonflag = false;
+          var params = {
+            'facilityName': facilityName,
+            'subscribeStatus': this.employeeFacilitySubcription[indexOfelement]
+          };
+          this.service.addfacilityForEmployee(params).subscribe(function (res) {
             _this9.toastr.success('', 'Facility Subscribe Sucessfully!!');
           }, function (err) {
             _this9.toastr.error('', 'Facility Not Subscribe !!');
@@ -3430,11 +3431,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var _this10 = this;
 
           this.service.getEmployeeFacility().subscribe(function (res) {
-            _this10.facilities = res; // this.getUploadedFiles();
+            _this10.facilities = res;
+
+            _this10.getUploadedFiles();
           }, function (err) {
             _this10.facilities = [];
-          }); // const str = this.service.metcha;
-          // this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
+          });
+        }
+      }, {
+        key: "getUploadedFiles",
+        value: function getUploadedFiles() {
+          var _this11 = this;
+
+          this.service.getEmployeeSubscribeFacility().subscribe(function (res) {
+            _this11.employeeSubscribed = res[0].facilities;
+
+            if (res[0].facilities.length > 0) {
+              // tslint:disable-next-line:prefer-for-of
+              for (var subscribedIndex = 0; subscribedIndex < res[0].facilities.length; subscribedIndex++) {
+                // tslint:disable-next-line:prefer-for-of
+                for (var subscribeIndex = 0; subscribeIndex < _this11.facilities.length; subscribeIndex++) {
+                  if (res[0].facilities[subscribedIndex].facilityName.trim().toLowerCase() === _this11.facilities[subscribeIndex].facilityname.trim().toLowerCase()) {
+                    _this11.facilities[subscribeIndex].facilityStartDate = res[0].facilities[subscribedIndex].facilityStartDate;
+                    _this11.facilities[subscribeIndex].facilityEndDate = res[0].facilities[subscribedIndex].facilityEndDate;
+                    _this11.facilities[subscribeIndex].facilityCharges = 'USD' + ' ' + res[0].facilities[subscribedIndex].facilityCharges;
+                    _this11.facilities[subscribeIndex].submitbutton = res[0].facilities[subscribedIndex].submitbutton;
+                    _this11.facilities[subscribeIndex].subscribeStatus = res[0].facilities[subscribedIndex].subscribeStatus;
+                    break;
+                  }
+                }
+              }
+            }
+          });
         }
       }]);
 
@@ -3545,26 +3573,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ExpensiveComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this11 = this;
+          var _this12 = this;
 
           this.resetForm();
           this.service.cc5$.subscribe(function (message) {
             if (message === 'yes') {
-              _this11.app();
+              _this12.app();
             }
           });
           this.service.getData().subscribe(function (res) {
             var user = res;
-            _this11.fname = user.fname;
-            _this11.role = user.userrole;
-            _this11.metaData = true;
+            _this12.fname = user.fname;
+            _this12.role = user.userrole;
+            _this12.metaData = true;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpErrorResponse"]) {
-              _this11.service.router.navigateByUrl('/');
+              _this12.service.router.navigateByUrl('/');
             }
           });
           this.service.getMed().subscribe(function (res) {
-            _this11.meds = res;
+            _this12.meds = res;
           });
           var $button = document.querySelector('#sidebar-toggle');
           var $wrapper = document.querySelector('#wrapper');
@@ -3603,13 +3631,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this12 = this;
+          var _this13 = this;
 
           Object.keys(form.controls).forEach(function (key) {
             form.controls[key].markAsTouched();
           });
           this.service.sendMed(form).subscribe(function (res) {
-            _this12.toastr.success('', 'Medicine Saved Successfully');
+            _this13.toastr.success('', 'Medicine Saved Successfully');
           });
           this.resetForm(form);
           this.ngOnInit();
@@ -3756,26 +3784,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(FacilityComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.resetForm();
           this.service.cc2$.subscribe(function (message) {
             if (message === 'yes') {
-              _this13.app();
+              _this14.app();
             }
           });
           this.service.getData().subscribe(function (res) {
             var user = res;
-            _this13.fname = user.fname;
-            _this13.role = user.userrole;
-            _this13.metaData = true;
+            _this14.fname = user.fname;
+            _this14.role = user.userrole;
+            _this14.metaData = true;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-              _this13.service.router.navigateByUrl('/');
+              _this14.service.router.navigateByUrl('/');
             }
           });
           this.service.getFacility().subscribe(function (res) {
-            _this13.facilities = res;
+            _this14.facilities = res;
           });
           var $button = document.querySelector('#sidebar-toggle');
           var $wrapper = document.querySelector('#wrapper');
@@ -3827,10 +3855,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this14 = this;
+          var _this15 = this;
 
           this.service.sendFacility(form).subscribe(function (res) {
-            _this14.toastr.success('', 'Facility Saved Successfully');
+            _this15.toastr.success('', 'Facility Saved Successfully');
           });
           this.resetForm(form);
           this.ngOnInit();
@@ -4058,7 +4086,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(FilterdatePipe, [{
         key: "transform",
         value: function transform(value, searchText, searchDate) {
-          var _this15 = this;
+          var _this16 = this;
 
           if (!searchText && !searchDate) {
             return null;
@@ -4066,13 +4094,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!searchText && searchDate) {
             return value.filter(function (data) {
-              return _this15.matchValue(data, searchDate);
+              return _this16.matchValue(data, searchDate);
             });
           }
 
           if (!searchDate && searchText) {
             return value.filter(function (data) {
-              return _this15.matchValue(data, searchText);
+              return _this16.matchValue(data, searchText);
             });
           }
         }
@@ -4223,53 +4251,53 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this16 = this;
+          var _this17 = this;
 
           this.service.sendotp(form).subscribe(function (res) {
-            _this16.toastr.show('Mail Sent', 'Enter OTP below to reset password'); // this.a = res.em;  
+            _this17.toastr.show('Mail Sent', 'Enter OTP below to reset password'); // this.a = res.em;  
 
 
             console.log(res.e);
-            _this16.an = res.e;
-            _this16.toggle = 2;
+            _this17.an = res.e;
+            _this17.toggle = 2;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) console.log("kidr");
 
-            _this16.toastr.error('', 'This Email is not registered with any account !');
+            _this17.toastr.error('', 'This Email is not registered with any account !');
           }); // this.resetForm(form);
         }
       }, {
         key: "submitt",
         value: function submitt(formm) {
-          var _this17 = this;
+          var _this18 = this;
 
           formm.value.em = this.an;
           console.log(formm.value);
           this.service.compareotp(formm).subscribe(function (res) {
-            _this17.toastr.show('Correct OTP', 'Enter New password');
+            _this18.toastr.show('Correct OTP', 'Enter New password');
 
             console.log(res);
-            _this17.toggle = 3;
+            _this18.toggle = 3;
           }, function (err) {
-            if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) _this17.toastr.error('', 'Wrong OTP');
+            if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) _this18.toastr.error('', 'Wrong OTP');
           });
           this.resetFormm(formm);
         }
       }, {
         key: "submittt",
         value: function submittt(formmm) {
-          var _this18 = this;
+          var _this19 = this;
 
           formmm.value.em = this.an;
           console.log(formmm.value);
           this.service.newpassword(formmm).subscribe(function (res) {
-            _this18.toastr.show('Password changed Successfully', 'Login With New Password');
+            _this19.toastr.show('Password changed Successfully', 'Login With New Password');
 
-            _this18.router.navigate(['/']);
+            _this19.router.navigate(['/']);
 
             console.log(res);
           }, function (err) {
-            if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) _this18.toastr.error('', 'Password change failed');
+            if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) _this19.toastr.error('', 'Password change failed');
           });
           this.resetFormmm(formmm);
         }
@@ -4410,26 +4438,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(InsuranceComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this19 = this;
+          var _this20 = this;
 
           this.resetForm();
           this.service.cc4$.subscribe(function (message) {
             if (message === 'yes') {
-              _this19.app();
+              _this20.app();
             }
           });
           this.service.getData().subscribe(function (res) {
             var user = res;
-            _this19.fname = user.fname;
-            _this19.role = user.userrole;
-            _this19.metaData = true;
+            _this20.fname = user.fname;
+            _this20.role = user.userrole;
+            _this20.metaData = true;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-              _this19.service.router.navigateByUrl('/');
+              _this20.service.router.navigateByUrl('/');
             }
           });
           this.service.getInsurance().subscribe(function (res) {
-            _this19.insurances = res;
+            _this20.insurances = res;
           });
           var $button = document.querySelector('#sidebar-toggle');
           var $wrapper = document.querySelector('#wrapper');
@@ -4468,10 +4496,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this20 = this;
+          var _this21 = this;
 
           this.service.sendInsurance(form).subscribe(function (res) {
-            _this20.toastr.success('', 'Insurance Saved Successfully');
+            _this21.toastr.success('', 'Insurance Saved Successfully');
           });
           this.resetForm(form);
           $('#myModalap').modal('hide');
@@ -4629,30 +4657,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this21 = this;
+          var _this22 = this;
 
           this.renderer.setStyle(this.page.nativeElement, 'filter', 'blur(4px)');
           this.renderer.setStyle(this.ctr.nativeElement, 'display', 'block');
           this.service.checkLogin(form).subscribe(function (res) {
-            _this21.service.setRole(res.role);
+            _this22.service.setRole(res.role);
 
             localStorage.setItem('token', res.token);
 
             if (res.role !== 'Data Entry Operator') {
               localStorage.setItem('moduleType', 'homedash');
 
-              _this21.service.router.navigate(['/moduledashboard']);
+              _this22.service.router.navigate(['/moduledashboard']);
             } else {
               localStorage.setItem('moduleType', 'patient');
 
-              _this21.service.router.navigate(['/dash']);
+              _this22.service.router.navigate(['/dash']);
             }
           }, function (err) {
-            _this21.renderer.setStyle(_this21.ctr.nativeElement, 'display', 'none');
+            _this22.renderer.setStyle(_this22.ctr.nativeElement, 'display', 'none');
 
-            _this21.renderer.setStyle(_this21.page.nativeElement, 'filter', 'blur(0)');
+            _this22.renderer.setStyle(_this22.page.nativeElement, 'filter', 'blur(0)');
 
-            if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpErrorResponse"]) _this21.toastr.error('Username/Password is Incorrect', 'Login Failed');
+            if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpErrorResponse"]) _this22.toastr.error('Username/Password is Incorrect', 'Login Failed');
           });
           this.resetForm(form);
         }
@@ -4906,7 +4934,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PatientComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this22 = this;
+          var _this23 = this;
 
           // this.roleType = this.service.getRole();
           Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["fromEvent"])(this.search.nativeElement, 'input').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (event) {
@@ -4914,10 +4942,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["distinctUntilChanged"])()).subscribe(function (val) {
             var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpParams"]().set('name', val);
 
-            _this22.service.http.get(_this22.service.url27, {
+            _this23.service.http.get(_this23.service.url27, {
               params: params
             }).subscribe(function (fin) {
-              _this22.patients = fin;
+              _this23.patients = fin;
             });
           });
           var MMddyyyy = this.datePipe.transform(new Date(), "MM-dd-yyyy");
@@ -4926,7 +4954,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.kd = this.cd.toISOString().slice(0, 10);
           this.service.cc1$.subscribe(function (message) {
             if (message === 'yes') {
-              _this22.app();
+              _this23.app();
             }
           }); // this.service.getPatientData().subscribe(res => {
           //   this.patients = res;
@@ -4934,13 +4962,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.service.getData().subscribe(function (res) {
             var user = res;
-            _this22.fname = user.fname;
-            _this22.role = user.userrole;
-            _this22.metaData = true;
+            _this23.fname = user.fname;
+            _this23.role = user.userrole;
+            _this23.metaData = true;
           }, function (err) {
             // console.log(err);
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
-              _this22.service.router.navigateByUrl('/');
+              _this23.service.router.navigateByUrl('/');
             }
           });
           var $button = document.querySelector('#sidebar-toggle');
@@ -5195,7 +5223,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PipePipe, [{
         key: "transform",
         value: function transform(value, searchText, searchDate) {
-          var _this23 = this;
+          var _this24 = this;
 
           if (!searchText && !searchDate) {
             return value;
@@ -5203,13 +5231,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (!searchText && searchDate) {
             return value.filter(function (data) {
-              return _this23.matchValue(data, searchDate);
+              return _this24.matchValue(data, searchDate);
             });
           }
 
           if (!searchDate && searchText) {
             return value.filter(function (data) {
-              return _this23.matchValue(data, searchText);
+              return _this24.matchValue(data, searchText);
             });
           }
         }
@@ -5323,32 +5351,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ProviderComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this24 = this;
+          var _this25 = this;
 
           this.roleType = this.service.getRole();
           this.resetForm();
           this.service.cc3$.subscribe(function (message) {
             if (message === 'yes') {
-              _this24.app();
+              _this25.app();
             }
           });
           this.service.getData().subscribe(function (res) {
             var user = res;
-            _this24.fname = user.fname;
-            _this24.role = user.userrole;
-            _this24.metaData = true;
+            _this25.fname = user.fname;
+            _this25.role = user.userrole;
+            _this25.metaData = true;
           }, function (err) {
             console.log(err);
 
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-              _this24.service.router.navigateByUrl('/');
+              _this25.service.router.navigateByUrl('/');
             }
           });
           this.service.getProvider().subscribe(function (res) {
-            _this24.providers = res;
+            _this25.providers = res;
           });
           this.service.getInsurance().subscribe(function (res) {
-            _this24.insurances = res;
+            _this25.insurances = res;
           });
           var $button = document.querySelector('#sidebar-toggle');
           var $wrapper = document.querySelector('#wrapper');
@@ -5433,7 +5461,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this25 = this;
+          var _this26 = this;
 
           console.log(form.value);
           console.log(this.el.nativeElement.querySelectorAll(".chkbx"));
@@ -5464,7 +5492,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             ain: form.value.ain
           };
           this.service.sendProvider(data).subscribe(function (res) {
-            _this25.toastr.success('', 'Provider Saved Successfully');
+            _this26.toastr.success('', 'Provider Saved Successfully');
           });
           this.resetForm(form);
           this.ngOnInit();
@@ -5625,18 +5653,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(RegisterComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this26 = this;
+          var _this27 = this;
 
           this.name = '';
           this.ctrl.getData().subscribe(function (res) {
-            _this26.user = res;
-            _this26.name = _this26.user.fname;
-            _this26.metaData = true;
+            _this27.user = res;
+            _this27.name = _this27.user.fname;
+            _this27.metaData = true;
           }, function (err) {
             console.log(err);
 
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpErrorResponse"]) {
-              _this26.ctrl.router.navigateByUrl('/');
+              _this27.ctrl.router.navigateByUrl('/');
             }
           });
           var $button = document.querySelector('#sidebar-toggle');
@@ -5669,11 +5697,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this27 = this;
+          var _this28 = this;
 
           this.ctrl.transferToServer(form).subscribe(function (res) {
             // localStorage.setItem('token', res.token);
-            _this27.toastr.success('', 'New User Created');
+            _this28.toastr.success('', 'New User Created');
           });
           this.resetform(); // this.ctrl.router.navigateByUrl('/dash');
         }
@@ -5869,7 +5897,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ReportsComponent = /*#__PURE__*/function () {
       function ReportsComponent(spinnerService, service, renderer) {
-        var _this28 = this;
+        var _this29 = this;
 
         _classCallCheck(this, ReportsComponent);
 
@@ -5924,21 +5952,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.patlist = [];
         this.address = [];
         this.input.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["debounceTime"])(200), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["switchMap"])(function (term) {
-          return _this28.service.getPeople(term);
+          return _this29.service.getPeople(term);
         })).subscribe(function (patientnames) {
-          _this28.patientNames = patientnames;
+          _this29.patientNames = patientnames;
         }, function (err) {
           console.log('error', err);
-          _this28.patientNames = [];
+          _this29.patientNames = [];
         });
         this.inputMedicine.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["debounceTime"])(200), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["switchMap"])(function (term) {
-          return _this28.service.getMedicine(term);
+          return _this29.service.getMedicine(term);
         })).subscribe(function (medicineNames) {
-          _this28.medicineName = medicineNames;
-          _this28.validateExpensiveMedicationForm = true;
+          _this29.medicineName = medicineNames;
+          _this29.validateExpensiveMedicationForm = true;
         }, function (err) {
           console.log('error', err);
-          _this28.medicineName = [];
+          _this29.medicineName = [];
         });
       }
 
@@ -5950,13 +5978,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this29 = this;
+          var _this30 = this;
 
           if (this.service.getRole() === undefined) {
             this.service.setRoleTypeAfterRefresh().subscribe(function (res) {
-              _this29.roleType = res.userrole;
+              _this30.roleType = res.userrole;
 
-              _this29.service.setRole(res.userrole);
+              _this30.service.setRole(res.userrole);
             });
           } else {
             this.roleType = this.service.getRole();
@@ -5965,7 +5993,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.patientLoading = true;
           this.service.cc6$.subscribe(function (message) {
             if (message === 'yes') {
-              _this29.open();
+              _this30.open();
             }
           });
           this.resetform();
@@ -5977,27 +6005,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
           this.service.getData().subscribe(function (res) {
             var user = res;
-            _this29.fname = user.fname;
-            _this29.role = user.userrole;
-            _this29.metaData = true;
+            _this30.fname = user.fname;
+            _this30.role = user.userrole;
+            _this30.metaData = true;
           }, function (err) {
             console.log(err);
 
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-              _this29.service.router.navigateByUrl('/');
+              _this30.service.router.navigateByUrl('/');
             }
           });
           this.service.getActiveProvider().subscribe(function (res) {
-            _this29.providers = res;
+            _this30.providers = res;
           });
           this.service.getActiveFacility().subscribe(function (res) {
-            _this29.facilities = res;
+            _this30.facilities = res;
           });
         }
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this30 = this;
+          var _this31 = this;
 
           if (form.valid) {
             this.nodata = false;
@@ -6008,20 +6036,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             localStorage.setItem("date", form.value.date);
             console.log(form.value);
             this.service.findprerecords(form.value).subscribe(function (res) {
-              _this30.output = res;
-              console.log(_this30.output);
+              _this31.output = res;
+              console.log(_this31.output);
 
-              if (_this30.output.length == []) {
-                _this30.spinnerService.hide();
+              if (_this31.output.length == []) {
+                _this31.spinnerService.hide();
 
                 console.log("empty");
-                _this30.nodata = true;
-                _this30.showit = true;
+                _this31.nodata = true;
+                _this31.showit = true;
               } else {
-                _this30.spinnerService.hide();
+                _this31.spinnerService.hide();
 
-                _this30.gammma = true;
-                _this30.showit = false;
+                _this31.gammma = true;
+                _this31.showit = false;
               }
             });
             this.fn = this.repo.facility;
@@ -6035,34 +6063,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit_post",
         value: function submit_post(form) {
-          var _this31 = this;
+          var _this32 = this;
 
           if (form.valid) {
             this.nodata2 = false;
             this.showit2 = false;
             this.spinnerService.show();
             this.service.getpostroundingreport(form.value).subscribe(function (res) {
-              _this31.postData = res;
-              console.log(_this31.postData);
-              console.log(_this31.postData);
+              _this32.postData = res;
+              console.log(_this32.postData);
+              console.log(_this32.postData);
 
-              if (_this31.postData.length == []) {
+              if (_this32.postData.length == []) {
                 console.log("empty");
 
-                _this31.spinnerService.hide();
+                _this32.spinnerService.hide();
 
-                _this31.nodata2 = true;
-                _this31.showit2 = true;
-                _this31.repo = {
+                _this32.nodata2 = true;
+                _this32.showit2 = true;
+                _this32.repo = {
                   facility: '',
                   provider: '',
                   date: null
                 };
               } else {
-                _this31.spinnerService.hide();
+                _this32.spinnerService.hide();
 
-                _this31.gammma2 = true;
-                _this31.showit2 = false;
+                _this32.gammma2 = true;
+                _this32.showit2 = false;
               }
             });
             this.fn = this.repo.facility;
@@ -6076,7 +6104,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitproviderreport",
         value: function submitproviderreport(form) {
-          var _this32 = this;
+          var _this33 = this;
 
           this.proFacReportInput = form.value;
           console.log(form.value);
@@ -6086,31 +6114,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showit3 = false;
             this.spinnerService.show();
             this.service.findproviderreport(form.value).subscribe(function (res) {
-              _this32.providerreportoutput = Array.of(res);
-              console.log(_this32.providerreportoutput[0]);
-              console.log(_this32.scales);
+              _this33.providerreportoutput = Array.of(res);
+              console.log(_this33.providerreportoutput[0]);
+              console.log(_this33.scales);
 
-              if (_this32.providerreportoutput[0] != "no") {
-                for (var ii = 0; ii < _this32.providerreportoutput[0].length; ii++) {
-                  console.log(_this32.providerreportoutput[0].length + "yes");
+              if (_this33.providerreportoutput[0] != "no") {
+                for (var ii = 0; ii < _this33.providerreportoutput[0].length; ii++) {
+                  console.log(_this33.providerreportoutput[0].length + "yes");
 
-                  for (var kp = 0; kp < _this32.scales.length; kp++) {
-                    console.log("scale name : " + _this32.scales[kp]);
+                  for (var kp = 0; kp < _this33.scales.length; kp++) {
+                    console.log("scale name : " + _this33.scales[kp]);
 
-                    for (var ik = 0; ik < _this32.providerreportoutput[0][ii].scales_details.length; ik++) {
-                      if (_this32.scales[kp] == _this32.providerreportoutput[0][ii].scales_details[ik].scale_name) {
+                    for (var ik = 0; ik < _this33.providerreportoutput[0][ii].scales_details.length; ik++) {
+                      if (_this33.scales[kp] == _this33.providerreportoutput[0][ii].scales_details[ik].scale_name) {
                         break;
-                      } else if (_this32.providerreportoutput[0][ii].scales_details[ik].scale_name == "" && ik == _this32.providerreportoutput[0][ii].scales_details.length - 1) {
-                        _this32.providerreportoutput[0][ii].scales_details.push({
-                          scale_name: _this32.scales[kp],
+                      } else if (_this33.providerreportoutput[0][ii].scales_details[ik].scale_name == "" && ik == _this33.providerreportoutput[0][ii].scales_details.length - 1) {
+                        _this33.providerreportoutput[0][ii].scales_details.push({
+                          scale_name: _this33.scales[kp],
                           count: 0,
                           average_score: 0
                         });
 
                         break;
-                      } else if (_this32.scales[kp] != _this32.providerreportoutput[0][ii].scales_details[ik].scale_name && ik == _this32.providerreportoutput[0][ii].scales_details.length - 1) {
-                        _this32.providerreportoutput[0][ii].scales_details.push({
-                          scale_name: _this32.scales[kp],
+                      } else if (_this33.scales[kp] != _this33.providerreportoutput[0][ii].scales_details[ik].scale_name && ik == _this33.providerreportoutput[0][ii].scales_details.length - 1) {
+                        _this33.providerreportoutput[0][ii].scales_details.push({
+                          scale_name: _this33.scales[kp],
                           count: 0,
                           average_score: 0
                         });
@@ -6120,34 +6148,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
                   }
 
-                  if (_this32.providerreportoutput[0][ii].scales_details.length == 30) {
-                    _this32.providerreportoutput[0][ii].scales_details.shift();
+                  if (_this33.providerreportoutput[0][ii].scales_details.length == 30) {
+                    _this33.providerreportoutput[0][ii].scales_details.shift();
                   }
                 }
               }
 
-              console.log(_this32.providerreportoutput[0][0]);
+              console.log(_this33.providerreportoutput[0][0]);
 
-              _this32.spinnerService.show();
+              _this33.spinnerService.show();
 
-              if (_this32.providerreportoutput[0] == "no") {
-                _this32.spinnerService.show();
+              if (_this33.providerreportoutput[0] == "no") {
+                _this33.spinnerService.show();
 
-                _this32.nodata3 = true;
-                _this32.showit3 = true;
-                _this32.gammma3 = false;
-                _this32.repo1 = {
+                _this33.nodata3 = true;
+                _this33.showit3 = true;
+                _this33.gammma3 = false;
+                _this33.repo1 = {
                   provider1: '',
                   fromdate: '',
                   todate: ''
                 };
 
-                _this32.spinnerService.hide();
+                _this33.spinnerService.hide();
               } else {
-                _this32.spinnerService.hide();
+                _this33.spinnerService.hide();
 
-                _this32.gammma3 = true;
-                _this32.showit3 = false;
+                _this33.gammma3 = true;
+                _this33.showit3 = false;
               }
             });
           } else {
@@ -6157,7 +6185,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitfacilityreport",
         value: function submitfacilityreport(form) {
-          var _this33 = this;
+          var _this34 = this;
 
           this.proFacReportInput = form.value;
           console.log(form.value);
@@ -6167,32 +6195,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showit4 = false;
             this.spinnerService.show();
             this.service.findfacilityreport(form.value).subscribe(function (res) {
-              console.log(_this33.facilityreportoutput.length);
-              _this33.facilityreportoutput = Array.of(res);
-              console.log(_this33.facilityreportoutput);
-              console.log(_this33.facilityreportoutput[0]);
+              console.log(_this34.facilityreportoutput.length);
+              _this34.facilityreportoutput = Array.of(res);
+              console.log(_this34.facilityreportoutput);
+              console.log(_this34.facilityreportoutput[0]);
 
-              if (_this33.facilityreportoutput[0] != "no") {
-                for (var ii = 0; ii < _this33.facilityreportoutput[0].length; ii++) {
-                  console.log(_this33.facilityreportoutput[0].length + "yes");
+              if (_this34.facilityreportoutput[0] != "no") {
+                for (var ii = 0; ii < _this34.facilityreportoutput[0].length; ii++) {
+                  console.log(_this34.facilityreportoutput[0].length + "yes");
 
-                  for (var kp = 0; kp < _this33.scales.length; kp++) {
-                    console.log("scale name : " + _this33.scales[kp]);
+                  for (var kp = 0; kp < _this34.scales.length; kp++) {
+                    console.log("scale name : " + _this34.scales[kp]);
 
-                    for (var ik = 0; ik < _this33.facilityreportoutput[0][ii].scales_details.length; ik++) {
-                      if (_this33.scales[kp] == _this33.facilityreportoutput[0][ii].scales_details[ik].scale_name) {
+                    for (var ik = 0; ik < _this34.facilityreportoutput[0][ii].scales_details.length; ik++) {
+                      if (_this34.scales[kp] == _this34.facilityreportoutput[0][ii].scales_details[ik].scale_name) {
                         break;
-                      } else if (_this33.facilityreportoutput[0][ii].scales_details[ik].scale_name == "" && ik == _this33.facilityreportoutput[0][ii].scales_details.length - 1) {
-                        _this33.facilityreportoutput[0][ii].scales_details.push({
-                          scale_name: _this33.scales[kp],
+                      } else if (_this34.facilityreportoutput[0][ii].scales_details[ik].scale_name == "" && ik == _this34.facilityreportoutput[0][ii].scales_details.length - 1) {
+                        _this34.facilityreportoutput[0][ii].scales_details.push({
+                          scale_name: _this34.scales[kp],
                           count: 0,
                           average_score: 0
                         });
 
                         break;
-                      } else if (_this33.scales[kp] != _this33.facilityreportoutput[0][ii].scales_details[ik].scale_name && ik == _this33.facilityreportoutput[0][ii].scales_details.length - 1) {
-                        _this33.facilityreportoutput[0][ii].scales_details.push({
-                          scale_name: _this33.scales[kp],
+                      } else if (_this34.scales[kp] != _this34.facilityreportoutput[0][ii].scales_details[ik].scale_name && ik == _this34.facilityreportoutput[0][ii].scales_details.length - 1) {
+                        _this34.facilityreportoutput[0][ii].scales_details.push({
+                          scale_name: _this34.scales[kp],
                           count: 0,
                           average_score: 0
                         });
@@ -6202,28 +6230,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
                   }
 
-                  if (_this33.facilityreportoutput[0][ii].scales_details.length == 30) {
-                    _this33.facilityreportoutput[0][ii].scales_details.shift();
+                  if (_this34.facilityreportoutput[0][ii].scales_details.length == 30) {
+                    _this34.facilityreportoutput[0][ii].scales_details.shift();
                   }
                 }
               }
 
-              if (_this33.facilityreportoutput[0] == "no") {
-                _this33.spinnerService.hide();
+              if (_this34.facilityreportoutput[0] == "no") {
+                _this34.spinnerService.hide();
 
-                _this33.nodata4 = true;
-                _this33.showit4 = true;
-                _this33.gammma4 = false;
-                _this33.repo2 = {
+                _this34.nodata4 = true;
+                _this34.showit4 = true;
+                _this34.gammma4 = false;
+                _this34.repo2 = {
                   facility1: '',
                   fromdate1: '',
                   todate1: ''
                 };
               } else {
-                _this33.spinnerService.hide();
+                _this34.spinnerService.hide();
 
-                _this33.gammma4 = true;
-                _this33.showit4 = false;
+                _this34.gammma4 = true;
+                _this34.showit4 = false;
               }
             });
           } else {
@@ -6303,7 +6331,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitFacilitySummaryReport",
         value: function submitFacilitySummaryReport(form) {
-          var _this34 = this;
+          var _this35 = this;
 
           console.log("form1", form);
 
@@ -6313,30 +6341,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showFacilitySummaryReport = false;
             this.spinnerService.show();
             this.service.facilitySummaryReport(form.value).subscribe(function (res) {
-              _this34.facilitySummaries = Array.of(res);
+              _this35.facilitySummaries = Array.of(res);
               console.log("this.facilitySummaries", res);
 
-              if (_this34.facilitySummaries[0] == "no") {
-                _this34.spinnerService.hide();
+              if (_this35.facilitySummaries[0] == "no") {
+                _this35.spinnerService.hide();
 
-                _this34.showFacilitySummaryReport = true;
-                _this34.noDataForFacilitySummary = true;
-                _this34.showDataForFacilitySummary = false;
-                _this34.facilitySummary = {
+                _this35.showFacilitySummaryReport = true;
+                _this35.noDataForFacilitySummary = true;
+                _this35.showDataForFacilitySummary = false;
+                _this35.facilitySummary = {
                   facilitySummaryName: '',
                   facilitySummaryFromdate: '',
                   facilitySummaryTodate: ''
                 };
               } else {
-                _this34.facilitySummaries[0].sort(function (a, b) {
+                _this35.facilitySummaries[0].sort(function (a, b) {
                   return a.visits.room === b.visits.room ? 0 - (a.visits.visit > b.visits.visit ? -1 : 1) : 0 - (+a.visits.room > +b.visits.room ? -1 : 1);
                 });
 
-                _this34.spinnerService.hide();
+                _this35.spinnerService.hide();
 
-                _this34.showFacilitySummaryReport = false;
-                _this34.showDataForFacilitySummary = true;
-                _this34.noDataForFacilitySummary = false;
+                _this35.showFacilitySummaryReport = false;
+                _this35.showDataForFacilitySummary = true;
+                _this35.noDataForFacilitySummary = false;
               }
             });
           } else {
@@ -6346,7 +6374,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitPatientSummaryReport",
         value: function submitPatientSummaryReport(form) {
-          var _this35 = this;
+          var _this36 = this;
 
           if (form.valid) {
             this.inputForPatientSummary = form.value;
@@ -6354,29 +6382,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showPatientSummaryReport = false;
             this.spinnerService.show();
             this.service.patientSummaryReport(form.value).subscribe(function (res) {
-              _this35.patientSummaries = Array.of(res);
+              _this36.patientSummaries = Array.of(res);
 
-              if (_this35.patientSummaries[0] == "no") {
-                _this35.spinnerService.hide();
+              if (_this36.patientSummaries[0] == "no") {
+                _this36.spinnerService.hide();
 
-                _this35.showPatientSummaryReport = true;
-                _this35.noDataForPatientSummary = true;
-                _this35.showDataForPatientSummary = false;
-                _this35.patientSummary = {
+                _this36.showPatientSummaryReport = true;
+                _this36.noDataForPatientSummary = true;
+                _this36.showDataForPatientSummary = false;
+                _this36.patientSummary = {
                   patientName: '',
                   patientSummaryFromdate: '',
                   patientSummaryTodate: ''
                 };
               } else {
-                _this35.patientSummaries[0].sort(function (a, b) {
+                _this36.patientSummaries[0].sort(function (a, b) {
                   return 0 - a.visits.visit > b.visits.visit ? -1 : 1;
                 });
 
-                _this35.spinnerService.hide();
+                _this36.spinnerService.hide();
 
-                _this35.showPatientSummaryReport = false;
-                _this35.showDataForPatientSummary = true;
-                _this35.noDataForPatientSummary = false;
+                _this36.showPatientSummaryReport = false;
+                _this36.showDataForPatientSummary = true;
+                _this36.noDataForPatientSummary = false;
               }
             });
           } else {
@@ -6386,7 +6414,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitExpensiveMedicationForm",
         value: function submitExpensiveMedicationForm(form) {
-          var _this36 = this;
+          var _this37 = this;
 
           if (form.valid) {
             this.inputForMedicationReport = form.value;
@@ -6394,23 +6422,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.showExpensiveMedicationForm = false;
             this.spinnerService.show();
             this.service.expensiveMedicationReport(form.value).subscribe(function (res) {
-              _this36.expensiveMedicationOutputs = Array.of(res);
+              _this37.expensiveMedicationOutputs = Array.of(res);
 
-              if (_this36.expensiveMedicationOutputs[0] == "no") {
-                _this36.spinnerService.hide();
+              if (_this37.expensiveMedicationOutputs[0] == "no") {
+                _this37.spinnerService.hide();
 
-                _this36.showExpensiveMedicationForm = true;
-                _this36.noDataForExpensiveMedication = true;
-                _this36.showDataForExpensiveMedication = false;
-                _this36.expensiveMedication = {
+                _this37.showExpensiveMedicationForm = true;
+                _this37.noDataForExpensiveMedication = true;
+                _this37.showDataForExpensiveMedication = false;
+                _this37.expensiveMedication = {
                   medicineName: ''
                 };
               } else {
-                _this36.spinnerService.hide();
+                _this37.spinnerService.hide();
 
-                _this36.showExpensiveMedicationForm = false;
-                _this36.showDataForExpensiveMedication = true;
-                _this36.noDataForExpensiveMedication = false;
+                _this37.showExpensiveMedicationForm = false;
+                _this37.showDataForExpensiveMedication = true;
+                _this37.noDataForExpensiveMedication = false;
               }
             });
           } else {
@@ -6420,7 +6448,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "exportFacilitySummaryToExcel",
         value: function exportFacilitySummaryToExcel(fileName, reportName) {
-          var _this37 = this;
+          var _this38 = this;
 
           var workbooke = new exceljs_dist_exceljs_min_js__WEBPACK_IMPORTED_MODULE_7__["Workbook"]();
           var worksheet = workbooke.addWorksheet(reportName);
@@ -6536,37 +6564,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           headerRow.eachCell(function (cell, number) {
             if (number == 1) return;
 
-            _this37.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
+            _this38.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
           });
           var blankRow = worksheet.addRow(['', '', '', '', '']);
           blankRow.eachCell(function (cell, number) {
             if (number == 1) return;
 
-            _this37.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+            _this38.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
           });
 
           var _loop3 = function _loop3(facilitySummariesIndex) {
-            var patientName = _this37.facilitySummaries[0][facilitySummariesIndex].name;
-            var patientRoom = _this37.facilitySummaries[0][facilitySummariesIndex].visits.room;
-            var patientVisitDate = _this37.facilitySummaries[0][facilitySummariesIndex].visits.visit;
+            var patientName = _this38.facilitySummaries[0][facilitySummariesIndex].name;
+            var patientRoom = _this38.facilitySummaries[0][facilitySummariesIndex].visits.room;
+            var patientVisitDate = _this38.facilitySummaries[0][facilitySummariesIndex].visits.visit;
             patientVisitDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(patientVisitDate, 'dd-MM-yyyy', 'en-US');
-            var patientSummary = _this37.facilitySummaries[0][facilitySummariesIndex].visits.summary;
+            var patientSummary = _this38.facilitySummaries[0][facilitySummariesIndex].visits.summary;
             var tableData = void 0;
 
-            if (_this37.facilitySummaries[0][facilitySummariesIndex].visits.summary === undefined) {
+            if (_this38.facilitySummaries[0][facilitySummariesIndex].visits.summary === undefined) {
               tableData = worksheet.addRow(['', patientRoom, patientName, patientVisitDate, 'NA']);
             } else {
-              tableData = worksheet.addRow(['', patientRoom, patientName, patientVisitDate, _this37.facilitySummaries[0][facilitySummariesIndex].visits.summary]);
+              tableData = worksheet.addRow(['', patientRoom, patientName, patientVisitDate, _this38.facilitySummaries[0][facilitySummariesIndex].visits.summary]);
               worksheet.getRow(18 + facilitySummariesIndex).height = 100;
             }
 
             tableData.eachCell(function (cell, number) {
               if (number == 1) return;
 
-              if (facilitySummariesIndex == _this37.facilitySummaries[0].length - 1) {
-                _this37.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
+              if (facilitySummariesIndex == _this38.facilitySummaries[0].length - 1) {
+                _this38.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
               } else {
-                _this37.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+                _this38.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
               }
             });
           };
@@ -6585,7 +6613,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "exportPatientSummaryToExcel",
         value: function exportPatientSummaryToExcel(fileName, reportName) {
-          var _this38 = this;
+          var _this39 = this;
 
           var workbooke = new exceljs_dist_exceljs_min_js__WEBPACK_IMPORTED_MODULE_7__["Workbook"]();
           var worksheet = workbooke.addWorksheet(reportName);
@@ -6700,37 +6728,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           headerRow.eachCell(function (cell, number) {
             if (number == 1) return;
 
-            _this38.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
+            _this39.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
           });
           var blankRow = worksheet.addRow(['', '', '']);
           worksheet.mergeCells(['C16:E16']);
           blankRow.eachCell(function (cell, number) {
             if (number == 1) return;
 
-            _this38.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+            _this39.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
           });
           worksheet.mergeCells(['C17:E17']);
 
           var _loop4 = function _loop4(patientSummariesIndex) {
-            var patientVisitDate = _this38.patientSummaries[0][patientSummariesIndex].visits.visit;
+            var patientVisitDate = _this39.patientSummaries[0][patientSummariesIndex].visits.visit;
             patientVisitDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(patientVisitDate, 'dd-MM-yyyy', 'en-US');
-            var patientSummary = _this38.patientSummaries[0][patientSummariesIndex].visits.summary;
+            var patientSummary = _this39.patientSummaries[0][patientSummariesIndex].visits.summary;
             var tableData = void 0;
 
-            if (_this38.patientSummaries[0][patientSummariesIndex].visits.summary === undefined) {
+            if (_this39.patientSummaries[0][patientSummariesIndex].visits.summary === undefined) {
               tableData = worksheet.addRow(['', patientVisitDate, 'NA']);
             } else {
-              tableData = worksheet.addRow(['', patientVisitDate, _this38.patientSummaries[0][patientSummariesIndex].visits.summary]);
+              tableData = worksheet.addRow(['', patientVisitDate, _this39.patientSummaries[0][patientSummariesIndex].visits.summary]);
               worksheet.getRow(18 + patientSummariesIndex).height = 100;
             }
 
             tableData.eachCell(function (cell, number) {
               if (number == 1) return;
 
-              if (patientSummariesIndex == _this38.patientSummaries[0].length - 1) {
-                _this38.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
+              if (patientSummariesIndex == _this39.patientSummaries[0].length - 1) {
+                _this39.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
               } else {
-                _this38.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+                _this39.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
               }
             });
             rowNumber = 18 + patientSummariesIndex;
@@ -6755,7 +6783,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "exportExpensiveMedicationReportToExcel",
         value: function exportExpensiveMedicationReportToExcel(fileName, reportName) {
-          var _this39 = this;
+          var _this40 = this;
 
           var workbooke = new exceljs_dist_exceljs_min_js__WEBPACK_IMPORTED_MODULE_7__["Workbook"]();
           var worksheet = workbooke.addWorksheet(reportName);
@@ -6836,28 +6864,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           headerRow.eachCell(function (cell, number) {
             if (number == 1) return;
 
-            _this39.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
+            _this40.genericExceStyleFormat(cell, number, 'header', tableRowHeading);
           });
           var blankRow = worksheet.addRow(['', '', '', '', '']);
           blankRow.eachCell(function (cell, number) {
             if (number == 1) return;
 
-            _this39.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+            _this40.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
           });
           var tableData;
 
           var _loop5 = function _loop5(patientDataIndex) {
-            var patientDob = _this39.expensiveMedicationOutputs[0][patientDataIndex].dob;
-            var patientName = _this39.expensiveMedicationOutputs[0][patientDataIndex].name;
+            var patientDob = _this40.expensiveMedicationOutputs[0][patientDataIndex].dob;
+            var patientName = _this40.expensiveMedicationOutputs[0][patientDataIndex].name;
             patientDob = Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(patientDob, 'dd-MM-yyyy', 'en-US');
-            var facilityName = _this39.expensiveMedicationOutputs[0][patientDataIndex].patientVisits[0].facility;
-            var insurance = _this39.expensiveMedicationOutputs[0][patientDataIndex].patientVisits[0].pinsurance;
+            var facilityName = _this40.expensiveMedicationOutputs[0][patientDataIndex].patientVisits[0].facility;
+            var insurance = _this40.expensiveMedicationOutputs[0][patientDataIndex].patientVisits[0].pinsurance;
             tableData = worksheet.addRow(['', patientName, patientDob, insurance, facilityName]);
             tableData.eachCell(function (cell, number) {
               if (number == 1) return;
 
-              if (patientDataIndex == _this39.expensiveMedicationOutputs[0].length - 1) {
-                _this39.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
+              if (patientDataIndex == _this40.expensiveMedicationOutputs[0].length - 1) {
+                _this40.genericExceStyleFormat(cell, number, 'bottom', tableRowHeading);
 
                 cell.alignment = {
                   vertical: 'middle',
@@ -6865,7 +6893,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   wrapText: true
                 };
               } else {
-                _this39.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
+                _this40.genericExceStyleFormat(cell, number, 'middle', tableRowHeading);
 
                 cell.alignment = {
                   vertical: 'middle',
@@ -7099,7 +7127,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "exportToExcel",
         value: function exportToExcel(fileName, reportName) {
-          var _this40 = this;
+          var _this41 = this;
 
           var reportData = [];
           var inputFacilityProvider;
@@ -7295,7 +7323,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           headerRow.eachCell(function (cell, number) {
-            _this40.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 1);
+            _this41.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 1);
 
             cell.alignment = {
               vertical: 'middle',
@@ -7317,7 +7345,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
 
               headerSecond.eachCell(function (cell, number) {
-                _this40.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+                _this41.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
 
                 cell.alignment = {
                   vertical: 'middle',
@@ -7344,7 +7372,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               for (var sequenceScaleIndex = 0; sequenceScaleIndex < d.scales_details.length; sequenceScaleIndex++) {
                 for (var sequenceObjectIndex = 0; sequenceObjectIndex < d.scales_details.length; sequenceObjectIndex++) {
-                  if (_this40.scales[sequenceScaleIndex] == d.scales_details[sequenceObjectIndex].scale_name) {
+                  if (_this41.scales[sequenceScaleIndex] == d.scales_details[sequenceObjectIndex].scale_name) {
                     lastRowData[lastRowDataIndex] = lastRowData[lastRowDataIndex] + d.scales_details[sequenceObjectIndex].count;
                     lastRowDataIndex++;
                     lastRowData[lastRowDataIndex] = lastRowData[lastRowDataIndex] + d.scales_details[sequenceObjectIndex].average_score;
@@ -7362,7 +7390,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               var data = worksheet.addRow(['', d.facility_name, d.no_of_patients_seen, d.points_seen, d.meds_lowered, d.meds_continued_but_added_stop_date, d.meds_stopped, d.meds_lowered + d.meds_continued_but_added_stop_date + d.meds_stopped, d.meds_added, d.meds_increased, d.meds_added_with_stop_date, d.scales_performed, d.scales_details[scalesDetailsIndex[0]].count, d.scales_details[scalesDetailsIndex[0]].average_score, d.scales_details[scalesDetailsIndex[1]].count, d.scales_details[scalesDetailsIndex[1]].average_score, d.scales_details[scalesDetailsIndex[2]].count, d.scales_details[scalesDetailsIndex[2]].average_score, d.scales_details[scalesDetailsIndex[3]].count, d.scales_details[scalesDetailsIndex[3]].average_score, d.scales_details[scalesDetailsIndex[4]].count, d.scales_details[scalesDetailsIndex[4]].average_score, d.scales_details[scalesDetailsIndex[5]].count, d.scales_details[scalesDetailsIndex[5]].average_score, d.scales_details[scalesDetailsIndex[6]].count, d.scales_details[scalesDetailsIndex[6]].average_score, d.scales_details[scalesDetailsIndex[7]].count, d.scales_details[scalesDetailsIndex[7]].average_score, d.scales_details[scalesDetailsIndex[8]].count, d.scales_details[scalesDetailsIndex[8]].average_score, d.scales_details[scalesDetailsIndex[9]].count, d.scales_details[scalesDetailsIndex[9]].average_score, d.scales_details[scalesDetailsIndex[10]].count, d.scales_details[scalesDetailsIndex[10]].average_score, d.scales_details[scalesDetailsIndex[11]].count, d.scales_details[scalesDetailsIndex[11]].average_score, d.scales_details[scalesDetailsIndex[12]].count, d.scales_details[scalesDetailsIndex[12]].average_score, d.scales_details[scalesDetailsIndex[13]].count, d.scales_details[scalesDetailsIndex[13]].average_score, d.scales_details[scalesDetailsIndex[14]].count, d.scales_details[scalesDetailsIndex[14]].average_score, d.scales_details[scalesDetailsIndex[15]].count, d.scales_details[scalesDetailsIndex[15]].average_score, d.scales_details[scalesDetailsIndex[16]].count, d.scales_details[scalesDetailsIndex[16]].average_score, d.scales_details[scalesDetailsIndex[17]].count, d.scales_details[scalesDetailsIndex[17]].average_score, d.scales_details[scalesDetailsIndex[18]].count, d.scales_details[scalesDetailsIndex[18]].average_score, d.scales_details[scalesDetailsIndex[19]].count, d.scales_details[scalesDetailsIndex[19]].average_score, d.scales_details[scalesDetailsIndex[20]].count, d.scales_details[scalesDetailsIndex[20]].average_score, d.scales_details[scalesDetailsIndex[21]].count, d.scales_details[scalesDetailsIndex[21]].average_score, d.scales_details[scalesDetailsIndex[22]].count, d.scales_details[scalesDetailsIndex[22]].average_score, d.scales_details[scalesDetailsIndex[23]].count, d.scales_details[scalesDetailsIndex[23]].average_score, d.scales_details[scalesDetailsIndex[24]].count, d.scales_details[scalesDetailsIndex[24]].average_score, d.scales_details[scalesDetailsIndex[25]].count, d.scales_details[scalesDetailsIndex[26]].average_score, d.scales_details[scalesDetailsIndex[26]].count, d.scales_details[scalesDetailsIndex[26]].average_score, d.scales_details[scalesDetailsIndex[27]].count, d.scales_details[scalesDetailsIndex[27]].average_score, d.scales_details[scalesDetailsIndex[28]].count, d.scales_details[scalesDetailsIndex[28]].average_score]);
               data.eachCell(function (cell, number) {
-                _this40.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+                _this41.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
 
                 if (number >= 3) {
                   cell.alignment = {
@@ -7387,7 +7415,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               for (var _sequenceScaleIndex = 0; _sequenceScaleIndex < d.scales_details.length; _sequenceScaleIndex++) {
                 for (var _sequenceObjectIndex = 0; _sequenceObjectIndex < d.scales_details.length; _sequenceObjectIndex++) {
-                  if (_this40.scales[_sequenceScaleIndex] == d.scales_details[_sequenceObjectIndex].scale_name) {
+                  if (_this41.scales[_sequenceScaleIndex] == d.scales_details[_sequenceObjectIndex].scale_name) {
                     lastRowData[_lastRowDataIndex] = lastRowData[_lastRowDataIndex] + d.scales_details[_sequenceObjectIndex].count;
                     _lastRowDataIndex++;
                     lastRowData[_lastRowDataIndex] = lastRowData[_lastRowDataIndex] + d.scales_details[_sequenceObjectIndex].average_score;
@@ -7407,7 +7435,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var _data = worksheet.addRow(['', d.provider_name, d.no_of_patients_seen, d.meds_lowered, d.meds_continued_but_added_stop_date, d.meds_stopped, d.meds_lowered + d.meds_continued_but_added_stop_date + d.meds_stopped, d.meds_added, d.meds_increased, d.meds_added_with_stop_date, d.scales_performed, d.scales_details[_scalesDetailsIndex[0]].count, d.scales_details[_scalesDetailsIndex[0]].average_score, d.scales_details[_scalesDetailsIndex[1]].count, d.scales_details[_scalesDetailsIndex[1]].average_score, d.scales_details[_scalesDetailsIndex[2]].count, d.scales_details[_scalesDetailsIndex[2]].average_score, d.scales_details[_scalesDetailsIndex[3]].count, d.scales_details[_scalesDetailsIndex[3]].average_score, d.scales_details[_scalesDetailsIndex[4]].count, d.scales_details[_scalesDetailsIndex[4]].average_score, d.scales_details[_scalesDetailsIndex[5]].count, d.scales_details[_scalesDetailsIndex[5]].average_score, d.scales_details[_scalesDetailsIndex[6]].count, d.scales_details[_scalesDetailsIndex[6]].average_score, d.scales_details[_scalesDetailsIndex[7]].count, d.scales_details[_scalesDetailsIndex[7]].average_score, d.scales_details[_scalesDetailsIndex[8]].count, d.scales_details[_scalesDetailsIndex[8]].average_score, d.scales_details[_scalesDetailsIndex[9]].count, d.scales_details[_scalesDetailsIndex[9]].average_score, d.scales_details[_scalesDetailsIndex[10]].count, d.scales_details[_scalesDetailsIndex[10]].average_score, d.scales_details[_scalesDetailsIndex[11]].count, d.scales_details[_scalesDetailsIndex[11]].average_score, d.scales_details[_scalesDetailsIndex[12]].count, d.scales_details[_scalesDetailsIndex[12]].average_score, d.scales_details[_scalesDetailsIndex[13]].count, d.scales_details[_scalesDetailsIndex[13]].average_score, d.scales_details[_scalesDetailsIndex[14]].count, d.scales_details[_scalesDetailsIndex[14]].average_score, d.scales_details[_scalesDetailsIndex[15]].count, d.scales_details[_scalesDetailsIndex[15]].average_score, d.scales_details[_scalesDetailsIndex[16]].count, d.scales_details[_scalesDetailsIndex[16]].average_score, d.scales_details[_scalesDetailsIndex[17]].count, d.scales_details[_scalesDetailsIndex[17]].average_score, d.scales_details[_scalesDetailsIndex[18]].count, d.scales_details[_scalesDetailsIndex[18]].average_score, d.scales_details[_scalesDetailsIndex[19]].count, d.scales_details[_scalesDetailsIndex[19]].average_score, d.scales_details[_scalesDetailsIndex[20]].count, d.scales_details[_scalesDetailsIndex[20]].average_score, d.scales_details[_scalesDetailsIndex[21]].count, d.scales_details[_scalesDetailsIndex[21]].average_score, d.scales_details[_scalesDetailsIndex[22]].count, d.scales_details[_scalesDetailsIndex[22]].average_score, d.scales_details[_scalesDetailsIndex[23]].count, d.scales_details[_scalesDetailsIndex[23]].average_score, d.scales_details[_scalesDetailsIndex[24]].count, d.scales_details[_scalesDetailsIndex[24]].average_score, d.scales_details[_scalesDetailsIndex[25]].count, d.scales_details[_scalesDetailsIndex[26]].average_score, d.scales_details[_scalesDetailsIndex[26]].count, d.scales_details[_scalesDetailsIndex[26]].average_score, d.scales_details[_scalesDetailsIndex[27]].count, d.scales_details[_scalesDetailsIndex[27]].average_score, d.scales_details[_scalesDetailsIndex[28]].count, d.scales_details[_scalesDetailsIndex[28]].average_score]);
 
               _data.eachCell(function (cell, number) {
-                _this40.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+                _this41.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
 
                 if (number >= 3) {
                   cell.alignment = {
@@ -7429,7 +7457,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             blankRow.eachCell(function (cell, number) {
-              _this40.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
+              _this41.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 2);
             });
           }
 
@@ -7444,7 +7472,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           lastRow.eachCell(function (cell, number) {
-            _this40.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 3);
+            _this41.designSheet(cell, number, fileName, reportHeadingColumnForProvider, reportHeadingColumnForFacility, 3);
 
             if (number >= 3) {
               cell.alignment = {
@@ -7709,16 +7737,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submit2",
         value: function submit2(obj) {
-          var _this41 = this;
+          var _this42 = this;
 
           localStorage.setItem("facility", obj.facility);
           localStorage.setItem("provider", obj.provider);
           localStorage.setItem("date", obj.date);
           console.log(obj);
           this.service.findprerecords(obj).subscribe(function (res) {
-            _this41.output = res;
-            _this41.gammma = true;
-            _this41.showit = false;
+            _this42.output = res;
+            _this42.gammma = true;
+            _this42.showit = false;
           });
           this.fn = obj.facility;
           this.pn = obj.provider;
@@ -7728,7 +7756,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "open",
         value: function open() {
-          var _this42 = this;
+          var _this43 = this;
 
           setTimeout(function () {
             console.log("please call me");
@@ -7743,7 +7771,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               date: d
             }; // console.log(obj.facility);
 
-            _this42.submit2(obj);
+            _this43.submit2(obj);
           }, 100);
         }
       }, {
@@ -7762,20 +7790,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "submitprovidermedreport",
         value: function submitprovidermedreport(form) {
-          var _this43 = this;
+          var _this44 = this;
 
           this.nodata5 = false;
           this.spinnerService.show();
           this.service.getMedRelatedData(form.value).subscribe(function (res) {
-            _this43.patlist = res.log;
-            _this43.address = res.address;
+            _this44.patlist = res.log;
+            _this44.address = res.address;
 
-            if (_this43.patlist.length == 0) {
-              _this43.nodata5 = true;
+            if (_this44.patlist.length == 0) {
+              _this44.nodata5 = true;
 
-              _this43.spinnerService.hide();
+              _this44.spinnerService.hide();
             } else {
-              _this43.spinnerService.hide();
+              _this44.spinnerService.hide();
             }
           });
         }
@@ -8117,6 +8145,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.storeEmployeeFacility = "".concat(this.metcha, "/storeEmployeeFacility");
         this.getEmployeeFacilities = "".concat(this.metcha, "/getEmployeeFacilities");
         this.addFacilityToEmployee = "".concat(this.metcha, "/addFacilityToEmployee");
+        this.getEmployeeSubscribefacilities = "".concat(this.metcha, "/getEmployeeSubscribefacilities");
         this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]('123');
         this.history = [];
       }
@@ -8190,7 +8219,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "addfacilityForEmployee",
         value: function addfacilityForEmployee(data) {
+          console.log('data', data);
           return this.http.post(this.addFacilityToEmployee, data);
+        }
+      }, {
+        key: "getEmployeeSubscribeFacility",
+        value: function getEmployeeSubscribeFacility() {
+          return this.http.post(this.getEmployeeSubscribefacilities, {});
         }
       }, {
         key: "getEmployeeDetails",
@@ -8270,60 +8305,60 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "topatient",
         value: function topatient(message) {
-          var _this44 = this;
+          var _this45 = this;
 
           setTimeout(function () {
-            _this44.c1.next('yes');
+            _this45.c1.next('yes');
           }, 100);
           this.router.navigateByUrl('/patient');
         }
       }, {
         key: "tofacility",
         value: function tofacility(message) {
-          var _this45 = this;
+          var _this46 = this;
 
           setTimeout(function () {
-            _this45.c2.next('yes');
+            _this46.c2.next('yes');
           }, 100);
           this.router.navigateByUrl('/facility');
         }
       }, {
         key: "toprovider",
         value: function toprovider(message) {
-          var _this46 = this;
+          var _this47 = this;
 
           setTimeout(function () {
-            _this46.c3.next('yes');
+            _this47.c3.next('yes');
           }, 100);
           this.router.navigateByUrl('/provider');
         }
       }, {
         key: "toinsurance",
         value: function toinsurance(message) {
-          var _this47 = this;
+          var _this48 = this;
 
           setTimeout(function () {
-            _this47.c4.next('yes');
+            _this48.c4.next('yes');
           }, 100);
           this.router.navigateByUrl('/insurance');
         }
       }, {
         key: "toexpensive",
         value: function toexpensive(message) {
-          var _this48 = this;
+          var _this49 = this;
 
           setTimeout(function () {
-            _this48.c5.next('yes');
+            _this49.c5.next('yes');
           }, 100);
           this.router.navigateByUrl('/expensive');
         }
       }, {
         key: "toreport",
         value: function toreport(message) {
-          var _this49 = this;
+          var _this50 = this;
 
           setTimeout(function () {
-            _this49.c6.next('yes');
+            _this50.c6.next('yes');
           }, 100);
           this.router.navigateByUrl('/reports');
         }
@@ -8458,13 +8493,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadRouting",
         value: function loadRouting() {
-          var _this50 = this;
+          var _this51 = this;
 
           this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(function (event) {
             return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationEnd"];
           })).subscribe(function (_ref) {
             var urlAfterRedirects = _ref.urlAfterRedirects;
-            _this50.history = [].concat(_toConsumableArray(_this50.history), [urlAfterRedirects]);
+            _this51.history = [].concat(_toConsumableArray(_this51.history), [urlAfterRedirects]);
           });
         }
       }, {
@@ -8695,7 +8730,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this51 = this;
+          var _this52 = this;
 
           if (this.getModuleType() !== 'employee' && this.getModuleType() !== 'patient') {
             this.service.router.navigate(['/moduledashboard']);
@@ -8703,9 +8738,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (this.service.getRole() === undefined) {
             this.service.setRoleTypeAfterRefresh().subscribe(function (res) {
-              _this51.roleType = res.userrole;
+              _this52.roleType = res.userrole;
 
-              _this51.service.setRole(res.userrole);
+              _this52.service.setRole(res.userrole);
             });
           } else {
             this.roleType = this.service.getRole();
@@ -8714,15 +8749,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.fname = ''; // this.roleType = this.service.getRole();
 
           this.service.getData().subscribe(function (res) {
-            _this51.user = res;
-            _this51.fname = _this51.user.fname;
-            _this51.role = _this51.user.userrole;
-            _this51.metaData = true;
+            _this52.user = res;
+            _this52.fname = _this52.user.fname;
+            _this52.role = _this52.user.userrole;
+            _this52.metaData = true;
           }, function (err) {
             console.log(err);
 
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-              _this51.service.router.navigateByUrl('/');
+              _this52.service.router.navigateByUrl('/');
             }
           });
           var $button = document.querySelector('#sidebar-toggle');
@@ -8875,13 +8910,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(ShowEmployeeDocuemntComponent, [{
         key: "changeStatus",
         value: function changeStatus() {
-          var _this52 = this;
+          var _this53 = this;
 
           this.service.getEmployeeDocuemnt({
             documentstatus: this.selectedQuantity
           }).subscribe(function (res) {
-            _this52.reponseForSearchEmployee = res;
-            _this52.employeeDocuments = res === 'no' ? [] : res;
+            _this53.reponseForSearchEmployee = res;
+            _this53.employeeDocuments = res === 'no' ? [] : res;
           });
         }
       }, {
@@ -8894,7 +8929,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this53 = this;
+          var _this54 = this;
 
           var str = this.service.metcha;
           this.loadFilesFromUrl = str.substring(0, str.indexOf('api')); // this.roleType = this.service.getRole();
@@ -8903,7 +8938,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return event.target.value;
           }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["distinctUntilChanged"])()).subscribe(function (val) {
             if (val === '') {
-              _this53.employeeDocuments = [];
+              _this54.employeeDocuments = [];
               return;
             }
 
@@ -8911,9 +8946,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               name: val
             };
 
-            _this53.service.getEmployeeDocuemnt(params).subscribe(function (res) {
-              _this53.reponseForSearchEmployee = res;
-              _this53.employeeDocuments = res === 'no' ? [] : res; // this.getUploadedFiles();
+            _this54.service.getEmployeeDocuemnt(params).subscribe(function (res) {
+              _this54.reponseForSearchEmployee = res;
+              _this54.employeeDocuments = res === 'no' ? [] : res; // this.getUploadedFiles();
             });
           });
           var $button = document.querySelector('#sidebar-toggle');
@@ -8923,7 +8958,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             $wrapper.classList.toggle('toggled');
           });
           this.service.getRequireDocuemnts().subscribe(function (res) {
-            _this53.getAllDocuments = res;
+            _this54.getAllDocuments = res;
           });
         }
       }, {
@@ -8940,7 +8975,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSave",
         value: function onSave(empId, documentname, indexOfelement, remark, status) {
-          var _this54 = this;
+          var _this55 = this;
 
           var params = {
             'documentstatus': status,
@@ -8949,16 +8984,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'remark': remark.value
           };
           this.service.attachmentRemarkByAdmin(params).subscribe(function (res) {
-            _this54.employeeDocuments[_this54.employeeModelOpenIndex].files[indexOfelement].remark = remark.value;
-            _this54.employeeDocuments[_this54.employeeModelOpenIndex].files[indexOfelement].status = status;
+            _this55.employeeDocuments[_this55.employeeModelOpenIndex].files[indexOfelement].remark = remark.value;
+            _this55.employeeDocuments[_this55.employeeModelOpenIndex].files[indexOfelement].status = status;
 
             if (status === 'Approved') {
-              _this54.toastr.success('', 'Document Approved!!');
+              _this55.toastr.success('', 'Document Approved!!');
             } else {
-              _this54.toastr.success('', 'Document Rejected!!');
+              _this55.toastr.success('', 'Document Rejected!!');
             }
           }, function (err) {
-            _this54.toastr.success('', 'Document Rejected Try Again!!');
+            _this55.toastr.success('', 'Document Rejected Try Again!!');
           });
         }
       }, {
