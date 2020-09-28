@@ -19,6 +19,8 @@ require('./provider.model');
 require('./masterptrecord.model');
 require('./postreport');
 require('./testing.model');
+require('./testing.model');
+require('./employeefacility.model');
 mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology: true,useFindAndModify:false }, (err)=>{
     if(err) {
         console.log(err);

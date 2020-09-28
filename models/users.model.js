@@ -9,6 +9,17 @@ let uploadFiles = new mongoose.Schema({
     remark: String
   })
 
+  let empFacility = new mongoose.Schema({
+    facilityName: String,
+    subscribeStatus: Boolean,
+    facilityStartDate: Date,
+    facilityEndDate: Date,
+    facilityCharges: Number,
+    savedon: Date,
+    savedby: String,
+    remark: String
+  })
+
 let userSchema = new mongoose.Schema({
     fname: {
         type: String
@@ -39,6 +50,9 @@ let userSchema = new mongoose.Schema({
     },
     files:{
         type: [uploadFiles]
+    },
+    facilities:{
+        type:[empFacility]
     }
 });
 

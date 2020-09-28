@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeDashboardComponent } from './employeedashboard/employeedashboard.component';
+import { EmployeeFacilityComponent } from './employeefacility/employeefacility.component';
 import { AkComponent } from './ak/ak.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +43,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     LoginComponent,
     DashboardComponent,
     EmployeeDashboardComponent,
+    EmployeeFacilityComponent,
     AkComponent,
     PatientComponent,
     ShowEmployeeDocuemntComponent,

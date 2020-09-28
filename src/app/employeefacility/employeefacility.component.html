@@ -1,0 +1,123 @@
+<div id="wrapper">
+    <app-shareddashboard></app-shareddashboard>
+    <!-- <div class="notebox">
+        <h4>Note :</h4>
+        <ul>
+            <li>Upload Scanned Documents.</li>
+            <li><b>Employee will have to upload all the relevant documents as per his/her position. The same documents need to be produced at Admin side for confirmation.</b></li>
+            <table class="table table-bordered table-sm noteTableTopMargin">
+                    <thead>
+                        <tr>
+                        <th>Sr.No</th>
+                        <th>Role</th>
+                        <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Provider</td>
+                            <td>Provider means APRN, PA, Psychiatrist, Psychologist, or LCSW</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>MA</td>
+                            <td>MA means Medical Assistants</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>APRN</td>
+                            <td>APRN means Nurse Practitioner</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>PA</td>
+                            <td>PA means Physician Assistant</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Psychologists</td>
+                            <td>Psychologists means PhD or PsyD</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>LCSW</td>
+                            <td>LCSW means Licensed Social Worker or Licensed Mental Health Counselor</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>ALL</td>
+                            <td>Indicates Documents are Compulsory for all Employee</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <table class="table table-bordered table-sm noteTableTopMargin">
+                <thead>
+                    <tr>
+                    <th>Sr.No</th>
+                    <th>Document Status</th>
+                    <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Submited</td>
+                        <td>Documents uploaded By Employee.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Not Submited</td>
+                        <td>Documents not uploaded By Employee.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Approved</td>
+                        <td>Indicates Documents Approve By Admin.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Rejected</td>
+                        <td>Documents Reject By Admin.</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </ul>
+    </div> -->
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+            <th>Sr.No</th>
+            <th>Description</th>
+            <th>Subscribe</th>
+            <th>Submit</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Charges</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let facility  of facilities; let indexOfelement = index;">
+            <tr>
+            <td>{{indexOfelement+1}}</td>
+            <td>{{facility.facilityname}}</td>
+            <td>
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch{{indexOfelement}}" class="onoffswitch-checkbox" id="myonoffswitch" tabindex="0" [value]="">
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td class="columnalign">
+                <input type="submit"  value="Submit"  (click)="onSave(indexOfelement, facility.facilityname)" class="btn-blue1">
+            </td>
+            <td class="tableSelectColumn"><input type="date" class="fontmargin" [disabled]="true" [value]=""></td>
+            <td class="tableSelectColumn"><input type="date" class="fontmargin" [disabled]="true" [value]=""></td>
+            <td><input type="text" [disabled]="true" [value]=""></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

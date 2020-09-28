@@ -283,6 +283,9 @@ export class DataTransferService {
   employeeDocumentsRemark = `${this.metcha}/employeedocumentsremark`;
   getEmployeeDocuemntUrl = `${this.metcha}/getemployeedocuments`;
   getRequireDocuemntUrl = `${this.metcha}/getemployeedocumentslist`;
+  storeEmployeeFacility = `${this.metcha}/storeEmployeeFacility`;
+  getEmployeeFacilities = `${this.metcha}/getEmployeeFacilities`;
+  addFacilityToEmployee = `${this.metcha}/addFacilityToEmployee`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -329,6 +332,10 @@ export class DataTransferService {
 
   addEmployeeDetails(form) {
     return this.http.post<any>(this.employeeDetails, form);
+  }
+
+  addfacilityForEmployee(data) {
+    return this.http.post<any>(this.addFacilityToEmployee, data);
   }
 
   getEmployeeDetails() {
@@ -441,6 +448,10 @@ export class DataTransferService {
   }
   findfacilityreport(data) {
     return this.http.post<any>(this.url24, data);
+  }
+
+  getEmployeeFacility() {
+    return this.http.post<any>(this.getEmployeeFacilities, {});
   }
 
   facilitySummaryReport(data) {

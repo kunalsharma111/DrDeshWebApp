@@ -10,6 +10,7 @@ const router = express();
 const logger = require("../logger/logger");
 require('../models/db');
 const userModel = mongoose.model("User");
+const employeeFacility = mongoose.model("EmployeeFacility");
 const requiredDocumentModel = mongoose.model("DocumentRequiredFromEmployee");
 const patientModel = mongoose.model("Patient");
 const R2Model = mongoose.model("R2P");
@@ -2078,6 +2079,20 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
 
 });
 
+router.post('/storeEmployeeFacility', verifyToken, (req, res) => {
+    console.log('req.boduy', req.body)
+    var empfacility = new employeeFacility({
+    facilityname: req.body.facilityname,
+    status: true,
+    savedon: undefined,
+    savedbby: currentuser,
+    })
+    empfacility.save().then(doc => { console.log("saved"); res.json('saved') }, err => {
+        console.error("error");
+        res.json('failure');
+    })
+});
+
 //get all require docuemnt api
 router.post('/getemployeedocumentslist', verifyToken, (req, res) => {
 
@@ -2108,6 +2123,18 @@ router.post('/getemployeedocumentslist', verifyToken, (req, res) => {
     });
 });
 
+router.post('/getEmployeeFacilities', verifyToken, (req, res) => {
+    employeeFacility.find({status: {$ne: false}}).then(doc => {
+        if (doc.length != 0) {
+            res.json(doc);
+        }
+        else {
+            res.json([]);
+        }
+    }, err => {
+        res.json(err);
+    });
+});
 
 // fetchbyName ends
 
