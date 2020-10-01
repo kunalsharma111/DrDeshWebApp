@@ -3040,3 +3040,8 @@
 {"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-01T11:07:10.413Z"}
 {"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-01T11:09:20.348Z"}
 {"message":"DB connected:","level":"info","timestamp":"2020-10-01T11:09:22.175Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-01T11:21:30.949Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-01T11:21:33.675Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-01T11:21:46.948Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-01T11:33:09.907Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-01T11:33:11.753Z"}
