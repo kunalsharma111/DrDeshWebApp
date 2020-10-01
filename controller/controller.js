@@ -752,7 +752,7 @@ router.post("/otp", (req, res) => {
                     service: 'gmail',
                     auth: {
                         user: 'balwellbeingllc@gmail.com',
-                        pass: '******'
+                        pass: 'Balanced123'
                     }
                 });
 
@@ -765,7 +765,8 @@ router.post("/otp", (req, res) => {
                 mailTransporter.sendMail(mailDetails, function (err, data) {
                     if (err) {
                         logger.error("error occur while sending OTP");
-                        console.log('Error Occurs');
+                        console.log('mailDetails', mailDetails)
+                        console.log('Error Occurs'+ err);
                     } else {
                         logger.info("Email Sent Successfully for otp");
                         console.log('Email sent successfully');

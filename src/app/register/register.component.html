@@ -64,64 +64,60 @@
                 <div class="boxit">
                     <h1 class="text-center">Register</h1>
                     <hr>
-                    <form #form="ngForm" autocomplete="off" (submit)="submit(form)">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="fname" #fname="ngModel"
-                                [(ngModel)]="ctrl.adminData.fname" placeholder="Enter first name" required>
-                                <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"    class="alert alert-danger mt-1">
-                                    <div *ngIf="fname.errors.required">First Name is required.</div>
+                            <input type="text" class="form-control" formControlName="fname" placeholder="Enter first name">
+                            <div *ngIf="submitted && f.fname.errors">
+                                <div *ngIf="f.fname.errors.required" class="topMarginForAllValidation">First Name is required</div>
+                            </div>
+                         </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="lname" placeholder="Enter last name" >
+                            <div *ngIf="submitted && f.lname.errors">
+                                <div *ngIf="f.lname.errors.required" class="topMarginForAllValidation">Last Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" formControlName="empId" placeholder="Enter Employee Id">
+                            <div *ngIf="submitted && f.empId.errors">
+                                <div class="topMarginForAllValidation" *ngIf="f.empId.errors.required">Employee Id required.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" formControlName="dob" placeholder="Enter Employee DOB">
+                            <div *ngIf="submitted && f.dob.errors">
+                                <div *ngIf="f.dob.errors.required" class="topMarginForAllValidation">Employee DOB required.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                                <div *ngIf="submitted && f.email.errors">
+                                    <div *ngIf="f.email.errors.required" class="topMarginForAllValidation">Email is required</div>
+                                    <div *ngIf="f.email.errors.email" class="topMarginForAllValidation">Email must be a valid email address</div>
                                 </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="lname" #lname="ngModel"
-                                [(ngModel)]="ctrl.adminData.lname" placeholder="Enter last name" required>
-                                <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"    class="alert alert-danger mt-1">
-                                    <div *ngIf="lname.errors.required">Last Name is required.</div>
-                                </div>
+                            <input type="password" class="form-control" formControlName="pwd" placeholder="Enter password">
+                            <div *ngIf="submitted && f.pwd.errors">
+                                <div *ngIf="f.pwd.errors.required" class="topMarginForAllValidation">Password is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
-                                <input type="number" class="form-control" name="empId" #empId="ngModel"
-                                    [(ngModel)]="ctrl.adminData.empId" placeholder="Enter Employee Id" required>
-                                    <div *ngIf="empId.invalid && (empId.dirty || empId.touched)"    class="alert alert-danger mt-1">
-                                        <div *ngIf="empId.errors.required">Employee Id required.</div>
-                                    </div>
-                        </div>
-                        <div class="form-group">
-                                <input type="date" class="form-control" name="dob" #dob="ngModel"
-                                    [(ngModel)]="ctrl.adminData.dob" placeholder="Enter Employee DOB" required>
-                                    <div *ngIf="dob.invalid && (dob.dirty || dob.touched)"    class="alert alert-danger mt-1">
-                                        <div *ngIf="dob.errors.required">Employee DOB required.</div>
-                                    </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="email" #email="ngModel"
-                                [(ngModel)]="ctrl.adminData.email" placeholder="Enter email" required>
-                                <div *ngIf="email.invalid && (email.dirty || email.touched)"    class="alert alert-danger mt-1">
-                                    <div *ngIf="email.errors.required">Email is required.</div>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="pwd" #pwd="ngModel"
-                                [(ngModel)]="ctrl.adminData.pwd" placeholder="Enter password" required>
-                                <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"    class="alert alert-danger mt-1">
-                                    <div *ngIf="pwd.errors.required">Password is required.</div>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="mobile" #mobile="ngModel"
-                                [(ngModel)]="ctrl.adminData.mobile" placeholder="Enter mobile number" required>
-                                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"    class="alert alert-danger mt-1">
-                                    <div *ngIf="mobile.errors.required">Mobile No. is required.</div>
-                                </div>
+                            <input type="text" class="form-control" formControlName="mobile" placeholder="Enter mobile number">
+                            <div *ngIf="submitted && f.mobile.errors" class="topMarginForAllValidation">
+                                <div *ngIf="f.mobile.errors.required">Mobile No is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="sel1">User Role:</label>
-                            <select class="form-control" name="userrole" #ueserrole="ngModel"
-                            [(ngModel)]="ctrl.adminData.userrole">
+                            <select class="form-control" formControlName="userrole">
                                 <option *ngFor="let role of roles" [value]="role">{{role}}</option>
                             </select>
-                          </div>
-                        <input type="submit" value="Submit" class="btn btn-info btn-block" [disabled]="form.invalid">
+                            <div *ngIf="submitted && f.userrole.errors">
+                                <div *ngIf="f.userrole.errors.required" class="topMarginForAllValidation">User role is required</div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-info btn-block">
 
                         <!-- <p class="text-center">Already a member ? <a routerLink="/login"> Login </a></p> -->
                     </form>

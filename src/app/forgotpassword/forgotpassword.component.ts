@@ -12,19 +12,19 @@ import { Router } from '@angular/router';
 export class ForgotpasswordComponent implements OnInit {
   toggle:number=1;
   an;
-  constructor(public http: HttpClient, public service: DataTransferService,private toastr: ToastrService,public router: Router) { }
+  constructor(public http: HttpClient, public service: DataTransferService, private toastr: ToastrService,public router: Router) { }
   user = {
     email: '',
     pwd: ''
-  }
+  };
   userr = {
-    oo:'',
-    em:''
-  }
+    oo: '',
+    em: ''
+  };
   userrr = {
-    pw1:'',
-    em:''
-  }
+    pw1: '',
+    em: ''
+  };
   resetForm(form: NgForm) {
     this.user.email = '';
   }
@@ -39,15 +39,15 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit() {
   }
-  move(){
+  move() {
     this.toggle = 1;
   }
   submit(form) {
     this.service.sendotp(form).subscribe(res => {
-      this.toastr.show('Mail Sent','Enter OTP below to reset password');
-      // this.a = res.em;  
+      this.toastr.show('Mail Sent', 'Enter OTP below to reset password');
+      // this.a = res.em;
       console.log(res.e);
-      this.an = res.e; 
+      this.an = res.e;
       this.toggle = 2;
     },
       (err) => {
@@ -61,15 +61,15 @@ export class ForgotpasswordComponent implements OnInit {
     formm.value.em =  this.an;
     console.log(formm.value);
     this.service.compareotp(formm).subscribe(res => {
-      this.toastr.show('Correct OTP','Enter New password');
+      this.toastr.show('Correct OTP', 'Enter New password');
       console.log(res);
       this.toggle = 3;
     },
       (err) => {
         if (err instanceof HttpErrorResponse)
-          this.toastr.error('','Wrong OTP');
+          this.toastr.error('', 'Wrong OTP');
       });
-      this.resetFormm(formm);  
+      this.resetFormm(formm);
     }
     submittt(formmm) {
       formmm.value.em =  this.an;
@@ -83,7 +83,7 @@ export class ForgotpasswordComponent implements OnInit {
           if (err instanceof HttpErrorResponse)
             this.toastr.error('','Password change failed');
         });
-        this.resetFormmm(formmm);  
+        this.resetFormmm(formmm);
       }
 
 }

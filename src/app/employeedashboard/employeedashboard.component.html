@@ -18,7 +18,7 @@
                   </div>
               </figure>
           </div>
-          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+          <div class="col-md-3" *ngIf="false">
             <figure>
                 <div>
                     <span [routerLink]="['/employeefacility']">Employee Benefits<i
@@ -27,7 +27,7 @@
                 </div>
             </figure>
           </div>
-          <div [ngClass] = "{'col-md-3':roleType === 'Admin'}" *ngIf="roleType === 'Admin'">
+          <div [ngClass] = "{'col-md-3':roleType === 'Admin'}" *ngIf="false">
                 <figure>
                     <div>
                         <span [routerLink]="['/employeefacilityapproval']">Benifits Approval<i
@@ -84,6 +84,15 @@
                         <span><a href="https://secure4.entertimeonline.com/ta/6132156.login" target="_blank">Kronos Link<i
                                 class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
                         <span>Kronos Link </span>
+                    </div>
+                </figure>
+            </div>
+            <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+                <figure>
+                    <div>
+                        <span [routerLink]="['/facility']">view facility<i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span>View Facility</span>
                     </div>
                 </figure>
             </div>

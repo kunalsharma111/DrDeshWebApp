@@ -29,13 +29,15 @@ let userSchema = new mongoose.Schema({
         type: String
     },
     empId: {
-        type: Number
+        type: Number,
+        unique: true
     },
     dob: {
         type: Date
     },
     email: {
-        type: String
+        type: String,
+        unique: true
     },
     mobile: {
         type: String

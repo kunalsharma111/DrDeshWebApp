@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DataTransferService } from '../shared/data-transfer.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,11 +11,26 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
   roles = ['Admin', 'Provider', 'Data Entry Operator'];
-  constructor(public ctrl: DataTransferService, public toastr: ToastrService) { }
+  constructor(public ctrl: DataTransferService, public toastr: ToastrService, private formBuilder: FormBuilder) { }
   user;
   name: string;
   metaData;
+  registerForm: FormGroup;
+  submitted = false;
+
+  get f() { return this.registerForm.controls; }
+
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      userrole: ['', Validators.required],
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      empId: ['', Validators.required],
+      dob: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      pwd: ['', [Validators.required, Validators.minLength(6)]],
+      mobile: ['', Validators.required]
+    });
     this.name = '';
     this.ctrl.getData()
       .subscribe(
@@ -37,30 +52,26 @@ export class RegisterComponent implements OnInit {
       e.preventDefault();
       $wrapper.classList.toggle('toggled');
     });
-    this.resetform();
+    this.onReset();
   }
-  resetform(form?: NgForm) {
-    if (form != null) {
-      form.resetForm();
+
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+        // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
     }
-    this.ctrl.adminData = {
-      fname: '',
-      lname: '',
-      empId: null,
-      dob: null,
-      email: '',
-      pwd: '',
-      mobile: '',
-      userrole: '',
-      otp: '',
-    };
-  }
-  submit(form: NgForm) {
-    this.ctrl.transferToServer(form).subscribe(res => {
+    this.ctrl.transferToServer(this.registerForm).subscribe(res => {
       // localStorage.setItem('token', res.token);
       this.toastr.success('', 'New User Created');
     });
-    this.resetform();
+    this.onReset();
     // this.ctrl.router.navigateByUrl('/dash');
   }
   logout() {

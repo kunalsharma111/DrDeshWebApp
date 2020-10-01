@@ -15,14 +15,14 @@
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <input class="form-control ipq" type="text"  formControlName="email" placeholder="Email" >
-                <div *ngIf="submitted && f.email.errors" >
+                <div *ngIf="submitted && f.email.errors">
                  <div *ngIf="f.email.errors.required" class="topMarginForEmailValidation">Email is required</div>
                  <div *ngIf="f.email.errors.email" class="topMarginForEmailValidation">Email must be a valid email address</div>
                 </div>
             </div>
             <div class="form-group">
                 <input class="form-control ipq" type="password" formControlName="pwd" placeholder="Password" id="name" >
-                <div *ngIf="submitted && f.pwd.errors" >
+                <div *ngIf="submitted && f.pwd.errors">
                  <div *ngIf="f.pwd.errors.required" class="topMarginForEmailValidation">Password is required</div>
                 </div>
             </div>

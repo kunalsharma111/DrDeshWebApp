@@ -57,7 +57,7 @@
       <div class="col-lg-12">
         <img src="/assets/img/shared/facilitylogo.png" class="img-fluid ptl">
         <h2 class="content-title">Facility</h2>
-        <button type="button" class="btn btn-outline-custom btn-lg iambtn" data-toggle="modal" data-target="#myModalap"
+        <button type="button" *ngIf="role === 'Admin'" class="btn btn-outline-custom btn-lg iambtn" data-toggle="modal" data-target="#myModalap"
           (click)="func()">Add Facility</button>
       </div>
       <div class="box"></div>
@@ -89,7 +89,7 @@
                     <div *ngIf="i.tof == 'ah'">Assisted Home</div>
                     <div *ngIf="i.tof == 'gh'">Group Home</div>
                   </div>
-                  <div class="col-md-1 edit"><i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
+                  <div  *ngIf="role === 'Admin'" class="col-md-1 edit"><i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
                       data-target="#myModalap" (click)="assign(i,i._id)"></i></div>
                   <div class="col-md-1" style="text-align: right;">
                     <!-- {{i.an}} -->
