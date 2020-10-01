@@ -18,24 +18,33 @@
                   </div>
               </figure>
           </div>
-          <div class="col-md-3">
-              <figure>
-                  <div>
-                      <span data-toggle="modal" data-target="#myModalap2">calendar <i
-                              class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                      <span> Google calendar</span>
-                  </div>
-              </figure>
-          </div>
           <div class="col-md-3" *ngIf="roleType !== 'Admin'">
-              <figure>
-                  <div>
-                      <span><a href="https://vacationtracker.io/" target="_blank">Vacation Tracker<i
-                              class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
-                      <span>Vacation Tracker</span>
-                  </div>
-              </figure>
+            <figure>
+                <div>
+                    <span [routerLink]="['/employeefacility']">Employee Benefits<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Benefits</span>
+                </div>
+            </figure>
           </div>
+          <div [ngClass] = "{'col-md-3':roleType === 'Admin'}" *ngIf="roleType === 'Admin'">
+                <figure>
+                    <div>
+                        <span [routerLink]="['/employeefacilityapproval']">Benifits Approval<i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span>Benefits</span>
+                    </div>
+                </figure>
+          </div>
+          <div class="col-md-3">
+            <figure>
+                <div>
+                    <span data-toggle="modal" data-target="#myModalap2">calendar <i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span> Google calendar</span>
+                </div>
+            </figure>
+         </div>
       </div>
       <div class="row reports goa" >
           <div class="col-md-1"></div>
@@ -48,12 +57,12 @@
                   </div>
               </figure>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
             <figure>
                 <div>
-                    <span [routerLink]="['/employeefacility']">Employee Benefits<i
-                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    <span>Benefits</span>
+                    <span><a href="https://vacationtracker.io/" target="_blank">Vacation Tracker<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                    <span>Vacation Tracker</span>
                 </div>
             </figure>
           </div>
@@ -78,9 +87,13 @@
                     </div>
                 </figure>
             </div>
-        </div>
+      </div>
   </section>
 </div>
+
+
+
+
 
 <div class="modal lol fade" id="myModalap2" role="dialog">
     <div class="modal-dialog">

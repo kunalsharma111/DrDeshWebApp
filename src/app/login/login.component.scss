@@ -5,6 +5,11 @@ $green: #87c442;
 p {
   font-family: 'Roboto Slab', serif;
 }
+.topMarginForEmailValidation {
+  margin-top: 5px;
+  color: #dc3545;
+}
+
 .box {
   // background-color: $green;
   background: url("/assets/img/login/bg.png");

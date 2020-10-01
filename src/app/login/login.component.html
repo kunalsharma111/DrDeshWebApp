@@ -12,11 +12,20 @@
         <div class="col-md-2"></div>
         <div class="col-md-6" style="margin-top: 25vh;">
           <h1 class="text-center head">Login</h1>
-          <form (submit)="submit(form)" #form="ngForm">
-            <input class="form-control ipq" type="text" placeholder="Email" name="email" id="name"
-             #email="ngModel" [(ngModel)]="user.email" required>
-            <input class="form-control ipq" type="password" placeholder="Password" name="pwd" id="name" #pwd="ngModel"
-            [(ngModel)]="user.pwd" required>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input class="form-control ipq" type="text"  formControlName="email" placeholder="Email" >
+                <div *ngIf="submitted && f.email.errors" >
+                 <div *ngIf="f.email.errors.required" class="topMarginForEmailValidation">Email is required</div>
+                 <div *ngIf="f.email.errors.email" class="topMarginForEmailValidation">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="form-control ipq" type="password" formControlName="pwd" placeholder="Password" id="name" >
+                <div *ngIf="submitted && f.pwd.errors" >
+                 <div *ngIf="f.pwd.errors.required" class="topMarginForEmailValidation">Password is required</div>
+                </div>
+            </div>
             <div class="row mt-3 mb-5 si">
               <div class="col-md-4"></div>
               <div class="com-md-4" class="fp" [routerLink]="['/forgotpassword']">Forgot Password?</div>

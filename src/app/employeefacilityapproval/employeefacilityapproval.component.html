@@ -1,0 +1,129 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+  <section id="content-wrapper" style=" padding-left: 0rem;">
+    <div class="row">
+      <div class="col-lg-12">
+        <img src="/assets/img/shared/patientlogo.png" class="img-fluid ptl">
+        <h2 class="content-title">Employee Benefit Subscribed Lists</h2>
+      </div>
+      <div class="box"></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-5" >
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-8">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search By Name" style="border:2px solid #87C442;"
+                [(ngModel)]="searchString" #search>
+              <div class="input-group-append">
+                <button class="btn btn-custom" type="submit" style="background-color: #87C442; color:white;">Go</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-3">
+        <form [formGroup]="registrationForm">
+              <select class="custom-select selectBorder"  (change)="changeStatus()" [(ngModel)]="selectedQuantity" formControlName="statusName">
+                <option value="" disabled>Search By Status</option>
+                <option *ngFor="let status of statuses" [ngValue]="status">{{status}}</option>
+              </select>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <input type="button" value="Clear Search" class="btn-blue1 btn-blue2" (click)="reset()">
+      </div> -->
+    </div>
+    <div class="row ml-2">
+      <div class="col-md-1 counting">Sr.No</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name headerRowFont">Name</div>
+            <div class="col-md-4 name headerRowFont">Email</div>
+            <div class="col-md-2 name headerRowFont">Role Type</div>
+            <div class="col-md-3 edit headerRowFont">Action</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2" *ngFor="let employeeDocument of employeeDocuments;let employeedocumentsIndex=index">
+      <div class="col-md-1 counting">{{employeedocumentsIndex+1}}</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name">{{employeeDocument.fname}} {{employeeDocument.lname}}</div>
+            <div class="col-md-4 name">{{employeeDocument.email}} </div>
+            <div class="col-md-2 name">{{employeeDocument.userrole}}</div>
+            <div class="col-md-3 edit" >
+              <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
+                data-target="#myModal" (click)="setEmployeeData(employeeDocument, employeedocumentsIndex)"
+                style="color: #87c442;"
+                tooltip="Update Document Status" placement="right">
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row noEmployeeData" *ngIf="reponseForSearchEmployee === 'no'">
+      <div class="col-lg-12">
+        No Employee For Search Character
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- Add PAtient Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content mc1">
+      <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+          aria-hidden="true"></i></p>
+      <div class="modal-body">
+        <h4 class="ap">Review Benifits For {{employeeData.fname}} </h4>
+        <hr>
+        <form  #form="ngForm">
+          <table class="table table-bordered table-sm">
+              <thead>
+                  <tr>
+                  <th>Sr.No</th>
+                  <th>Description</th>
+                  <th>Subscribe Status</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Charges</th>
+                  <th>Submit</th>
+                  </tr>
+              </thead>
+              <tbody *ngFor="let element  of employeeData.facilities; let indexOfelement = index;">
+                  <tr>
+                  <td>{{indexOfelement+1}}</td>
+                  <td>{{element.facilityName}}</td>
+                  <td>{{element.subscribeStatus}}</td>
+                  <td>
+                      <input type="date" class="fontmargin"  [ngModel]="element.facilityStartDate | date:'yyyy-MM-dd'"  value="element.facilityStartDate">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" id="name"  value="{{element.facilityEndDate}}" name="remark" #remark>
+                  </td>
+                  <td>
+                      <input type="text" class="form-control" id="name"  value="{{element.facilityCharges}}" name="remark" #remark>
+                    </td>
+                  <td>
+                      <input type="submit"[disabled]="element.status === 'Approved'" value="Submit"  (click)="onSave(employeeData._id, element.documentname, indexOfelement, remark, 'Approved')" [ngClass]="{'btn-blue3': element.status === 'Approved', 'btn-blue2': element.status !== 'Approved', 'btn-blue1': true}">
+                  </td>
+                  </tr>
+              </tbody>
+          </table>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -116,9 +116,9 @@
                 (click)="onSave(indexOfelement, facility.facilityname)"
                 class="btn-blue1">
             </td>
-            <td class="tableSelectColumn"><input type="date" class="fontmargin"  [ngModel]="facility.facilityStartDate | date:'yyyy-MM-dd'" [disabled]="true" value="facility.facilityStartDate"></td>
-            <td class="tableSelectColumn"><input type="date" class="fontmargin" [ngModel]="facility.facilityEndDate | date:'yyyy-MM-dd'" [disabled]="true" value="facility.facilityEndDate"></td>
-            <td><input type="text" [disabled]="true" [value]="facility.facilityCharges"></td>
+            <td class="tableSelectColumn">{{facility.facilityStartDate | date: "dd-MMM-yyyy"}}</td>
+            <td class="tableSelectColumn">{{facility.facilityEndDate | date: "dd-MMM-yyyy"}}</td>
+            <td>{{facility.facilityCharges}}</td>
             </tr>
         </tbody>
     </table>

@@ -44,7 +44,7 @@ export class EmployeeFacilityComponent implements OnInit {
     this.service.addfacilityForEmployee(params)
     .subscribe(res => {
       this.facilities[indexOfelement].subscribeStatus = true;
-      this.toastr.success('', 'Facility Subscribe Sucessfully!!');
+      this.toastr.success('', facilityName + ' Facility Subscribe Sucessfully!!');
     }, err => {
       this.toastr.error('', 'Facility Not Subscribe !!');
     });
@@ -74,7 +74,7 @@ export class EmployeeFacilityComponent implements OnInit {
 
               this.facilities[subscribeIndex].facilityStartDate = res[0].facilities[subscribedIndex].facilityStartDate;
               this.facilities[subscribeIndex].facilityEndDate = res[0].facilities[subscribedIndex].facilityEndDate;
-              this.facilities[subscribeIndex].facilityCharges = 'USD' + ' ' + res[0].facilities[subscribedIndex].facilityCharges;
+              this.facilities[subscribeIndex].facilityCharges = 'USD' + ' ' + (res[0].facilities[subscribedIndex].facilityCharges || ' ..');
               this.facilities[subscribeIndex].submitbutton =  res[0].facilities[subscribedIndex].submitbutton;
               this.facilities[subscribeIndex].subscribeStatus =  res[0].facilities[subscribedIndex].subscribeStatus;
 

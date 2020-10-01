@@ -2039,13 +2039,18 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
                     'userrole': 1,
                     "lname": 1,
                     "files": 1,
+                    "facilities": 1,
                     "FILES_count": {
                         "$size": { "$ifNull": [ "$files", [] ] }
+                    },
+                    "FACILITIES_count": {
+                        "$size": { "$ifNull": [ "$facilities", [] ] }
                     }
                 }
             },
             { "$match":
                 { "FILES_count": { "$gte": 0 },
+                  "FACILITIES_count": { "$gte": 0 },
                   "fname" : new RegExp('^'+req.body.name, 'i')
                 }
             }

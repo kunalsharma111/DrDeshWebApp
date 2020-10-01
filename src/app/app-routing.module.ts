@@ -19,6 +19,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
+import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  },
   { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
+  { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent,  canActivate: [RouteGuard]  },
   { path: '**', component: DashboardComponent,  canActivate: [RouteGuard]  }
 ];
 

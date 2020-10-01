@@ -25,6 +25,7 @@ import { PipePipe } from './pipe.pipe';
 import { ReportsComponent } from './reports/reports.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
+import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { FilterPipe } from './filter.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
@@ -56,6 +57,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     ReportsComponent,
     AttchFileComponent,
     ModuleDashboardComponent,
+    EmployeeFacilityApprovalComponent,
     SharedDashboardComponent,
     FilterPipe,
     FilterNamePipe,
