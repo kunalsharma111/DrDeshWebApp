@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3" *ngIf="false">
         <form [formGroup]="registrationForm">
               <select class="custom-select selectBorder"  (change)="changeStatus()" [(ngModel)]="selectedQuantity" formControlName="statusName">
                 <option value="" disabled>Search By Status</option>
@@ -35,7 +35,7 @@
               </div> -->
         </form>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3" *ngIf="false">
         <input type="button" value="Clear Search" class="btn-blue1 btn-blue2" (click)="reset()">
       </div>
     </div>

@@ -27,12 +27,30 @@
                 </div>
             </figure>
           </div>
+          <div class="col-md-3" *ngIf="roleType === 'Admin'">
+                <figure>
+                    <div>
+                        <span [routerLink]="['/showdocuments']">Document Approval<i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                        <span> Document Approval</span>
+                    </div>
+                </figure>
+          </div>
           <div [ngClass] = "{'col-md-3':roleType === 'Admin'}" *ngIf="false">
                 <figure>
                     <div>
                         <span [routerLink]="['/employeefacilityapproval']">Benifits Approval<i
                                 class="fa fa-arrow-right" aria-hidden="true"></i></span>
                         <span>Benefits</span>
+                    </div>
+                </figure>
+          </div>
+          <div class="col-md-3">
+                <figure>
+                    <div>
+                        <span><a href="https://drive.google.com/drive/u/1/my-drive" target="_blank">Google Drive<i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                        <span>Google Drive</span>
                     </div>
                 </figure>
           </div>
@@ -69,9 +87,9 @@
           <div class="col-md-3" *ngIf="roleType !== 'Admin'">
             <figure>
                 <div>
-                    <span><a href="https://app.talentlms.com/login" target="_blank">Talent LMS<i
+                    <span><a href="https://app.talentlms.com/login" target="_blank">Learning Center<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
-                    <span>Talent LMS</span>
+                    <span>Learning Center</span>
                 </div>
             </figure>
           </div>

@@ -29,8 +29,11 @@
         <li *ngIf="roleType == 'Admin' || roleType == 'Provider'">
             <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
         </li>
-        <li *ngIf="roleType == 'Admin'">
-            <a [routerLink]="['/register']"><i class="fa fa-users"></i>Users</a>
+        <li *ngIf="roleType === 'Admin'">
+            <a [routerLink]="['/register']"><i class="fa fa-user"></i>User Management</a>
+        </li>
+        <li>
+            <a [routerLink]="['/employeedash']" (click)="setModuleType('employee')"><i class="fa fa-users"></i>Employee DashBoard</a>
         </li>
     </ul>
     <ul class="sidebar-nav" *ngIf="getModuleType() !== 'employee' && getModuleType() !== 'patient'">
@@ -50,16 +53,12 @@
         <li >
             <a [routerLink]="['/employeedash']"><i class="fa fa-home"></i>Home</a>
         </li>
-        <li *ngIf="roleType !== 'Admin'">
+        <!-- <li *ngIf="roleType !== 'Admin'">
             <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Employee Documents</a>
-        </li>
+        </li> -->
         <li>
             <a [routerLink]="['/dash']"><i class="fa fa-user-o"></i>Patient Dashboard</a>
         </li>
-        <li *ngIf="roleType == 'Admin'">
-            <a [routerLink]="['/showdocuments']"><i class="fa fa-plus-circle"></i>Document Approvals</a>
-        </li>
-
     </ul>
 </aside>
 <div id="navbar-wrapper">

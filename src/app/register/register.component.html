@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="date" class="form-control" formControlName="dob" placeholder="Enter Employee DOB">
+                            <input type="text" class="form-control"  onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="dob" placeholder="Enter Employee DOB">
                             <div *ngIf="submitted && f.dob.errors">
                                 <div *ngIf="f.dob.errors.required" class="topMarginForAllValidation">Employee DOB required.</div>
                             </div>
@@ -111,7 +111,10 @@
                         <div class="form-group">
                             <label for="sel1">User Role:</label>
                             <select class="form-control" formControlName="userrole">
-                                <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+                                <option *ngFor="let role of roles" [value]="role">
+                                    {{role === 'Provider' ? 'Employee' : role}}
+
+                                </option>
                             </select>
                             <div *ngIf="submitted && f.userrole.errors">
                                 <div *ngIf="f.userrole.errors.required" class="topMarginForAllValidation">User role is required</div>
