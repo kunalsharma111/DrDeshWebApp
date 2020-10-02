@@ -35,7 +35,6 @@ export class FacilityComponent implements OnInit {
           const user = res;
           this.fname = user.fname;
           this.role =  user.userrole;
-          console.log('this.role', this.role);
           this.metaData = true;
         }, err => {
           if (err instanceof HttpErrorResponse) {

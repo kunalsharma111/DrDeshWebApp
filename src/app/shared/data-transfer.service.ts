@@ -237,9 +237,9 @@ export class DataTransferService {
   private c4 = new Subject<string>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<string>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<string>(); cc6$ = this.c6.asObservable();
-  // metcha = 'http://3.128.218.140:4000/api';
+  metcha = 'http://3.128.218.140:4000/api';
   // metcha = 'http://localhost:4000/api';
-  metcha = 'http://localhost:4000/api';
+  // metcha = 'http://localhost:4000/api';
   // metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
