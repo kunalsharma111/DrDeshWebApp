@@ -30,7 +30,6 @@ let userSchema = new mongoose.Schema({
     },
     empId: {
         type: Number,
-        unique: true
     },
     dob: {
         type: Date

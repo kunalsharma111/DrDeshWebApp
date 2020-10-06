@@ -59,7 +59,7 @@
           <div class="row">
             <div class="col-md-3 name">{{employeeDocument.fname}} {{employeeDocument.lname}}</div>
             <div class="col-md-4 name">{{employeeDocument.email}} </div>
-            <div class="col-md-2 name">{{employeeDocument.userrole}}</div>
+            <div class="col-md-2 name">{{employeeDocument.userrole === 'Provider' ? 'Employee' : employeeDocument.userrole}}</div>
             <div class="col-md-3 edit" >
               <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
                 data-target="#myModal" (click)="setEmployeeData(employeeDocument, employeedocumentsIndex)"

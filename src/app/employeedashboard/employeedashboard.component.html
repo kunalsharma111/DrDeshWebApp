@@ -48,7 +48,7 @@
           <div class="col-md-3">
                 <figure>
                     <div>
-                        <span><a href="https://drive.google.com/drive/u/1/my-drive" target="_blank">Google Drive<i
+                        <span><a href="https://drive.google.com/drive/my-drive" target="_blank">Google Drive<i
                                 class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
                         <span>Google Drive</span>
                     </div>
@@ -57,14 +57,17 @@
           <div class="col-md-3">
             <figure>
                 <div>
-                    <span data-toggle="modal" data-target="#myModalap2">calendar <i
+                    <!-- <span data-toggle="modal" data-target="#myModalap2">calendar <i
                             class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    <span> Google calendar</span>
+                    <span> Google calendar</span> -->
+                    <span><a href="https://calendar.google.com/calendar/u/0/r?tab=cc" target="_blank">Google Calendar<i
+                        class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                    <span>Google Calendar</span>
                 </div>
             </figure>
          </div>
       </div>
-      <div class="row reports goa" >
+      <div class="row reports goa" *ngIf="roleType !== 'Admin'">
           <div class="col-md-1"></div>
           <div class="col-md-3" *ngIf="roleType !== 'Admin'">
               <figure>
@@ -114,6 +117,15 @@
                     </div>
                 </figure>
             </div>
+            <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+                <figure>
+                    <div>
+                        <span><a href="https://login.ringcentral.com/" target="_blank">Ring Central<i
+                                class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                        <span>Ring Central</span>
+                    </div>
+                </figure>
+            </div>
       </div>
   </section>
 </div>
@@ -136,7 +148,8 @@
                         <h4 style="color: #87c442;">Balanced Wellbeing LLC</h4>
                     </div>
                 </div>
-                <iframe  class="leftMargin"style="border: 0" width="1000" height="500" frameborder="0" scrolling="no" [src]="urlSafe"></iframe>
+                <!-- <iframe  class="leftMargin"style="border: 0" width="1000" height="500" frameborder="0" scrolling="no" [src]="urlSafe"></iframe> -->
+                <iframe  class="leftMargin" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Asia%2FKolkata&amp;src=YmFsd2VsbGJlaW5nbGxjQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=N2E3aGtiOGI1cTZzMGlkYzNibmRmNmltYzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=NW01dGhnNGY0dThza2JhNWVraHRyZmFqaXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%238E24AA&amp;color=%23F4511E&amp;color=%230B8043" style="border:solid 1px #777" width="1000" height="500" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </div>

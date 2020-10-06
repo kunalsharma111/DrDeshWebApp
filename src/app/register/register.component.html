@@ -79,15 +79,15 @@
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control" formControlName="empId" placeholder="Enter Employee Id">
-                            <div *ngIf="submitted && f.empId.errors">
+                            <!-- <div *ngIf="submitted && f.empId.errors">
                                 <div class="topMarginForAllValidation" *ngIf="f.empId.errors.required">Employee Id required.</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control"  onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="dob" placeholder="Enter Employee DOB">
-                            <div *ngIf="submitted && f.dob.errors">
+                            <!-- <div *ngIf="submitted && f.dob.errors">
                                 <div *ngIf="f.dob.errors.required" class="topMarginForAllValidation">Employee DOB required.</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control" formControlName="email" placeholder="Enter email">

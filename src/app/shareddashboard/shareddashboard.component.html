@@ -4,7 +4,7 @@
         <a [routerLink]="['/moduledashboard']" *ngIf="roleType == 'Admin' || roleType == 'Provider'"><img src="/assets/img/login/logo.png" height="60px" (click)="setModuleType('homedash')"></a>
         <a *ngIf="roleType == 'Data Entry Operator'"><img src="/assets/img/login/logo.png" height="60px"></a>
         <h2>Hello, {{fname|capitalize}}</h2>
-        <b>{{role}}</b>
+        <b>{{role === 'Provider' ? 'Employee' : role}}</b>
     </div>
     <ul class="sidebar-nav" *ngIf="getModuleType() === 'patient'">
         <p class="qd">Patient Dashboard</p>
