@@ -3750,3 +3750,5 @@
 {"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-06T07:11:04.628Z"}
 {"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-06T07:15:01.283Z"}
 {"message":"DB connected:","level":"info","timestamp":"2020-10-06T07:15:03.893Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-06T07:23:24.275Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-06T07:23:26.292Z"}
