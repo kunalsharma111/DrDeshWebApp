@@ -3752,3 +3752,7 @@
 {"message":"DB connected:","level":"info","timestamp":"2020-10-06T07:15:03.893Z"}
 {"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-06T07:23:24.275Z"}
 {"message":"DB connected:","level":"info","timestamp":"2020-10-06T07:23:26.292Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-06T07:37:52.587Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-06T07:37:55.283Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-07T04:33:26.989Z"}
+{"message":"connection timed out","reason":{"type":"ReplicaSetNoPrimary","setName":"atlas-ky11dp-shard-0","maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":30,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":8},"level":"error","timestamp":"2020-10-07T04:33:57.250Z"}
