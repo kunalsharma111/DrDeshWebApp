@@ -24,6 +24,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PipePipe } from './pipe.pipe';
 import { ReportsComponent } from './reports/reports.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
+import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
@@ -56,6 +57,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     PipePipe,
     ReportsComponent,
     AttchFileComponent,
+    EmployeeVacationComponent,
     ModuleDashboardComponent,
     EmployeeFacilityApprovalComponent,
     SharedDashboardComponent,

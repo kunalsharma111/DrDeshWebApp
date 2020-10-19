@@ -2016,6 +2016,53 @@ router.post('/getEmployeeSubscribefacilities', verifyToken, (req, res) => {
     });
 })
 
+router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
+    var employeeVacation = {
+        vacationFrom: req.body.vacationFrom,
+        vacationTo: req.body.vacationTo,
+        vacacationType: req.body.vacationType,
+        vacationReason: req.body.vacationReason,
+        vacationStatus: 'Pending',
+        savedon: new Date(),
+        savedby: currentuser
+    }
+    let vacationStatus = req.body.vacationStatus != undefined ? req.body.vacationStatus : 'Pending';
+    console.log('vacationStatus', vacationStatus)
+    if(vacationStatus === 'Pending') {
+        userModel.find({_id: req.userId}, (error, document) => {
+            if(!error) {
+                document[0].Vacations.push(employeeVacation);
+                document[0].save().then(ress => {
+                res.send(document);
+                }, err => {
+                    console.log(err);
+                })
+            } else {
+                res.send(error);
+            }
+        })
+    } else {
+        userModel.find({_id: req.body.userId}, (err, doc) => {
+            if (!err ) {
+                console.log('doc',doc)
+                // if(doc[])
+                // userModel.updateOne({_id: req.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.fiName': fileName, 'files.$.savedon': new Date(), 'files.$.status': 'Submited' } }, (errr, docc) => {
+                //     if(!errr) {
+                //         res.send(docc);
+                //     } else {
+                //         console.log(errr);
+                //         res.send(errr);
+                //     }
+                // })
+            }
+            else {
+                console.log("error at employeedetails", err);
+                res.send(errr);
+            }
+        })
+    }
+})
+
 router.post('/employeedocumentsremark', verifyToken, (req, res) => {
         userModel.updateOne({_id: req.body.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.status': req.body.documentstatus, 'files.$.remark': req.body.remark} }, (errr, docc) => {
             if(!errr) {

@@ -1,0 +1,51 @@
+<div id="wrapper">
+    <app-shareddashboard></app-shareddashboard>
+    <section id="content-wrapper" style=" padding-left: 0rem;  ">
+        <div class="box"></div>
+        <section id="register">
+            <div class="container">
+                <div class="boxit">
+                    <h1 class="text-center">Vacation</h1>
+                    <hr>
+                    <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="Vacation From">
+                            <div *ngIf="submitted && f.vacationFrom.errors">
+                              <div *ngIf="f.vacationFrom.errors.required" class="topMarginForAllValidation">Vacation From is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control ip elementBorder" formControlName="vacationTo" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="Vacation To">
+                            <div *ngIf="submitted && f.vacationTo.errors">
+                              <div *ngIf="f.vacationTo.errors.required" class="topMarginForAllValidation">Vacation To is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Vacation Type:</label>
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                  <input id="casualLeave"  value="casualLeave" type="radio" class="custom-control-input elementBorder"  formControlName="vacationType">
+                                  <label class="custom-control-label lor chnageFontColor" for="casualLeave">Casual Leave</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="sickLeave" value="sickLeave"  type="radio" class="custom-control-input elementBorder" formControlName="vacationType">
+                                    <label class="custom-control-label lor chnageFontColor" for="sickLeave">Sick Leave</label>
+                                </div>
+                                <div *ngIf="submitted && f.vacationType.errors">
+                                    <div *ngIf="f.vacationType.errors.required" class="topMarginForAllValidation">Vacation type is required</div>
+                                </div>   
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control ip elementBorder"  placeholder="Vacation Reason" formControlName="vacationReason">
+                            <div *ngIf="submitted && f.vacationReason.errors">
+                              <div *ngIf="f.vacationReason.errors.required" class="topMarginForAllValidation">Vacation reason is required</div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-info btn-block">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>

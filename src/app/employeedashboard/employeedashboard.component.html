@@ -67,9 +67,9 @@
             </figure>
          </div>
       </div>
-      <div class="row reports goa" *ngIf="roleType !== 'Admin'">
+      <div class="row reports goa">
           <div class="col-md-1"></div>
-          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+          <div class="col-md-3">
               <figure>
                   <div>
                       <span><a href="https://www.adp.com/" target="_blank">Adp<i
@@ -78,16 +78,19 @@
                   </div>
               </figure>
           </div>
-          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+          <div class="col-md-3" >
             <figure>
                 <div>
                     <span><a href="https://vacationtracker.io/" target="_blank">Vacation Tracker<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
                     <span>Vacation Tracker</span>
+                    <!-- <span [routerLink]="['/employeevacation']">Vacation Tracker<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Vacation Tracker</span> -->
                 </div>
             </figure>
           </div>
-          <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+          <div class="col-md-3">
             <figure>
                 <div>
                     <span><a href="https://app.talentlms.com/login" target="_blank">Learning Center<i
@@ -99,7 +102,7 @@
       </div>
       <div class="row reports goa" >
             <div class="col-md-1"></div>
-            <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <div class="col-md-3">
                 <figure>
                     <div>
                         <span><a href="https://secure4.entertimeonline.com/ta/6132156.login" target="_blank">Kronos Link<i
@@ -108,7 +111,7 @@
                     </div>
                 </figure>
             </div>
-            <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <div class="col-md-3">
                 <figure>
                     <div>
                         <span [routerLink]="['/facility']">view facility<i
@@ -117,15 +120,27 @@
                     </div>
                 </figure>
             </div>
-            <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <div class="col-md-3">
                 <figure>
                     <div>
-                        <span><a href="https://login.ringcentral.com/" target="_blank">Ring Central<i
+                        <span><a href="https://www.doximity.com/" target="_blank">Doximity<i
                                 class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
-                        <span>Ring Central</span>
+                        <span>Doximity</span>
                     </div>
                 </figure>
             </div>
+      </div>
+      <div class="row reports goa" >
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <figure>
+                <div>
+                    <span><a href="https://clozapinerems.com" target="_blank">Clozapine Rems<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                    <span>Clozapine Rems</span>
+                </div>
+            </figure>
+        </div>
       </div>
   </section>
 </div>

@@ -21,6 +21,16 @@ let uploadFiles = new mongoose.Schema({
     submitbutton: Boolean
   })
 
+  let empVacation = new mongoose.Schema({
+    vacationFrom: Date,
+    vacationTo: Date,
+    vacacationType: String,
+    vacationReason: String,
+    vacationStatus: String,
+    savedon: Date,
+    savedby: String
+  })
+
 let userSchema = new mongoose.Schema({
     fname: {
         type: String
@@ -55,6 +65,9 @@ let userSchema = new mongoose.Schema({
     },
     facilities:{
         type:[empFacility]
+    },
+    Vacations:{
+        type:[empVacation]
     }
 });
 

@@ -17,6 +17,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { CombinepatComponent } from './combinepat/combinepat.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
+import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'reports', component: ReportsComponent, canActivate: [RouteGuard] },
   { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  },
   { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  },
+  { path: 'employeevacation', component: EmployeeVacationComponent,  canActivate: [RouteGuard]  },
   { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent,  canActivate: [RouteGuard]  },
