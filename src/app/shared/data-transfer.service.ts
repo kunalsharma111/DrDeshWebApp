@@ -582,7 +582,6 @@ export class DataTransferService {
     return this.http.post<any>(this.updateEmployeeVacationUrl, data);
   }
   getAllAdmins(data){
-    console.log('hi')
     return this.http.post<any>(this.getAllAdminsUrl, data);
   }
 

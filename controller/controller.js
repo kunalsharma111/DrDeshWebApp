@@ -2140,7 +2140,7 @@ router.post('/getalladmin', verifyToken, (req, res) => {
                 };
                 mailTransporter.sendMail(mailDetails, function (err, data) {
                     if (err) {
-                        logger.error("error occur while sending email");
+                        logger.error("error occur while sending email"+mailDetails+allAdminEmails.toString()+employeeEmail.toString());
                         console.log('mailDetails', mailDetails)
                         res.send(['error occur while sending email'])
                     } else {
