@@ -6542,7 +6542,6 @@ let AllUserListComponent = class AllUserListComponent {
     }
     setEmployeeData(employee, employeedocumentsIndex) {
         this.employeeData = employee;
-        console.log('employee', employee);
         this.employeeData.userrole = employee.userrole;
         this.employeeData._id = employee._id;
         this.employeeData.empstatus = employee.empstatus === undefined ? 'Active' : employee.empstatus;
