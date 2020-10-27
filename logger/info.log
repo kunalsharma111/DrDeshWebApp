@@ -6414,3 +6414,15 @@
 {"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-27T06:37:09.772Z"}
 {"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-27T06:37:11.142Z"}
 {"message":"Email Sent Successfully","level":"info","timestamp":"2020-10-27T06:37:35.828Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-27T10:47:06.424Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-27T10:47:09.594Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-27T10:48:08.434Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-27T10:48:11.439Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-27T10:48:13.336Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-10-27T10:48:36.700Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-27T10:54:09.716Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-27T10:54:33.155Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-10-27T10:56:30.751Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-27T11:00:40.976Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-27T11:00:57.721Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-10-27T11:01:27.703Z"}
