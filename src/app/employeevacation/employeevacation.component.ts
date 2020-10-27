@@ -53,8 +53,10 @@ export class EmployeeVacationComponent implements OnInit {
     if (this.vacationForm.invalid) {
       return;
     }
-    console.log('this.vacationForm', this.vacationForm);
     this.service.storeEmployeeVacation(this.vacationForm).subscribe(res => {
+      this.toastr.success('', 'Vacation Applied Successfully');
+    },error=>{
+      this.toastr.error('', 'Something Wrong');
     });
     this.onReset();
   }

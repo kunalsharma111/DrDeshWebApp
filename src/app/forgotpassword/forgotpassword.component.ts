@@ -46,23 +46,19 @@ export class ForgotpasswordComponent implements OnInit {
     this.service.sendotp(form).subscribe(res => {
       this.toastr.show('Mail Sent', 'Enter OTP below to reset password');
       // this.a = res.em;
-      console.log(res.e);
       this.an = res.e;
       this.toggle = 2;
     },
       (err) => {
         if (err instanceof HttpErrorResponse)
-        console.log("kidr");
           this.toastr.error('','This Email is not registered with any account !');
       });
       // this.resetForm(form);
   }
   submitt(formm) {
     formm.value.em =  this.an;
-    console.log(formm.value);
     this.service.compareotp(formm).subscribe(res => {
       this.toastr.show('Correct OTP', 'Enter New password');
-      console.log(res);
       this.toggle = 3;
     },
       (err) => {
@@ -73,11 +69,9 @@ export class ForgotpasswordComponent implements OnInit {
     }
     submittt(formmm) {
       formmm.value.em =  this.an;
-      console.log(formmm.value);
       this.service.newpassword(formmm).subscribe(res => {
         this.toastr.show('Password changed Successfully','Login With New Password');
         this.router.navigate(['/']);
-        console.log(res);
       },
         (err) => {
           if (err instanceof HttpErrorResponse)

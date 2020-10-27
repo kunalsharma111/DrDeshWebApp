@@ -30,7 +30,7 @@
             <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
         </li>
         <li *ngIf="roleType === 'Admin'">
-            <a [routerLink]="['/register']"><i class="fa fa-user"></i>User Management</a>
+            <a [routerLink]="['/userlist']"><i class="fa fa-user"></i>User Management</a>
         </li>
         <li>
             <a [routerLink]="['/employeedash']" (click)="setModuleType('employee')"><i class="fa fa-users"></i>Employee DashBoard</a>

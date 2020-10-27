@@ -2023,11 +2023,11 @@ router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
         vacacationType: req.body.vacationType,
         vacationReason: req.body.vacationReason,
         vacationStatus: 'Pending',
+        remark:'',
         savedon: new Date(),
         savedby: currentuser
     }
     let vacationStatus = req.body.vacationStatus != undefined ? req.body.vacationStatus : 'Pending';
-    console.log('vacationStatus', vacationStatus)
     if(vacationStatus === 'Pending') {
         userModel.find({_id: req.userId}, (error, document) => {
             if(!error) {
@@ -2074,11 +2074,96 @@ router.post('/employeedocumentsremark', verifyToken, (req, res) => {
 
 })
 
+router.post('/getallusers', verifyToken, (req, res) => {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "_id": 1,
+                    "empstatus": 1
+                }
+            },
+            { "$match":
+                {
+                  "fname" : new RegExp('^'+req.body.fname, 'i')
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+});
+
+
+router.post('/updateemployeevacation', verifyToken, (req, res) => {
+    userModel.updateOne({_id: req.body.userId, 'Vacations._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'Vacations.$.vacationStatus': req.body.vacationStatus, 'Vacations.$.remark': req.body.remark} }, (errr, docc) => {
+        if(!errr) {
+            res.send(docc);
+        } else {
+            res.send(errr);
+        }
+    });
+});
+
+router.post('/getalladmin', verifyToken, (req, res) => {
+    var allAdminEmails = [];
+    var employeeEmail;
+    userModel.find({'userrole': 'Admin'}, {'email': 1}, (err, doc) => {
+        if (!err ) {
+            employeeEmail= req.body.email;
+            if(doc.length != 0) {
+                for(let emailIndex = 0; emailIndex < doc.length; emailIndex++) {
+                    allAdminEmails[emailIndex] = doc[emailIndex].email;
+                }
+                let mailTransporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'balwellbeingllc@gmail.com',
+                        pass: 'Balanced123'
+                    }
+                });
+                var new_line = "\n\xA0";
+                allAdminEmails.toString();
+                let mailDetails = {
+                    from: 'balwellbeingllc@gmail.com',
+                    to: employeeEmail,
+                    cc: allAdminEmails,
+                    subject: 'Leave Application Status Change',
+                    text: 'Dear '+req.body.name+' ,'+ new_line +'Your vacation application has been acted upon by approving authority. Please check the system for the status.'+new_line + new_line +'Regards,'+new_line+'System BWB'
+                };
+                mailTransporter.sendMail(mailDetails, function (err, data) {
+                    if (err) {
+                        logger.error("error occur while sending email");
+                        console.log('mailDetails', mailDetails)
+                        res.send(['error occur while sending email'])
+                    } else {
+                        logger.info("Email Sent Successfully");
+                        console.log('Email sent successfully');
+                        res.send(['Email sent successfully']);
+                    }
+                });
+            } else {
+                res.send([]);
+            }
+        }
+        else {
+            console.log("error at employeedetails", err);
+        }
+    })
+});
+
+
+
 // get all document uploaded employee
 router.post('/getemployeedocuments', verifyToken, (req, res) => {
-    console.log('hi ', req.body)
     const fileName =  req.body.name !== undefined  ? 'search by name'  : 'search by status';
-    console.log('fileName', fileName)
     if(fileName === 'search by name') {
         userModel.aggregate([
             { "$project":
@@ -2087,6 +2172,8 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
                     'userrole': 1,
                     "lname": 1,
                     "files": 1,
+                    "empstatus": 1,
+                    "_id":1,
                     "facilities": 1,
                     "FILES_count": {
                         "$size": { "$ifNull": [ "$files", [] ] }
@@ -2137,6 +2224,123 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
 
 
 
+});
+
+router.post('/getvacationhistoryforallemployee', verifyToken, (req, res) => {
+    userModel.aggregate([
+        { "$project":
+            {   "fname": 1,
+                'email': 1,
+                '_id': 1,
+                'userrole': 1,
+                "lname": 1,
+                "Vacations": 1
+            }
+        },
+        { "$unwind": {
+            "path": "$Vacations",
+            "preserveNullAndEmptyArrays": true
+            }
+        },
+        {"$match": { $or: [
+                    {
+                    "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": new Date(req.body.vacationTo)
+                                            }
+                    },
+                    {
+                        "Vacations.vacationStatus": req.body.vacationStatus
+                    },
+                    {
+                        "fname":req.body.name
+                    }
+                ]
+            }
+        }
+    ]).then(doc => {
+        if(doc.length != 0) {
+            res.json(doc);
+        } else {
+            res.json([]);
+        }
+    }, err => {
+        res.json(err);
+    });
+});
+
+router.post('/updateemployeedetails', verifyToken, (req, res) => {
+    userModel.updateOne({_id: req.body.userId}, { $set: { 'userrole': req.body.userRole, 'empstatus': req.body.userStatus} }, (errr, docc) => {
+        if(!errr) {
+            res.send(docc);
+        } else {
+            res.send(errr);
+        }
+    });
+})
+
+router.post('/getvacationhistory', verifyToken, (req, res) => {
+    var toDateAddTime = new Date(req.body.vacationTo);
+    toDateAddTime.setHours(toDateAddTime.getHours() + 24);
+    if(req.body.vacationFrom !== undefined && req.body.vacationTo !== undefined) {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "Vacations": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$Vacations",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": toDateAddTime
+                                        }
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    } else {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "Vacations": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$Vacations",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                 '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    }
 });
 
 router.post('/storeEmployeeFacility', verifyToken, (req, res) => {
@@ -2247,7 +2451,6 @@ router.post('/addFacilityToEmployee', verifyToken, (req, res) => {
 // fetchbyName ends
 
 router.get('/call', verifyToken, (req, res) => {
-    console.log("third step");
     MasterPatientModel.find({},'-__v', (err, doc) => {
         if (!err) {
             console.log("Length " + doc.length);

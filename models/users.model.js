@@ -27,6 +27,7 @@ let uploadFiles = new mongoose.Schema({
     vacacationType: String,
     vacationReason: String,
     vacationStatus: String,
+    remark: String,
     savedon: Date,
     savedby: String
   })
@@ -58,6 +59,9 @@ let userSchema = new mongoose.Schema({
         type: String
     },
     otp:{
+        type: String
+    },
+    empstatus:{
         type: String
     },
     files:{

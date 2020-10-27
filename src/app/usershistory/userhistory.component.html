@@ -1,0 +1,130 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+  <section id="content-wrapper" style=" padding-left: 0rem;">
+    <div class="row">
+      <div class="col-lg-12">
+        <button type="button" class="btn-outline-custom btn-lg iambtn"
+        [routerLink]="['/register']">Creat New User</button>
+        <h2 class="content-title">Users List</h2>
+      </div>
+      <div class="box"></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search By Name" style="border:2px solid #87C442;"
+            [(ngModel)]="searchString" #search>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2">
+      <div class="col-md-1 counting">Sr.No</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name headerRowFont">Name</div>
+            <div class="col-md-3 name headerRowFont">Email</div>
+            <div class="col-md-2 name headerRowFont">User Role</div>
+            <div class="col-md-3 edit headerRowFont">Action</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2" *ngFor="let  employeeHistory of employeeHistories;let employeeHistoryIndex=index">
+      <div class="col-md-1 counting">{{employeeHistoryIndex+1}}</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name">{{employeeHistory.fname}} {{employeeHistory.lname}}</div>
+            <div class="col-md-3 name">{{employeeHistory.email}} </div>
+            <div class="col-md-2 name">
+              {{employeeHistory.userrole === 'Provider' ? 'Employee' : employeeHistory.userrole}}
+            </div>
+            <div class="col-md-3 edit">
+              <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
+                data-target="#myModal" 
+                style="color: #87c442;"
+                (click)="setEmployeeData(employeeHistory, employeeHistoryIndex)"
+                tooltip="Update User" placement="right">
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row noEmployeeData" *ngIf="employeeHistories.length === 0 && searchHistory !== '' && searchHistory !== undefined" >
+      <div class="col-lg-12">
+        Search User Not available
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content mc1">
+      <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+          aria-hidden="true"></i></p>
+      <div class="modal-body">
+        <h4 class="ap">Update {{employeeData.fname}} Details</h4>
+        <hr>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <table class="table table-bordered table-sm">
+              <thead>
+                  <tr>
+                  <th>Sr.No</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>User Role</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>{{1}}</td>
+                  <td>
+                    {{employeeData.fname}} {{employeeData.lname}}
+                  </td>
+                  <td>{{employeeData.email}}</td>
+                  <td>
+                    <div class="form-group">
+                      <select class="form-control elementBorder" [(ngModel)]="employeeData.userrole" formControlName="userRole">
+                          <option *ngFor="let role of roles" [value]="role">
+                              {{role === 'Provider' ? 'Employee' : role}} 
+                          </option>
+                      </select>
+                      <div *ngIf="submitted && f.userRole.errors">
+                          <div *ngIf="f.userRole.errors.required" class="topMarginForAllValidation">User role is required</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <select class="form-control elementBorder" [(ngModel)]="employeeData.empstatus" formControlName="userStatus">
+                          <option *ngFor="let empstatus of employeeStatus"  [value]="empstatus" >
+                              {{empstatus}}
+                          </option>
+                      </select>
+                      <div *ngIf="submitted && f.userStatus.errors">
+                          <div *ngIf="f.userStatus.errors.required" class="topMarginForAllValidation">User Status is required</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                      <input type="submit"  value="Submit" [ngClass]="{'btn-blue1': true, 'btn-blue2':true}">
+                  </td>
+                  </tr>
+              </tbody>
+          </table>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

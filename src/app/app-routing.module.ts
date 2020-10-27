@@ -7,6 +7,7 @@ import { EmployeeFacilityComponent } from './employeefacility/employeefacility.c
 import { AkComponent } from './ak/ak.component';
 import { PatientComponent } from './patient/patient.component';
 import { ShowEmployeeDocuemntComponent } from './showemployeedocuments/showemployeedocumentpatient.component';
+import { AllUserListComponent } from './usershistory/userhistory.component';
 import { RegisterComponent } from './register/register.component';
 import { RouteGuard } from './route.guard';
 import { FacilityComponent } from './facility/facility.component';
@@ -18,6 +19,8 @@ import { CombinepatComponent } from './combinepat/combinepat.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
+import { EmployeeVacationHistoryComponent } from './vacationhistory/vacationhistory.component';
+import { AllEmployeeVacationHistoryComponent } from './allemployeevacationhistory/allemployeevacationhistory.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
@@ -31,6 +34,7 @@ const routes: Routes = [
   { path: 'ak', component: AkComponent },
   { path: 'patient', component: PatientComponent, canActivate: [RouteGuard] },
   { path: 'showdocuments', component: ShowEmployeeDocuemntComponent,  canActivate: [RouteGuard]  },
+  { path: 'userlist', component: AllUserListComponent,  canActivate: [RouteGuard]  },
   { path: 'register', component: RegisterComponent, canActivate: [RouteGuard] },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'facility', component: FacilityComponent, canActivate: [RouteGuard] },
@@ -41,6 +45,8 @@ const routes: Routes = [
   { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  },
   { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  },
   { path: 'employeevacation', component: EmployeeVacationComponent,  canActivate: [RouteGuard]  },
+  { path: 'vacationhistory', component: EmployeeVacationHistoryComponent,  canActivate: [RouteGuard]  },
+  { path: 'allvacationhistory', component: AllEmployeeVacationHistoryComponent,  canActivate: [RouteGuard]  },
   { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent,  canActivate: [RouteGuard]  },

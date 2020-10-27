@@ -1,34 +1,42 @@
 <div id="wrapper">
     <app-shareddashboard></app-shareddashboard>
     <section id="content-wrapper" style=" padding-left: 0rem;  ">
-        <div class="box"></div>
+        <div class="row">
+            <div class="col-lg-12">
+              <button type="button" class="btn-outline-custom btn-lg iambtn"
+              [routerLink]="['/vacationhistory']">Vacation History</button>
+            </div>
+            <div class="box"></div>
+        </div>
         <section id="register">
             <div class="container">
                 <div class="boxit">
-                    <h1 class="text-center">Vacation</h1>
+                    <h1 class="text-center">Apply Vacation</h1>
                     <hr>
                     <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                            <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="Vacation From">
-                            <div *ngIf="submitted && f.vacationFrom.errors">
-                              <div *ngIf="f.vacationFrom.errors.required" class="topMarginForAllValidation">Vacation From is required</div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="From Date">
+                                <div *ngIf="submitted && f.vacationFrom.errors">
+                                  <div *ngIf="f.vacationFrom.errors.required" class="topMarginForAllValidation">From Date is required</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control ip elementBorder" formControlName="vacationTo" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="Vacation To">
-                            <div *ngIf="submitted && f.vacationTo.errors">
-                              <div *ngIf="f.vacationTo.errors.required" class="topMarginForAllValidation">Vacation To is required</div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control ip elementBorder" formControlName="vacationTo" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="To Date">
+                                <div *ngIf="submitted && f.vacationTo.errors">
+                                  <div *ngIf="f.vacationTo.errors.required" class="topMarginForAllValidation">To Date is required</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="sel1">Vacation Type:</label>
                             <div class="form-group">
                                 <div class="custom-control custom-radio">
-                                  <input id="casualLeave"  value="casualLeave" type="radio" class="custom-control-input elementBorder"  formControlName="vacationType">
+                                  <input id="casualLeave"  value="Casual Leave" type="radio" class="custom-control-input elementBorder"  formControlName="vacationType">
                                   <label class="custom-control-label lor chnageFontColor" for="casualLeave">Casual Leave</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input id="sickLeave" value="sickLeave"  type="radio" class="custom-control-input elementBorder" formControlName="vacationType">
+                                    <input id="sickLeave" value="Sick Leave"  type="radio" class="custom-control-input elementBorder" formControlName="vacationType">
                                     <label class="custom-control-label lor chnageFontColor" for="sickLeave">Sick Leave</label>
                                 </div>
                                 <div *ngIf="submitted && f.vacationType.errors">
@@ -48,4 +56,52 @@
             </div>
         </section>
     </section>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content mc1">
+        <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+            aria-hidden="true"></i></p>
+        <div class="modal-body">
+          <h4 class="ap">Vacation History For </h4>
+          <hr>
+          <form  #form="ngForm">
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                    <th>Sr.No</th>
+                    <th>Vacation Data</th>
+                    <th>Vacation Type</th>
+                    <th>Status</th>
+                    <th>Remark</th>
+                    </tr>
+                </thead>
+                <!-- <tbody *ngFor="let element  of employeeData.files; let indexOfelement = index;">
+                    <tr>
+                    <td>{{indexOfelement+1}}</td>
+                    <td>
+                      <a  *ngIf="element.fiName != ''" href="{{loadFilesFromUrl}}ab/images/{{element.fiName}}"  target="_blank" download>{{element.documentname}}</a>
+                      <a  *ngIf="element.fiName === ''"   target="_blank" download>{{element.documentname}}</a>
+  
+                    </td>
+                    <td>{{element.status}}</td>
+                    <td>
+                      <input type="text" class="form-control" id="name"  value="{{element.remark}}" name="remark" #remark>
+                    </td>
+                    <td>
+                        <input type="submit"[disabled]="element.status === 'Approved'" value="Approve"  (click)="onSave(employeeData._id, element.documentname, indexOfelement, remark, 'Approved')" [ngClass]="{'btn-blue3': element.status === 'Approved', 'btn-blue2': element.status !== 'Approved', 'btn-blue1': true}">
+                    </td>
+                    <td>
+                        <input type="submit" [disabled]="element.status === 'Rejected'" value="Reject"  (click)="onSave(employeeData._id, element.documentname, indexOfelement, remark, 'Rejected' )" [ngClass]="{'btn-blue3': element.status === 'Rejected', 'btn-blue2': element.status !== 'Rejected', 'btn-blue1': true}">
+                    </td>
+                    </tr>
+                </tbody> -->
+            </table>
+            <hr>
+          </form>
+        </div>
+      </div>
+    </div>
 </div>

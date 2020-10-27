@@ -80,13 +80,15 @@
           </div>
           <div class="col-md-3" >
             <figure>
-                <div>
-                    <span><a href="https://vacationtracker.io/" target="_blank">Vacation Tracker<i
-                            class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
-                    <span>Vacation Tracker</span>
-                    <!-- <span [routerLink]="['/employeevacation']">Vacation Tracker<i
+                <div *ngIf="roleType !== 'Admin'">
+                    <span [routerLink]="['/employeevacation']">Vacation Tracker<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    <span>Vacation Tracker</span> -->
+                    <span>Vacation Tracker</span>
+                </div>
+                <div *ngIf="roleType === 'Admin'">
+                    <span [routerLink]="['/allvacationhistory']">Vacation Approval<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Vacation Approval</span>
                 </div>
             </figure>
           </div>

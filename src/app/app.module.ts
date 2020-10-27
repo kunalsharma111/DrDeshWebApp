@@ -10,6 +10,7 @@ import { EmployeeFacilityComponent } from './employeefacility/employeefacility.c
 import { AkComponent } from './ak/ak.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AllUserListComponent } from './usershistory/userhistory.component';
 import { PatientComponent } from './patient/patient.component';
 import { ShowEmployeeDocuemntComponent } from './showemployeedocuments/showemployeedocumentpatient.component';
 import { RegisterComponent } from './register/register.component';
@@ -25,6 +26,8 @@ import { PipePipe } from './pipe.pipe';
 import { ReportsComponent } from './reports/reports.component';
 import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
+import { EmployeeVacationHistoryComponent } from './vacationhistory/vacationhistory.component';
+import { AllEmployeeVacationHistoryComponent } from './allemployeevacationhistory/allemployeevacationhistory.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
@@ -47,6 +50,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     EmployeeDashboardComponent,
     EmployeeFacilityComponent,
     AkComponent,
+    AllUserListComponent,
     PatientComponent,
     ShowEmployeeDocuemntComponent,
     RegisterComponent,
@@ -58,6 +62,8 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     ReportsComponent,
     AttchFileComponent,
     EmployeeVacationComponent,
+    EmployeeVacationHistoryComponent,
+    AllEmployeeVacationHistoryComponent,
     ModuleDashboardComponent,
     EmployeeFacilityApprovalComponent,
     SharedDashboardComponent,

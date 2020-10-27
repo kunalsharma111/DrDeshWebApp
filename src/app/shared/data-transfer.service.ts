@@ -239,7 +239,6 @@ export class DataTransferService {
   private c6 = new Subject<string>(); cc6$ = this.c6.asObservable();
   metcha = 'http://3.128.218.140:4000/api';
   // metcha = 'http://localhost:4000/api';
-  // metcha = 'http://localhost:4000/api';
   // metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
@@ -288,6 +287,12 @@ export class DataTransferService {
   addFacilityToEmployee = `${this.metcha}/addFacilityToEmployee`;
   getEmployeeSubscribefacilities = `${this.metcha}/getEmployeeSubscribefacilities`;
   saveEmployeeVacation = `${this.metcha}/saveEmployeeVacation`;
+  getVacationHistoryUrl = `${this.metcha}/getvacationhistory`;
+  getAllEmployeeVacationHistoryUrl = `${this.metcha}/getvacationhistoryforallemployee`;
+  updateEmployeeVacationUrl = `${this.metcha}/updateemployeevacation`;
+  getAllUsersUrl = `${this.metcha}/getallusers`;
+  updateEmployeeDetailsUrl = `${this.metcha}/updateemployeedetails`;
+  getAllAdminsUrl = `${this.metcha}/getalladmin`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -563,6 +568,30 @@ export class DataTransferService {
 
   storeEmployeeVacation(data) {
     return this.http.post<any>(this.saveEmployeeVacation, data.value);
+  }
+
+  getVacationHistory(data) {
+    return this.http.post<any>(this.getVacationHistoryUrl, data);
+  }
+
+  getAllEmployeeVacationHistory(data) {
+    return this.http.post<any>(this.getAllEmployeeVacationHistoryUrl, data);
+  }
+
+  updateEmployeeVacation(data) {
+    return this.http.post<any>(this.updateEmployeeVacationUrl, data);
+  }
+  getAllAdmins(data){
+    console.log('hi')
+    return this.http.post<any>(this.getAllAdminsUrl, data);
+  }
+
+  updateEmployeeDetails(data) {
+    return this.http.post<any>(this.updateEmployeeDetailsUrl, data);
+  }
+
+  getAllUsers(data) {
+    return this.http.post<any>(this.getAllUsersUrl, data);
   }
 
   getpatient(id) {
