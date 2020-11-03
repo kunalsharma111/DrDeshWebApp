@@ -342,7 +342,7 @@ export class DataTransferService {
   }
 
   addfacilityForEmployee(data) {
-    console.log('data', data);
+    // console.log('data', data);
     return this.http.post<any>(this.addFacilityToEmployee, data);
   }
 
@@ -435,8 +435,8 @@ export class DataTransferService {
   createdownloadlink(some) {
   }
   submitMasterPatientData(data) {
-    console.log('i am inside service and getting triggered');
-    console.log(data);
+    // console.log('i am inside service and getting triggered');
+    // console.log(data);
     return this.http.post<any>(this.url16, data);
     // .subscribe(res => {
     //   console.log(res)

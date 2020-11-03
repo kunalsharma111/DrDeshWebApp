@@ -11,32 +11,28 @@
     </div>
     <div class="row mt-4">
       <div class="col-md-1"></div>
-      <div class="col-md-2">Filter Data</div>
+      <div class="col-md-2">
+        <div class="input-group">
+          <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
+            [(ngModel)]="searchString" #search>
+        </div>
+      </div>
       <div class="col-md-9" >
         <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
           <div class="row">
               <div class="form-group col-md-3">
                   <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="From Date">
-                  <!-- <div *ngIf="submitted && f.vacationFrom.errors">
-                    <div *ngIf="f.vacationFrom.errors.required" class="topMarginForAllValidation">From Date is required</div>
-                  </div> -->
               </div>
               <div class="form-group col-md-3">
                   <input type="text" class="form-control ip elementBorder" formControlName="vacationTo" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="To Date">
-                  <!-- <div *ngIf="submitted && f.vacationTo.errors">
-                    <div *ngIf="f.vacationTo.errors.required" class="topMarginForAllValidation">To Date is required</div>
-                  </div> -->
               </div>
               <div class="form-group col-md-3 reduceTopMargin">
                 <label for="sel1">Status:</label>
-                <select class="form-control ip elementBorder " formControlName="vacationStatus">
+                <select class="form-control ip elementBorder topMargin" formControlName="vacationStatus">
                     <option *ngFor="let role of roles" [value]="role">
                         {{role}}
                     </option>
                 </select>
-                <!-- <div *ngIf="submitted && f.userrole.errors">
-                    <div *ngIf="f.userrole.errors.required" class="topMarginForAllValidation">User role is required</div>
-                </div> -->
               </div>
               <div class="col-md-2">
                 <input type="submit" value="Submit" class="btn btn-info btn-block">
@@ -60,9 +56,10 @@
         </div>
       </div>
     </div>
-    <div class="row ml-2" *ngFor="let  employeeVacationHistory of employeeVacationHistories;let employeeVacationHistoryIndex=index">
-      <div class="col-md-1 counting">{{employeeVacationHistoryIndex+1}}</div>
-      <div class="col-md-11">
+    <div class="row ml-2" *ngFor="let  employeeVacationHistory of employeeVacationHistories;let employeeVacationHistoryIndex=index" >
+      <!-- <span *ngIf="employeeVacationHistory.Vacations !== undefined"> -->
+      <div class="col-md-1 counting" *ngIf="employeeVacationHistory.Vacations !== undefined">{{employeeVacationHistoryIndex+1}}</div>
+      <div class="col-md-11" *ngIf="employeeVacationHistory.Vacations !== undefined">
         <div class="details">
           <div class="row">
             <div class="col-md-3 name">{{employeeVacationHistory.fname}} {{employeeVacationHistory.lname}}</div>
@@ -82,10 +79,11 @@
           </div>
         </div>
       </div>
+      <!-- </span> -->
     </div>
     <div class="row noEmployeeData" *ngIf="employeeVacationHistories.length === 0">
       <div class="col-lg-12">
-        Not Applied For Any Vacation
+        Data Not Found
       </div>
     </div>
   </section>

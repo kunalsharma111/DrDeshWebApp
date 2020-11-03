@@ -2033,7 +2033,49 @@ router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
             if(!error) {
                 document[0].Vacations.push(employeeVacation);
                 document[0].save().then(ress => {
-                res.send(document);
+                    // var allAdminEmails = [];
+                    userModel.find({'userrole': 'Admin'}, {'email': 1}, (err, doc) => {
+                        if (!err ) {
+                            if(doc.length != 0) {
+                                // for(let emailIndex = 0; emailIndex < doc.length; emailIndex++) {
+                                //     allAdminEmails[emailIndex] = doc[emailIndex].email;
+                                // }
+                                let mailTransporter = nodemailer.createTransport({
+                                    service: 'gmail',
+                                    auth: {
+                                        user: 'balwellbeingllc@gmail.com',
+                                        pass: 'Balanced123'
+                                    }
+                                });
+                                var new_line = "\n\xA0";
+                                // allAdminEmails.toString();
+                                var name = document[0].fname;
+                                let mailDetails = {
+                                    from: 'balwellbeingllc@gmail.com',
+                                    to: 'christiemcintosh@balancedwellbeingllc.com, ladiaz0709@gmail.com',
+                                    subject: 'Leave Application By '+name,
+                                    text: 'Dear All,'+ new_line +name.charAt(0).toUpperCase()+name.substr(1).toLowerCase()+' has submitted a new vacation application for your approval.Please review the same and take appropriate action.'+new_line + new_line +'Regards,'+new_line+'System BWB'
+                                };
+                                mailTransporter.sendMail(mailDetails, function (err, data) {
+                                    if (err) {
+                                        logger.error("error occur while sending email"+err);
+                                        console.log('mailDetails', mailDetails)
+                                        res.send(['error occur while sending email'])
+                                    } else {
+                                        logger.info("Email Sent Successfully");
+                                        console.log('Email sent successfully');
+                                        res.send(['Email sent successfully']);
+                                    }
+                                });
+                            } else {
+                                res.send([]);
+                            }
+                        }
+                        else {
+                            console.log("error at employeedetails", err);
+                        }
+                    })
+                    res.send(document);
                 }, err => {
                     console.log(err);
                 })
@@ -2113,15 +2155,15 @@ router.post('/updateemployeevacation', verifyToken, (req, res) => {
 });
 
 router.post('/getalladmin', verifyToken, (req, res) => {
-    var allAdminEmails = [];
+    // var allAdminEmails = [];
     var employeeEmail;
     userModel.find({'userrole': 'Admin'}, {'email': 1}, (err, doc) => {
         if (!err ) {
             employeeEmail= req.body.email;
             if(doc.length != 0) {
-                for(let emailIndex = 0; emailIndex < doc.length; emailIndex++) {
-                    allAdminEmails[emailIndex] = doc[emailIndex].email;
-                }
+                // for(let emailIndex = 0; emailIndex < doc.length; emailIndex++) {
+                //     allAdminEmails[emailIndex] = doc[emailIndex].email;
+                // }
                 let mailTransporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -2130,17 +2172,17 @@ router.post('/getalladmin', verifyToken, (req, res) => {
                     }
                 });
                 var new_line = "\n\xA0";
-                allAdminEmails.toString();
+                // allAdminEmails.toString();
                 let mailDetails = {
                     from: 'balwellbeingllc@gmail.com',
                     to: employeeEmail,
-                    cc: allAdminEmails,
+                    cc: 'christiemcintosh@balancedwellbeingllc.com, ladiaz0709@gmail.com',
                     subject: 'Leave Application Status Change',
                     text: 'Dear '+req.body.name+' ,'+ new_line +'Your vacation application has been acted upon by approving authority. Please check the system for the status.'+new_line + new_line +'Regards,'+new_line+'System BWB'
                 };
                 mailTransporter.sendMail(mailDetails, function (err, data) {
                     if (err) {
-                        logger.error("error occur while sending email"+err+allAdminEmails.toString()+employeeEmail.toString());
+                        logger.error("error occur while sending email"+err+employeeEmail.toString());
                         console.log('mailDetails', mailDetails)
                         res.send(['error occur while sending email'])
                     } else {
@@ -2251,7 +2293,7 @@ router.post('/getvacationhistoryforallemployee', verifyToken, (req, res) => {
                         "Vacations.vacationStatus": req.body.vacationStatus
                     },
                     {
-                        "fname":req.body.name
+                        "fname": new RegExp('^'+req.body.name, 'i')
                     }
                 ]
             }

@@ -57,7 +57,25 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
         this.employeeVacationHistories = res.slice(res.length-5);
       } 
     });
-
+    fromEvent(this.search.nativeElement, 'input')
+      .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
+      .subscribe(val => {
+        if (val === '') {
+          this.employeeVacationHistories = [];
+          return;
+        }
+        const params = {
+          name: val
+        };
+        this.service.getAllEmployeeVacationHistory(params).subscribe(res => {
+          this.employeeVacationHistories = [];
+          for (let employeeVacation = 0; employeeVacation < res.length; employeeVacation++) {
+            if (res[employeeVacation].Vacations !==  undefined) {
+              this.employeeVacationHistories.push(res[employeeVacation]);
+            }
+        }
+        });
+      });
     
   }
 
@@ -103,9 +121,7 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
                 };
     this.service.getAllAdmins(param)
     .subscribe(res => {
-      console.log('res', res)
     }, eroro=> {
-      console.log('eror', eroro)
     })
     }, err => {
     this.toastr.success('', 'Leave Rejected Try Again!!');

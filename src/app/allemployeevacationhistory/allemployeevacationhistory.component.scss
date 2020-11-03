@@ -541,8 +541,11 @@ span {
 .ip {
   margin-left: -20px;
   border: 2px solid $green;
-  margin-top: -6px;
+  margin-top: -2px;
   border-radius: 10px;
+}
+.topMargin{
+  margin-top: -6px !important;
 }
 .ic {
   color: $green;

@@ -6426,3 +6426,362 @@
 {"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-27T11:00:40.976Z"}
 {"message":"DB connected:","level":"info","timestamp":"2020-10-27T11:00:57.721Z"}
 {"message":"Email Sent Successfully","level":"info","timestamp":"2020-10-27T11:01:27.703Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-28T03:57:05.344Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-28T03:57:09.641Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-28T03:59:07.996Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-28T03:59:08.274Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-28T03:59:08.599Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-28T03:59:41.287Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-10-28T03:59:44.401Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T03:59:58.214Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T03:59:59.385Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:00:00.876Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:17.639Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:17.804Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:19.584Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:35.141Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:52.207Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:53.462Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:54.771Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:09:58.007Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:10:00.087Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:11:49.462Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:11:49.468Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:11:49.768Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:11:52.942Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-10-28T04:11:58.060Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-28T05:14:25.577Z"}
+{"message":"Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","timestamp":"2020-10-28T05:15:08.271Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-10-28T05:15:40.259Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-10-28T05:15:49.798Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-10-28T05:16:22.989Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-01T15:04:12.903Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-01T15:04:16.280Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:04:20.805Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:04:24.522Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:04:45.310Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:04:46.641Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:04:47.526Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-01T15:05:12.479Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:05:50.535Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:05:53.345Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:05:55.184Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:06:02.499Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:06:04.508Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:06:04.751Z"}
+{"message":"user saved successfullymahendra.bhamare@emicon.co.in","level":"info","timestamp":"2020-11-01T15:07:17.213Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:07:28.946Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:07:30.617Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:07:31.574Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-01T15:07:51.618Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:07:59.497Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:08:04.091Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:08:05.521Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-01T15:08:07.454Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:11:01.145Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:11:04.216Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:11:09.274Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:17:13.634Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:17:15.477Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:19:02.154Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:19:04.365Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:21:41.548Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:21:43.799Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:21:45.819Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:22:05.415Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:08.635Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:09.221Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:10.443Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:10.787Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:10.795Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:10.797Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:12.919Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:14.468Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:23:16.439Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:25:24.368Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:25:24.428Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:25:24.749Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:25:30.812Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:25:34.961Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:28:49.256Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:28:49.281Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:28:49.328Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:30:04.680Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:30:06.055Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:31:40.177Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:31:40.181Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:31:40.212Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:32:29.346Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:32:30.454Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:33:25.139Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:33:25.196Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:33:25.253Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:33:33.120Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:33:36.096Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:35:42.846Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:35:42.891Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:35:42.894Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:38:35.069Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-01T15:38:36.611Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:45:46.644Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:45:48.682Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:45:50.537Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:47:36.961Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:47:38.281Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:51:21.883Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:51:21.893Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:51:21.939Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:51:39.842Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:51:41.648Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:53:38.650Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:53:38.652Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:53:38.697Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:53:41.309Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T02:53:42.500Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:02:38.188Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:02:38.668Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:02:39.144Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:03:43.841Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:04:41.427Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:06:44.793Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:06:54.344Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:07:34.276Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:07:36.114Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:07:36.829Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:07:40.719Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:07:44.323Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T03:15:34.062Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T03:15:40.087Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:21:12.569Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:21:14.392Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:22:08.175Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:22:14.506Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T03:28:18.642Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T03:28:23.619Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:28:27.234Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:28:31.033Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T03:50:12.748Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T03:50:15.797Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:55:19.123Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:55:19.248Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:55:19.663Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:55:24.299Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:55:25.879Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:57:32.179Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:57:32.228Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:57:32.383Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:58:13.218Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:58:14.958Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:58:50.461Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:58:50.550Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T03:58:50.753Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:00:26.671Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:00:27.191Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:01:22.419Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:01:22.424Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:01:22.427Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:01:25.869Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:01:27.550Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:15.056Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:15.136Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:15.140Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:18.705Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:19.463Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:47.669Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:47.688Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:47.694Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:57.524Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:02:59.220Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:05:29.878Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:05:29.919Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:05:29.995Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:05:33.150Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:05:34.478Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:08:06.836Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:08:06.865Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:08:06.868Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:08:10.520Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:08:12.001Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:09:19.658Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:09:26.309Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:09:27.434Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T04:09:28.666Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T04:53:12.218Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T04:53:14.969Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T05:25:26.869Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T05:25:29.913Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T05:26:22.589Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T05:26:39.539Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T05:26:44.342Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T05:36:48.216Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T05:36:51.016Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T05:46:51.284Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T05:46:53.710Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T05:49:51.344Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T05:49:52.693Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T05:49:53.933Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T06:41:12.521Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T06:41:15.990Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T08:45:05.391Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T08:45:07.861Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T08:45:21.060Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T08:45:34.778Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T08:55:31.580Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T08:55:34.771Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T09:00:57.355Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T09:01:00.056Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:01:13.115Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:01:15.109Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T09:05:18.637Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T09:05:22.160Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:05:29.633Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:05:37.820Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:08:08.734Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:08:10.159Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:09:45.529Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:09:50.362Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:10:41.236Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:10:41.294Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:10:41.559Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:10:53.199Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:10:54.975Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T09:14:48.533Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T09:14:51.387Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:15:03.337Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:15:07.873Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:16:39.114Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:16:39.135Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:16:39.924Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:16:43.406Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:16:46.273Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:17:35.570Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:17:37.172Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:20:48.006Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:20:48.092Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:20:48.437Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:20:51.672Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T09:20:53.066Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T09:37:43.779Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T09:37:46.260Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T09:54:45.660Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T09:54:49.306Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T09:55:38.309Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T09:55:42.154Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T09:55:46.570Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-02T10:01:38.220Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T10:03:16.852Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T10:03:16.870Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T10:03:17.171Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T10:44:07.743Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T10:44:10.806Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T10:44:29.073Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T10:44:30.762Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:44:37.642Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:44:38.797Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:44:40.623Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T10:50:15.668Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T10:50:18.817Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:51:04.678Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:51:07.943Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:51:09.914Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:56:40.984Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:56:45.715Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:56:47.334Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T10:56:48.654Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:02:41.204Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:02:41.291Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:02:41.558Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:02:46.732Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:02:48.013Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:04:21.788Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:04:21.813Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:04:21.868Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:04:24.953Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:04:26.032Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-02T11:05:26.302Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-02T11:05:36.323Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-02T11:05:41.438Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:14:29.270Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:14:29.276Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T11:14:29.278Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-02T14:36:32.108Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-02T14:36:50.657Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T14:37:03.454Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T15:49:27.117Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-02T15:53:29.112Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T15:56:52.010Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:57:02.556Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:57:07.103Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:57:08.141Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-02T15:57:28.564Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:23.796Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:23.799Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:24.084Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:54.945Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:54.978Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:55.020Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:58:59.248Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:59:11.338Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-02T15:59:15.123Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T15:59:25.374Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T15:59:27.554Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-02T15:59:29.290Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T03:06:46.129Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T03:06:49.508Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T03:15:57.783Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T03:15:57.787Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T03:15:57.790Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T03:16:09.330Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:21:04.607Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:21:09.377Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:21:50.591Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:21:54.277Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:22:13.123Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:22:18.447Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:22:19.930Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:23:00.230Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:23:00.237Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:23:00.435Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T03:23:01.869Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-03T04:43:55.798Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-03T04:44:16.716Z"}
+{"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2020-11-03T05:16:42.251Z"}
+{"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2020-11-03T06:00:44.340Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T06:01:26.878Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T06:01:59.843Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T06:02:01.641Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T06:02:02.617Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T07:18:37.406Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T07:18:41.810Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T07:18:43.347Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T07:18:44.985Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-03T07:19:05.776Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-03T07:19:06.098Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T09:58:52.529Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T09:59:06.004Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T09:59:08.792Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T09:59:16.859Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T09:59:17.977Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T09:59:19.521Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T09:59:46.963Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-03T09:59:48.908Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:06:38.796Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:06:38.821Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:06:38.921Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:06:54.580Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:06:54.608Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:06:54.640Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2020-11-03T10:10:34.338Z"}
+{"message":"DB connected:","level":"info","timestamp":"2020-11-03T10:10:37.134Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:11:07.870Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:11:30.792Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2020-11-03T10:11:40.262Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:11:52.715Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:11:55.784Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:11:57.840Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-03T10:12:13.125Z"}
+{"message":"Email Sent Successfully","level":"info","timestamp":"2020-11-03T10:12:13.488Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:13:06.422Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:16:05.576Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:16:05.582Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2020-11-03T10:16:05.935Z"}
