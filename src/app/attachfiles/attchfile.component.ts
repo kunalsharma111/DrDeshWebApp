@@ -112,7 +112,7 @@ export class AttchFileComponent implements OnInit {
           if(this.elements[reqIndex].documentname ==='MCR Credentialing Peer Reference Form') {
             referenceFormIndex = reqIndex;
           }
-          if(this.elements[reqIndex].documentname == 'MCR Credentialing Peer Reference Form1' || this.elements[reqIndex].documentname == 'MCR Credentialing Peer Reference Form2') {
+          if(this.elements[reqIndex].documentname == 'MCR Credentialing Peer Reference Form 2' || this.elements[reqIndex].documentname == 'MCR Credentialing Peer Reference Form 3') {
             this.refElements[index] = this.elements.splice(reqIndex,1);
             index++;
             reqIndex--;

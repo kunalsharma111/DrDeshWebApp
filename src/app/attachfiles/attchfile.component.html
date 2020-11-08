@@ -131,7 +131,8 @@
         <tbody *ngFor="let element  of elements; let indexOfelement = index;">
             <tr>
             <td>{{indexOfelement+1}}</td>
-            <td>{{element.documentname}}
+            <td>
+                {{element.documentname === 'MCR Credentialing Peer Reference Form' ? 'MCR Credentialing Peer Reference Form 1' : element.documentname}}
                 <a  *ngIf="element.documentlink != ''" href="{{element.documentlink}}"  target="_blank" download>Open Digital Document</a>
                 <a  *ngIf="element.templateform != ''" href="{{loadFilesFromUrl}}ab/images/{{element.templateform}}"  target="_blank" download> <br>Download Template/Form</a>
             </td>
