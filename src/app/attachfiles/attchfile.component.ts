@@ -18,6 +18,7 @@ export class AttchFileComponent implements OnInit {
   previewUrl: any = null;
   imagess: any = [];
   elements: any = [];
+  refElements: any = [];
   loadFilesFromUrl ;
   provider = ['APRN', 'LCSW', 'PA', 'Psychiatrist', 'Psychologists'];
   // elements: any = [
@@ -100,7 +101,23 @@ export class AttchFileComponent implements OnInit {
         }
 
       }
+      this.removeRefrenaceDocuemnt();
     });
   }
 
+  removeRefrenaceDocuemnt() {
+      var referenceFormIndex = 0;
+      var index =0;
+      for(let reqIndex = 0; reqIndex < this.elements.length; reqIndex++) {
+          if(this.elements[reqIndex].documentname ==='MCR Credentialing Peer Reference Form') {
+            referenceFormIndex = reqIndex;
+          }
+          if(this.elements[reqIndex].documentname == 'MCR Credentialing Peer Reference Form1' || this.elements[reqIndex].documentname == 'MCR Credentialing Peer Reference Form2') {
+            this.refElements[index] = this.elements.splice(reqIndex,1);
+            index++;
+            reqIndex--;
+          }
+      }
+      this.elements.splice(referenceFormIndex+1,0, this.refElements[0][0], this.refElements[1][0]);
+  }
 }

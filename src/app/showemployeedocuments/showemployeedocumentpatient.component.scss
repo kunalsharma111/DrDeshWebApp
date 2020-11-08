@@ -16,11 +16,29 @@ a:focus {
   border: 2px solid #87C442;
 
 }
+.upload{
+  // background-color: #87c442;
+  border: none;
+  color: white;
+  padding: 6px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0;
+}
 
 .btn-blue2 {
   background-color: #87c442;
 }
-
+.tableSelectColumn {
+  column-width: 110px;
+}
+.btnColor{
+  background-color: #87c442;
+}
+.fontSizeInherit{
+  font-size: none !important;
+}
 .btn-blue1 {
   // background: #066ECD;
   // background-color: #acd67c;

@@ -278,6 +278,7 @@ export class DataTransferService {
   getpatientdetail = `${this.metcha}/patientdetail`;
   apiUrlForAllExpensiveMedicine = `${this.metcha}/getmedicineasperkey`;
   employeeDetails = `${this.metcha}/employeedetails`;
+  addEmpDocumentsByAdmin = `${this.metcha}/addemployeedocumentbyadmin`;
   getEmployeeDetailsUrl = `${this.metcha}/fetchfiles`;
   employeeDocumentsRemark = `${this.metcha}/employeedocumentsremark`;
   getEmployeeDocuemntUrl = `${this.metcha}/getemployeedocuments`;
@@ -339,6 +340,10 @@ export class DataTransferService {
 
   addEmployeeDetails(form) {
     return this.http.post<any>(this.employeeDetails, form);
+  }
+
+  addEmployeeDocByAdmin(form) {
+    return this.http.post<any>(this.addEmpDocumentsByAdmin, form);
   }
 
   addfacilityForEmployee(data) {

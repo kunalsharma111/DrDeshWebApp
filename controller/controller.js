@@ -2016,6 +2016,59 @@ router.post('/getEmployeeSubscribefacilities', verifyToken, (req, res) => {
     });
 })
 
+router.post('/addemployeedocumentbyadmin', verifyToken, upload.single('file'), (req, res) => {
+    const fileName =  req.file !== undefined  ? req.file.filename  : '';
+    var employee1 = {
+        fiName: fileName,
+        status: 'Submited',
+        savedon: new Date(),
+        savedby: currentuser,
+        documentname: req.body.documentname,
+        remark: ''
+    }
+
+    userModel.find({_id: req.body.userId, "files.documentname": req.body.documentname}, (err, doc) => {
+        if (!err ) {
+            if(doc.length == 0) {
+                userModel.find({_id: req.body.userId}, (error, document) => {
+                    if(!error) {
+                        document[0].files.push(employee1);
+                        document[0].save().then(ress => {
+                        res.send(ress);
+                        }, err => {
+                            console.log(err);
+                        })
+
+                    } else {
+                        res.send(error);
+                    }
+
+                })
+            } else {
+                userModel.updateOne({_id: req.body.userId, 'files.documentname': req.body.documentname}, { $set: { 'files.$.fiName': fileName, 'files.$.savedon': new Date(), 'files.$.status': 'Submited' } }, (errr, docc) => {
+                    if(!errr) {
+                        userModel.find({_id: req.body.userId}, (error, document) => {
+                            if(!error) {
+                                res.send(document);
+                            } else {
+                                res.send(error);
+                            }
+                        })
+                    } else {
+                        console.log(errr);
+                        res.send(errr);
+                    }
+                })
+            }
+        }
+        else {
+            console.log("error at employeedetails", err);
+            res.send(errr);
+        }
+    })
+
+})
+
 router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
     var employeeVacation = {
         vacationFrom: req.body.vacationFrom,
@@ -2052,7 +2105,7 @@ router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
                                 var name = document[0].fname;
                                 let mailDetails = {
                                     from: 'balwellbeingllc@gmail.com',
-                                    to: 'christiemcintosh@balancedwellbeingllc.com, ladiaz0709@gmail.com',
+                                    to: 'christiemcintosh@balancedwellbeingllc.com, lauradiaz@balancedwellbeingllc.com',
                                     subject: 'Leave Application By '+name,
                                     text: 'Dear All,'+ new_line +name.charAt(0).toUpperCase()+name.substr(1).toLowerCase()+' has submitted a new vacation application for your approval.Please review the same and take appropriate action.'+new_line + new_line +'Regards,'+new_line+'System BWB'
                                 };
@@ -2176,7 +2229,7 @@ router.post('/getalladmin', verifyToken, (req, res) => {
                 let mailDetails = {
                     from: 'balwellbeingllc@gmail.com',
                     to: employeeEmail,
-                    cc: 'christiemcintosh@balancedwellbeingllc.com, ladiaz0709@gmail.com',
+                    cc: 'christiemcintosh@balancedwellbeingllc.com, lauradiaz@balancedwellbeingllc.com',
                     subject: 'Leave Application Status Change',
                     text: 'Dear '+req.body.name+' ,'+ new_line +'Your vacation application has been acted upon by approving authority. Please check the system for the status.'+new_line + new_line +'Regards,'+new_line+'System BWB'
                 };

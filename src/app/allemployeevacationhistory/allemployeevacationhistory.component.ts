@@ -54,7 +54,7 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
       if(res[0].Vacations === undefined) {
         this.employeeVacationHistories  = [];
       } else {
-        this.employeeVacationHistories = res.slice(res.length-5);
+        this.employeeVacationHistories = res;
       } 
     });
     fromEvent(this.search.nativeElement, 'input')
