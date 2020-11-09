@@ -66,6 +66,7 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
       .subscribe(val => {
         if (val === '') {
           this.employeeDocuments = [];
+          this.getAllSubmitDocuments();
           return;
         }
         const params = {
@@ -84,12 +85,25 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
       e.preventDefault();
       $wrapper.classList.toggle('toggled');
     });
+    this.getAllReqireDocuments();
+    this.getAllSubmitDocuments();
+  }
 
+  getAllSubmitDocuments() {
+    var params = {
+      'documentstatus': 'Submited'
+    }
+    this.service.getEmployeeDocuemnt(params).subscribe(res => {
+      this.reponseForSearchEmployee = res;
+      this.employeeDocuments = res === 'no' ? [] : res;
+    });
+  }
+
+  getAllReqireDocuments() {
     this.service.getRequireDocuemnts().subscribe(res => {
       this.getAllDocuments = Object.assign([], res);
       this.getAllDocumentsClone = Object.assign([], res);
     });
-
   }
 
   margeUploadAndReqireDocument() {
@@ -139,7 +153,7 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
   setEmployeeData(employee, employeedocumentsIndex) {
     this.employeeModelOpenIndex = employeedocumentsIndex;
     this.employeeData = employee;
-    if(this.employeeData.files.length !== 0 && this.employeeData.notsubmited !== 'true') {
+    if(this.employeeData.files !== undefined &&this.employeeData.files.length !== 0 && this.employeeData.notsubmited !== 'true') {
       this.margeUploadAndReqireDocument();
     } else {
       this.employeeData.files = this.getAllDocumentsClone;
@@ -174,7 +188,7 @@ export class ShowEmployeeDocuemntComponent implements OnInit {
           this.employeeData.files[indexOfelement].uploadbttonflag = false;
           this.employeeData.files[indexOfelement].status = response.files[fileIndex].status;
           this.employeeData.notsubmited = 'false';
-          this.ngOnInit();
+          this.getAllReqireDocuments();
         }
       }
       this.toastr.success('', 'File Upload Sucessfully!!');

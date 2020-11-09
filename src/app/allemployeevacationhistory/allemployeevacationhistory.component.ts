@@ -47,21 +47,13 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
       vacationTo: ['', Validators.required],
       vacationStatus: ['', Validators.required]
     });
-    var params = {
-      'vacationStatus' : 'Pending'
-    }
-    this.service.getAllEmployeeVacationHistory(params).subscribe(res => {
-      if(res[0].Vacations === undefined) {
-        this.employeeVacationHistories  = [];
-      } else {
-        this.employeeVacationHistories = res;
-      } 
-    });
+    this.getPendingVacationHistory();
     fromEvent(this.search.nativeElement, 'input')
       .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
       .subscribe(val => {
         if (val === '') {
           this.employeeVacationHistories = [];
+          this.getPendingVacationHistory();
           return;
         }
         const params = {
@@ -77,6 +69,19 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
         });
       });
     
+  }
+
+  getPendingVacationHistory() {
+    var params = {
+      'vacationStatus' : 'Pending'
+    }
+    this.service.getAllEmployeeVacationHistory(params).subscribe(res => {
+      if(res[0].Vacations === undefined) {
+        this.employeeVacationHistories  = [];
+      } else {
+        this.employeeVacationHistories = res;
+      }
+    });
   }
 
   setEmployeeVacationData(employee, employeedocumentsIndex) {

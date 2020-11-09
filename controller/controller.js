@@ -2295,16 +2295,16 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
         });
     } else {
         userModel.aggregate([
-            {   "fname": 1,
-                'email': 1,
-                'userrole': 1,
-                "lname": 1,
-                "files": 1,
-                "FILES_count": {
-                    '$unwind':"$files"
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "_id":1,
+                    "files": 1
                 }
             },
-            {"$match": {"FILES_count.status": req.body.documentstatus
+            {"$match": {"files.status": req.body.documentstatus
                        }
             }
         ]).then(doc => {
