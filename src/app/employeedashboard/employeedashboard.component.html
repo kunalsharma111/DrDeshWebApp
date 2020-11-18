@@ -87,7 +87,7 @@
                 </div>
                 <div *ngIf="roleType === 'Admin'">
                     <span [routerLink]="['/allvacationhistory']">Vacation Approval<i
-                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                         class="fa fa-arrow-right" aria-hidden="true"></i></span>
                     <span>Vacation Approval</span>
                 </div>
             </figure>
@@ -146,13 +146,22 @@
         <div class="col-md-3">
             <figure>
                 <div>
-                    <span><a href="https:www.balancedwellbeingllc.com" target="_blank">Balanced Wellbeing<i
+                    <span><a href="https:www.balancedwellbeingllc.com" target="_blank">Wellbeing<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
-                    <span>Balanced Wellbeing</span>
+                    <span>Balanced</span>
                 </div>
             </figure>
         </div>
-      </div>
+        <div class="col-md-3">
+            <figure>
+                <div>
+                    <span [routerLink]="['/insuranceinformation']">Information<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Insurance</span>
+                </div>
+            </figure>
+        </div>
+    </div>
   </section>
 </div>
 

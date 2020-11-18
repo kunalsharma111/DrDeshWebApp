@@ -28,6 +28,7 @@ import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
 import { EmployeeVacationHistoryComponent } from './vacationhistory/vacationhistory.component';
 import { AllEmployeeVacationHistoryComponent } from './allemployeevacationhistory/allemployeevacationhistory.component';
+import { InsuranceInformationComponent } from './insuranceinformation/insuranceinformation.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
@@ -64,6 +65,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     EmployeeVacationComponent,
     EmployeeVacationHistoryComponent,
     AllEmployeeVacationHistoryComponent,
+    InsuranceInformationComponent,
     ModuleDashboardComponent,
     EmployeeFacilityApprovalComponent,
     SharedDashboardComponent,

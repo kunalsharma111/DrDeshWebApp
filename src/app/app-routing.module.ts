@@ -21,6 +21,7 @@ import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
 import { EmployeeVacationHistoryComponent } from './vacationhistory/vacationhistory.component';
 import { AllEmployeeVacationHistoryComponent } from './allemployeevacationhistory/allemployeevacationhistory.component';
+import { InsuranceInformationComponent } from './insuranceinformation/insuranceinformation.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'allvacationhistory', component: AllEmployeeVacationHistoryComponent,  canActivate: [RouteGuard]  },
   { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
+  { path: 'insuranceinformation', component: InsuranceInformationComponent,  canActivate: [RouteGuard]  },
   { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent,  canActivate: [RouteGuard]  },
   { path: '**', component: DashboardComponent,  canActivate: [RouteGuard]  }
 ];
