@@ -7,29 +7,29 @@
         <b>{{role === 'Provider' ? 'Employee' : role}}</b>
     </div>
     <ul class="sidebar-nav" *ngIf="getModuleType() === 'patient'">
-        <p class="qd">Patient Dashboard</p>
+        <p class="qd">User Dashboard</p>
         <li >
-            <a [routerLink]="['/dash']"><i class="fa fa-home"></i>Home</a>
+            <a [routerLink]="['/userlist']"><i class="fa fa-home"></i>Home</a>
         </li>
-        <li>
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/patient']"><i class="fa fa-plus-circle"></i>Patient</a>
         </li>
-        <li *ngIf="roleType == 'Admin'">
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/facility']"><i class="fa fa-users"></i>Facility</a>
         </li>
-        <li *ngIf="roleType == 'Admin'">
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/provider']"><i class="fa fa-calendar-times-o"></i>Provider</a>
         </li>
-        <li *ngIf="roleType == 'Admin'">
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/insurance']"><i class="fa fa-university"></i>Insurance</a>
         </li>
-        <li *ngIf="roleType == 'Admin'">
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/expensive']"><i class="fa fa-medkit"></i>Expensive Medicines</a>
         </li>
-        <li *ngIf="roleType == 'Admin' || roleType == 'Provider'">
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/reports']"><i class="fa fa-file-text-o"></i>Reports</a>
         </li>
-        <li *ngIf="roleType === 'Admin'">
+        <li *ngIf="roleType =='false'">
             <a [routerLink]="['/userlist']"><i class="fa fa-user"></i>User Management</a>
         </li>
         <li>
@@ -41,8 +41,8 @@
         <li >
             <a [routerLink]="['/moduledashboard']"><i class="fa fa-home"></i>Home</a>
         </li>
-        <li>
-            <a [routerLink]="['/dash']" (click)="setModuleType('patient')"><i class="fa fa-plus-circle"></i>Patient DashBoard</a>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/userlist']" (click)="setModuleType('patient')"><i class="fa fa-plus-circle"></i>User Management</a>
         </li>
         <li>
             <a [routerLink]="['/employeedash']" (click)="setModuleType('employee')"><i class="fa fa-users"></i>Employee DashBoard</a>
@@ -56,8 +56,8 @@
         <!-- <li *ngIf="roleType !== 'Admin'">
             <a [routerLink]="['/attachfile']"><i class="fa fa-paperclip"></i>Employee Documents</a>
         </li> -->
-        <li>
-            <a [routerLink]="['/dash']"><i class="fa fa-user-o"></i>Patient Dashboard</a>
+        <li *ngIf="roleType == 'Admin'">
+            <a [routerLink]="['/userlist']" (click)="setModuleType('patient')"><i class="fa fa-user-o"></i>User Management</a>
         </li>
     </ul>
 </aside>

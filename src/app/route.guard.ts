@@ -10,7 +10,7 @@ export class RouteGuard implements CanActivate {
   constructor(public service: DataTransferService) {}
   providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard',
                                       '/employeedash', '/attachfile', '/employeedash', '/employeefacility', '/facility', '/employeevacation', '/vacationhistory', '/insuranceinformation'];
-  dataEntryAllowPaths: Array<string> = ['/patient', '/dash', '/cpat'];
+  dataEntryAllowPaths: Array<string> = ['/moduledashboard'];
   dashBoards: Array<string> = ['/moduledashboard', '/dash', '/employeedash'];
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -32,14 +32,14 @@ export class RouteGuard implements CanActivate {
       if (this.service.getRole() === 'Admin') {
         return true;
       } else {
-        if (this.service.getRole() === 'Provider' && this.providerAllowPaths.includes(state.url)) {
+          if (this.service.getRole() === 'Provider' && this.providerAllowPaths.includes(state.url)) {
           return true;
-        } else if (this.dataEntryAllowPaths.includes(state.url)) {
+          } else if (this.dataEntryAllowPaths.includes(state.url)) {
           return true;
-        } else {
-          this.service.router.navigate(['/dash']);
+          } else {
+          this.service.router.navigate(['/moduledashboard']);
+          }
         }
-      }
       return true;
     } else {
       this.service.router.navigate(['/']);

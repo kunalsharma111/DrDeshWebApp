@@ -10,9 +10,18 @@ declare var $: any;
   styleUrls: ['./moduledashboard.component.scss']
 })
 export class ModuleDashboardComponent implements OnInit {
-
+  roleType;
   constructor(public service: DataTransferService) { }
   ngOnInit() {
+
+    if (this.service.getRole() === undefined ) {
+      this.service.setRoleTypeAfterRefresh().subscribe(res => {
+        this.roleType = res.userrole;
+        this.service.setRole(res.userrole);
+      });
+    } else {
+      this.roleType = this.service.getRole();
+    }
 
     $('.a1').hover( function () {
       $('.centered').css('display', 'block');
