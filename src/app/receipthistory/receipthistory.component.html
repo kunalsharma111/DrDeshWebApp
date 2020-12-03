@@ -16,13 +16,13 @@
           <div class="row">
             <div class="form-group col-md-4">
                 <select class="form-control ip elementBorder" formControlName="receiptPeriod" placeholder="Period">
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="" disabled selected>Select Payroll Period</option>
                     <option *ngFor="let receiptPeriod of receiptPeriods" [value]="receiptPeriod">{{receiptPeriod}}</option>
                 </select>
             </div>
             <div class="form-group col-md-4">
               <select class="form-control ip elementBorder" formControlName="receiptStatus" placeholder="Receipt Type">
-                  <option value="" disabled selected>Select your option</option>
+                  <option value="" disabled selected>Select Receipt Status</option>
                   <option *ngFor="let receipt of receiptStatus" [value]="receipt">{{receipt}}</option>
               </select>
             </div>
@@ -41,7 +41,7 @@
       <div class="col-md-11">
         <div class="details">
           <div class="row">
-            <div class="col-md-3 name headerRowFont">Receipt Period</div>
+            <div class="col-md-3 name headerRowFont">Payroll Period</div>
             <div class="col-md-3 name headerRowFont">Receipt Type</div>
             <div class="col-md-2 name headerRowFont">Amount</div>
             <div class="col-md-2 name headerRowFont">Status</div>

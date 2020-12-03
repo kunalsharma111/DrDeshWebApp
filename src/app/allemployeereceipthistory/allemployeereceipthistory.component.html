@@ -22,14 +22,14 @@
           <div class="row">
             <div class="form-group col-md-4">
               <select class="form-control ip elementBorder" formControlName="receiptPeriod" placeholder="Period">
-                  <option value="" disabled selected>Select your option</option>
+                  <option value="" disabled selected>Select Payroll Period</option>
                   <option *ngFor="let receiptPeriod of receiptPeriods" [value]="receiptPeriod">{{receiptPeriod}}</option>
               </select>
             </div>
-            <div class="form-group col-md-4 reduceTopMargin">
-              <label for="sel1">Status:</label>
-              <select class="form-control ip elementBorder topMargin" formControlName="receiptStatus">
-                <option value="" disabled selected>Select your option</option>
+            <div class="form-group col-md-4">
+              <!-- <label for="sel1">Status:</label> -->
+              <select class="form-control ip elementBorder" formControlName="receiptStatus">
+                <option value="" disabled selected>Select Receipt Status</option>
                 <option *ngFor="let receipt of receiptStatus" [value]="receipt">
                       {{receipt}}
                   </option>
@@ -51,7 +51,7 @@
         <div class="details">
           <div class="row">
             <div class="col-md-3 name headerRowFont">Name</div>
-            <div class="col-md-3 name headerRowFont">Period</div>
+            <div class="col-md-3 name headerRowFont">Payroll Period</div>
             <div class="col-md-2 name headerRowFont">Amount</div>
             <div class="col-md-3 name headerRowFont">Status</div>
             <div class="col-md-1 edit headerRowFont">Action</div>
@@ -106,7 +106,7 @@
                   <tr>
                   <th>Sr.No</th>
                   <th>View File</th>
-                  <th>Period</th>
+                  <th>Payroll Period</th>
                   <th>Receipt Type</th>
                   <th>Comment</th>
                   <th>Remark</th>

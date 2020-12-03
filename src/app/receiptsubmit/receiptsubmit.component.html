@@ -27,7 +27,8 @@
                                     <label>Payroll Cycle</label>
                                     <!-- <input type="text" class="form-control" [(ngModel)]="address.address" name="address_{{address.id}}"/> -->
                                     <select class="form-control" [(ngModel)]="receipt.period" name="period_{{receipt.id}}" required>
-                                            <option *ngFor="let receiptPeriod of receiptPeriods" [value]="receiptPeriod">{{receiptPeriod}}</option>
+                                        <option value="" disabled selected>Select Payroll Period</option>
+                                        <option *ngFor="let receiptPeriod of receiptPeriods" [value]="receiptPeriod">{{receiptPeriod}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -36,6 +37,7 @@
                                     <label>Receipt For</label>
                                     <!-- <input type="text" class="form-control" [(ngModel)]="receipt.street" name="receiptfor_{{receipt.id}}"/> -->
                                     <select class="form-control" [(ngModel)]="receipt.type" name="type_{{receipt.id}}" required>
+                                        <option value="" disabled selected>Select Receipt Type</option>
                                         <option *ngFor="let receiptType of receiptTypes" [value]="receiptType">{{receiptType}}</option>
                                     </select>
                                 </div>
@@ -49,7 +51,7 @@
                             <div class="col-2">
                                 <div class="form-group">
                                     <label>Comments</label>
-                                    <input type="text" class="form-control elementBorder" [(ngModel)]="receipt.comment" name="comment_{{receipt.id}}" required/>
+                                    <input type="text" class="form-control elementBorder" [(ngModel)]="receipt.comment" name="comment_{{receipt.id}}" placeholder="Add Comment" required/>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -72,7 +74,7 @@
                         <button type="button" class="btn btn-primary mb-2" (click)="addReceipt()">Add New Receipt</button>
                     </div>
                     <div class="text-right marginTopReduce" *ngIf="receipts.length > 0">
-                        <input type="submit" class="btn btn-success" value="Submit"/>
+                        <input type="submit" class="btn btn-success" value="          Submit           "/>
                     </div>
                   </div>
                 </div>
