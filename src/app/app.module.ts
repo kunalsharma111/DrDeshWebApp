@@ -28,6 +28,7 @@ import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
 import { EmployeeVacationHistoryComponent } from './vacationhistory/vacationhistory.component';
 import { AllEmployeeVacationHistoryComponent } from './allemployeevacationhistory/allemployeevacationhistory.component';
+import { AllEmployeeReceiptHistoryComponent } from './allemployeereceipthistory/allemployeereceipthistory.component';
 import { InsuranceInformationComponent } from './insuranceinformation/insuranceinformation.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
@@ -40,6 +41,8 @@ import { CapitalizePipe } from './capitalize.pipe';
 import { CombinepatComponent } from './combinepat/combinepat.component';
 import {DatePipe} from '@angular/common';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ReceiptSubmitComponent } from './receiptsubmit/receiptsubmit.component';
+import { EmployeeReceiptHistoryComponent } from './receipthistory/receipthistory.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
@@ -65,6 +68,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     EmployeeVacationComponent,
     EmployeeVacationHistoryComponent,
     AllEmployeeVacationHistoryComponent,
+    AllEmployeeReceiptHistoryComponent,
     InsuranceInformationComponent,
     ModuleDashboardComponent,
     EmployeeFacilityApprovalComponent,
@@ -74,7 +78,9 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     FilterdatePipe,
     CapitalizePipe,
     CombinepatComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    ReceiptSubmitComponent,
+    EmployeeReceiptHistoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

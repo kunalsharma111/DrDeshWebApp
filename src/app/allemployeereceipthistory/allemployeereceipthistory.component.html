@@ -1,0 +1,150 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+  <section id="content-wrapper" style=" padding-left: 0rem;">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- <button type="button" class="btn-outline-custom btn-lg iambtn"
+        [routerLink]="['/employeevacation']">Apply Vacation</button> -->
+        <h2 class="content-title">Receipt Approval</h2>
+      </div>
+      <div class="box"></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">
+        <div class="input-group">
+          <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
+            [(ngModel)]="searchString" #search>
+        </div>
+      </div>
+      <div class="col-md-9" >
+        <form [formGroup]="receiptForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-4">
+              <select class="form-control ip elementBorder" formControlName="receiptPeriod" placeholder="Period">
+                  <option value="" disabled selected>Select your option</option>
+                  <option *ngFor="let receiptPeriod of receiptPeriods" [value]="receiptPeriod">{{receiptPeriod}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4 reduceTopMargin">
+              <label for="sel1">Status:</label>
+              <select class="form-control ip elementBorder topMargin" formControlName="receiptStatus">
+                <option value="" disabled selected>Select your option</option>
+                <option *ngFor="let receipt of receiptStatus" [value]="receipt">
+                      {{receipt}}
+                  </option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <input type="submit" value="Submit" class="btn btn-info btn-block">
+            </div>
+            <div class="col-md-2">
+              <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+            </div>
+          </div>
+      </form>
+      </div>
+    </div>
+    <div class="row ml-2">
+      <div class="col-md-1 counting">Sr.No</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name headerRowFont">Name</div>
+            <div class="col-md-3 name headerRowFont">Period</div>
+            <div class="col-md-2 name headerRowFont">Amount</div>
+            <div class="col-md-3 name headerRowFont">Status</div>
+            <div class="col-md-1 edit headerRowFont">Action</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2" *ngFor="let  employeeReceiptHistory of employeeReceiptHistories;let employeeReceiptHistoryIndex=index" >
+      <!-- <span *ngIf="employeeVacationHistory.Vacations !== undefined"> -->
+      <div class="col-md-1 counting" *ngIf="employeeReceiptHistory.receipts !== undefined">{{employeeReceiptHistoryIndex+1}}</div>
+      <div class="col-md-11" *ngIf="employeeReceiptHistory.receipts !== undefined">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name">{{employeeReceiptHistory.fname}} {{employeeReceiptHistory.lname}}</div>
+            <div class="col-md-3 name">
+              {{employeeReceiptHistory.receipts.period}} </div>
+            <div class="col-md-2 name">{{employeeReceiptHistory.receipts.amount}}</div>
+            <div class="col-md-3 name">{{employeeReceiptHistory.receipts.status}}</div>
+            <div class="col-md-1 edit">
+              <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
+                data-target="#myModal" 
+                style="color: #87c442;"
+                (click)="setEmployeeReceiptData(employeeReceiptHistory, employeeReceiptHistoryIndex)"
+                tooltip="Update Document Status" placement="right">
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </span> -->
+    </div>
+    <div class="row noEmployeeData" *ngIf="employeeReceiptHistories.length === 0">
+      <div class="col-lg-12">
+        Data Not Found
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content mc1">
+      <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+          aria-hidden="true"></i></p>
+      <div class="modal-body">
+        <h4 class="ap">Receipt Application By {{employeeData.fname}} </h4>
+        <hr>
+        <form  #form="ngForm">
+          <table class="table table-bordered table-sm">
+              <thead>
+                  <tr>
+                  <th>Sr.No</th>
+                  <th>View File</th>
+                  <th>Period</th>
+                  <th>Receipt Type</th>
+                  <th>Comment</th>
+                  <th>Remark</th>
+                  <th>Approve</th>
+                  <th>Reject</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>{{1}}</td>
+                  <td>
+                      <a *ngIf="employeeData.receipts.filename != undefined &&
+                          employeeData.receipts.filename != ''" 
+                          href="{{loadFilesFromUrl}}ab/images/{{employeeData.receipts.filename}}"
+                            target="_blank" download>view</a>
+                  </td>
+                  <td>
+                    {{employeeData.receipts.period}}
+                  </td>
+                  <td> {{employeeData.receipts.receipttype}}</td>
+                  <td>{{employeeData.receipts.comment}}</td>
+                  <td>
+                      <input type="text" class="form-control" id="name"  value="{{employeeData.receipts.remark}}" name="remark" #remark>
+                  </td>
+                  <td>
+                      <input type="submit" [disabled]="employeeData.receipts.status === 'Approved'" value="Approve"  (click)="onSave(employeeData.receipts._id, employeeData._id,remark, 'Approved')" [ngClass]="{'btn-blue3': employeeData.receipts.status === 'Approved', 'btn-blue2': employeeData.receipts.status !== 'Approved', 'btn-blue1': true}">
+                  </td>
+                  <td>
+                      <input type="submit" [disabled]="employeeData.receipts.status === 'Rejected'" value="Reject"  (click)="onSave(employeeData.receipts._id, employeeData._id,remark, 'Rejected' )" [ngClass]="{'btn-blue3': employeeData.receipts.status === 'Rejected', 'btn-blue2': employeeData.receipts.status !== 'Rejected', 'btn-blue1': true}">
+                  </td>
+                  </tr>
+              </tbody>
+          </table>
+          <hr>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

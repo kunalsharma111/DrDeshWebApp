@@ -21,10 +21,13 @@ import { AttchFileComponent } from './attachfiles/attchfile.component';
 import { EmployeeVacationComponent } from './employeevacation/employeevacation.component';
 import { EmployeeVacationHistoryComponent } from './vacationhistory/vacationhistory.component';
 import { AllEmployeeVacationHistoryComponent } from './allemployeevacationhistory/allemployeevacationhistory.component';
+import { AllEmployeeReceiptHistoryComponent } from './allemployeereceipthistory/allemployeereceipthistory.component';
 import { InsuranceInformationComponent } from './insuranceinformation/insuranceinformation.component';
 import { SharedDashboardComponent } from './shareddashboard/shareddashboard.component';
 import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.component';
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
+import { ReceiptSubmitComponent } from './receiptsubmit/receiptsubmit.component';
+import { EmployeeReceiptHistoryComponent } from './receipthistory/receipthistory.component';
 
 
 const routes: Routes = [
@@ -52,6 +55,9 @@ const routes: Routes = [
   { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
   { path: 'insuranceinformation', component: InsuranceInformationComponent,  canActivate: [RouteGuard]  },
   { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent,  canActivate: [RouteGuard]  },
+  { path: 'receipt', component: ReceiptSubmitComponent,  canActivate: [RouteGuard]  },
+  { path: 'receipthistory', component: EmployeeReceiptHistoryComponent,  canActivate: [RouteGuard]  },
+  { path: 'receiptapproval', component: AllEmployeeReceiptHistoryComponent,  canActivate: [RouteGuard]  },
   { path: '**', component: DashboardComponent,  canActivate: [RouteGuard]  }
 ];
 

@@ -12,6 +12,7 @@ require('../models/db');
 const userModel = mongoose.model("User");
 const employeeFacility = mongoose.model("EmployeeFacility");
 const requiredDocumentModel = mongoose.model("DocumentRequiredFromEmployee");
+const receiptPeriodModel = mongoose.model("ReceiptPeriod");
 const patientModel = mongoose.model("Patient");
 const R2Model = mongoose.model("R2P");
 const FacilityModel = mongoose.model("Facility");
@@ -2008,6 +2009,133 @@ router.post('/fetchfiles', verifyToken, (req, res) => {
     });
 })
 
+router.post('/receiptsubmit', verifyToken, upload.array('images[]', 10), (req, res) => {
+    var collection = JSON.parse(req.body.collection);
+    userModel.find({_id: req.userId}, (error, document) => {
+        if(!error) {
+            for(let index=0;index<req.files.length; index++) {
+                var fileName = req.files[index].filename != undefined ? req.files[index].filename : '';
+                var receipt = {
+                    filename: fileName,
+                    status: 'Pending',
+                    savedon: new Date(),
+                    savedby: currentuser,
+                    amount: collection[index].amount,
+                    comment: collection[index].comment,
+                    period: collection[index].period,
+                    receipttype: collection[index].type,
+                    remark: ''
+                }
+                document[0].receipts.push(receipt);
+            }
+
+            document[0].save().then(ress => {
+            res.send(document);
+            }, err => {
+                console.log(err);
+                res.send(error);
+            })
+        } else {
+            res.send(error);
+        }
+    })
+})
+
+router.post('/getreceipthistory', verifyToken, (req, res) => {
+    if(req.body.receiptPeriod != null && req.body.receiptPeriod !== undefined && req.body.receiptPeriod != '') {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "receipts": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$receipts",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "receipts.period": req.body.receiptPeriod
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    } else if(req.body.receiptStatus != null && req.body.receiptStatus != undefined && req.body.receiptStatus != ''){
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "receipts": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$receipts",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "receipts.status": req.body.receiptStatus
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+
+    } else {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "receipts": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$receipts",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                 '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    }
+});
+
+
 router.post('/getEmployeeSubscribefacilities', verifyToken, (req, res) => {
     userModel.find({_id: req.userId},{'facilities': 1}).then(out => {
         res.json(out)
@@ -2207,6 +2335,16 @@ router.post('/updateemployeevacation', verifyToken, (req, res) => {
     });
 });
 
+router.post('/updateemployeereceipt', verifyToken, (req, res) => {
+    userModel.updateOne({_id: req.body.userId, 'receipts._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'receipts.$.status': req.body.receiptStatus, 'receipts.$.remark': req.body.remark} }, (errr, docc) => {
+        if(!errr) {
+            res.send(docc);
+        } else {
+            res.send(errr);
+        }
+    });
+});
+
 router.post('/getalladmin', verifyToken, (req, res) => {
     // var allAdminEmails = [];
     var employeeEmail;
@@ -2362,6 +2500,47 @@ router.post('/getvacationhistoryforallemployee', verifyToken, (req, res) => {
     });
 });
 
+router.post('/getreceipthistoryforallemployee', verifyToken, (req, res) => {
+    userModel.aggregate([
+        { "$project":
+            {   "fname": 1,
+                'email': 1,
+                '_id': 1,
+                'userrole': 1,
+                "lname": 1,
+                "receipts": 1
+            }
+        },
+        { "$unwind": {
+            "path": "$receipts",
+            "preserveNullAndEmptyArrays": true
+            }
+        },
+        {"$match": { $or: [
+                    {
+                        "receipts.period": req.body.receiptPeriod
+                    },
+                    {
+                        "receipts.status": req.body.receiptStatus
+                    },
+                    {
+                        "fname": new RegExp('^'+req.body.name, 'i')
+                    }
+                ]
+            }
+        }
+    ]).then(doc => {
+        if(doc.length != 0) {
+            res.json(doc);
+        } else {
+            res.json([]);
+        }
+    }, err => {
+        res.json(err);
+    });
+});
+
+
 router.post('/updateemployeedetails', verifyToken, (req, res) => {
     userModel.updateOne({_id: req.body.userId}, { $set: { 'userrole': req.body.userRole, 'empstatus': req.body.userStatus} }, (errr, docc) => {
         if(!errr) {
@@ -2439,7 +2618,6 @@ router.post('/getvacationhistory', verifyToken, (req, res) => {
 });
 
 router.post('/storeEmployeeFacility', verifyToken, (req, res) => {
-    console.log('req.boduy', req.body)
     var empfacility = new employeeFacility({
     facilityname: req.body.facilityname,
     status: true,
@@ -2447,6 +2625,35 @@ router.post('/storeEmployeeFacility', verifyToken, (req, res) => {
     savedbby: currentuser,
     })
     empfacility.save().then(doc => { console.log("saved"); res.json('saved') }, err => {
+        console.error("error");
+        res.json('failure');
+    })
+});
+
+router.post('/getreceiptperiod', verifyToken, (req, res)=> {
+    receiptPeriodModel.find({'periodfrom': { "$lte": new Date()}})
+        .then(doc => {
+            if (doc.length != 0) {
+                res.json(doc);
+            }
+            else {
+                res.json([]);
+            }
+        }, err => {
+            res.json([]);
+        })
+});
+
+router.post('/storereceiptperiod', verifyToken, (req, res) => {
+
+    var receiptPeriod = new receiptPeriodModel({
+    periodnumber: req.body.periodNumber,
+    periodfrom: req.body.periodFrom,
+    periodto: req.body.periodTo,
+    savedon: new Date(),
+    savedbby:currentuser,
+    })
+    receiptPeriod.save().then(doc => { console.log("saved"); res.json('saved') }, err => {
         console.error("error");
         res.json('failure');
     })

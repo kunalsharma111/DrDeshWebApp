@@ -32,6 +32,19 @@ let uploadFiles = new mongoose.Schema({
     savedby: String
   })
 
+  let receiptSubmit = new mongoose.Schema({
+    filename: String,
+    status: String,
+    amount: String,
+    comment: String,
+    period: String,
+    receipttype: String,
+    remark: String,
+    savedon: Date,
+    savedby: String
+  })
+
+
 let userSchema = new mongoose.Schema({
     fname: {
         type: String
@@ -72,6 +85,9 @@ let userSchema = new mongoose.Schema({
     },
     Vacations:{
         type:[empVacation]
+    },
+    receipts:{
+        type:[receiptSubmit]
     }
 });
 

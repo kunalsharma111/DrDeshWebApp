@@ -1,0 +1,75 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+  <section id="content-wrapper" style=" padding-left: 0rem;">
+    <div class="row">
+      <div class="col-lg-12">
+        <button type="button" class="btn-outline-custom btn-lg iambtn"
+        [routerLink]="['/receipt']">Submit Receipt</button>
+      </div>
+      <div class="box"></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">Filter Data</div>
+      <div class="col-md-9" >
+        <form [formGroup]="receiptForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-4">
+                <select class="form-control ip elementBorder" formControlName="receiptPeriod" placeholder="Period">
+                    <option value="" disabled selected>Select your option</option>
+                    <option *ngFor="let receiptPeriod of receiptPeriods" [value]="receiptPeriod">{{receiptPeriod}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+              <select class="form-control ip elementBorder" formControlName="receiptStatus" placeholder="Receipt Type">
+                  <option value="" disabled selected>Select your option</option>
+                  <option *ngFor="let receipt of receiptStatus" [value]="receipt">{{receipt}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <input type="submit" value="Submit" class="btn btn-info btn-block">
+            </div>
+            <div class="col-md-2">
+              <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+            </div>
+          </div>
+      </form>
+      </div>
+    </div>
+    <div class="row ml-2">
+      <div class="col-md-1 counting">Sr.No</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name headerRowFont">Receipt Period</div>
+            <div class="col-md-3 name headerRowFont">Receipt Type</div>
+            <div class="col-md-2 name headerRowFont">Amount</div>
+            <div class="col-md-2 name headerRowFont">Status</div>
+            <div class="col-md-1 name headerRowFont">View</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2" *ngFor="let  employeeVacationHistory of employeeReceiptHistories;let employeeVacationHistoryIndex=index">
+      <div class="col-md-1 counting">{{employeeVacationHistoryIndex+1}}</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name">{{employeeVacationHistory.receipts.period}}</div>
+            <div class="col-md-3 name">{{employeeVacationHistory.receipts.receipttype}} </div>
+            <div class="col-md-2 name">{{employeeVacationHistory.receipts.amount}}</div>
+            <div class="col-md-2 name">{{employeeVacationHistory.receipts.status}}</div>
+            <div class="col-md-1 name">
+              <a  *ngIf="employeeVacationHistory.receipts.filename != undefined && employeeVacationHistory.receipts.filename != ''" href="{{loadFilesFromUrl}}ab/images/{{employeeVacationHistory.receipts.filename}}"  target="_blank" download>view</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row noEmployeeData" *ngIf="employeeReceiptHistories.length === 0">
+      <div class="col-lg-12">
+        Data Not Found
+      </div>
+    </div>
+  </section>
+</div>

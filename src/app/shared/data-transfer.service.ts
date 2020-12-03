@@ -237,8 +237,8 @@ export class DataTransferService {
   private c4 = new Subject<string>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<string>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<string>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.218.140:4000/api';
-  // metcha = 'http://localhost:4000/api';
+  // metcha = 'http://3.128.218.140:4000/api';
+  metcha = 'http://localhost:4000/api';
   // metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
@@ -294,6 +294,12 @@ export class DataTransferService {
   getAllUsersUrl = `${this.metcha}/getallusers`;
   updateEmployeeDetailsUrl = `${this.metcha}/updateemployeedetails`;
   getAllAdminsUrl = `${this.metcha}/getalladmin`;
+  storeReceiptPeriod = `${this.metcha}/storereceiptperiod`;
+  getReceiptPeriod = `${this.metcha}/getreceiptperiod`;
+  saveReceiptRecords = `${this.metcha}/receiptsubmit`;
+  getReceiptHistory = `${this.metcha}/getreceipthistory`;
+  updateEmployeeReceiptUrl = `${this.metcha}/updateemployeereceipt`;
+  allReceiptHistoryUrl = `${this.metcha}/getreceipthistoryforallemployee`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -586,8 +592,33 @@ export class DataTransferService {
   updateEmployeeVacation(data) {
     return this.http.post<any>(this.updateEmployeeVacationUrl, data);
   }
+
+  updateEmployeeReceipt(data){
+    return this.http.post<any>(this.updateEmployeeReceiptUrl, data);
+  }
+
+  allReceiptHistory(data){
+    return this.http.post<any>(this.allReceiptHistoryUrl, data);
+  }
+
   getAllAdmins(data){
     return this.http.post<any>(this.getAllAdminsUrl, data);
+  }
+
+  storeReceiptPeriodData(data){
+    return this.http.post<any>(this.storeReceiptPeriod, data);
+  }
+
+  getReceiptPeriodData(){
+    return this.http.post<any>(this.getReceiptPeriod, {});
+  }
+
+  saveReceiptData(data){
+    return this.http.post<any>(this.saveReceiptRecords, data);
+  }
+
+  getReceiptHistoryForEmployee(data) {
+    return this.http.post<any>(this.getReceiptHistory, data);
   }
 
   updateEmployeeDetails(data) {

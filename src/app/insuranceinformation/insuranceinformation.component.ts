@@ -17,9 +17,44 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class InsuranceInformationComponent implements OnInit {
   modalRef: BsModalRef;
-  constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder) { }
-  
+  receiptPeriod = [];
+  constructor(private datePipe: DatePipe, public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder) { }
+  // 24-aug to 06-sep
+  // 07-sep to 20-sep
+  // 21-sep to 04-oct
+  // 05-oct to 18-oct
+  // 19-oct to 01-nov
+  // 02-nov to 15-nov
+  // 16-nov to 29-nov
+  // 30-nov to 13-dec
+  // 14-dec to 27-dec
+  // 28-dec to 10-jan
   ngOnInit() {
+    this.service.getReceiptPeriodData().subscribe(res => {
+      res.sort(function(a,b){
+        return b.periodnumber - a.periodnumber
+      });
+      for(let index = 0;index< res.length;index++){
+        let periodFrom = new Date(res[index].periodfrom);
+        let periodTo = new Date(res[index].periodto);
+        periodFrom.setDate(periodFrom.getDate() - 1);
+        periodTo.setDate(periodTo.getDate() - 1);
+        this.receiptPeriod[index] = this.datePipe.transform(periodFrom , "MM-dd-yyyy") +' To ' +
+        this.datePipe.transform(periodTo, "MM-dd-yyyy");;
+      }
+    });
+    console.log('receiptPeriod',this.receiptPeriod);
+  }
+
+  addReceiptPeriod() {
+    var param = {
+      periodNumber : 20122,
+      periodFrom: '2020-12-29T00:00:00',
+      periodTo: '2021-01-11T00:00:00'
+    }
+    this.service.storeReceiptPeriodData(param).subscribe(res => {
+      console.log('res', res);
+    });
   }
 
   logout() {

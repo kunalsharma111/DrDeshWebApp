@@ -146,18 +146,18 @@
         <div class="col-md-3">
             <figure>
                 <div>
-                    <span><a href="https://www.balancedwellbeingllc.com" target="_blank">Wellbeing<i
+                    <span><a href="https://www.balancedwellbeingllc.com" target="_blank"> Balanced Wellbeing<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
-                    <span>Balanced</span>
+                    <span>Balanced Wellbeing</span>
                 </div>
             </figure>
         </div>
         <div class="col-md-3">
             <figure>
                 <div>
-                    <span [routerLink]="['/insuranceinformation']">Information<i
+                    <span [routerLink]="['/insuranceinformation']">Insurance Information<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    <span>Insurance</span>
+                    <span>Insurance Information</span>
                 </div>
             </figure>
         </div>
@@ -170,6 +170,24 @@
                     <span><a href="https://www.americantrustretirement.com" target="_blank">401K<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
                     <span>401K</span>
+                </div>
+            </figure>
+        </div>
+        <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/receipt']">Submit Receipt<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Submit Receipt</span>
+                </div>
+            </figure>
+        </div>
+        <div class="col-md-3" *ngIf="roleType === 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/receiptapproval']">Receipt Approval<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Receipt Approval</span>
                 </div>
             </figure>
         </div>

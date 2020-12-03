@@ -50,9 +50,7 @@ export class EmployeeVacationHistoryComponent implements OnInit {
     }
     this.service.getVacationHistory(this.vacationForm.value).subscribe(res => {
       this.employeeVacationHistories = res;
-      console.log('res', res)
     });
-    console.log('this.vacationForm', this.vacationForm.value);
     this.onReset();
   }
   
