@@ -41,10 +41,14 @@
       <div class="col-md-11">
         <div class="details">
           <div class="row">
-            <div class="col-md-3 name headerRowFont">Payroll Period</div>
-            <div class="col-md-3 name headerRowFont">Receipt Type</div>
-            <div class="col-md-2 name headerRowFont">Amount</div>
-            <div class="col-md-2 name headerRowFont">Status</div>
+            <div class="col-md-2 name headerRowFont">Payroll Period</div>
+            <div class="col-md-2 name headerRowFont">Receipt Type</div>
+            <div class="col-md-1 name headerRowFont">Amount</div>
+            <div class="col-md-1 name headerRowFont">Status</div>
+            <div class="col-md-2 name headerRowFont">Submit Date/Time</div>
+            <div class="col-md-1 name headerRowFont">User Comment</div>
+            <div class="col-md-1 name headerRowFont">Admin Remark</div>
+            <!-- <div class="col-md-1 name headerRowFont">Remark</div> -->
             <div class="col-md-1 name headerRowFont">View</div>
           </div>
         </div>
@@ -55,10 +59,30 @@
       <div class="col-md-11">
         <div class="details">
           <div class="row">
-            <div class="col-md-3 name">{{employeeVacationHistory.receipts.period}}</div>
-            <div class="col-md-3 name">{{employeeVacationHistory.receipts.receipttype}} </div>
-            <div class="col-md-2 name">{{employeeVacationHistory.receipts.amount}}</div>
-            <div class="col-md-2 name">{{employeeVacationHistory.receipts.status}}</div>
+            <div class="col-md-2 name">{{employeeVacationHistory.receipts.period}}</div>
+            <div class="col-md-2 name">{{employeeVacationHistory.receipts.receipttype}} </div>
+            <div class="col-md-1 name">{{employeeVacationHistory.receipts.amount}}</div>
+            <div class="col-md-1 name">{{employeeVacationHistory.receipts.status}}</div>
+            <div class="col-md-2 name">{{employeeVacationHistory.receipts.savedon | date:'MM-dd-yyyy HH-mm'}} </div>
+            <div class="col-md-1 name">
+              <i class="fa-file-text-o" aria-hidden="true" data-toggle="modal"
+                style="color: #87c442;"
+                tooltip="{{employeeVacationHistory.receipts.comment != undefined &&
+                          employeeVacationHistory.receipts.comment != '' ?
+                          employeeVacationHistory.receipts.comment : 'No Comment'}}"
+                placement="right">
+              </i>
+            </div>
+            <div class="col-md-1 name">
+              <i class="fa-file-text" aria-hidden="true" data-toggle="modal"
+                style="color: #87c442;"
+                tooltip="{{employeeVacationHistory.receipts.remark != undefined &&
+                           employeeVacationHistory.receipts.remark != '' ?
+                           employeeVacationHistory.receipts.remark : 'No Remark'}}"
+                 placement="right">
+              </i>
+            </div>
+            <!-- <div class="col-md-1 name">Remark</div> -->
             <div class="col-md-1 name">
               <a  *ngIf="employeeVacationHistory.receipts.filename != undefined && employeeVacationHistory.receipts.filename != ''" href="{{loadFilesFromUrl}}ab/images/{{employeeVacationHistory.receipts.filename}}"  target="_blank" download>view</a>
             </div>

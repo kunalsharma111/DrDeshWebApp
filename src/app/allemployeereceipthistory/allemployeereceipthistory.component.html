@@ -52,8 +52,9 @@
           <div class="row">
             <div class="col-md-3 name headerRowFont">Name</div>
             <div class="col-md-3 name headerRowFont">Payroll Period</div>
-            <div class="col-md-2 name headerRowFont">Amount</div>
-            <div class="col-md-3 name headerRowFont">Status</div>
+            <div class="col-md-1 name headerRowFont">Amount</div>
+            <div class="col-md-1 name headerRowFont">Status</div>
+            <div class="col-md-3 name headerRowFont">Submit Date/Time</div>
             <div class="col-md-1 edit headerRowFont">Action</div>
           </div>
         </div>
@@ -66,10 +67,10 @@
         <div class="details">
           <div class="row">
             <div class="col-md-3 name">{{employeeReceiptHistory.fname}} {{employeeReceiptHistory.lname}}</div>
-            <div class="col-md-3 name">
-              {{employeeReceiptHistory.receipts.period}} </div>
-            <div class="col-md-2 name">{{employeeReceiptHistory.receipts.amount}}</div>
-            <div class="col-md-3 name">{{employeeReceiptHistory.receipts.status}}</div>
+            <div class="col-md-3 name">{{employeeReceiptHistory.receipts.period}}</div>
+            <div class="col-md-1 name">{{employeeReceiptHistory.receipts.amount}}</div>
+            <div class="col-md-1 name">{{employeeReceiptHistory.receipts.status}}</div>
+            <div class="col-md-3 name">{{employeeReceiptHistory.receipts.savedon | date:'MM-dd-yyyy HH-mm'}}</div>
             <div class="col-md-1 edit">
               <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
                 data-target="#myModal" 
