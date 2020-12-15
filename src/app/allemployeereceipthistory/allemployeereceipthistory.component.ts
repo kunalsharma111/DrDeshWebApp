@@ -53,6 +53,7 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
       receiptStatus: ['', Validators.required]
     });
     this.getReceiptPeriod();
+    this.availableReceiptPeriod();
     this.getPendingReceiptHistory();
     fromEvent(this.search.nativeElement, 'input')
       .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
@@ -84,10 +85,28 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
       for(let index = 0;index< res.length;index++){
         let periodFrom = new Date(res[index].periodfrom);
         let periodTo = new Date(res[index].periodto);
-        periodFrom.setDate(periodFrom.getDate() - 1);
-        periodTo.setDate(periodTo.getDate() - 1);
+        periodFrom.setDate(periodFrom.getDate());
+        periodTo.setDate(periodTo.getDate());
         this.receiptPeriods[index] = this.datePipe.transform(periodFrom , "MM-dd-yyyy") +' To ' +
         this.datePipe.transform(periodTo, "MM-dd-yyyy");
+      }
+    });
+  }
+
+  availableReceiptPeriod(){
+    this.service.availableReceiptPeriod().subscribe(res => {
+      if(res.length === 1 && res[res.length-1].periodnumber != undefined) {
+          let periodFrom = new Date(res[res.length-1].periodto);
+          let periodTo = new Date(res[res.length-1].periodto);
+          periodFrom.setDate(periodTo.getDate()+1);
+          periodTo.setDate(periodTo.getDate()+14);
+          var param = {
+            periodNumber : res[res.length-1].periodnumber +1,
+            periodFrom: periodFrom,
+            periodTo: periodTo
+          }
+          this.service.storeReceiptPeriodData(param).subscribe(res => {
+          });
       }
     });
   }

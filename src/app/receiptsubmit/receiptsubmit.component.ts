@@ -111,8 +111,8 @@ export class ReceiptSubmitComponent implements OnInit {
       for(let index = 0;index< 7;index++){
         let periodFrom = new Date(res[index].periodfrom);
         let periodTo = new Date(res[index].periodto);
-        periodFrom.setDate(periodFrom.getDate() - 1);
-        periodTo.setDate(periodTo.getDate() - 1);
+        periodFrom.setDate(periodFrom.getDate());
+        periodTo.setDate(periodTo.getDate());
         this.receiptPeriods[index] = this.datePipe.transform(periodFrom , "MM-dd-yyyy") +' To ' +
         this.datePipe.transform(periodTo, "MM-dd-yyyy");;
       }

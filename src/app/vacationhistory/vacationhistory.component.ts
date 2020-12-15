@@ -17,7 +17,8 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class EmployeeVacationHistoryComponent implements OnInit {
   modalRef: BsModalRef;
-  constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder) { }
+  constructor(public service: DataTransferService,
+              public toastr: ToastrService, public fb: FormBuilder, private datePipe: DatePipe) { }
 
   employeeVacationHistories = [];
   vacationForm: FormGroup;
@@ -34,6 +35,7 @@ export class EmployeeVacationHistoryComponent implements OnInit {
         this.employeeVacationHistories  = [];
       } else {
         this.employeeVacationHistories = res.slice(res.length-5);
+        this.fillterDate();
       } 
     });
   }
@@ -50,10 +52,19 @@ export class EmployeeVacationHistoryComponent implements OnInit {
     }
     this.service.getVacationHistory(this.vacationForm.value).subscribe(res => {
       this.employeeVacationHistories = res;
+      this.fillterDate();
     });
     this.onReset();
   }
   
+  fillterDate() {
+    this.employeeVacationHistories.filter(s =>
+      s.Vacations.vacationFrom = s.Vacations.vacationFrom.substring(5, 7) + '-' + s.Vacations.vacationFrom.substring(8, 10) + '-' +s.Vacations.vacationFrom.substring(0, 4) 
+    );
+    this.employeeVacationHistories.filter(s =>
+      s.Vacations.vacationTo = s.Vacations.vacationTo.substring(5, 7) + '-' + s.Vacations.vacationTo.substring(8, 10) + '-' +s.Vacations.vacationTo.substring(0, 4)
+    );
+  }
 
   logout() {
     this.service.logout();

@@ -2225,7 +2225,7 @@ router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
                                     service: 'gmail',
                                     auth: {
                                         user: 'balwellbeingllc@gmail.com',
-                                        pass: 'Balanced123'
+                                        pass: 'Balanced@12345'
                                     }
                                 });
                                 var new_line = "\n\xA0";
@@ -2241,11 +2241,11 @@ router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
                                     if (err) {
                                         logger.error("error occur while sending email"+err);
                                         console.log('mailDetails', mailDetails)
-                                        res.send(['error occur while sending email'])
+                                        // res.send(['error occur while sending email'])
                                     } else {
                                         logger.info("Email Sent Successfully");
                                         console.log('Email sent successfully');
-                                        res.send(['Email sent successfully']);
+                                        // res.send(['Email sent successfully']);
                                     }
                                 });
                             } else {
@@ -2643,6 +2643,22 @@ router.post('/getreceiptperiod', verifyToken, (req, res)=> {
             res.json([]);
         })
 });
+
+router.post('/getavailablereceiptperiod', verifyToken, (req, res)=> {
+    receiptPeriodModel.find({'periodfrom': { "$gte": new Date()}})
+        .then(doc => {
+            if (doc.length != 0) {
+                res.json(doc);
+            }
+            else {
+                res.json([]);
+            }
+        }, err => {
+            res.json([]);
+        })
+});
+
+
 
 router.post('/storereceiptperiod', verifyToken, (req, res) => {
 

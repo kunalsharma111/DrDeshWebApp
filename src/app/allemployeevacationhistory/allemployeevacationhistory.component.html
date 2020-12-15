@@ -64,8 +64,8 @@
           <div class="row">
             <div class="col-md-3 name">{{employeeVacationHistory.fname}} {{employeeVacationHistory.lname}}</div>
             <div class="col-md-3 name">
-              {{employeeVacationHistory.Vacations.vacationFrom | date:'MM-dd-yyyy'}} To
-              {{employeeVacationHistory.Vacations.vacationTo | date:'MM-dd-yyyy'}} </div>
+              {{employeeVacationHistory.Vacations.vacationFrom }} To
+              {{employeeVacationHistory.Vacations.vacationTo }} </div>
             <div class="col-md-2 name">{{employeeVacationHistory.Vacations.vacationStatus}}</div>
             <div class="col-md-3 name">{{employeeVacationHistory.Vacations.remark}}</div>
             <div class="col-md-1 edit">
@@ -115,8 +115,8 @@
                   <tr>
                   <td>{{1}}</td>
                   <td>
-                    {{employeeData.Vacations.vacationFrom | date:'MM-dd-yyyy'}} To
-                    {{employeeData.Vacations.vacationTo | date:'MM-dd-yyyy'}}
+                    {{employeeData.Vacations.vacationFrom}} To
+                    {{employeeData.Vacations.vacationTo}}
                   </td>
                   <td> {{employeeData.Vacations.vacacationType}}</td>
                   <td>{{employeeData.Vacations.vacationReason}}</td>

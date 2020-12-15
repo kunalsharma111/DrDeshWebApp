@@ -300,6 +300,7 @@ export class DataTransferService {
   getReceiptHistory = `${this.metcha}/getreceipthistory`;
   updateEmployeeReceiptUrl = `${this.metcha}/updateemployeereceipt`;
   allReceiptHistoryUrl = `${this.metcha}/getreceipthistoryforallemployee`;
+  getAvailableReceiptPeriod = `${this.metcha}/getavailablereceiptperiod`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -475,6 +476,10 @@ export class DataTransferService {
 
   getEmployeeFacility() {
     return this.http.post<any>(this.getEmployeeFacilities, {});
+  }
+
+  availableReceiptPeriod() {
+    return this.http.post<any>(this.getAvailableReceiptPeriod, {});
   }
 
   facilitySummaryReport(data) {

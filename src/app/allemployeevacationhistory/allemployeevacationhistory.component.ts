@@ -66,6 +66,7 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
               this.employeeVacationHistories.push(res[employeeVacation]);
             }
         }
+        this.fillterDate();
         });
       });
     
@@ -80,8 +81,18 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
         this.employeeVacationHistories  = [];
       } else {
         this.employeeVacationHistories = res;
+        this.fillterDate();
       }
     });
+  }
+
+  fillterDate() {
+    this.employeeVacationHistories.filter(s =>
+      s.Vacations.vacationFrom = s.Vacations.vacationFrom.substring(5, 7) + '-' + s.Vacations.vacationFrom.substring(8, 10) + '-' +s.Vacations.vacationFrom.substring(0, 4) 
+    );
+    this.employeeVacationHistories.filter(s =>
+      s.Vacations.vacationTo = s.Vacations.vacationTo.substring(5, 7) + '-' + s.Vacations.vacationTo.substring(8, 10) + '-' +s.Vacations.vacationTo.substring(0, 4)
+    );
   }
 
   setEmployeeVacationData(employee, employeedocumentsIndex) {
