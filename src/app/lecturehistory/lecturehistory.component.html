@@ -1,0 +1,97 @@
+<div id="wrapper">
+  <app-shareddashboard></app-shareddashboard>
+  <section id="content-wrapper" style=" padding-left: 0rem;">
+    <div class="row">
+      <div class="col-lg-12">
+        <button type="button" class="btn-outline-custom btn-lg iambtn"
+        [routerLink]="['/savelecture']">Submit Lecture</button>
+      </div>
+      <div class="box"></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-1"></div>
+      <div class="col-md-2">Filter Data</div>
+      <div class="col-md-9" >
+        <form [formGroup]="lectureForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-4">
+                <select class="form-control ip elementBorder" formControlName="lecturePeriod" placeholder="Period">
+                    <option value="" disabled selected>Search By Period</option>
+                    <option *ngFor="let lecturePeriod of lecturePeriods" [value]="lecturePeriod">{{lecturePeriod}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+              <select class="form-control ip elementBorder" formControlName="lectureStatus" placeholder="Receipt Type">
+                  <option value="" disabled selected>Search By Status</option>
+                  <option *ngFor="let lecutre of lectureStatus" [value]="lecutre">{{lecutre}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <input type="submit" value="Submit" class="btn btn-info btn-block">
+            </div>
+            <div class="col-md-2">
+              <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+            </div>
+          </div>
+      </form>
+      </div>
+    </div>
+    <div class="row ml-2">
+      <div class="col-md-1 counting">Sr.No</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name headerRowFont">Payroll Period</div>
+            <div class="col-md-1 name headerRowFont">Amount</div>
+            <div class="col-md-2 name headerRowFont">Status</div>
+            <div class="col-md-2 name headerRowFont">Submit Date/Time</div>
+            <div class="col-md-1 name headerRowFont">User Comment</div>
+            <div class="col-md-1 name headerRowFont">Admin Remark</div>
+            <!-- <div class="col-md-1 name headerRowFont">Remark</div> -->
+            <div class="col-md-1 name headerRowFont">View</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2" *ngFor="let  employeeLectureHistory of employeeLectureHistories;let employeeLectureHistoryIndex=index">
+      <div class="col-md-1 counting">{{employeeLectureHistoryIndex+1}}</div>
+      <div class="col-md-11">
+        <div class="details">
+          <div class="row">
+            <div class="col-md-3 name">{{employeeLectureHistory.lectures.period}}</div>
+            <div class="col-md-1 name">{{employeeLectureHistory.lectures.amount}}</div>
+            <div class="col-md-2 name">{{employeeLectureHistory.lectures.status}}</div>
+            <div class="col-md-2 name">{{employeeLectureHistory.lectures.savedon | date:'MM-dd-yyyy HH-mm'}} </div>
+            <div class="col-md-1 name">
+              <i class="fa-file-text-o" aria-hidden="true" data-toggle="modal"
+                style="color: #87c442;"
+                tooltip="{{employeeLectureHistory.lectures.comment != undefined &&
+                           employeeLectureHistory.lectures.comment != '' ?
+                           employeeLectureHistory.lectures.comment : 'No Comment'}}"
+                placement="right">
+              </i>
+            </div>
+            <div class="col-md-1 name">
+              <i class="fa-file-text" aria-hidden="true" data-toggle="modal"
+                style="color: #87c442;"
+                tooltip="{{employeeLectureHistory.lectures.remark != undefined &&
+                           employeeLectureHistory.lectures.remark != '' ?
+                           employeeLectureHistory.lectures.remark : 'No Remark'}}"
+                 placement="right">
+              </i>
+            </div>
+            <!-- <div class="col-md-1 name">Remark</div> -->
+            <div class="col-md-1 name">
+              <a  *ngIf="employeeLectureHistory.lectures.filename != undefined && employeeLectureHistory.lectures.filename != ''" href="{{loadFilesFromUrl}}ab/images/{{employeeLectureHistory.lectures.filename}}"  target="_blank" download>view</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row noEmployeeData" *ngIf="employeeLectureHistories.length === 0">
+      <div class="col-lg-12">
+        Data Not Found
+      </div>
+    </div>
+  </section>
+</div>

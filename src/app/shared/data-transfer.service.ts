@@ -237,8 +237,8 @@ export class DataTransferService {
   private c4 = new Subject<string>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<string>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<string>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.218.140:4000/api';
-  // metcha = 'http://localhost:4000/api';
+  // metcha = 'http://3.128.218.140:4000/api';
+  metcha = 'http://localhost:4000/api';
   // metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
@@ -297,9 +297,17 @@ export class DataTransferService {
   storeReceiptPeriod = `${this.metcha}/storereceiptperiod`;
   getReceiptPeriod = `${this.metcha}/getreceiptperiod`;
   saveReceiptRecords = `${this.metcha}/receiptsubmit`;
+  saveOvertimeRecords = `${this.metcha}/overtimesubmit`;
+  saveLectureRecords = `${this.metcha}/lecturesubmit`;
   getReceiptHistory = `${this.metcha}/getreceipthistory`;
+  getOvertimeHistory = `${this.metcha}/getovertimehistory`;
+  getLectureHistory = `${this.metcha}/getlecturehistory`;
   updateEmployeeReceiptUrl = `${this.metcha}/updateemployeereceipt`;
+  updateEmployeeOvertimeUrl = `${this.metcha}/updateemployeeovertime`;
+  updateEmployeeLectureUrl = `${this.metcha}/updateemployeelecture`;
   allReceiptHistoryUrl = `${this.metcha}/getreceipthistoryforallemployee`;
+  allOvertimeHistoryUrl = `${this.metcha}/getovertimehistoryforallemployee`;
+  allLectureHistoryUrl = `${this.metcha}/getlecturehistoryforallemployee`;
   getAvailableReceiptPeriod = `${this.metcha}/getavailablereceiptperiod`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
@@ -606,6 +614,22 @@ export class DataTransferService {
     return this.http.post<any>(this.allReceiptHistoryUrl, data);
   }
 
+  allOvertimeHistory(data){
+    return this.http.post<any>(this.allOvertimeHistoryUrl, data);
+  }
+
+  allLectureHistory(data){
+    return this.http.post<any>(this.allLectureHistoryUrl, data);
+  }
+
+  updateEmployeeOvertime(data){
+    return this.http.post<any>(this.updateEmployeeOvertimeUrl, data);
+  }
+
+  updateEmployeeLecture(data){
+    return this.http.post<any>(this.updateEmployeeLectureUrl, data);
+  }
+
   getAllAdmins(data){
     return this.http.post<any>(this.getAllAdminsUrl, data);
   }
@@ -620,6 +644,22 @@ export class DataTransferService {
 
   saveReceiptData(data){
     return this.http.post<any>(this.saveReceiptRecords, data);
+  }
+
+  saveOvertimeData(data){
+    return this.http.post<any>(this.saveOvertimeRecords, data);
+  }
+
+  saveLectureData(data){
+    return this.http.post<any>(this.saveLectureRecords, data);
+  }
+
+  getOvertimeHistoryForEmployee(data) {
+    return this.http.post<any>(this.getOvertimeHistory, data);
+  }
+
+  getLectureHistoryForEmployee(data) {
+    return this.http.post<any>(this.getLectureHistory, data);
   }
 
   getReceiptHistoryForEmployee(data) {

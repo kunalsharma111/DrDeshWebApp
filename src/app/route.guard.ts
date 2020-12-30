@@ -12,7 +12,8 @@ export class RouteGuard implements CanActivate {
                                       '/employeedash', '/attachfile', '/employeedash', '/employeefacility',
                                       '/facility', '/employeevacation', '/vacationhistory',
                                       '/insuranceinformation', '/receipt', '/receipthistory',
-                                      '/receiptapproval'
+                                      '/receiptapproval', '/saveovertime', '/overtimehistory',
+                                      '/savelecture', '/lecturehistory'
                                     ];
   dataEntryAllowPaths: Array<string> = ['/moduledashboard'];
   dashBoards: Array<string> = ['/moduledashboard', '/dash', '/employeedash'];

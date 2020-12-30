@@ -2041,6 +2041,254 @@ router.post('/receiptsubmit', verifyToken, upload.array('images[]', 10), (req, r
     })
 })
 
+router.post('/overtimesubmit', verifyToken, (req, res) => {
+    var collection = req.body.collection;
+    userModel.find({_id: req.userId}, (error, document) => {
+        if(!error) {
+            for(let index=0;index<collection.length; index++) {
+                var overtime = {
+                    status: 'Pending',
+                    savedon: new Date(),
+                    savedby: currentuser,
+                    hour: collection[index].hour,
+                    comment: collection[index].comment,
+                    period: collection[index].period,
+                    remark: ''
+                }
+                document[0].overtimes.push(overtime);
+            }
+
+            document[0].save().then(ress => {
+            res.send(document);
+            }, err => {
+                console.log(err);
+                res.send(error);
+            })
+        } else {
+            res.send(error);
+        }
+    })
+})
+
+router.post('/lecturesubmit', verifyToken, upload.array('images[]', 10), (req, res) => {
+    var collection = JSON.parse(req.body.collection);
+    userModel.find({_id: req.userId}, (error, document) => {
+        if(!error) {
+            for(let index=0;index<req.files.length; index++) {
+                var fileName = req.files[index].filename != undefined ? req.files[index].filename : '';
+                var lecture = {
+                    filename: fileName,
+                    status: 'Pending',
+                    savedon: new Date(),
+                    savedby: currentuser,
+                    amount: collection[index].amount,
+                    comment: collection[index].comment,
+                    period: collection[index].period,
+                    remark: ''
+                }
+                document[0].lectures.push(lecture);
+            }
+
+            document[0].save().then(ress => {
+            res.send(document);
+            }, err => {
+                console.log(err);
+                res.send(error);
+            })
+        } else {
+            res.send(error);
+        }
+    })
+})
+
+router.post('/getovertimehistory', verifyToken, (req, res) => {
+    if(req.body.overtimePeriod != null && req.body.overtimePeriod !== undefined && req.body.overtimePeriod != '') {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "overtimes": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$overtimes",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "overtimes.period": req.body.overtimePeriod
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    } else if(req.body.overtimeStatus != null && req.body.overtimeStatus != undefined && req.body.overtimeStatus != ''){
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "overtimes": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$overtimes",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "overtimes.status": req.body.overtimeStatus
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+
+    } else {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "overtimes": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$overtimes",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                 '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    }
+});
+
+router.post('/getlecturehistory', verifyToken, (req, res) => {
+    if(req.body.lecturePeriod != null && req.body.lecturePeriod !== undefined && req.body.lecturePeriod != '') {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "lectures": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$lectures",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "lectures.period": req.body.lecturePeriod
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    } else if(req.body.lectureStatus != null && req.body.lectureStatus != undefined && req.body.lectureStatus != ''){
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "lectures": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$lectures",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                "lectures.status": req.body.lectureStatus
+                , '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+
+    } else {
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "lectures": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$lectures",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": {
+                 '_id': mongoose.Types.ObjectId(req.userId)
+                }
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+    }
+});
+
 router.post('/getreceipthistory', verifyToken, (req, res) => {
     if(req.body.receiptPeriod != null && req.body.receiptPeriod !== undefined && req.body.receiptPeriod != '') {
         userModel.aggregate([
@@ -2134,7 +2382,6 @@ router.post('/getreceipthistory', verifyToken, (req, res) => {
         });
     }
 });
-
 
 router.post('/getEmployeeSubscribefacilities', verifyToken, (req, res) => {
     userModel.find({_id: req.userId},{'facilities': 1}).then(out => {
@@ -2324,7 +2571,6 @@ router.post('/getallusers', verifyToken, (req, res) => {
         });
 });
 
-
 router.post('/updateemployeevacation', verifyToken, (req, res) => {
     userModel.updateOne({_id: req.body.userId, 'Vacations._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'Vacations.$.vacationStatus': req.body.vacationStatus, 'Vacations.$.remark': req.body.remark} }, (errr, docc) => {
         if(!errr) {
@@ -2337,6 +2583,26 @@ router.post('/updateemployeevacation', verifyToken, (req, res) => {
 
 router.post('/updateemployeereceipt', verifyToken, (req, res) => {
     userModel.updateOne({_id: req.body.userId, 'receipts._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'receipts.$.status': req.body.receiptStatus, 'receipts.$.remark': req.body.remark} }, (errr, docc) => {
+        if(!errr) {
+            res.send(docc);
+        } else {
+            res.send(errr);
+        }
+    });
+});
+
+router.post('/updateemployeeovertime', verifyToken, (req, res) => {
+    userModel.updateOne({_id: req.body.userId, 'overtimes._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'overtimes.$.status': req.body.overtimeStatus, 'overtimes.$.remark': req.body.remark} }, (errr, docc) => {
+        if(!errr) {
+            res.send(docc);
+        } else {
+            res.send(errr);
+        }
+    });
+});
+
+router.post('/updateemployeelecture', verifyToken, (req, res) => {
+    userModel.updateOne({_id: req.body.userId, 'lectures._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'lectures.$.status': req.body.lectureStatus, 'lectures.$.remark': req.body.remark} }, (errr, docc) => {
         if(!errr) {
             res.send(docc);
         } else {
@@ -2540,6 +2806,85 @@ router.post('/getreceipthistoryforallemployee', verifyToken, (req, res) => {
     });
 });
 
+router.post('/getovertimehistoryforallemployee', verifyToken, (req, res) => {
+    userModel.aggregate([
+        { "$project":
+            {   "fname": 1,
+                'email': 1,
+                '_id': 1,
+                'userrole': 1,
+                "lname": 1,
+                "overtimes": 1
+            }
+        },
+        { "$unwind": {
+            "path": "$overtimes",
+            "preserveNullAndEmptyArrays": true
+            }
+        },
+        {"$match": { $or: [
+                    {
+                        "overtimes.period": req.body.overtimePeriod
+                    },
+                    {
+                        "overtimes.status": req.body.overtimeStatus
+                    },
+                    {
+                        "fname": new RegExp('^'+req.body.name, 'i')
+                    }
+                ]
+            }
+        }
+    ]).then(doc => {
+        if(doc.length != 0) {
+            res.json(doc);
+        } else {
+            res.json([]);
+        }
+    }, err => {
+        res.json(err);
+    });
+});
+
+router.post('/getlecturehistoryforallemployee', verifyToken, (req, res) => {
+    userModel.aggregate([
+        { "$project":
+            {   "fname": 1,
+                'email': 1,
+                '_id': 1,
+                'userrole': 1,
+                "lname": 1,
+                "lectures": 1
+            }
+        },
+        { "$unwind": {
+            "path": "$lectures",
+            "preserveNullAndEmptyArrays": true
+            }
+        },
+        {"$match": { $or: [
+                    {
+                        "lectures.period": req.body.lecturePeriod
+                    },
+                    {
+                        "lectures.status": req.body.lectureStatus
+                    },
+                    {
+                        "fname": new RegExp('^'+req.body.name, 'i')
+                    }
+                ]
+            }
+        }
+    ]).then(doc => {
+        if(doc.length != 0) {
+            res.json(doc);
+        } else {
+            res.json([]);
+        }
+    }, err => {
+        res.json(err);
+    });
+});
 
 router.post('/updateemployeedetails', verifyToken, (req, res) => {
     userModel.updateOne({_id: req.body.userId}, { $set: { 'userrole': req.body.userRole, 'empstatus': req.body.userStatus} }, (errr, docc) => {

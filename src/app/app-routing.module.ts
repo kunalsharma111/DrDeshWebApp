@@ -28,6 +28,12 @@ import { ModuleDashboardComponent } from './moduledashboard/moduledashboard.comp
 import { EmployeeFacilityApprovalComponent } from './employeefacilityapproval/employeefacilityapproval.component';
 import { ReceiptSubmitComponent } from './receiptsubmit/receiptsubmit.component';
 import { EmployeeReceiptHistoryComponent } from './receipthistory/receipthistory.component';
+import { OvertimeSubmitComponent } from './overtimesubmit/overtimesubmit.component';
+import { EmployeeOvertimeHistoryComponent } from './overtimehistory/overtimehistory.component';
+import { AllEmployeeOvertimeHistoryComponent } from './allemployeeovertimehistory/allemployeeovertimehistory.component';
+import { LectureSubmitComponent } from './lecturesubmit/lecturesubmit.component';
+import { EmployeeLectureHistoryComponent } from './lecturehistory/lecturehistory.component';
+import { AllEmployeeLectureHistoryComponent } from './allemployeelecturehistory/allemployeelecturehistory.component';
 
 
 const routes: Routes = [
@@ -58,6 +64,12 @@ const routes: Routes = [
   { path: 'receipt', component: ReceiptSubmitComponent,  canActivate: [RouteGuard]  },
   { path: 'receipthistory', component: EmployeeReceiptHistoryComponent,  canActivate: [RouteGuard]  },
   { path: 'receiptapproval', component: AllEmployeeReceiptHistoryComponent,  canActivate: [RouteGuard]  },
+  { path: 'saveovertime', component: OvertimeSubmitComponent,  canActivate: [RouteGuard]  },
+  { path: 'overtimehistory', component: EmployeeOvertimeHistoryComponent,  canActivate: [RouteGuard]  },
+  { path: 'allovertimehistory', component: AllEmployeeOvertimeHistoryComponent,  canActivate: [RouteGuard]  },
+  { path: 'savelecture', component: LectureSubmitComponent,  canActivate: [RouteGuard]  },
+  { path: 'lecturehistory', component: EmployeeLectureHistoryComponent,  canActivate: [RouteGuard]  },
+  { path: 'lectureapproval', component: AllEmployeeLectureHistoryComponent,  canActivate: [RouteGuard]  },
   { path: '**', component: DashboardComponent,  canActivate: [RouteGuard]  }
 ];
 

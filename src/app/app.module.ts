@@ -43,6 +43,12 @@ import {DatePipe} from '@angular/common';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ReceiptSubmitComponent } from './receiptsubmit/receiptsubmit.component';
 import { EmployeeReceiptHistoryComponent } from './receipthistory/receipthistory.component';
+import { OvertimeSubmitComponent } from './overtimesubmit/overtimesubmit.component';
+import { EmployeeOvertimeHistoryComponent } from './overtimehistory/overtimehistory.component';
+import { AllEmployeeOvertimeHistoryComponent } from './allemployeeovertimehistory/allemployeeovertimehistory.component';
+import { LectureSubmitComponent } from './lecturesubmit/lecturesubmit.component';
+import { EmployeeLectureHistoryComponent } from './lecturehistory/lecturehistory.component';
+import { AllEmployeeLectureHistoryComponent } from './allemployeelecturehistory/allemployeelecturehistory.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
@@ -80,7 +86,13 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     CombinepatComponent,
     ForgotpasswordComponent,
     ReceiptSubmitComponent,
-    EmployeeReceiptHistoryComponent
+    EmployeeReceiptHistoryComponent,
+    OvertimeSubmitComponent,
+    EmployeeOvertimeHistoryComponent,
+    AllEmployeeOvertimeHistoryComponent,
+    LectureSubmitComponent,
+    EmployeeLectureHistoryComponent,
+    AllEmployeeLectureHistoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

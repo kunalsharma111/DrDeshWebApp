@@ -201,6 +201,45 @@
             </figure>
         </div>
       </div>
+      <div class="row reports goa">
+        <div class="col-md-1"></div>
+        <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/saveovertime']">Submit Overtime<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Submit Overtime</span>
+                </div>
+            </figure>
+        </div>
+        <div class="col-md-3" *ngIf="roleType === 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/allovertimehistory']">Approve Overtime<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Approve Overtime</span>
+                </div>
+            </figure>
+        </div>
+        <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/savelecture']">Submit Lecture<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Submit Lecture</span>
+                </div>
+            </figure>
+        </div>
+        <div class="col-md-3" *ngIf="roleType === 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/lectureapproval']">Approve Lecture<i
+                            class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    <span>Approve Lecture</span>
+                </div>
+            </figure>
+        </div>
+      </div>
   </section>
 </div>
 

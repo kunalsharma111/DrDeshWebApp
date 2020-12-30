@@ -1,0 +1,74 @@
+<div id="wrapper">
+    <app-shareddashboard></app-shareddashboard>
+    <section id="content-wrapper" style=" padding-left: 0rem;  ">
+        <div class="row">
+            <div class="col-lg-12">
+              <button type="button" class="btn-outline-custom btn-lg iambtn"
+              [routerLink]="['/lecturehistory']">Lecture History</button>
+            </div>
+            <div class="box"></div>
+        </div>
+        <div class="row ml-2">
+            <form #receiptForm="ngForm" class="container mt-3" (ngSubmit)="saveLecture()">
+                <div class="row justify-content-center">
+                  <div class="col-10">
+                    <section class="container border mb-4 p-3" *ngFor="let lecture of lectures; let i = index;">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>Lecture {{i + 1}}</h4>
+                            </div>
+                             <div class="col-6 text-right">
+                                <button type="button" class="btn btn-danger btn-sm" (click)="removeLecture(i)">Remove</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Payroll Cycle</label>
+                                    <!-- <input type="text" class="form-control" [(ngModel)]="address.address" name="address_{{address.id}}"/> -->
+                                    <select class="form-control" [(ngModel)]="lecture.period" name="period_{{lecture.id}}" required>
+                                        <option value="" disabled selected>Select Payroll Period</option>
+                                        <option *ngFor="let lecturePeriod of lecturePeriods" [value]="lecturePeriod">{{lecturePeriod}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="number" class="form-control elementBorder" [(ngModel)]="lecture.amount" name="amount_{{lecture.id}}"  placeholder="USD" required/>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Comments</label>
+                                    <input type="text" class="form-control elementBorder" [(ngModel)]="lecture.comment" name="comment_{{lecture.id}}" placeholder="Add Comment" required/>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label>Attch File</label>
+                                    <label  style="width:70%">
+                                        <i class="fa fa-paperclip fa-2x"></i>
+                                        <input type="file"  class="form-control sr-only UploadInput" (change)="fileProgress(i ,$event)" name="file_{{lecture.id}}" required/>
+                                    </label>
+                                    <!-- <label *ngIf="fileattched !==  false" class="labelForFileAttched">&nbsp; <a href="{{fileUrl}}" target="_blank" class="preview" #search><i class="fa fa-file "></i></a></label> -->
+                                    <label *ngIf="lecture.file === null" class="labelForFileNotAttched">&nbsp;<i class="fa fa-times"></i></label>
+                                    <label *ngIf="lecture.file !== null" class="labelForFileAttched">&nbsp;<i class="fa fa-check"></i></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                    </section>
+                    <div class="text-left" *ngIf="lectures.length < 7">
+                        <button type="button" class="btn btn-primary mb-2" (click)="addLecture()">Add New Lecture</button>
+                    </div>
+                    <div class="text-right marginTopReduce" *ngIf="lectures.length > 0">
+                        <input type="submit" class="btn btn-success" value="          Submit           "/>
+                    </div>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
