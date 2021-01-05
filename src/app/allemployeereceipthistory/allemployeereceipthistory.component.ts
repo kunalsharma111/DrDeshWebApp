@@ -17,7 +17,7 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class AllEmployeeReceiptHistoryComponent implements OnInit {
   modalRef: BsModalRef;
-  @ViewChild('search', { static: true }) search: ElementRef;
+  // @ViewChild('search', { static: true }) search: ElementRef;
   constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder
     ,private datePipe: DatePipe) { }
 
@@ -49,30 +49,31 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
   
   ngOnInit() {
     this.receiptForm = this.fb.group({
+      name: ['', Validators.required],
       receiptPeriod: ['', Validators.required],
       receiptStatus: ['', Validators.required]
     });
     this.getReceiptPeriod();
     this.availableReceiptPeriod();
     this.getPendingReceiptHistory();
-    fromEvent(this.search.nativeElement, 'input')
-      .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
-      .subscribe(val => {
-        if (val === '') {
-          this.employeeReceiptHistories = [];
-          this.getPendingReceiptHistory();
-          return;
-        }
-        const params = {
-          name: val
-        };
-        this.service.allReceiptHistory(params).subscribe(res => {
-          res = res.filter(function (employee) {
-            return employee.receipts !== undefined &&  employee.receipts.filename;
-          });
-          this.employeeReceiptHistories = res;
-        });
-      });
+    // fromEvent(this.search.nativeElement, 'input')
+    //   .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
+    //   .subscribe(val => {
+    //     if (val === '') {
+    //       this.employeeReceiptHistories = [];
+    //       this.getPendingReceiptHistory();
+    //       return;
+    //     }
+    //     const params = {
+    //       name: val
+    //     };
+    //     this.service.allReceiptHistory(params).subscribe(res => {
+    //       res = res.filter(function (employee) {
+    //         return employee.receipts !== undefined &&  employee.receipts.filename;
+    //       });
+    //       this.employeeReceiptHistories = res;
+    //     });
+    //   });
     const str = this.service.metcha;
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
   }
@@ -144,7 +145,7 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
       });
       this.employeeReceiptHistories = res;
     });
-    this.onReset();
+    // this.onReset();
   }
   
   onSave(receiptDocumentId, userId,remark, status){

@@ -2102,68 +2102,30 @@ router.post('/lecturesubmit', verifyToken, upload.array('images[]', 10), (req, r
 })
 
 router.post('/getovertimehistory', verifyToken, (req, res) => {
-    if(req.body.overtimePeriod != null && req.body.overtimePeriod !== undefined && req.body.overtimePeriod != '') {
-        userModel.aggregate([
-            { "$project":
-                {   "fname": 1,
-                    'email': 1,
-                    '_id': 1,
-                    'userrole': 1,
-                    "lname": 1,
-                    "overtimes": 1
-                }
-            },
-            { "$unwind": {
-                "path": "$overtimes",
-                "preserveNullAndEmptyArrays": true
-                }
-            },
-            {"$match": {
-                "overtimes.period": req.body.overtimePeriod
-                , '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
-        ]).then(doc => {
-            if(doc.length != 0) {
-                res.json(doc);
-            } else {
-                res.json([]);
-            }
-        }, err => {
-            res.json(err);
-        });
-    } else if(req.body.overtimeStatus != null && req.body.overtimeStatus != undefined && req.body.overtimeStatus != ''){
-        userModel.aggregate([
-            { "$project":
-                {   "fname": 1,
-                    'email': 1,
-                    '_id': 1,
-                    'userrole': 1,
-                    "lname": 1,
-                    "overtimes": 1
-                }
-            },
-            { "$unwind": {
-                "path": "$overtimes",
-                "preserveNullAndEmptyArrays": true
-                }
-            },
-            {"$match": {
-                "overtimes.status": req.body.overtimeStatus
-                , '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
-        ]).then(doc => {
-            if(doc.length != 0) {
-                res.json(doc);
-            } else {
-                res.json([]);
-            }
-        }, err => {
-            res.json(err);
-        });
-
+    var overtimeQuery;
+    if(req.body.overtimePeriod != null && req.body.overtimePeriod !== undefined && req.body.overtimePeriod != ''
+       && req.body.overtimeStatus != null && req.body.overtimeStatus !== undefined && req.body.overtimeStatus != '') {
+        overtimeQuery =  {
+                    "$and":[
+                        {"overtimes.period": req.body.overtimePeriod},
+                        {'_id': mongoose.Types.ObjectId(req.userId)},
+                        {"overtimes.status": req.body.overtimeStatus}
+                ]} ;
+    } else if (req.body.overtimePeriod != null && req.body.overtimePeriod !== undefined && req.body.overtimePeriod != ''){
+        overtimeQuery = {
+            "$and":[
+                {"overtimes.period": req.body.overtimePeriod},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
+    } else if(req.body.overtimeStatus != null && req.body.overtimeStatus !== undefined && req.body.overtimeStatus != ''){
+        overtimeQuery = {
+            "$and":[
+                {"overtimes.status": req.body.overtimeStatus},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
     } else {
+        overtimeQuery =  {'_id': mongoose.Types.ObjectId(req.userId)};
+    }
         userModel.aggregate([
             { "$project":
                 {   "fname": 1,
@@ -2179,9 +2141,7 @@ router.post('/getovertimehistory', verifyToken, (req, res) => {
                 "preserveNullAndEmptyArrays": true
                 }
             },
-            {"$match": {
-                 '_id': mongoose.Types.ObjectId(req.userId)
-                }
+            {"$match": overtimeQuery
             }
         ]).then(doc => {
             if(doc.length != 0) {
@@ -2192,72 +2152,33 @@ router.post('/getovertimehistory', verifyToken, (req, res) => {
         }, err => {
             res.json(err);
         });
-    }
 });
 
 router.post('/getlecturehistory', verifyToken, (req, res) => {
-    if(req.body.lecturePeriod != null && req.body.lecturePeriod !== undefined && req.body.lecturePeriod != '') {
-        userModel.aggregate([
-            { "$project":
-                {   "fname": 1,
-                    'email': 1,
-                    '_id': 1,
-                    'userrole': 1,
-                    "lname": 1,
-                    "lectures": 1
-                }
-            },
-            { "$unwind": {
-                "path": "$lectures",
-                "preserveNullAndEmptyArrays": true
-                }
-            },
-            {"$match": {
-                "lectures.period": req.body.lecturePeriod
-                , '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
-        ]).then(doc => {
-            if(doc.length != 0) {
-                res.json(doc);
-            } else {
-                res.json([]);
-            }
-        }, err => {
-            res.json(err);
-        });
-    } else if(req.body.lectureStatus != null && req.body.lectureStatus != undefined && req.body.lectureStatus != ''){
-        userModel.aggregate([
-            { "$project":
-                {   "fname": 1,
-                    'email': 1,
-                    '_id': 1,
-                    'userrole': 1,
-                    "lname": 1,
-                    "lectures": 1
-                }
-            },
-            { "$unwind": {
-                "path": "$lectures",
-                "preserveNullAndEmptyArrays": true
-                }
-            },
-            {"$match": {
-                "lectures.status": req.body.lectureStatus
-                , '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
-        ]).then(doc => {
-            if(doc.length != 0) {
-                res.json(doc);
-            } else {
-                res.json([]);
-            }
-        }, err => {
-            res.json(err);
-        });
-
+    var lectureQuery;
+    if(req.body.lecturePeriod != null && req.body.lecturePeriod !== undefined && req.body.lecturePeriod != ''
+       && req.body.lectureStatus != null && req.body.lectureStatus !== undefined && req.body.lectureStatus != '') {
+        lectureQuery =  {
+                    "$and":[
+                        {"lectures.period": req.body.lecturePeriod},
+                        {'_id': mongoose.Types.ObjectId(req.userId)},
+                        {"lectures.status": req.body.lectureStatus}
+                ]} ;
+    } else if (req.body.lecturePeriod != null && req.body.lecturePeriod !== undefined && req.body.lecturePeriod != ''){
+        lectureQuery = {
+            "$and":[
+                {"lectures.period": req.body.lecturePeriod},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
+    } else if(req.body.lectureStatus != null && req.body.lectureStatus !== undefined && req.body.lectureStatus != ''){
+        lectureQuery = {
+            "$and":[
+                {"lectures.status": req.body.lectureStatus},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
     } else {
+        lectureQuery =  {'_id': mongoose.Types.ObjectId(req.userId)};
+    }
         userModel.aggregate([
             { "$project":
                 {   "fname": 1,
@@ -2273,9 +2194,7 @@ router.post('/getlecturehistory', verifyToken, (req, res) => {
                 "preserveNullAndEmptyArrays": true
                 }
             },
-            {"$match": {
-                 '_id': mongoose.Types.ObjectId(req.userId)
-                }
+            {"$match": lectureQuery
             }
         ]).then(doc => {
             if(doc.length != 0) {
@@ -2286,72 +2205,33 @@ router.post('/getlecturehistory', verifyToken, (req, res) => {
         }, err => {
             res.json(err);
         });
-    }
 });
 
 router.post('/getreceipthistory', verifyToken, (req, res) => {
-    if(req.body.receiptPeriod != null && req.body.receiptPeriod !== undefined && req.body.receiptPeriod != '') {
-        userModel.aggregate([
-            { "$project":
-                {   "fname": 1,
-                    'email': 1,
-                    '_id': 1,
-                    'userrole': 1,
-                    "lname": 1,
-                    "receipts": 1
-                }
-            },
-            { "$unwind": {
-                "path": "$receipts",
-                "preserveNullAndEmptyArrays": true
-                }
-            },
-            {"$match": {
-                "receipts.period": req.body.receiptPeriod
-                , '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
-        ]).then(doc => {
-            if(doc.length != 0) {
-                res.json(doc);
-            } else {
-                res.json([]);
-            }
-        }, err => {
-            res.json(err);
-        });
-    } else if(req.body.receiptStatus != null && req.body.receiptStatus != undefined && req.body.receiptStatus != ''){
-        userModel.aggregate([
-            { "$project":
-                {   "fname": 1,
-                    'email': 1,
-                    '_id': 1,
-                    'userrole': 1,
-                    "lname": 1,
-                    "receipts": 1
-                }
-            },
-            { "$unwind": {
-                "path": "$receipts",
-                "preserveNullAndEmptyArrays": true
-                }
-            },
-            {"$match": {
-                "receipts.status": req.body.receiptStatus
-                , '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
-        ]).then(doc => {
-            if(doc.length != 0) {
-                res.json(doc);
-            } else {
-                res.json([]);
-            }
-        }, err => {
-            res.json(err);
-        });
-
+    var receiptQuery;
+    if(req.body.receiptPeriod != null && req.body.receiptPeriod !== undefined && req.body.receiptPeriod != ''
+       && req.body.receiptStatus != null && req.body.receiptStatus !== undefined && req.body.receiptStatus != '') {
+        receiptQuery =  {
+                    "$and":[
+                        {"receipts.period": req.body.receiptPeriod},
+                        {'_id': mongoose.Types.ObjectId(req.userId)},
+                        {"receipts.status": req.body.receiptStatus}
+                ]} ;
+    } else if (req.body.receiptPeriod != null && req.body.receiptPeriod !== undefined && req.body.receiptPeriod != ''){
+        receiptQuery = {
+            "$and":[
+                {"receipts.period": req.body.receiptPeriod},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
+    } else if(req.body.receiptStatus != null && req.body.receiptStatus !== undefined && req.body.receiptStatus != ''){
+        receiptQuery = {
+            "$and":[
+                {"receipts.status": req.body.receiptStatus},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
     } else {
+        receiptQuery =  {'_id': mongoose.Types.ObjectId(req.userId)};
+    }
         userModel.aggregate([
             { "$project":
                 {   "fname": 1,
@@ -2367,10 +2247,7 @@ router.post('/getreceipthistory', verifyToken, (req, res) => {
                 "preserveNullAndEmptyArrays": true
                 }
             },
-            {"$match": {
-                 '_id': mongoose.Types.ObjectId(req.userId)
-                }
-            }
+            {"$match": receiptQuery}
         ]).then(doc => {
             if(doc.length != 0) {
                 res.json(doc);
@@ -2380,7 +2257,6 @@ router.post('/getreceipthistory', verifyToken, (req, res) => {
         }, err => {
             res.json(err);
         });
-    }
 });
 
 router.post('/getEmployeeSubscribefacilities', verifyToken, (req, res) => {
@@ -2658,8 +2534,6 @@ router.post('/getalladmin', verifyToken, (req, res) => {
     })
 });
 
-
-
 // get all document uploaded employee
 router.post('/getemployeedocuments', verifyToken, (req, res) => {
     const fileName =  req.body.name !== undefined  ? 'search by name'  : 'search by status';
@@ -2726,6 +2600,64 @@ router.post('/getemployeedocuments', verifyToken, (req, res) => {
 });
 
 router.post('/getvacationhistoryforallemployee', verifyToken, (req, res) => {
+    console.log('req.body.', req.body)
+    var vacationQuery;
+    if(req.body.vacationFrom && req.body.vacationStatus && req.body.name){
+        vacationQuery = { "$and": [
+            {
+            "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": new Date(req.body.vacationTo)
+                                    }
+            },
+            {
+                "Vacations.vacationStatus": req.body.vacationStatus
+            },
+            {
+                "fname": new RegExp('^'+req.body.name, 'i')
+            }
+        ]};
+    }else if(req.body.vacationFrom && req.body.vacationStatus){
+        vacationQuery = { "$and": [
+            {
+            "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": new Date(req.body.vacationTo)
+                                    }
+            },
+            {
+                "Vacations.vacationStatus": req.body.vacationStatus
+            }
+        ]};
+    } else if(req.body.vacationFrom && req.body.name){
+        vacationQuery = { "$and": [
+            {
+            "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": new Date(req.body.vacationTo)
+                                    }
+            },
+            {
+                "fname": new RegExp('^'+req.body.name, 'i')
+            }
+        ]};
+    } else if(req.body.vacationStatus && req.body.name){
+        vacationQuery = { "$and": [
+            {
+                "Vacations.vacationStatus": req.body.vacationStatus
+            },
+            {
+                "fname": new RegExp('^'+req.body.name, 'i')
+            }
+        ]};
+    }else {
+        vacationQuery = { "$or": [
+            {
+            "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": new Date(req.body.vacationTo)
+                                    }
+            },
+            {
+                "Vacations.vacationStatus": req.body.vacationStatus
+            },
+            {
+                "fname": new RegExp('^'+req.body.name, 'i')
+            }
+        ]};
+    }
     userModel.aggregate([
         { "$project":
             {   "fname": 1,
@@ -2741,19 +2673,7 @@ router.post('/getvacationhistoryforallemployee', verifyToken, (req, res) => {
             "preserveNullAndEmptyArrays": true
             }
         },
-        {"$match": { $or: [
-                    {
-                    "Vacations.vacationFrom": {"$gte": new Date(req.body.vacationFrom), "$lte": new Date(req.body.vacationTo)
-                                            }
-                    },
-                    {
-                        "Vacations.vacationStatus": req.body.vacationStatus
-                    },
-                    {
-                        "fname": new RegExp('^'+req.body.name, 'i')
-                    }
-                ]
-            }
+        {"$match": vacationQuery
         }
     ]).then(doc => {
         if(doc.length != 0) {
@@ -2767,6 +2687,27 @@ router.post('/getvacationhistoryforallemployee', verifyToken, (req, res) => {
 });
 
 router.post('/getreceipthistoryforallemployee', verifyToken, (req, res) => {
+    var queryAnd = {}, queryOr = {}, queryEmpty = {}, count = 0;
+    queryAnd['$and']=[];
+    queryOr['$or']=[];
+
+    if(req.body.name){
+        count++;
+        queryAnd["$and"].push({'fname': new RegExp('^'+req.body.name, 'i')});
+        queryOr["$or"].push({'fname': new RegExp('^'+req.body.name, 'i')});
+    }
+    if(req.body.receiptPeriod){
+        count++;
+        queryAnd["$and"].push({'receipts.period': req.body.receiptPeriod});
+        queryOr["$or"].push({'receipts.period': req.body.receiptPeriod});
+    }
+    if(req.body.receiptStatus){
+        count++;
+        queryAnd["$and"].push({'receipts.status': req.body.receiptStatus});
+        queryOr["$or"].push({'receipts.status': req.body.receiptStatus});
+    }
+
+    var receiptQuery = (count == 0) ? queryEmpty : (count > 1) ? queryAnd : queryOr;
     userModel.aggregate([
         { "$project":
             {   "fname": 1,
@@ -2782,18 +2723,7 @@ router.post('/getreceipthistoryforallemployee', verifyToken, (req, res) => {
             "preserveNullAndEmptyArrays": true
             }
         },
-        {"$match": { $or: [
-                    {
-                        "receipts.period": req.body.receiptPeriod
-                    },
-                    {
-                        "receipts.status": req.body.receiptStatus
-                    },
-                    {
-                        "fname": new RegExp('^'+req.body.name, 'i')
-                    }
-                ]
-            }
+        {"$match": receiptQuery
         }
     ]).then(doc => {
         if(doc.length != 0) {
@@ -2807,6 +2737,26 @@ router.post('/getreceipthistoryforallemployee', verifyToken, (req, res) => {
 });
 
 router.post('/getovertimehistoryforallemployee', verifyToken, (req, res) => {
+    var queryAnd = {}, queryOr = {}, queryEmpty = {}, count = 0;
+    queryAnd['$and']=[];
+    queryOr['$or']=[];
+
+    if(req.body.name){
+        count++;
+        queryAnd["$and"].push({'fname': new RegExp('^'+req.body.name, 'i')});
+        queryOr["$or"].push({'fname': new RegExp('^'+req.body.name, 'i')});
+    }if(req.body.overtimePeriod){
+        count++;
+        queryAnd["$and"].push({'overtimes.period': req.body.overtimePeriod});
+        queryOr["$or"].push({'overtimes.period': req.body.overtimePeriod});
+    }
+    if(req.body.overtimeStatus){
+        count++;
+        queryAnd["$and"].push({'overtimes.status': req.body.overtimeStatus});
+        queryOr["$or"].push({'overtimes.status': req.body.overtimeStatus});
+    }
+
+    var overtimeQuery = (count == 0) ? queryEmpty : (count > 1) ? queryAnd : queryOr;
     userModel.aggregate([
         { "$project":
             {   "fname": 1,
@@ -2822,18 +2772,7 @@ router.post('/getovertimehistoryforallemployee', verifyToken, (req, res) => {
             "preserveNullAndEmptyArrays": true
             }
         },
-        {"$match": { $or: [
-                    {
-                        "overtimes.period": req.body.overtimePeriod
-                    },
-                    {
-                        "overtimes.status": req.body.overtimeStatus
-                    },
-                    {
-                        "fname": new RegExp('^'+req.body.name, 'i')
-                    }
-                ]
-            }
+        {"$match": overtimeQuery
         }
     ]).then(doc => {
         if(doc.length != 0) {
@@ -2847,6 +2786,26 @@ router.post('/getovertimehistoryforallemployee', verifyToken, (req, res) => {
 });
 
 router.post('/getlecturehistoryforallemployee', verifyToken, (req, res) => {
+    var queryAnd = {}, queryOr = {}, queryEmpty = {}, count = 0;
+    queryAnd['$and']=[];
+    queryOr['$or']=[];
+
+    if(req.body.name){
+        count++;
+        queryAnd["$and"].push({ 'fname': new RegExp('^'+req.body.name, 'i')});
+        queryOr["$or"].push({ 'fname': new RegExp('^'+req.body.name, 'i')});
+    }if(req.body.lecturePeriod){
+        count++;
+        queryAnd["$and"].push({ 'lectures.period': req.body.lecturePeriod});
+        queryOr["$or"].push({ 'lectures.period': req.body.lecturePeriod});
+    }
+    if(req.body.lectureStatus){
+        count++;
+        queryAnd["$and"].push({ 'lectures.status': req.body.lectureStatus});
+        queryOr["$or"].push({ 'lectures.status': req.body.lectureStatus});
+    }
+
+    var lectureQuery = (count == 0) ? queryEmpty : (count > 1) ? queryAnd : queryOr;
     userModel.aggregate([
         { "$project":
             {   "fname": 1,
@@ -2862,18 +2821,7 @@ router.post('/getlecturehistoryforallemployee', verifyToken, (req, res) => {
             "preserveNullAndEmptyArrays": true
             }
         },
-        {"$match": { $or: [
-                    {
-                        "lectures.period": req.body.lecturePeriod
-                    },
-                    {
-                        "lectures.status": req.body.lectureStatus
-                    },
-                    {
-                        "fname": new RegExp('^'+req.body.name, 'i')
-                    }
-                ]
-            }
+        {"$match": lectureQuery
         }
     ]).then(doc => {
         if(doc.length != 0) {
@@ -3002,8 +2950,6 @@ router.post('/getavailablereceiptperiod', verifyToken, (req, res)=> {
             res.json([]);
         })
 });
-
-
 
 router.post('/storereceiptperiod', verifyToken, (req, res) => {
 

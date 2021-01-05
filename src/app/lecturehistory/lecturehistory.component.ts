@@ -71,7 +71,7 @@ export class EmployeeLectureHistoryComponent implements OnInit {
     this.service.getLectureHistoryForEmployee(this.lectureForm.value).subscribe(res => {
       this.employeeLectureHistories = res;
     });
-    this.onReset();
+    // this.onReset();
   }
   
 

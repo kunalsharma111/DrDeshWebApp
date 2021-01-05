@@ -17,7 +17,7 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class AllEmployeeOvertimeHistoryComponent implements OnInit {
   modalRef: BsModalRef;
-  @ViewChild('search', { static: true }) search: ElementRef;
+  // @ViewChild('search', { static: true }) search: ElementRef;
   constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder
     ,private datePipe: DatePipe) { }
 
@@ -47,30 +47,31 @@ export class AllEmployeeOvertimeHistoryComponent implements OnInit {
   
   ngOnInit() {
     this.overtimeForm = this.fb.group({
+      name: ['', Validators.required],
       overtimePeriod: ['', Validators.required],
       overtimeStatus: ['', Validators.required]
     });
     this.getReceiptPeriod();
     this.availableReceiptPeriod();
     this.getPendingOvertimeHistory();
-    fromEvent(this.search.nativeElement, 'input')
-      .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
-      .subscribe(val => {
-        if (val === '') {
-          this.employeeOvertimeHistories = [];
-          this.getPendingOvertimeHistory();
-          return;
-        }
-        const params = {
-          name: val
-        };
-        this.service.allReceiptHistory(params).subscribe(res => {
-          res = res.filter(function (employee) {
-            return employee.receipts !== undefined &&  employee.receipts.filename;
-          });
-          this.employeeOvertimeHistories = res;
-        });
-      });
+    // fromEvent(this.search.nativeElement, 'input')
+    //   .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
+    //   .subscribe(val => {
+    //     if (val === '') {
+    //       this.employeeOvertimeHistories = [];
+    //       this.getPendingOvertimeHistory();
+    //       return;
+    //     }
+    //     const params = {
+    //       name: val
+    //     };
+    //     this.service.allOvertimeHistory(params).subscribe(res => {
+    //       res = res.filter(function (employee) {
+    //         return employee.receipts !== undefined &&  employee.receipts.filename;
+    //       });
+    //       this.employeeOvertimeHistories = res;
+    //     });
+    //   });
     const str = this.service.metcha;
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
   }
@@ -143,7 +144,7 @@ export class AllEmployeeOvertimeHistoryComponent implements OnInit {
       });
       this.employeeOvertimeHistories = res;
     });
-    this.onReset();
+    // this.onReset();
   }
   
   onSave(overtimeDocumentId, userId,remark, status){

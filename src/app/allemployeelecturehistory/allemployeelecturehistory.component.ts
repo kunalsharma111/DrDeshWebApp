@@ -17,7 +17,7 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class AllEmployeeLectureHistoryComponent implements OnInit {
   modalRef: BsModalRef;
-  @ViewChild('search', { static: true }) search: ElementRef;
+  // @ViewChild('search', { static: true }) search: ElementRef;
   constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder
     ,private datePipe: DatePipe) { }
 
@@ -48,30 +48,31 @@ export class AllEmployeeLectureHistoryComponent implements OnInit {
   
   ngOnInit() {
     this.lectureForm = this.fb.group({
+      name: ['', Validators.required],
       lecturePeriod: ['', Validators.required],
       lectureStatus: ['', Validators.required]
     });
     this.getReceiptPeriod();
     this.availableReceiptPeriod();
     this.getPendingLectureHistory();
-    fromEvent(this.search.nativeElement, 'input')
-      .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
-      .subscribe(val => {
-        if (val === '') {
-          this.employeeLectureHistories = [];
-          this.getPendingLectureHistory();
-          return;
-        }
-        const params = {
-          name: val
-        };
-        this.service.allLectureHistory(params).subscribe(res => {
-          res = res.filter(function (employee) {
-            return employee.lectures !== undefined &&  employee.lectures.filename;
-          });
-          this.employeeLectureHistories = res;
-        });
-      });
+    // fromEvent(this.search.nativeElement, 'input')
+    //   .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
+    //   .subscribe(val => {
+    //     if (val === '') {
+    //       this.employeeLectureHistories = [];
+    //       this.getPendingLectureHistory();
+    //       return;
+    //     }
+    //     const params = {
+    //       name: val
+    //     };
+    //     this.service.allLectureHistory(params).subscribe(res => {
+    //       res = res.filter(function (employee) {
+    //         return employee.lectures !== undefined &&  employee.lectures.filename;
+    //       });
+    //       this.employeeLectureHistories = res;
+    //     });
+    //   });
     const str = this.service.metcha;
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
   }
@@ -143,7 +144,7 @@ export class AllEmployeeLectureHistoryComponent implements OnInit {
       });
       this.employeeLectureHistories = res;
     });
-    this.onReset();
+    // this.onReset();
   }
   
   onSave(lectureDocumentId, userId,remark, status){

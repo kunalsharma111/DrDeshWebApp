@@ -71,7 +71,7 @@ export class EmployeeReceiptHistoryComponent implements OnInit {
     this.service.getReceiptHistoryForEmployee(this.receiptForm.value).subscribe(res => {
       this.employeeReceiptHistories = res;
     });
-    this.onReset();
+    // this.onReset();
   }
   
 

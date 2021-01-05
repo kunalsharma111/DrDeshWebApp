@@ -43,32 +43,33 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
   
   ngOnInit() {
     this.vacationForm = this.fb.group({
+      name: ['', Validators.required],
       vacationFrom: ['', Validators.required],
       vacationTo: ['', Validators.required],
       vacationStatus: ['', Validators.required]
     });
     this.getPendingVacationHistory();
-    fromEvent(this.search.nativeElement, 'input')
-      .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
-      .subscribe(val => {
-        if (val === '') {
-          this.employeeVacationHistories = [];
-          this.getPendingVacationHistory();
-          return;
-        }
-        const params = {
-          name: val
-        };
-        this.service.getAllEmployeeVacationHistory(params).subscribe(res => {
-          this.employeeVacationHistories = [];
-          for (let employeeVacation = 0; employeeVacation < res.length; employeeVacation++) {
-            if (res[employeeVacation].Vacations !==  undefined) {
-              this.employeeVacationHistories.push(res[employeeVacation]);
-            }
-        }
-        this.fillterDate();
-        });
-      });
+    // fromEvent(this.search.nativeElement, 'input')
+    //   .pipe(map((event: any) => event.target.value), debounceTime(500), distinctUntilChanged())
+    //   .subscribe(val => {
+    //     if (val === '') {
+    //       this.employeeVacationHistories = [];
+    //       this.getPendingVacationHistory();
+    //       return;
+    //     }
+    //     const params = {
+    //       name: val
+    //     };
+    //     this.service.getAllEmployeeVacationHistory(params).subscribe(res => {
+    //       this.employeeVacationHistories = [];
+    //       for (let employeeVacation = 0; employeeVacation < res.length; employeeVacation++) {
+    //         if (res[employeeVacation].Vacations !==  undefined) {
+    //           this.employeeVacationHistories.push(res[employeeVacation]);
+    //         }
+    //     }
+    //     this.fillterDate();
+    //     });
+    //   });
     
   }
 
@@ -87,11 +88,11 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
   }
 
   fillterDate() {
-    this.employeeVacationHistories.filter(s =>
-      s.Vacations.vacationFrom = s.Vacations.vacationFrom.substring(5, 7) + '-' + s.Vacations.vacationFrom.substring(8, 10) + '-' +s.Vacations.vacationFrom.substring(0, 4) 
+    this.employeeVacationHistories.filter(employee =>
+      employee.Vacations.vacationFrom = employee.Vacations.vacationFrom.substring(5, 7) + '-' + employee.Vacations.vacationFrom.substring(8, 10) + '-' +employee.Vacations.vacationFrom.substring(0, 4) 
     );
-    this.employeeVacationHistories.filter(s =>
-      s.Vacations.vacationTo = s.Vacations.vacationTo.substring(5, 7) + '-' + s.Vacations.vacationTo.substring(8, 10) + '-' +s.Vacations.vacationTo.substring(0, 4)
+    this.employeeVacationHistories.filter(employee =>
+      employee.Vacations.vacationTo = employee.Vacations.vacationTo.substring(5, 7) + '-' + employee.Vacations.vacationTo.substring(8, 10) + '-' +employee.Vacations.vacationTo.substring(0, 4)
     );
   }
 
@@ -111,7 +112,11 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
     //   return;
     // }
     this.service.getAllEmployeeVacationHistory(this.vacationForm.value).subscribe(res => {
-      this.employeeVacationHistories = res;
+      res = res.filter(function (employee) {
+        return employee.Vacations !== undefined ;
+      });
+      this.employeeVacationHistories =  res;
+      this.fillterDate();
     });
     // this.onReset();
   }

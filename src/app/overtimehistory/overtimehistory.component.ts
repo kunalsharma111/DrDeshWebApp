@@ -71,7 +71,7 @@ export class EmployeeOvertimeHistoryComponent implements OnInit {
     this.service.getOvertimeHistoryForEmployee(this.overtimeForm.value).subscribe(res => {
       this.employeeOvertimeHistories = res;
     });
-    this.onReset();
+    // this.onReset();
   }
   
 
