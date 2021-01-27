@@ -12749,3 +12749,17 @@
 {"message":"Name of current user ismahendra","level":"info","timestamp":"2021-01-14T11:27:10.173Z"}
 {"message":"Name of current user ismahendra","level":"info","timestamp":"2021-01-14T11:27:12.547Z"}
 {"message":"Name of current user ismahendra","level":"info","timestamp":"2021-01-14T11:27:15.108Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-01-27T04:02:45.091Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-01-27T04:02:48.420Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2021-01-27T04:09:49.533Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:10:24.093Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:12:08.346Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:15:10.835Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-01-27T04:33:34.848Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-01-27T04:33:37.368Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:34:09.755Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:38:36.931Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:40:41.897Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:44:32.023Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:49:14.971Z"}
+{"message":"Email Sent Successfully for otp","level":"info","timestamp":"2021-01-27T04:50:43.568Z"}

@@ -150,3 +150,11 @@
 {"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2021-01-14T06:20:36.849Z"}
 {"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2021-01-14T06:20:36.858Z"}
 {"message":"Error in getting current user MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","level":"error","timestamp":"2021-01-14T06:20:36.862Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:10:24.093Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:12:08.346Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:15:10.835Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:34:09.755Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:38:36.932Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:40:41.898Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:44:32.024Z"}
+{"message":"error occur while sending OTP","level":"error","timestamp":"2021-01-27T04:49:14.972Z"}

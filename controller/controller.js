@@ -753,7 +753,7 @@ router.post("/otp", (req, res) => {
                     service: 'gmail',
                     auth: {
                         user: 'balwellbeingllc@gmail.com',
-                        pass: 'Balanced123'
+                        pass: 'Balanced@12345'
                     }
                 });
 
@@ -2501,7 +2501,7 @@ router.post('/getalladmin', verifyToken, (req, res) => {
                     service: 'gmail',
                     auth: {
                         user: 'balwellbeingllc@gmail.com',
-                        pass: 'Balanced123'
+                        pass: 'Balanced@12345'
                     }
                 });
                 var new_line = "\n\xA0";
