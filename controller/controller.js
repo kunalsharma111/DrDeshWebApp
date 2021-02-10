@@ -2356,7 +2356,7 @@ router.post('/saveEmployeeVacation', verifyToken, (req, res) => {
                                 var name = document[0].fname;
                                 let mailDetails = {
                                     from: 'balwellbeingllc@gmail.com',
-                                    to: 'christiemcintosh@balancedwellbeingllc.com, lauradiaz@balancedwellbeingllc.com',
+                                    to: 'christiemcintosh@balancedwellbeingllc.com, zoebehre@balancedwellbeingllc.com',
                                     subject: 'Leave Application By '+name,
                                     text: 'Dear All,'+ new_line +name.charAt(0).toUpperCase()+name.substr(1).toLowerCase()+' has submitted a new vacation application for your approval.Please review the same and take appropriate action.'+new_line + new_line +'Regards,'+new_line+'System BWB'
                                 };
@@ -2509,7 +2509,7 @@ router.post('/getalladmin', verifyToken, (req, res) => {
                 let mailDetails = {
                     from: 'balwellbeingllc@gmail.com',
                     to: employeeEmail,
-                    cc: 'christiemcintosh@balancedwellbeingllc.com, lauradiaz@balancedwellbeingllc.com',
+                    cc: 'christiemcintosh@balancedwellbeingllc.com, zoebehre@balancedwellbeingllc.com',
                     subject: 'Leave Application Status Change',
                     text: 'Dear '+req.body.name+' ,'+ new_line +'Your vacation application has been acted upon by approving authority. Please check the system for the status.'+new_line + new_line +'Regards,'+new_line+'System BWB'
                 };
