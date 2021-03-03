@@ -18,40 +18,47 @@
         </div>
       </div> -->
       <div class="col-md-11">
-        <!-- <form [formGroup]="lectureForm" (ngSubmit)="onSubmit()">
-          <div class="row">
-            <div class="form-group col-md-3">
-                <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
-                formControlName="name">
-            </div>
-            <div class="form-group col-md-3">
-              <select class="form-control ip elementBorder" formControlName="lecturePeriod" placeholder="Period">
-                  <option value="" disabled selected>Search By Period</option>
-                  <option *ngFor="let lecturePeriod of lecturePeriods" [value]="lecturePeriod">{{lecturePeriod}}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <select class="form-control ip elementBorder" formControlName="lectureStatus">
-                <option value="" disabled selected>Search By Status</option>
-                <option *ngFor="let lecture of lectureStatus" [value]="lecture">
-                      {{lecture}}
-                  </option>
-              </select>
-            </div>
-            <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-3 form-group">
+            <input type="text" [(ngModel)]="searchTerm" class="form-control ip elementBorder" placeholder="Serach any fields" />
+          </div>
+          <div class="col-md-9">
+            <form [formGroup]="lectureForm" (ngSubmit)="onSubmit()">
               <div class="row">
-                <div class="col-md-6">
-                  <input type="submit" value="Submit" class="btn btn-info btn-block">
+                <!-- <div class="form-group col-md-3">
+                  <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
+                    formControlName="name">
+                </div> -->
+                <div class="form-group col-md-3">
+                  <select class="form-control ip elementBorder" formControlName="lecturePeriod" placeholder="Period">
+                    <option value="" disabled selected>Search By Period</option>
+                    <option *ngFor="let lecturePeriod of lecturePeriods" [value]="lecturePeriod">{{lecturePeriod}}</option>
+                  </select>
                 </div>
-                <div class="col-md-6">
-                  <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+                <div class="form-group col-md-3">
+                  <select class="form-control ip elementBorder" formControlName="lectureStatus">
+                    <option value="" disabled selected>Search By Status</option>
+                    <option *ngFor="let lecture of lectureStatus" [value]="lecture">
+                      {{lecture}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input type="submit" value="Submit" class="btn btn-info btn-block">
+                    </div>
+                    <div class="col-md-6">
+                      <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
-      </form> -->
-      <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" />
-    </div>
+        </div>
+       
+      </div>
     </div>
     <div class="row ml-2">
       <div class="col-md-1 counting">Sr.No</div>

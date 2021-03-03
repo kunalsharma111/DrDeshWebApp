@@ -18,39 +18,43 @@
         </div>
       </div> -->
       <div class="col-md-11" >
-        <!-- <form [formGroup]="overtimeForm" (ngSubmit)="onSubmit()">
-          <div class="row">
-            <div class="form-group col-md-3">
-              <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
-              formControlName="name">
-            </div>
-            <div class="form-group col-md-3">
-              <select class="form-control ip elementBorder" formControlName="overtimePeriod" placeholder="Period">
+        <div class="row">
+          <div class="col-md-3 form-group">
+            <input type="text" [(ngModel)]="searchTerm" class="form-control ip elementBorder" placeholder="Serach any fields" />
+          </div>
+          <form [formGroup]="overtimeForm" (ngSubmit)="onSubmit()" class="col-md-9">
+            <div class="row">
+              <!-- <div class="form-group col-md-3">
+                <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
+                  formControlName="name">
+              </div> -->
+              <div class="form-group col-md-3">
+                <select class="form-control ip elementBorder" formControlName="overtimePeriod" placeholder="Period">
                   <option value="" disabled selected>Search By Period</option>
                   <option *ngFor="let overtimePeriod of overtimePeriods" [value]="overtimePeriod">{{overtimePeriod}}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <select class="form-control ip elementBorder" formControlName="overtimeStatus">
-                <option value="" disabled selected>Search By Status</option>
-                <option *ngFor="let overtime of overtimeStatus" [value]="overtime">
-                      {{overtime}}
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <select class="form-control ip elementBorder" formControlName="overtimeStatus">
+                  <option value="" disabled selected>Search By Status</option>
+                  <option *ngFor="let overtime of overtimeStatus" [value]="overtime">
+                    {{overtime}}
                   </option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="submit" value="Submit" class="btn btn-info btn-block">
-                </div>
-                <div class="col-md-6">
-                  <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+                </select>
+              </div>
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="submit" value="Submit" class="btn btn-info btn-block">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="button" value="Reset" (click)="ngOnInit()" class="btn btn-info btn-block">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-      </form> -->
-      <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" />
+          </form>
+        </div>
     </div>
     </div>
     <div class="row ml-2">

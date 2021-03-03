@@ -18,24 +18,30 @@
         </div>
       </div> -->
       <div class="col-md-11" >
-        <!-- <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
-          <div class="row">
-            <div class="form-group col-md-2">
+        <div class="row">
+          <div class="col-md-2 form-group">
+            <input type="text" [(ngModel)]="searchTerm" class="form-control ip elementBorder" placeholder="Serach any fields" />
+          </div>
+          <form [formGroup]="vacationForm" class="col-md-9" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <!-- <div class="form-group col-md-2">
                 <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
-                formControlName="name">
-            </div>
+                  formControlName="name">
+              </div> -->
               <div class="form-group col-md-2">
-                  <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="From Date">
+                <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom"
+                  onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="From Date">
               </div>
               <div class="form-group col-md-2">
-                  <input type="text" class="form-control ip elementBorder" formControlName="vacationTo" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="To Date">
+                <input type="text" class="form-control ip elementBorder" formControlName="vacationTo" onfocus="(this.type='date')"
+                  onblur="(this.type='text')" placeholder="To Date">
               </div>
               <div class="form-group col-md-2 reduceTopMargin">
                 <label for="sel1">Status:</label>
                 <select class="form-control ip elementBorder topMargin" formControlName="vacationStatus">
-                    <option *ngFor="let role of roles" [value]="role">
-                        {{role}}
-                    </option>
+                  <option *ngFor="let role of roles" [value]="role">
+                    {{role}}
+                  </option>
                 </select>
               </div>
               <div class="col-md-2">
@@ -44,9 +50,11 @@
               <div class="col-md-2">
                 <input type="button" value="Reset" (click)="ngOnInit()" class="ip btn btn-info btn-block">
               </div>
-          </div>
-      </form> -->
-      <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" />
+            </div>
+          </form>
+        </div>
+        
+      <!-- <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" /> -->
     </div>
     </div>
     <div class="row ml-2">
