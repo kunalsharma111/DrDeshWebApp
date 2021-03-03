@@ -19,9 +19,10 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
   modalRef: BsModalRef;
   // @ViewChild('search', { static: true }) search: ElementRef;
   constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder
-    ,private datePipe: DatePipe) { }
+    , private datePipe: DatePipe) { }
 
   receiptStatus = ['Pending', 'Approved', 'Rejected'];
+  searchTerm;
   employeeReceiptHistories = [];
   searchString = '';
   receiptPeriods = [];
@@ -31,7 +32,7 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
   employeeModelOpenIndex;
   employeeData = {
     fname: '',
-    email:'',
+    email: '',
     receipts: {
       _id: '',
       remark: '',
@@ -46,7 +47,7 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
   };
 
   get f() { return this.receiptForm.controls; }
-  
+
   ngOnInit() {
     this.receiptForm = this.fb.group({
       name: ['', Validators.required],
@@ -78,47 +79,47 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
   }
 
-  getReceiptPeriod(){
+  getReceiptPeriod() {
     this.service.getReceiptPeriodData().subscribe(res => {
-      res.sort(function(a,b){
+      res.sort(function (a, b) {
         return b.periodnumber - a.periodnumber
       });
-      for(let index = 0;index< res.length;index++){
+      for (let index = 0; index < res.length; index++) {
         let periodFrom = new Date(res[index].periodfrom);
         let periodTo = new Date(res[index].periodto);
         periodFrom.setDate(periodFrom.getDate());
         periodTo.setDate(periodTo.getDate());
-        this.receiptPeriods[index] = this.datePipe.transform(periodFrom , "MM-dd-yyyy") +' To ' +
-        this.datePipe.transform(periodTo, "MM-dd-yyyy");
+        this.receiptPeriods[index] = this.datePipe.transform(periodFrom, "MM-dd-yyyy") + ' To ' +
+          this.datePipe.transform(periodTo, "MM-dd-yyyy");
       }
     });
   }
 
-  availableReceiptPeriod(){
+  availableReceiptPeriod() {
     this.service.availableReceiptPeriod().subscribe(res => {
-      if(res.length === 1 && res[res.length-1].periodnumber != undefined) {
-          let periodFrom = new Date(res[res.length-1].periodto);
-          let periodTo = new Date(res[res.length-1].periodto);
-          periodFrom.setDate(periodTo.getDate()+1);
-          periodTo.setDate(periodTo.getDate()+14);
-          var param = {
-            periodNumber : res[res.length-1].periodnumber +1,
-            periodFrom: periodFrom,
-            periodTo: periodTo
-          }
-          this.service.storeReceiptPeriodData(param).subscribe(res => {
-          });
+      if (res.length === 1 && res[res.length - 1].periodnumber != undefined) {
+        let periodFrom = new Date(res[res.length - 1].periodto);
+        let periodTo = new Date(res[res.length - 1].periodto);
+        periodFrom.setDate(periodTo.getDate() + 1);
+        periodTo.setDate(periodTo.getDate() + 14);
+        var param = {
+          periodNumber: res[res.length - 1].periodnumber + 1,
+          periodFrom: periodFrom,
+          periodTo: periodTo
+        }
+        this.service.storeReceiptPeriodData(param).subscribe(res => {
+        });
       }
     });
   }
 
   getPendingReceiptHistory() {
     var params = {
-      'receiptStatus' : 'Pending'
+      'receiptStatus': 'Pending'
     }
     this.service.allReceiptHistory(params).subscribe(res => {
       res = res.filter(function (employee) {
-        return employee.receipts !== undefined &&  employee.receipts.filename;
+        return employee.receipts !== undefined && employee.receipts.filename;
       });
       this.employeeReceiptHistories = res;
     });
@@ -141,34 +142,34 @@ export class AllEmployeeReceiptHistoryComponent implements OnInit {
     // }
     this.service.allReceiptHistory(this.receiptForm.value).subscribe(res => {
       res = res.filter(function (employee) {
-        return employee.receipts !== undefined &&  employee.receipts.filename;
+        return employee.receipts !== undefined && employee.receipts.filename;
       });
       this.employeeReceiptHistories = res;
     });
     // this.onReset();
   }
-  
-  onSave(receiptDocumentId, userId,remark, status){
-    const  params = {
-      'userId' : userId,
+
+  onSave(receiptDocumentId, userId, remark, status) {
+    const params = {
+      'userId': userId,
       'docId': receiptDocumentId,
       'receiptStatus': status,
       'remark': remark.value
     };
     this.service.updateEmployeeReceipt(params)
-    .subscribe(res => {
-      this.employeeReceiptHistories[this.employeeModelOpenIndex].receipts.remark = remark.value;
-      this.employeeReceiptHistories[this.employeeModelOpenIndex].receipts.status = status;
-      if (status === 'Approved') {
-      this.toastr.success('', 'Receipt Approved!!');
-      } else {
-        this.toastr.success('', 'Receipt Rejected!!');
-      }
-    }, err => {
-    this.toastr.success('', 'Receipt Rejected Try Again!!');
-    });
-      
-  } 
+      .subscribe(res => {
+        this.employeeReceiptHistories[this.employeeModelOpenIndex].receipts.remark = remark.value;
+        this.employeeReceiptHistories[this.employeeModelOpenIndex].receipts.status = status;
+        if (status === 'Approved') {
+          this.toastr.success('', 'Receipt Approved!!');
+        } else {
+          this.toastr.success('', 'Receipt Rejected!!');
+        }
+      }, err => {
+        this.toastr.success('', 'Receipt Rejected Try Again!!');
+      });
+
+  }
 
   logout() {
     this.service.logout();

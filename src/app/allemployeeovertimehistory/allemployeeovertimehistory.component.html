@@ -18,7 +18,7 @@
         </div>
       </div> -->
       <div class="col-md-11" >
-        <form [formGroup]="overtimeForm" (ngSubmit)="onSubmit()">
+        <!-- <form [formGroup]="overtimeForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="form-group col-md-3">
               <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
@@ -31,7 +31,6 @@
               </select>
             </div>
             <div class="form-group col-md-3">
-              <!-- <label for="sel1">Status:</label> -->
               <select class="form-control ip elementBorder" formControlName="overtimeStatus">
                 <option value="" disabled selected>Search By Status</option>
                 <option *ngFor="let overtime of overtimeStatus" [value]="overtime">
@@ -50,8 +49,9 @@
               </div>
             </div>
           </div>
-      </form>
-      </div>
+      </form> -->
+      <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" />
+    </div>
     </div>
     <div class="row ml-2">
       <div class="col-md-1 counting">Sr.No</div>
@@ -68,11 +68,11 @@
         </div>
       </div>
     </div>
-    <div class="row ml-2" *ngFor="let employeeOvertimeHistory of employeeOvertimeHistories;let empIndex=index" >
-      <div class="col-md-1 counting" *ngIf="employeeOvertimeHistory.overtimes !== undefined">{{empIndex+1}}</div>
-      <div class="col-md-11" *ngIf="employeeOvertimeHistory.overtimes !== undefined">
+    <div class="row ml-2" *ngFor="let employeeOvertimeHistory of employeeOvertimeHistories | searchPipeFilter:searchTerm;let empIndex=index" >
+      <div class="col-md-1 counting" >{{empIndex+1}}</div>
+      <div class="col-md-11" >
         <div class="details">
-          <div class="row">
+          <div class="row"> 
             <div class="col-md-3 name">{{employeeOvertimeHistory.fname}} {{employeeOvertimeHistory.lname}}</div>
             <div class="col-md-3 name">{{employeeOvertimeHistory.overtimes.period}}</div>
             <div class="col-md-1 name">{{employeeOvertimeHistory.overtimes.hour}}</div>

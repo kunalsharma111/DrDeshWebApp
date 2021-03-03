@@ -18,13 +18,11 @@
         </div>
       </div> -->
       <div class="col-md-11" >
-        <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
+        <!-- <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="form-group col-md-2">
-              <!-- <div class="input-group"> -->
                 <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
                 formControlName="name">
-              <!-- </div> -->
             </div>
               <div class="form-group col-md-2">
                   <input type="text" class="form-control ip elementBorder" formControlName="vacationFrom" onfocus="(this.type='date')" onblur="(this.type='text')"  placeholder="From Date">
@@ -47,8 +45,9 @@
                 <input type="button" value="Reset" (click)="ngOnInit()" class="ip btn btn-info btn-block">
               </div>
           </div>
-      </form>
-      </div>
+      </form> -->
+      <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" />
+    </div>
     </div>
     <div class="row ml-2">
       <div class="col-md-1 counting">Sr.No</div>
@@ -64,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="row ml-2" *ngFor="let  employeeVacationHistory of employeeVacationHistories;let employeeVacationHistoryIndex=index" >
+    <div class="row ml-2" *ngFor="let  employeeVacationHistory of employeeVacationHistories | searchPipeFilter:searchTerm;let employeeVacationHistoryIndex=index" >
       <!-- <span *ngIf="employeeVacationHistory.Vacations !== undefined"> -->
       <div class="col-md-1 counting" *ngIf="employeeVacationHistory.Vacations !== undefined">{{employeeVacationHistoryIndex+1}}</div>
       <div class="col-md-11" *ngIf="employeeVacationHistory.Vacations !== undefined">

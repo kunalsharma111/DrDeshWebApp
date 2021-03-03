@@ -17,9 +17,10 @@ import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class AllEmployeeOvertimeHistoryComponent implements OnInit {
   modalRef: BsModalRef;
+  searchTerm;
   // @ViewChild('search', { static: true }) search: ElementRef;
   constructor(public service: DataTransferService, public toastr: ToastrService, public fb: FormBuilder
-    ,private datePipe: DatePipe) { }
+    , private datePipe: DatePipe) { }
 
   overtimeStatus = ['Pending', 'Approved', 'Rejected'];
   employeeOvertimeHistories = [];
@@ -31,7 +32,7 @@ export class AllEmployeeOvertimeHistoryComponent implements OnInit {
   employeeModelOpenIndex;
   employeeData = {
     fname: '',
-    email:'',
+    email: '',
     _id: '',
     overtimes: {
       _id: '',
@@ -44,7 +45,7 @@ export class AllEmployeeOvertimeHistoryComponent implements OnInit {
   };
 
   get f() { return this.overtimeForm.controls; }
-  
+
   ngOnInit() {
     this.overtimeForm = this.fb.group({
       name: ['', Validators.required],
@@ -76,48 +77,48 @@ export class AllEmployeeOvertimeHistoryComponent implements OnInit {
     this.loadFilesFromUrl = str.substring(0, str.indexOf('api'));
   }
 
-  getReceiptPeriod(){
+  getReceiptPeriod() {
     this.service.getReceiptPeriodData().subscribe(res => {
-      res.sort(function(a,b){
+      res.sort(function (a, b) {
         return b.periodnumber - a.periodnumber
       });
-      for(let index = 0;index< res.length;index++){
+      for (let index = 0; index < res.length; index++) {
         let periodFrom = new Date(res[index].periodfrom);
         let periodTo = new Date(res[index].periodto);
         periodFrom.setDate(periodFrom.getDate());
         periodTo.setDate(periodTo.getDate());
-        this.overtimePeriods[index] = this.datePipe.transform(periodFrom , "MM-dd-yyyy") +' To ' +
-        this.datePipe.transform(periodTo, "MM-dd-yyyy");
+        this.overtimePeriods[index] = this.datePipe.transform(periodFrom, "MM-dd-yyyy") + ' To ' +
+          this.datePipe.transform(periodTo, "MM-dd-yyyy");
       }
     });
   }
 
   //add period
-  availableReceiptPeriod(){
+  availableReceiptPeriod() {
     this.service.availableReceiptPeriod().subscribe(res => {
-      if(res.length === 1 && res[res.length-1].periodnumber != undefined) {
-          let periodFrom = new Date(res[res.length-1].periodto);
-          let periodTo = new Date(res[res.length-1].periodto);
-          periodFrom.setDate(periodTo.getDate()+1);
-          periodTo.setDate(periodTo.getDate()+14);
-          var param = {
-            periodNumber : res[res.length-1].periodnumber +1,
-            periodFrom: periodFrom,
-            periodTo: periodTo
-          }
-          this.service.storeReceiptPeriodData(param).subscribe(res => {
-          });
+      if (res.length === 1 && res[res.length - 1].periodnumber != undefined) {
+        let periodFrom = new Date(res[res.length - 1].periodto);
+        let periodTo = new Date(res[res.length - 1].periodto);
+        periodFrom.setDate(periodTo.getDate() + 1);
+        periodTo.setDate(periodTo.getDate() + 14);
+        var param = {
+          periodNumber: res[res.length - 1].periodnumber + 1,
+          periodFrom: periodFrom,
+          periodTo: periodTo
+        }
+        this.service.storeReceiptPeriodData(param).subscribe(res => {
+        });
       }
     });
   }
 
   getPendingOvertimeHistory() {
     var params = {
-      'overtimeStatus' : 'Pending'
+      'overtimeStatus': 'Pending'
     }
     this.service.allOvertimeHistory(params).subscribe(res => {
       res = res.filter(function (employee) {
-        return employee.overtimes !== undefined ;
+        return employee.overtimes !== undefined;
       });
       this.employeeOvertimeHistories = res;
     });
@@ -140,34 +141,34 @@ export class AllEmployeeOvertimeHistoryComponent implements OnInit {
     // }
     this.service.allOvertimeHistory(this.overtimeForm.value).subscribe(res => {
       res = res.filter(function (employee) {
-        return employee.overtimes !== undefined ;
+        return employee.overtimes !== undefined;
       });
       this.employeeOvertimeHistories = res;
     });
     // this.onReset();
   }
-  
-  onSave(overtimeDocumentId, userId,remark, status){
-    const  params = {
-      'userId' : userId,
+
+  onSave(overtimeDocumentId, userId, remark, status) {
+    const params = {
+      'userId': userId,
       'docId': overtimeDocumentId,
       'overtimeStatus': status,
       'remark': remark.value
     };
     this.service.updateEmployeeOvertime(params)
-    .subscribe(res => {
-      this.employeeOvertimeHistories[this.employeeModelOpenIndex].overtimes.remark = remark.value;
-      this.employeeOvertimeHistories[this.employeeModelOpenIndex].overtimes.status = status;
-      if (status === 'Approved') {
-      this.toastr.success('', 'Overtime Approved!!');
-      } else {
-        this.toastr.success('', 'Overtime Rejected!!');
-      }
-    }, err => {
-    this.toastr.success('', 'Overtime Rejected Try Again!!');
-    });
-      
-  } 
+      .subscribe(res => {
+        this.employeeOvertimeHistories[this.employeeModelOpenIndex].overtimes.remark = remark.value;
+        this.employeeOvertimeHistories[this.employeeModelOpenIndex].overtimes.status = status;
+        if (status === 'Approved') {
+          this.toastr.success('', 'Overtime Approved!!');
+        } else {
+          this.toastr.success('', 'Overtime Rejected!!');
+        }
+      }, err => {
+        this.toastr.success('', 'Overtime Rejected Try Again!!');
+      });
+
+  }
 
   logout() {
     this.service.logout();

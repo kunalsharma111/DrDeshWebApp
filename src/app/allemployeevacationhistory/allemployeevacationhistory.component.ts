@@ -24,9 +24,10 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
   searchString = '';
   vacationForm: FormGroup;
   submitted = false;
+  searchTerm;
   employeeData = {
     fname: '',
-    email:'',
+    email: '',
     Vacations: {
       _id: '',
       remark: '',
@@ -40,7 +41,7 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
   };
   employeeModelOpenIndex;
   get f() { return this.vacationForm.controls; }
-  
+
   ngOnInit() {
     this.vacationForm = this.fb.group({
       name: ['', Validators.required],
@@ -70,16 +71,16 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
     //     this.fillterDate();
     //     });
     //   });
-    
+
   }
 
   getPendingVacationHistory() {
     var params = {
-      'vacationStatus' : 'Pending'
+      'vacationStatus': 'Pending'
     }
     this.service.getAllEmployeeVacationHistory(params).subscribe(res => {
-      if(res[0].Vacations === undefined) {
-        this.employeeVacationHistories  = [];
+      if (res[0].Vacations === undefined) {
+        this.employeeVacationHistories = [];
       } else {
         this.employeeVacationHistories = res;
         this.fillterDate();
@@ -89,10 +90,10 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
 
   fillterDate() {
     this.employeeVacationHistories.filter(employee =>
-      employee.Vacations.vacationFrom = employee.Vacations.vacationFrom.substring(5, 7) + '-' + employee.Vacations.vacationFrom.substring(8, 10) + '-' +employee.Vacations.vacationFrom.substring(0, 4) 
+      employee.Vacations.vacationFrom = employee.Vacations.vacationFrom.substring(5, 7) + '-' + employee.Vacations.vacationFrom.substring(8, 10) + '-' + employee.Vacations.vacationFrom.substring(0, 4)
     );
     this.employeeVacationHistories.filter(employee =>
-      employee.Vacations.vacationTo = employee.Vacations.vacationTo.substring(5, 7) + '-' + employee.Vacations.vacationTo.substring(8, 10) + '-' +employee.Vacations.vacationTo.substring(0, 4)
+      employee.Vacations.vacationTo = employee.Vacations.vacationTo.substring(5, 7) + '-' + employee.Vacations.vacationTo.substring(8, 10) + '-' + employee.Vacations.vacationTo.substring(0, 4)
     );
   }
 
@@ -113,42 +114,43 @@ export class AllEmployeeVacationHistoryComponent implements OnInit {
     // }
     this.service.getAllEmployeeVacationHistory(this.vacationForm.value).subscribe(res => {
       res = res.filter(function (employee) {
-        return employee.Vacations !== undefined ;
+        return employee.Vacations !== undefined;
       });
-      this.employeeVacationHistories =  res;
+      this.employeeVacationHistories = res;
       this.fillterDate();
     });
     // this.onReset();
   }
-  
-  onSave(VacationDocumentId, userId,remark, status){
-    const  params = {
-      'userId' : userId,
+
+  onSave(VacationDocumentId, userId, remark, status) {
+    const params = {
+      'userId': userId,
       'docId': VacationDocumentId,
       'vacationStatus': status,
       'remark': remark.value
     };
     this.service.updateEmployeeVacation(params)
-    .subscribe(res => {
-    this.employeeVacationHistories[this.employeeModelOpenIndex].Vacations.remark = remark.value;
-    this.employeeVacationHistories[this.employeeModelOpenIndex].Vacations.vacationStatus = status;
-    if (status === 'Approved') {
-    this.toastr.success('', 'Leave Approved!!');
-    } else {
-    this.toastr.success('', 'Leave Rejected!!');
-    }
-    var param = {'email': this.employeeData.email,
-                  'name': this.employeeData.fname
-                };
-    this.service.getAllAdmins(param)
-    .subscribe(res => {
-    }, eroro=> {
-    })
-    }, err => {
-    this.toastr.success('', 'Leave Rejected Try Again!!');
-    });
-      
-  } 
+      .subscribe(res => {
+        this.employeeVacationHistories[this.employeeModelOpenIndex].Vacations.remark = remark.value;
+        this.employeeVacationHistories[this.employeeModelOpenIndex].Vacations.vacationStatus = status;
+        if (status === 'Approved') {
+          this.toastr.success('', 'Leave Approved!!');
+        } else {
+          this.toastr.success('', 'Leave Rejected!!');
+        }
+        var param = {
+          'email': this.employeeData.email,
+          'name': this.employeeData.fname
+        };
+        this.service.getAllAdmins(param)
+          .subscribe(res => {
+          }, eroro => {
+          })
+      }, err => {
+        this.toastr.success('', 'Leave Rejected Try Again!!');
+      });
+
+  }
 
   logout() {
     this.service.logout();

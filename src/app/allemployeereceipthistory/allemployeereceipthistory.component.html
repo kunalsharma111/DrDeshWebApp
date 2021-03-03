@@ -17,13 +17,19 @@
             [(ngModel)]="searchString" #search>
         </div>
       </div> -->
-      <div class="col-md-11" >
+      <div class="form-group">
+        <input type="text" [(ngModel)]="searchTerm" class="form-control ip elementBorder" style="margin-left: -20px;" placeholder="Serach any fields" />
+      </div>
+      <div class="col-md-11" style="margin-top: -52px;">
+        
         <form [formGroup]="receiptForm" (ngSubmit)="onSubmit()">
           <div class="row">
-            <div class="form-group col-md-3">
+            <!-- <div class="form-group col-md-3">
               <input type="text" class="form-control ip" placeholder="Search By Name" style="border:2px solid #87C442;"
               formControlName="name">
-            </div>
+              <input type="text" [(ngModel)]="searchTerm" class="form-control ip elementBorder" placeholder="Serach any fields" />
+            </div> -->
+            <div class="form-group col-md-3"></div>
             <div class="form-group col-md-3">
               <select class="form-control ip elementBorder" formControlName="receiptPeriod" placeholder="Period">
                   <option value="" disabled selected>Select Payroll Period</option>
@@ -31,7 +37,6 @@
               </select>
             </div>
             <div class="form-group col-md-3">
-              <!-- <label for="sel1">Status:</label> -->
               <select class="form-control ip elementBorder" formControlName="receiptStatus">
                 <option value="" disabled selected>Select Receipt Status</option>
                 <option *ngFor="let receipt of receiptStatus" [value]="receipt">
@@ -40,7 +45,7 @@
               </select>
             </div>
             <div class="col-md-3">
-              <div class="row">
+              <div class="row mt-2">
                 <div class="col-md-6">
                   <input type="submit" value="Submit" class="btn btn-info btn-block">
                 </div>
@@ -51,6 +56,7 @@
             </div>
           </div>
       </form>
+        <!-- <input type="text" [(ngModel)]="searchTerm" class="ip" placeholder="Serach any fields" /> -->
       </div>
     </div>
     <div class="row ml-2">
@@ -68,13 +74,13 @@
         </div>
       </div>
     </div>
-    <div class="row ml-2" *ngFor="let  employeeReceiptHistory of employeeReceiptHistories;let employeeReceiptHistoryIndex=index" >
+    <div class="row ml-2" *ngFor="let  employeeReceiptHistory of employeeReceiptHistories | searchPipeFilter:searchTerm; let employeeReceiptHistoryIndex=index" >
       <!-- <span *ngIf="employeeVacationHistory.Vacations !== undefined"> -->
       <div class="col-md-1 counting" *ngIf="employeeReceiptHistory.receipts !== undefined">{{employeeReceiptHistoryIndex+1}}</div>
       <div class="col-md-11" *ngIf="employeeReceiptHistory.receipts !== undefined">
         <div class="details">
           <div class="row">
-            <div class="col-md-3 name">{{employeeReceiptHistory.fname}} {{employeeReceiptHistory.lname}}</div>
+            <div class="col-md-3 name">{{employeeReceiptHistory.fname}} {{employeeReceiptHistory.lname}}</div> 
             <div class="col-md-3 name">{{employeeReceiptHistory.receipts.period}}</div>
             <div class="col-md-1 name">{{employeeReceiptHistory.receipts.amount}}</div>
             <div class="col-md-1 name">{{employeeReceiptHistory.receipts.status}}</div>

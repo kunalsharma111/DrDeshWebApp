@@ -39,7 +39,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { FilterdatePipe } from './filterdate.pipe';
 import { CapitalizePipe } from './capitalize.pipe';
 import { CombinepatComponent } from './combinepat/combinepat.component';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ReceiptSubmitComponent } from './receiptsubmit/receiptsubmit.component';
 import { EmployeeReceiptHistoryComponent } from './receipthistory/receipthistory.component';
@@ -52,6 +52,8 @@ import { AllEmployeeLectureHistoryComponent } from './allemployeelecturehistory/
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipeFilterPipe } from './search-pipe-filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +94,8 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     AllEmployeeOvertimeHistoryComponent,
     LectureSubmitComponent,
     EmployeeLectureHistoryComponent,
-    AllEmployeeLectureHistoryComponent
+    AllEmployeeLectureHistoryComponent,
+    SearchPipeFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -107,13 +110,14 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     Ng4LoadingSpinnerModule.forRoot(),
     NgSelectModule,
     NgOptionHighlightModule,
+    Ng2SearchPipeModule
   ],
   providers: [DataTransferService, DatePipe,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

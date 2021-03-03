@@ -81,14 +81,14 @@
           <div class="col-md-3" >
             <figure>
                 <div *ngIf="roleType !== 'Admin'">
-                    <span [routerLink]="['/employeevacation']">Vacation Tracker<i
+                    <span [routerLink]="['/employeevacation']">PTO Tracker<i
                             class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    <span>Vacation Tracker</span>
+                    <span>PTO Tracker</span>
                 </div>
                 <div *ngIf="roleType === 'Admin'">
-                    <span [routerLink]="['/allvacationhistory']">Vacation Approval<i
+                    <span [routerLink]="['/allvacationhistory']">PTO Approval<i
                          class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    <span>Vacation Approval</span>
+                    <span>PTO Approval</span>
                 </div>
             </figure>
           </div>
