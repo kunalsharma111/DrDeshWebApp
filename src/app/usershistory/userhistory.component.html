@@ -51,8 +51,8 @@
                 tooltip="Update User" placement="right">
               </i>
             </div>
-            <div class="col-md-2">
-              <i class="fa fa-key" aria-hidden="true" data-toggle="modal" data-target="#myModalpassword" style="color: #87c442; float: right;"
+            <div class="col-md-2" style="text-align: center;">
+              <i class="fa fa-key" aria-hidden="true" data-toggle="modal" data-target="#myModalpassword" style="color: #87c442;"
                 (click)="setEmployeeDataForPassword(employeeHistory, employeeHistoryIndex)" tooltip="Change Password" placement="right">
               </i>
             </div>
@@ -141,7 +141,7 @@
       <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
           aria-hidden="true"></i></p>
       <div class="modal-body">
-        <h4 class="ap">Update {{employeeData.fname}} Password</h4>
+        <h4 class="ap">Update Password For {{employeeData.fname}}</h4>
         <hr>
         <div class="col-md-12 text-center">
           <form [formGroup]="resetPasswordForm" (ngSubmit)="checkAdminPassword()">
@@ -189,7 +189,7 @@
                 <div *ngIf="ff.password.errors.minlength">Password must be 8 character long</div>
               </div>
             </div>
-            <button type="submit" class="btn btn-custom password" style="color: white;">Change Password</button>
+            <button type="submit" class="btn btn-custom password mt-2 mb-3" style="color: white;">Change Password</button>
           </form>
         </div>
       </div>

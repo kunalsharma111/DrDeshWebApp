@@ -12,13 +12,12 @@ a:focus {
   background-color: #d1e8b6;
 }
 
-.elementBorder{
-  border: 1px solid #87C442 !important;
+.elementBorder {
+  border: 1px solid #87c442 !important;
 }
 
 .selectBorder {
-  border: 2px solid #87C442;
-
+  border: 2px solid #87c442;
 }
 .btn {
   margin-top: -1vh;
@@ -27,7 +26,7 @@ a:focus {
 .topMarginForAllValidation {
   margin-top: 5px;
   color: #dc3545;
-  }
+}
 .btn-blue2 {
   background-color: #87c442;
 }
@@ -280,7 +279,7 @@ a:focus {
     width: 60px;
     margin-left: -55px;
   }
-  .sidebar-nav > li > a  {
+  .sidebar-nav > li > a {
     margin-left: 20px;
   }
   #wrapper.toggled #content-wrapper {
@@ -390,7 +389,7 @@ a:focus {
   // padding-right: 50px;padding-left: 100px;
 }
 
-.reduceTopMargin{
+.reduceTopMargin {
   margin-top: -28px;
 }
 
@@ -461,7 +460,7 @@ a:focus {
   padding-left: 50px;
 }
 .noEmployeeData {
-  margin-left: 18rem!important;
+  margin-left: 18rem !important;
   margin-top: 50px;
 }
 .headerRowFont {
@@ -521,7 +520,8 @@ a:focus {
   padding-right: 20px;
   margin-left: -6vw;
   border: 2px solid $green;
-  width: 70vw;
+  width: 50vw;
+  padding-bottom: 20px;
 }
 .modal {
   overflow-y: auto;
@@ -800,23 +800,23 @@ input[type="checkbox"]:checked + label:before {
     outline: none;
   }
 }
-@media (max-width:1537px){
+@media (max-width: 1537px) {
   .name {
     display: inline;
     font-size: 14px;
   }
 }
-  @media (max-width:1367px){
-    .name {
-      display: inline;
-      font-size: 13px;
-      font-weight: 400;
-    }
+@media (max-width: 1367px) {
+  .name {
+    display: inline;
+    font-size: 13px;
+    font-weight: 400;
   }
-  @media (max-width:1025){
-    .name {
-      display: inline;
-      font-size: 8px;
-      font-weight: 200;
-    }
+}
+@media (max-width: 1025) {
+  .name {
+    display: inline;
+    font-size: 8px;
+    font-weight: 200;
   }
+}

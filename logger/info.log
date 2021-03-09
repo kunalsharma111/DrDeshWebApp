@@ -13108,3 +13108,5 @@
 {"message":"Name of current user isadmin","level":"info","timestamp":"2021-03-09T05:24:34.518Z"}
 {"message":"Name of current user isadmin","level":"info","timestamp":"2021-03-09T05:24:45.526Z"}
 {"message":"Invalid password email admin@gmail.com","level":"info","timestamp":"2021-03-09T05:24:57.604Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-03-09T06:34:58.609Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-03-09T06:35:00.170Z"}
