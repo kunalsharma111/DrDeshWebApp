@@ -34,17 +34,19 @@ import { AllEmployeeOvertimeHistoryComponent } from './allemployeeovertimehistor
 import { LectureSubmitComponent } from './lecturesubmit/lecturesubmit.component';
 import { EmployeeLectureHistoryComponent } from './lecturehistory/lecturehistory.component';
 import { AllEmployeeLectureHistoryComponent } from './allemployeelecturehistory/allemployeelecturehistory.component';
-
+import { InvoicesubmitComponent } from './invoicesubmit/invoicesubmit.component';
+import { InvoicehistoryComponent } from './invoicehistory/invoicehistory.component';
+import { AllEmployeeInvoiceHistoryComponent } from './all-employee-invoice-history/all-employee-invoice-history.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'dash', component: DashboardComponent, canActivate: [RouteGuard] },
-  {path: 'employeedash', component: EmployeeDashboardComponent, canActivate: [RouteGuard]},
+  { path: 'employeedash', component: EmployeeDashboardComponent, canActivate: [RouteGuard] },
   { path: 'employeefacility', component: EmployeeFacilityComponent },
   { path: 'ak', component: AkComponent },
   { path: 'patient', component: PatientComponent, canActivate: [RouteGuard] },
-  { path: 'showdocuments', component: ShowEmployeeDocuemntComponent,  canActivate: [RouteGuard]  },
-  { path: 'userlist', component: AllUserListComponent,  canActivate: [RouteGuard]  },
+  { path: 'showdocuments', component: ShowEmployeeDocuemntComponent, canActivate: [RouteGuard] },
+  { path: 'userlist', component: AllUserListComponent, canActivate: [RouteGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [RouteGuard] },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'facility', component: FacilityComponent, canActivate: [RouteGuard] },
@@ -52,25 +54,28 @@ const routes: Routes = [
   { path: 'provider', component: ProviderComponent, canActivate: [RouteGuard] },
   { path: 'expensive', component: ExpensiveComponent, canActivate: [RouteGuard] },
   { path: 'reports', component: ReportsComponent, canActivate: [RouteGuard] },
-  { path: 'cpat', component: CombinepatComponent,  canActivate: [RouteGuard]  },
-  { path: 'attachfile', component: AttchFileComponent,  canActivate: [RouteGuard]  },
-  { path: 'employeevacation', component: EmployeeVacationComponent,  canActivate: [RouteGuard]  },
-  { path: 'vacationhistory', component: EmployeeVacationHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'allvacationhistory', component: AllEmployeeVacationHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'shareddashboard', component: SharedDashboardComponent,  canActivate: [RouteGuard]  },
-  { path: 'moduledashboard', component: ModuleDashboardComponent,  canActivate: [RouteGuard]  },
-  { path: 'insuranceinformation', component: InsuranceInformationComponent,  canActivate: [RouteGuard]  },
-  { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent,  canActivate: [RouteGuard]  },
-  { path: 'receipt', component: ReceiptSubmitComponent,  canActivate: [RouteGuard]  },
-  { path: 'receipthistory', component: EmployeeReceiptHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'receiptapproval', component: AllEmployeeReceiptHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'saveovertime', component: OvertimeSubmitComponent,  canActivate: [RouteGuard]  },
-  { path: 'overtimehistory', component: EmployeeOvertimeHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'allovertimehistory', component: AllEmployeeOvertimeHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'savelecture', component: LectureSubmitComponent,  canActivate: [RouteGuard]  },
-  { path: 'lecturehistory', component: EmployeeLectureHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: 'lectureapproval', component: AllEmployeeLectureHistoryComponent,  canActivate: [RouteGuard]  },
-  { path: '**', component: DashboardComponent,  canActivate: [RouteGuard]  }
+  { path: 'cpat', component: CombinepatComponent, canActivate: [RouteGuard] },
+  { path: 'attachfile', component: AttchFileComponent, canActivate: [RouteGuard] },
+  { path: 'employeevacation', component: EmployeeVacationComponent, canActivate: [RouteGuard] },
+  { path: 'vacationhistory', component: EmployeeVacationHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'allvacationhistory', component: AllEmployeeVacationHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'shareddashboard', component: SharedDashboardComponent, canActivate: [RouteGuard] },
+  { path: 'moduledashboard', component: ModuleDashboardComponent, canActivate: [RouteGuard] },
+  { path: 'insuranceinformation', component: InsuranceInformationComponent, canActivate: [RouteGuard] },
+  { path: 'employeefacilityapproval', component: EmployeeFacilityApprovalComponent, canActivate: [RouteGuard] },
+  { path: 'receipt', component: ReceiptSubmitComponent, canActivate: [RouteGuard] },
+  { path: 'receipthistory', component: EmployeeReceiptHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'receiptapproval', component: AllEmployeeReceiptHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'saveovertime', component: OvertimeSubmitComponent, canActivate: [RouteGuard] },
+  { path: 'overtimehistory', component: EmployeeOvertimeHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'allovertimehistory', component: AllEmployeeOvertimeHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'savelecture', component: LectureSubmitComponent, canActivate: [RouteGuard] },
+  { path: 'lecturehistory', component: EmployeeLectureHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'lectureapproval', component: AllEmployeeLectureHistoryComponent, canActivate: [RouteGuard] },
+  { path: 'saveinvoice', component: InvoicesubmitComponent, canActivate: [RouteGuard] },
+  { path: 'invoicehistory', component: InvoicehistoryComponent, canActivate: [RouteGuard] },
+  { path: 'invoiceapproval', component: AllEmployeeInvoiceHistoryComponent, canActivate: [RouteGuard] },
+  { path: '**', component: DashboardComponent, canActivate: [RouteGuard] }
 ];
 
 @NgModule({

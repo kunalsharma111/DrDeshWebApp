@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/platform-server": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@auth0/angular-jwt": "^5.0.2",
     "@ng-select/ng-option-highlight": "0.0.4",
     "@ng-select/ng-select": "^3.7.3",
     "@nguniversal/express-engine": "^8.2.6",

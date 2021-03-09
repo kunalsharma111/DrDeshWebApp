@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-12">
         <button type="button" class="btn-outline-custom btn-lg iambtn"
-        [routerLink]="['/register']">Creat New User</button>
+        [routerLink]="['/register']">Create New User</button>
         <h2 class="content-title">Users List</h2>
       </div>
       <div class="box"></div>
@@ -27,7 +27,8 @@
             <div class="col-md-3 name headerRowFont">Name</div>
             <div class="col-md-3 name headerRowFont">Email</div>
             <div class="col-md-2 name headerRowFont">User Role</div>
-            <div class="col-md-3 edit headerRowFont">Action</div>
+            <div class="col-md-2 edit headerRowFont">Action</div>
+            <div class="col-md-2 edit headerRowFOnt">Reset Password</div>
           </div>
         </div>
       </div>
@@ -42,12 +43,17 @@
             <div class="col-md-2 name">
               {{employeeHistory.userrole === 'Provider' ? 'Employee' : employeeHistory.userrole}}
             </div>
-            <div class="col-md-3 edit">
+            <div class="col-md-2 edit">
               <i class="fa fa-pencil" aria-hidden="true" data-toggle="modal"
                 data-target="#myModal" 
                 style="color: #87c442;"
                 (click)="setEmployeeData(employeeHistory, employeeHistoryIndex)"
                 tooltip="Update User" placement="right">
+              </i>
+            </div>
+            <div class="col-md-2">
+              <i class="fa fa-key" aria-hidden="true" data-toggle="modal" data-target="#myModalpassword" style="color: #87c442; float: right;"
+                (click)="setEmployeeDataForPassword(employeeHistory, employeeHistoryIndex)" tooltip="Change Password" placement="right">
               </i>
             </div>
           </div>
@@ -128,3 +134,65 @@
 </div>
 
 
+
+<div class="modal fade" id="myModalpassword" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content mc1">
+      <p style="text-align: end; margin-top:20px; cursor: pointer;" data-dismiss="modal"><i class="fa fa-times"
+          aria-hidden="true"></i></p>
+      <div class="modal-body">
+        <h4 class="ap">Update {{employeeData.fname}} Password</h4>
+        <hr>
+        <div class="col-md-12 text-center">
+          <form [formGroup]="resetPasswordForm" (ngSubmit)="checkAdminPassword()">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-5" style="font-weight: 700;">Enter Your Admin Password : </div>
+                <div class="col-md-5"><input type="password" formControlName="adminPassword" class="form-control"
+                    [ngClass]="{ 'is-invalid': formSubmitted && ff.adminPassword.errors }" placeholder="Admin Password"></div>
+              </div>
+              <div *ngIf="formSubmitted && ff.adminPassword.errors" class="invalid-feedback">
+                <div *ngIf="ff.adminPassword.errors.required">Password is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-5">
+                  <label style="font-weight: 700;">Enter New Password for {{employeeData.fname}} : </label>
+                </div>
+                <div class="col-md-5">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control password-type"
+                    formControlName="password" [ngClass]="{ 'is-invalid': formSubmitted && ff.password.errors }"
+                    placeholder="Password">
+                </div>
+              </div>
+              <div *ngIf="formSubmitted && ff.password.errors" class="invalid-feedback">
+                <div *ngIf="ff.password.errors.required">Password is required</div>
+                <div *ngIf="ff.password.errors.pattern">Enter Strong Password</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-5">
+                  <label style="font-weight: 700;">Confirm New Password for {{employeeData.fname}} : </label>
+                </div>
+                <div class="col-md-5">
+                  <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control password-type"
+                    formControlName="confirmPassword" [ngClass]="{ 'is-invalid': formSubmitted && ff.confirmPassword.errors }"
+                    placeholder="Confirm Password">
+                </div>
+              </div>
+              <div *ngIf="formSubmitted && ff.confirmPassword.errors" style="color: red;">
+                <div *ngIf="ff.confirmPassword.errors.required">Confirm Password is required</div>
+                <div *ngIf="ff.confirmPassword.errors.mustMatch">Password and Confirm Password must match with each other.</div>
+                <div *ngIf="ff.password.errors.required">Password is required</div>
+                <div *ngIf="ff.password.errors.minlength">Password must be 8 character long</div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-custom password" style="color: white;">Change Password</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -52,6 +52,9 @@ import { AllEmployeeLectureHistoryComponent } from './allemployeelecturehistory/
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+import { InvoicesubmitComponent } from './invoicesubmit/invoicesubmit.component';
+import { InvoicehistoryComponent } from './invoicehistory/invoicehistory.component';
+import { AllEmployeeInvoiceHistoryComponent } from './all-employee-invoice-history/all-employee-invoice-history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +95,10 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     AllEmployeeOvertimeHistoryComponent,
     LectureSubmitComponent,
     EmployeeLectureHistoryComponent,
-    AllEmployeeLectureHistoryComponent
+    AllEmployeeLectureHistoryComponent,
+    InvoicesubmitComponent,
+    InvoicehistoryComponent,
+    AllEmployeeInvoiceHistoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

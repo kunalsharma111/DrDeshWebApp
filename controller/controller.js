@@ -2101,6 +2101,37 @@ router.post('/lecturesubmit', verifyToken, upload.array('images[]', 10), (req, r
     })
 })
 
+router.post('/invoicesubmit', verifyToken, upload.array('images[]', 10), (req, res) => {
+    var collection = JSON.parse(req.body.collection);
+    userModel.find({_id: req.userId}, (error, document) => {
+        if(!error) {
+            for(let index=0;index<req.files.length; index++) {
+                var fileName = req.files[index].filename != undefined ? req.files[index].filename : '';
+                var invoice = {
+                    filename: fileName,
+                    status: 'Pending',
+                    savedon: new Date(),
+                    savedby: currentuser,
+                    amount: collection[index].amount,
+                    comment: collection[index].comment,
+                    period: collection[index].period,
+                    remark: ''
+                }
+                document[0].invoices.push(invoice);
+            }
+
+            document[0].save().then(ress => {
+            res.send(document);
+            }, err => {
+                console.log(err);
+                res.send(error);
+            })
+        } else {
+            res.send(error);
+        }
+    })
+})
+
 router.post('/getovertimehistory', verifyToken, (req, res) => {
     var overtimeQuery;
     if(req.body.overtimePeriod != null && req.body.overtimePeriod !== undefined && req.body.overtimePeriod != ''
@@ -2195,6 +2226,60 @@ router.post('/getlecturehistory', verifyToken, (req, res) => {
                 }
             },
             {"$match": lectureQuery
+            }
+        ]).then(doc => {
+            if(doc.length != 0) {
+                res.json(doc);
+            } else {
+                res.json([]);
+            }
+        }, err => {
+            res.json(err);
+        });
+});
+
+
+router.post('/getinvoicehistory', verifyToken, (req, res) => {
+    var invoiceQuery;
+    if(req.body.invoicePeriod != null && req.body.invoicePeriod !== undefined && req.body.invoicePeriod != ''
+       && req.body.invoiceStatus != null && req.body.invoiceStatus !== undefined && req.body.invoiceStatus != '') {
+        invoiceQuery =  {
+                    "$and":[
+                        {"invoices.period": req.body.invoicePeriod},
+                        {'_id': mongoose.Types.ObjectId(req.userId)},
+                        {"invoices.status": req.body.invoiceStatus}
+                ]} ;
+    } else if (req.body.invoicePeriod != null && req.body.invoicePeriod !== undefined && req.body.invoicePeriod != ''){
+        invoiceQuery = {
+            "$and":[
+                {"invoices.period": req.body.invoicePeriod},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
+    } else if(req.body.invoiceStatus != null && req.body.invoiceStatus !== undefined && req.body.invoiceStatus != ''){
+        invoiceQuery = {
+            "$and":[
+                {"invoices.status": req.body.invoiceStatus},
+                {'_id': mongoose.Types.ObjectId(req.userId)}
+        ]};
+    } else {
+        invoiceQuery =  {'_id': mongoose.Types.ObjectId(req.userId)};
+    }
+        userModel.aggregate([
+            { "$project":
+                {   "fname": 1,
+                    'email': 1,
+                    '_id': 1,
+                    'userrole': 1,
+                    "lname": 1,
+                    "invoices": 1
+                }
+            },
+            { "$unwind": {
+                "path": "$invoices",
+                "preserveNullAndEmptyArrays": true
+                }
+            },
+            {"$match": invoiceQuery
             }
         ]).then(doc => {
             if(doc.length != 0) {
@@ -2479,6 +2564,16 @@ router.post('/updateemployeeovertime', verifyToken, (req, res) => {
 
 router.post('/updateemployeelecture', verifyToken, (req, res) => {
     userModel.updateOne({_id: req.body.userId, 'lectures._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'lectures.$.status': req.body.lectureStatus, 'lectures.$.remark': req.body.remark} }, (errr, docc) => {
+        if(!errr) {
+            res.send(docc);
+        } else {
+            res.send(errr);
+        }
+    });
+});
+
+router.post('/updateemployeeinvoice', verifyToken, (req, res) => {
+    userModel.updateOne({_id: req.body.userId, 'invoices._id': mongoose.Types.ObjectId(req.body.docId)}, { $set: { 'invoices.$.status': req.body.invoiceStatus, 'invoices.$.remark': req.body.remark} }, (errr, docc) => {
         if(!errr) {
             res.send(docc);
         } else {
@@ -2834,6 +2929,56 @@ router.post('/getlecturehistoryforallemployee', verifyToken, (req, res) => {
     });
 });
 
+
+router.post('/getinvoicehistoryforallemployee', verifyToken, (req, res) => {
+    var queryAnd = {}, queryOr = {}, queryEmpty = {}, count = 0;
+    queryAnd['$and']=[];
+    queryOr['$or']=[];
+
+    if(req.body.name){
+        count++;
+        queryAnd["$and"].push({ 'fname': new RegExp('^'+req.body.name, 'i')});
+        queryOr["$or"].push({ 'fname': new RegExp('^'+req.body.name, 'i')});
+    }if(req.body.invoicePeriod){
+        count++;
+        queryAnd["$and"].push({ 'invoices.period': req.body.invoicePeriod});
+        queryOr["$or"].push({ 'invoices.period': req.body.invoicePeriod});
+    }
+    if(req.body.invoiceStatus){
+        count++;
+        queryAnd["$and"].push({ 'invoices.status': req.body.invoiceStatus});
+        queryOr["$or"].push({ 'invoices.status': req.body.invoiceStatus});
+    }
+
+    var invoiceQuery = (count == 0) ? queryEmpty : (count > 1) ? queryAnd : queryOr;
+    userModel.aggregate([
+        { "$project":
+            {   "fname": 1,
+                'email': 1,
+                '_id': 1,
+                'userrole': 1,
+                "lname": 1,
+                "invoices": 1
+            }
+        },
+        { "$unwind": {
+            "path": "$invoices",
+            "preserveNullAndEmptyArrays": true
+            }
+        },
+        {"$match": invoiceQuery
+        }
+    ]).then(doc => {
+        if(doc.length != 0) {
+            res.json(doc);
+        } else {
+            res.json([]);
+        }
+    }, err => {
+        res.json(err);
+    });
+});
+
 router.post('/updateemployeedetails', verifyToken, (req, res) => {
     userModel.updateOne({_id: req.body.userId}, { $set: { 'userrole': req.body.userRole, 'empstatus': req.body.userStatus} }, (errr, docc) => {
         if(!errr) {
@@ -3081,6 +3226,28 @@ router.get('/call', verifyToken, (req, res) => {
             console.log(err);
         }
     })
+})
+router.post('/changeUserPassword',verifyToken,async(req,res) => {
+    const user = await userModel.findOne({'_id':req.body.adminId});
+    console.log(user);
+    const validPassword = await bcrypt.compare(req.body.adminPassword, user.pwd);
+    console.log(validPassword);
+    if(!validPassword){ return res.status(400).json({ type: "Not Found", msg: "Admin Password is Wrong !" }); }
+    else{
+        let pass="";
+        let saltSecret="";
+        let newPassword="";
+        await bcrypt.genSalt(10, (err,salt) => {
+            bcrypt.hash(req.body.password, salt, async(err,hash) => {
+                this.pass = hash;
+                this.saltSecret = salt;
+                userPassword = await userModel.updateOne({'_id':req.body.userId},{
+                pwd : this.pass
+            });
+            })
+        })
+        return await res.status(200).json({ status: true});
+    }
 })
 function callit(doc){
     console.log(doc.length);

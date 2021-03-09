@@ -65,6 +65,17 @@ let uploadFiles = new mongoose.Schema({
     savedby: String
   })
 
+    let invoiceSubmit = new mongoose.Schema({
+    filename: String,
+    status: String,
+    amount: String,
+    comment: String,
+    period: String,
+    remark: String,
+    savedon: Date,
+    savedby: String
+  })
+
 
 let userSchema = new mongoose.Schema({
     fname: {
@@ -115,6 +126,9 @@ let userSchema = new mongoose.Schema({
     },
     lectures:{
         type:[lectureSubmit]
+    },
+    invoices:{
+        type:[invoiceSubmit]
     }
 });
 

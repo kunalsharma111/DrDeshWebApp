@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { from, fromEvent, pipe } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-userhistory',
@@ -25,10 +25,12 @@ export class AllUserListComponent implements OnInit {
   searchHistory;
   searchString = '';
   userForm: FormGroup;
+  formSubmitted = false;
+  resetPasswordForm: FormGroup;
   submitted = false;
   employeeData = {
     fname: '',
-    lname:'',
+    lname: '',
     _id: '',
     remark: '',
     email: '',
@@ -36,9 +38,22 @@ export class AllUserListComponent implements OnInit {
     userrole: ''
   };
   employeeModelOpenIndex;
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+
   get f() { return this.userForm.controls; }
-  
+  get ff() { return this.resetPasswordForm.controls; }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPassword() {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
   ngOnInit() {
+    this.createResetForm();
     this.userForm = this.fb.group({
       userRole: ['', Validators.required],
       userStatus: ['', Validators.required]
@@ -66,8 +81,56 @@ export class AllUserListComponent implements OnInit {
     this.employeeData = employee;
     this.employeeData.userrole = employee.userrole;
     this.employeeData._id = employee._id;
-    this.employeeData.empstatus = employee.empstatus === undefined ? 'Active': employee.empstatus;
+    this.employeeData.empstatus = employee.empstatus === undefined ? 'Active' : employee.empstatus;
     this.employeeModelOpenIndex = employeedocumentsIndex;
+  }
+  helper = new JwtHelperService();
+  setEmployeeDataForPassword(employee, employeedocumentsIndex) {
+    this.employeeData = employee;
+    this.employeeData.userrole = employee.userrole;
+    this.employeeData._id = employee._id;
+    this.employeeData.empstatus = employee.empstatus === undefined ? 'Active' : employee.empstatus;
+    this.employeeModelOpenIndex = employeedocumentsIndex;
+    let loginUser = localStorage.getItem('token');
+    let decodedToken = this.helper.decodeToken(loginUser);
+    this.resetPasswordForm = this.fb.group({
+      adminId: [decodedToken.subject, [Validators.required]],
+      adminPassword: ['', [Validators.required]],
+      userId: [this.employeeData._id, [Validators.required]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: this.MustMatch('password', 'confirmPassword')
+    });
+  }
+
+  createResetForm() {
+    this.resetPasswordForm = this.fb.group({
+      adminId: ['', [Validators.required]],
+      adminPassword: ['', [Validators.required]],
+      userId: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: this.MustMatch('password', 'confirmPassword')
+    });
+  }
+
+  MustMatch(password1: string, password2: string) {
+    return (formGroup: FormGroup) => {
+      const pass = formGroup.controls[password1];
+      const confirmPass = formGroup.controls[password2];
+      if (confirmPass.errors && !confirmPass.errors.mustMatch) {
+        return;
+      }
+
+      // set error on confirmPass if validation fails
+      if (pass.value !== confirmPass.value) {
+        confirmPass.setErrors({ mustMatch: true });
+      } else {
+        confirmPass.setErrors(null);
+      }
+    }
   }
 
   onReset() {
@@ -84,15 +147,31 @@ export class AllUserListComponent implements OnInit {
     this.service.updateEmployeeDetails(this.userForm.value).subscribe(res => {
       // this.employeeHistories = res;
       this.toastr.success('', 'User Details Updated')
-    this.app();
+      this.app();
 
-    }, error=> {
+    }, error => {
       this.toastr.error('Something went wrong', 'Something went wrong')
     });
   }
-  
+
   logout() {
     this.service.logout();
+  }
+
+  checkAdminPassword() {
+    this.formSubmitted = true;
+    if (this.resetPasswordForm.invalid) { return; }
+    console.log(this.resetPasswordForm.value);
+    this.service.changePassword(this.resetPasswordForm.value).subscribe((data: any) => {
+      console.log(data);
+      if (data.status == true) {
+        this.toastr.success("", "Password Changed Successfully");
+        this.createResetForm();
+      }
+    }, error => {
+      console.log(error);
+      this.toastr.error("", error.error.msg);
+    })
   }
 
   app() {

@@ -239,6 +239,24 @@
                 </div>
             </figure>
         </div>
+        <div class="col-md-3" *ngIf="roleType !== 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/saveinvoice']">Submit Invoice<i class="fa fa-arrow-right"
+                            aria-hidden="true"></i></span>
+                    <span>Submit Invoice</span>
+                </div>
+            </figure>
+        </div>
+        <div class="col-md-3" *ngIf="roleType === 'Admin'">
+            <figure>
+                <div>
+                    <span [routerLink]="['/invoiceapproval']">Approve Invoice<i class="fa fa-arrow-right"
+                            aria-hidden="true"></i></span>
+                    <span>Approve Invoice</span>
+                </div>
+            </figure>
+        </div>
       </div>
   </section>
 </div>

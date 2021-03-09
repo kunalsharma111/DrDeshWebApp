@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subject, BehaviorSubject, Observable, of } from 'rxjs';
-import { filter, delay, map, catchError, switchMap} from 'rxjs/operators';
+import { filter, delay, map, catchError, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 export interface Admin {
@@ -237,8 +237,8 @@ export class DataTransferService {
   private c4 = new Subject<string>(); cc4$ = this.c4.asObservable();
   private c5 = new Subject<string>(); cc5$ = this.c5.asObservable();
   private c6 = new Subject<string>(); cc6$ = this.c6.asObservable();
-  metcha = 'http://3.128.218.140:4000/api';
-  // metcha = 'http://localhost:4000/api';
+  // metcha = 'http://3.128.218.140:4000/api';
+  metcha = 'http://localhost:4000/api';
   // metcha = environment.api_url;
   url = `${this.metcha}/login`;
   url1 = `${this.metcha}/users`;
@@ -299,16 +299,21 @@ export class DataTransferService {
   saveReceiptRecords = `${this.metcha}/receiptsubmit`;
   saveOvertimeRecords = `${this.metcha}/overtimesubmit`;
   saveLectureRecords = `${this.metcha}/lecturesubmit`;
+  saveInvoiceRecords = `${this.metcha}/invoicesubmit`;
   getReceiptHistory = `${this.metcha}/getreceipthistory`;
   getOvertimeHistory = `${this.metcha}/getovertimehistory`;
   getLectureHistory = `${this.metcha}/getlecturehistory`;
+  getInvoiceHistory = `${this.metcha}/getinvoicehistory`;
   updateEmployeeReceiptUrl = `${this.metcha}/updateemployeereceipt`;
   updateEmployeeOvertimeUrl = `${this.metcha}/updateemployeeovertime`;
   updateEmployeeLectureUrl = `${this.metcha}/updateemployeelecture`;
+  updateEmployeeInvoiceUrl = `${this.metcha}/updateemployeeinvoice`;
   allReceiptHistoryUrl = `${this.metcha}/getreceipthistoryforallemployee`;
   allOvertimeHistoryUrl = `${this.metcha}/getovertimehistoryforallemployee`;
   allLectureHistoryUrl = `${this.metcha}/getlecturehistoryforallemployee`;
+  allInvoiceHistoryUrl = `${this.metcha}/getinvoicehistoryforallemployee`;
   getAvailableReceiptPeriod = `${this.metcha}/getavailablereceiptperiod`;
+  changeUserPassword = `${this.metcha}/changeUserPassword`;
 
   constructor(public http: HttpClient, public router: Router, public _route: ActivatedRoute) { }
 
@@ -319,9 +324,9 @@ export class DataTransferService {
   call() {
     console.log('second step');
     this.http.get<any>(this.url30).subscribe(res => {
-    console.log('output');
-    console.log(res);
-   });
+      console.log('output');
+      console.log(res);
+    });
   }
   sendotp(form) {
     return this.http.post<any>(this.url20, form.value);
@@ -470,7 +475,7 @@ export class DataTransferService {
   }
   getByid(id) {
     const params = new HttpParams().set('id', id);
-    return this.http.get<any>(this.url18, {params});
+    return this.http.get<any>(this.url18, { params });
   }
   findprerecords(data) {
     return this.http.post<any>(this.url19, data);
@@ -524,35 +529,35 @@ export class DataTransferService {
 
   getMedicine(term: string | null): Observable<any[]> {
     if (term !== null && term.length >= 3) {
-      return this.getAllExpensiveMedicine({'enterKey': term}).pipe(
+      return this.getAllExpensiveMedicine({ 'enterKey': term }).pipe(
         catchError(err => of([])),
         switchMap(medicines => {
           if (medicines === 'no') {
             return of([]);
           } else {
-            return of (medicines);
+            return of(medicines);
           }
         })
       );
     } else {
-      return  of([]);
+      return of([]);
     }
   }
 
   getPeople(term: string | null): Observable<any[]> {
     if (term !== null && term.length >= 3) {
-      return this.getAllPatientData({'enterKey': term}).pipe(
+      return this.getAllPatientData({ 'enterKey': term }).pipe(
         catchError(err => of([])),
         switchMap(patients => {
           if (patients === 'no') {
             return of([]);
           } else {
-            return of (patients);
+            return of(patients);
           }
         })
       );
     } else {
-      return  of([]);
+      return of([]);
     }
   }
 
@@ -560,7 +565,7 @@ export class DataTransferService {
   public loadRouting(): void {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(({urlAfterRedirects}: NavigationEnd) => {
+      .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
         this.history = [...this.history, urlAfterRedirects];
       });
   }
@@ -606,52 +611,65 @@ export class DataTransferService {
     return this.http.post<any>(this.updateEmployeeVacationUrl, data);
   }
 
-  updateEmployeeReceipt(data){
+  updateEmployeeReceipt(data) {
     return this.http.post<any>(this.updateEmployeeReceiptUrl, data);
   }
 
-  allReceiptHistory(data){
+  allReceiptHistory(data) {
     return this.http.post<any>(this.allReceiptHistoryUrl, data);
   }
 
-  allOvertimeHistory(data){
+  allOvertimeHistory(data) {
     return this.http.post<any>(this.allOvertimeHistoryUrl, data);
   }
 
-  allLectureHistory(data){
+  allLectureHistory(data) {
     return this.http.post<any>(this.allLectureHistoryUrl, data);
   }
 
-  updateEmployeeOvertime(data){
+  allInvoiceHistory(data) {
+    return this.http.post<any>(this.allInvoiceHistoryUrl, data);
+  }
+
+  updateEmployeeOvertime(data) {
     return this.http.post<any>(this.updateEmployeeOvertimeUrl, data);
   }
 
-  updateEmployeeLecture(data){
+  updateEmployeeLecture(data) {
     return this.http.post<any>(this.updateEmployeeLectureUrl, data);
   }
 
-  getAllAdmins(data){
+  updateEmployeeInvoice(data) {
+    console.log("in service");
+    return this.http.post<any>(this.updateEmployeeInvoiceUrl, data);
+  }
+
+  getAllAdmins(data) {
     return this.http.post<any>(this.getAllAdminsUrl, data);
   }
 
-  storeReceiptPeriodData(data){
+  storeReceiptPeriodData(data) {
     return this.http.post<any>(this.storeReceiptPeriod, data);
   }
 
-  getReceiptPeriodData(){
+  getReceiptPeriodData() {
     return this.http.post<any>(this.getReceiptPeriod, {});
   }
 
-  saveReceiptData(data){
+  saveReceiptData(data) {
     return this.http.post<any>(this.saveReceiptRecords, data);
   }
 
-  saveOvertimeData(data){
+  saveOvertimeData(data) {
     return this.http.post<any>(this.saveOvertimeRecords, data);
   }
 
-  saveLectureData(data){
+  saveLectureData(data) {
     return this.http.post<any>(this.saveLectureRecords, data);
+  }
+
+  saveInvoiceData(data) {
+    return this.http.post<any>(this.saveInvoiceRecords, data);
   }
 
   getOvertimeHistoryForEmployee(data) {
@@ -660,6 +678,10 @@ export class DataTransferService {
 
   getLectureHistoryForEmployee(data) {
     return this.http.post<any>(this.getLectureHistory, data);
+  }
+
+  getInvoiceHistoryForEmployee(data) {
+    return this.http.post<any>(this.getInvoiceHistory, data);
   }
 
   getReceiptHistoryForEmployee(data) {
@@ -676,6 +698,10 @@ export class DataTransferService {
 
   getpatient(id) {
     const params = new HttpParams().set('id', id);
-    return this.http.get<any>(this.getpatientdetail, {params});
+    return this.http.get<any>(this.getpatientdetail, { params });
+  }
+
+  changePassword(data) {
+    return this.http.post<any>(this.changeUserPassword, data);
   }
 }

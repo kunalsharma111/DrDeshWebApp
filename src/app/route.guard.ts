@@ -7,14 +7,14 @@ import { DataTransferService } from './shared/data-transfer.service';
   providedIn: 'root'
 })
 export class RouteGuard implements CanActivate {
-  constructor(public service: DataTransferService) {}
+  constructor(public service: DataTransferService) { }
   providerAllowPaths: Array<string> = ['/dash', '/patient', '/reports', '/moduledashboard',
-                                      '/employeedash', '/attachfile', '/employeedash', '/employeefacility',
-                                      '/facility', '/employeevacation', '/vacationhistory',
-                                      '/insuranceinformation', '/receipt', '/receipthistory',
-                                      '/receiptapproval', '/saveovertime', '/overtimehistory',
-                                      '/savelecture', '/lecturehistory'
-                                    ];
+    '/employeedash', '/attachfile', '/employeedash', '/employeefacility',
+    '/facility', '/employeevacation', '/vacationhistory',
+    '/insuranceinformation', '/receipt', '/receipthistory',
+    '/receiptapproval', '/saveovertime', '/overtimehistory',
+    '/savelecture', '/lecturehistory', '/saveinvoice', '/invoicehistory'
+  ];
   dataEntryAllowPaths: Array<string> = ['/moduledashboard'];
   dashBoards: Array<string> = ['/moduledashboard', '/dash', '/employeedash'];
   canActivate(
@@ -37,14 +37,14 @@ export class RouteGuard implements CanActivate {
       if (this.service.getRole() === 'Admin') {
         return true;
       } else {
-          if (this.service.getRole() === 'Provider' && this.providerAllowPaths.includes(state.url)) {
+        if (this.service.getRole() === 'Provider' && this.providerAllowPaths.includes(state.url)) {
           return true;
-          } else if (this.dataEntryAllowPaths.includes(state.url)) {
+        } else if (this.dataEntryAllowPaths.includes(state.url)) {
           return true;
-          } else {
+        } else {
           this.service.router.navigate(['/moduledashboard']);
-          }
         }
+      }
       return true;
     } else {
       this.service.router.navigate(['/']);
