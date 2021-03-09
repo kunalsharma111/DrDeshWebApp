@@ -12740,9 +12740,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.c5 = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.cc5$ = this.c5.asObservable();
         this.c6 = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
-        this.cc6$ = this.c6.asObservable(); // metcha = 'http://3.128.218.140:4000/api';
-
-        this.metcha = 'http://localhost:4000/api'; // metcha = environment.api_url;
+        this.cc6$ = this.c6.asObservable();
+        this.metcha = 'http://3.128.218.140:4000/api'; // metcha = 'http://localhost:4000/api';
+        // metcha = environment.api_url;
 
         this.url = "".concat(this.metcha, "/login");
         this.url1 = "".concat(this.metcha, "/users");
