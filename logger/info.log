@@ -13112,3 +13112,21 @@
 {"message":"DB connected:","level":"info","timestamp":"2021-03-09T06:35:00.170Z"}
 {"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-03-09T11:40:29.162Z"}
 {"message":"DB connected:","level":"info","timestamp":"2021-03-09T11:40:31.016Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-04-05T07:45:35.064Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-04-05T07:45:39.511Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-04-05T08:00:19.012Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-04-05T08:00:21.637Z"}
+{"message":"Invalid Email admin@gmil.com","level":"info","timestamp":"2021-04-05T08:05:06.152Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2021-04-05T08:07:39.969Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2021-04-05T08:07:46.113Z"}
+{"message":"Name of current user isadmin","level":"info","timestamp":"2021-04-05T08:07:50.591Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2021-04-05T08:08:04.431Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2021-04-05T08:08:06.842Z"}
+{"message":"Name of current user isMahendra","level":"info","timestamp":"2021-04-05T08:08:08.038Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-04-05T08:13:45.879Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-04-05T08:13:48.918Z"}
+{"message":"Node Express server listening on http://localhost:4000","level":"info","timestamp":"2021-04-05T08:17:42.510Z"}
+{"message":"DB connected:","level":"info","timestamp":"2021-04-05T08:17:48.554Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2021-04-05T08:18:01.250Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2021-04-05T08:18:03.317Z"}
+{"message":"Name of current user ismahendra","level":"info","timestamp":"2021-04-05T08:18:04.877Z"}
